@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_Gestion_PeriodosContables" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61e9d005-ab3f-43c4-bf8f-767f45c75a76">
+	<property name="ireport.zoom" value="1.0000000000000018"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_responsable" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT r.nombre,to_char(current_date,'dd/mm/yyyy'), to_char(current_date,'yyyy'), p.id_periodo AS periodo, e.nombre AS estatus, s.caracter
+FROM catalog.unidad_responsable r
+INNER JOIN catalog.periodo p ON (p.id_unidad_responsable = r.id_unidad_responsable)
+INNER JOIN catalog.periodo_estatus e ON (e.id_periodo_estatus = p.id_estatus)
+INNER JOIN catalog.separador s ON (s.id_separador = p.id_separador)
+WHERE p.id_unidad_responsable = $P{id_responsable} and p.id_periodo = $P{id_periodo}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="to_char" class="java.lang.String"/>
+	<field name="periodo" class="java.lang.Long"/>
+	<field name="estatus" class="java.lang.String"/>
+	<field name="caracter" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="11" width="326" height="16" uuid="9e7b257b-e2a5-4a71-8770-2734e1dc2845"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="42" width="326" height="16" uuid="f98851bf-fa76-430e-a368-91104cabe750"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="58" width="326" height="16" uuid="5427f5b8-55ba-4539-8676-920f026bedfe"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[GESTIÓN DE PERIODOS CONTABLES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="26" width="325" height="16" uuid="e7c0c872-92c4-4f6e-b4c6-4fc8e75e07ca"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="416" y="4" width="140" height="80" uuid="6fdd0f56-7ee3-4f1f-b534-a955453a78f9"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="19" width="142" height="20" isPrintWhenDetailOverflows="true" uuid="9a3fde94-ea9f-4864-ab00-76f99bda9ddb"/>
+				<text><![CDATA[Nombre de la Gestión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="61" width="166" height="20" isPrintWhenDetailOverflows="true" uuid="67ddf197-6e73-41e7-bb46-162e524bf5e5"/>
+				<text><![CDATA[Periodo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="61" width="100" height="20" uuid="5348f35a-4de3-4624-8d35-2fa52d61cb6d"/>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="82" width="534" height="1" uuid="d2645526-4405-473c-bbdb-7cdcb56d22b7"/>
+			</line>
+			<textField>
+				<reportElement x="11" y="90" width="156" height="20" uuid="5e643f38-c681-4c0e-ba55-2143c4426afa"/>
+				<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="90" width="100" height="20" uuid="a4015266-67f2-4d7e-b42a-bd5ddfd30d88"/>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="143" y="19" width="406" height="20" uuid="336c686c-2fcb-4854-92e5-8a1672865f62"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="137" splitType="Stretch">
+			<line>
+				<reportElement x="6" y="68" width="535" height="2" forecolor="#999999" uuid="d1bbb8d2-277b-4e1c-9b6b-23bd73b875d6"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="273" y="104" width="100" height="20" forecolor="#666666" uuid="babb230d-adeb-4777-a458-776626b16c29"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField pattern="K:mm a, z">
+				<reportElement x="476" y="84" width="69" height="20" forecolor="#666666" uuid="19a1135d-af4c-46a4-8761-329870e50726"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="273" y="84" width="100" height="20" forecolor="#666666" uuid="176ad892-782b-4871-8950-6e6870fbe839"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="376" y="84" width="100" height="20" forecolor="#666666" uuid="de144193-61f4-4415-b103-4fe379f4e219"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
