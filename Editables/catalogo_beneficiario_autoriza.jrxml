@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="catalogo_beneficiario_autoriza" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="277f6996-dd31-43a7-a693-ad9d18bf9d83">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="543"/>
+	<property name="ireport.y" value="93"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="tabla" uuid="f920a002-90bc-4f6a-90c8-a8d3299c300e">
+		<parameter name="folio_operacion_instancia" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id_unidad_responsable" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select beneficiario.fecha_registro, beneficiario.id_beneficiario, beneficiario.razon_social,
+concat_ws(' ', beneficiario.nombre, beneficiario.primer_apellido) nombre,
+beneficiario.rfc, beneficiario.curp,
+estatus.estatus
+from entity.beneficiario_aux beneficiario
+full outer join catalog.estatus estatus on estatus.id = beneficiario.id_estatus_beneficiario
+where beneficiario.id_unidad_responsable =$P{id_unidad_responsable} and folio_operacion_instancia=$P{folio_operacion_instancia}]]>
+		</queryString>
+		<field name="fecha_registro" class="java.sql.Timestamp"/>
+		<field name="id_beneficiario" class="java.lang.Long"/>
+		<field name="razon_social" class="java.lang.String"/>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="rfc" class="java.lang.String"/>
+		<field name="curp" class="java.lang.String"/>
+		<field name="estatus" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="id_unidad_responsable" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folio_operacion_instancia" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), to_char(current_date,'yyyy') b, usuario.nombre_usuario from entity.beneficiario a
+left join entity.usuario usuario on  usuario.id_usuario = a.id_ultimo_usuario_modificador
+where a.id_unidad_responsable = $P{id_unidad_responsable} and a.id_periodo = $P{id_periodo} limit 1]]>
+	</queryString>
+	<field name="id_unidad_responsable" class="java.lang.Long"/>
+	<field name="to_char" class="java.lang.String"/>
+	<field name="b" class="java.lang.String"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+			<staticText>
+				<reportElement x="169" y="1" width="453" height="16" uuid="6a49d7ba-cee8-4873-bacd-51418a9d9e55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="622" y="10" width="179" height="59" uuid="360338f3-968b-4848-90a4-0f6d5b7b3ed9"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="169" y="17" width="453" height="20" uuid="19f04086-616b-4a3d-a27a-c34c618744e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="53" width="453" height="16" uuid="053d5bb5-f60a-4e86-9f01-d926365a9c2b"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSULTA DE CATÁLOGO DE UNIDADES DE MEDIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="37" width="453" height="16" uuid="62d7ea88-258d-42ae-a384-37bf3ba329ca"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="69" width="422" height="16" uuid="3befa71e-3a8d-41e6-b506-e8da2be4994b"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE CATALGO UNICO DE BENEFICIARIOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="492" y="69" width="100" height="16" uuid="d4469967-da1f-43fc-bb0e-87f880252851"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{b}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="40" width="742" height="20" forecolor="#FF0033" uuid="f69db191-3a11-4d69-98be-72cc3f807a13"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="11" width="801" height="92" uuid="c3b08d78-68a2-4420-8a56-120d6835ecb2"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tabla" uuid="a5bad689-f3bd-47b3-82de-c5d1e5384fcc">
+						<datasetParameter name="folio_operacion_instancia">
+							<datasetParameterExpression><![CDATA[$P{folio_operacion_instancia}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_unidad_responsable">
+							<datasetParameterExpression><![CDATA[$P{id_unidad_responsable}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="100" uuid="84b94208-57d2-4680-8b51-6353ea6a70b6">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="100" height="30" uuid="a89d3201-ff0e-484f-b60b-9b57e9425540"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Fecha de Alta]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="100" height="20" uuid="d8f6f317-5c3b-4557-92fe-654b9af93203"/>
+								<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="2f245055-4b0f-4a11-a137-3e77d4c2c845">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="036b8708-2c9e-4bfc-a0e9-f2e413464a28"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[IDUB]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" uuid="d7fe46fc-51cd-4d3a-9ca8-9d28bd6e9795"/>
+								<textElement textAlignment="Center" verticalAlignment="Top"/>
+								<textFieldExpression><![CDATA[$F{id_beneficiario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="124" uuid="f4f9497b-25f3-4d0d-8fd4-a6b951517616">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="124" height="30" uuid="96816f9b-7924-40bc-b93b-093ea05aeb6d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Razón ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="124" height="20" uuid="b69063e6-ee54-413b-90c2-4b1d047554a9"/>
+								<textFieldExpression><![CDATA[$F{razon_social}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="195" uuid="df86cecd-79c1-42c8-9913-ef216667be22">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="195" height="30" uuid="48ede6af-6030-4f20-a84d-f4382626ce60"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="195" height="20" uuid="4244b97b-eac6-4779-a402-db1ecc18ad0c"/>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="103" uuid="44cdb8de-dd8e-42c1-b41d-5866f0c3ca7d">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="103" height="30" uuid="95e4b578-c960-4c1e-8d4f-69c77a354b6b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RFC]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="103" height="20" uuid="242e7ac3-a2e1-46d5-90e8-0c341470499a"/>
+								<textFieldExpression><![CDATA[$F{rfc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="105" uuid="9b5d6443-1c5c-42aa-bc40-14e14738f6ff">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="105" height="30" uuid="963ccec1-494a-4531-b765-765dfd94411f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[CURP]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="105" height="20" uuid="df479c68-62f9-49e3-8f84-c6fdc5857d81"/>
+								<textFieldExpression><![CDATA[$F{curp}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="da93d0f9-480f-4558-bb9f-474bd0c2b1ca">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e026cf65-168d-40ad-847d-c3188f94c32a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Estatus]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" uuid="2350db7c-6829-4095-ba0a-6bd22de6519e"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="88" splitType="Stretch">
+			<line>
+				<reportElement x="-1" y="20" width="802" height="2" forecolor="#999999" uuid="643cd676-8c53-4302-9510-91238f310730"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="532" y="47" width="100" height="20" forecolor="#666666" uuid="e2ed28cc-be58-4593-a79e-9dfe61845846"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="732" y="47" width="69" height="20" forecolor="#666666" uuid="bbb77d7e-dc61-4d07-9611-b37ac37f6fb1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="632" y="47" width="100" height="20" forecolor="#666666" uuid="1671b3c0-9cc9-4549-b58f-7c9e7a3fe87e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="532" y="67" width="100" height="20" forecolor="#666666" uuid="dd5ce2a1-0f5a-404f-bced-86738ef8a709"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="632" y="67" width="100" height="20" forecolor="#666666" uuid="b397d945-6626-4104-8cd5-524d1a00df52"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
