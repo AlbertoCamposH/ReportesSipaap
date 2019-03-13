@@ -1,5 +1,5 @@
 # Reportes Sipaap
-Reportes del proyecto SIPAAP pertenecientes a Ivan Uvalle
+Reportes del proyecto SIPAAP
 
 # Compilados
 Reportes listos para ser subidos a la plataforma.
