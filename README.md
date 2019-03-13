@@ -1,5 +1,5 @@
 # Reportes Sipaap
-Reportes del proyecto SIPAAP pertenecientes a Alberto Campos
+Reportes del proyecto SIPAAP
 
 # Compilados
 Reportes listos para ser subidos a la plataforma.
