@@ -60,10 +60,10 @@
 			<defaultValueExpression><![CDATA[$P{folio}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT (art.nivel) AS "Clave de nivel", (ma.descripcion) AS "Descripción de nivel", (art.clave_articulo) AS "Clave", (art.descripcion_articulo) AS "Descripción", (um.descripcion) AS "Unidad de medida",CASE WHEN art.afectable = false THEN 'NO AFECTABLE' WHEN art.afectable = true THEN 'AFECTABLE' ELSE 'NA' END AS "Afectable", (art.clasificacion_objeto_gasto) AS "Clasificador por Objeto de Gasto", (art.descripcion_objeto_gasto) AS "Descripción COG", (ec.descripcion) AS "Estatus",CASE WHEN art.autorizado = false THEN 'NO AUTORIZADO' WHEN art.afectable = true THEN 'AUTORIZADO' ELSE 'NA' END AS "Autorizado"
+			<![CDATA[SELECT (art.nivel) AS "Clave de nivel", (ma.descripcion) AS "Descripción de nivel", (art.clave_articulo) AS "Clave", (art.descripcion_articulo) AS "Descripción", (um.descripcion) AS "Unidad de medida",CASE WHEN art.afectable = false THEN 'NO AFECTABLE' WHEN art.afectable = true THEN 'AFECTABLE' ELSE 'NA' END AS "Afectable", (art.clasificacion_objeto_gasto) AS "Clasificador por Objeto de Gasto", (art.descripcion_objeto_gasto) AS "Descripción COG", (art.estatus) AS "Estatus",CASE WHEN art.autorizado = false THEN 'NO AUTORIZADO' WHEN art.afectable = true THEN 'AUTORIZADO' ELSE 'NA' END AS "Autorizado"
 ,CONCAT (usr.nombre,' ',usr.primer_apellido) AS "Último usuario modificador"
 FROM catalog.articulos_aux art
-INNER JOIN catalog.estatus_cuenta ec ON ec.id_estatus_cuenta = CAST(art.estatus_cuenta AS bigint)
+
 INNER JOIN entity.mascara_articulo ma ON ma.nivel = art.nivel
 INNER JOIN catalog.unidad_medida um ON um.id_unidad_medida = art.unidad_medida
 FULL OUTER JOIN entity.usuario usr ON usr.id_usuario = art.ultimo_usuario_modificador
@@ -141,7 +141,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" isBold="false"/>
 				</textElement>
-				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PUBLICA]]></text>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="133" y="25" width="537" height="20" uuid="bfb16a8f-c85a-446f-bcd5-9c5b6a6684ce"/>
