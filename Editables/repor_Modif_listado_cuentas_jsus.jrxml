@@ -78,28 +78,28 @@ LIMIT 1]]>
 			<staticText>
 				<reportElement x="42" y="28" width="451" height="16" uuid="4b10e078-28a2-45ff-b620-7a313096d7da"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="41" y="13" width="452" height="16" uuid="b4f1f2f9-7378-48c7-bcf5-bfc103ae3096"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="7" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PUBLICA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="41" y="60" width="452" height="16" uuid="5ac0d4d5-c924-4be6-8f56-f5f935847822"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[MODIFICACIÓN LISTADO DE CUENTAS CONTABLES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="41" y="44" width="452" height="16" uuid="7f597942-15d4-4995-9bcb-dc7240ea8988"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="7" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
 			</staticText>
@@ -127,7 +127,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="bc46106c-2143-45d3-81a4-a6af0b39aad0"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="bc46106c-2143-45d3-81a4-a6af0b39aad0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clave de Cuenta]]></text>
 							</staticText>
@@ -144,7 +144,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="7f8e3800-5f39-48a2-9c7c-ba1613549a58"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="7f8e3800-5f39-48a2-9c7c-ba1613549a58"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Nombre de Cuenta]]></text>
 							</staticText>
@@ -161,7 +161,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="80355af8-66c0-4c4c-a43b-052a4d6ae781"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="80355af8-66c0-4c4c-a43b-052a4d6ae781"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Nivel]]></text>
 							</staticText>
@@ -178,14 +178,14 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="8ace0cc4-0e46-491b-b3a3-04d276ed1498"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="8ace0cc4-0e46-491b-b3a3-04d276ed1498"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripción del nivel de la cuenta]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d26e6e70-775b-4b35-a70b-bd3c3000ee2a"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d26e6e70-775b-4b35-a70b-bd3c3000ee2a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion_nivel}]]></textFieldExpression>
 							</textField>
@@ -195,7 +195,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="abbe3c30-b305-43b6-8f26-1b877eee430a"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="abbe3c30-b305-43b6-8f26-1b877eee430a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Naturaleza de la cuenta]]></text>
 							</staticText>
@@ -212,7 +212,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b9214885-bee9-4768-ae61-18f191ac1481"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="b9214885-bee9-4768-ae61-18f191ac1481"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Tipo de la cuenta]]></text>
 							</staticText>
@@ -229,7 +229,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="5c6d5efa-9f45-4d16-82b4-c55d17522dc2"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="5c6d5efa-9f45-4d16-82b4-c55d17522dc2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clasificación de la cuenta]]></text>
 							</staticText>
@@ -255,29 +255,26 @@ LIMIT 1]]>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="0" width="620" height="1" uuid="a4106f7b-6aa1-4b9d-826b-e9b8aef88d71"/>
-			</line>
 			<staticText>
-				<reportElement positionType="Float" x="344" y="24" width="100" height="20" forecolor="#666666" uuid="79258098-74a5-486c-93cd-86adb4d70a30"/>
+				<reportElement positionType="Float" x="345" y="24" width="100" height="20" forecolor="#666666" uuid="79258098-74a5-486c-93cd-86adb4d70a30"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField pattern="K:mm a, z">
-				<reportElement x="547" y="4" width="69" height="20" forecolor="#666666" uuid="2e768b30-e9de-4f7f-81d0-ad78227832b8"/>
+				<reportElement x="551" y="4" width="69" height="20" forecolor="#666666" uuid="2e768b30-e9de-4f7f-81d0-ad78227832b8"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="344" y="4" width="100" height="20" forecolor="#666666" uuid="875c511b-3ad7-452f-8478-1a8b083fc39a"/>
+				<reportElement positionType="Float" x="345" y="4" width="100" height="20" forecolor="#666666" uuid="875c511b-3ad7-452f-8478-1a8b083fc39a"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="447" y="4" width="100" height="20" forecolor="#666666" uuid="1954efbf-a1f5-48cd-a11d-10f7eb3acc61"/>
+				<reportElement x="451" y="4" width="100" height="20" forecolor="#666666" uuid="1954efbf-a1f5-48cd-a11d-10f7eb3acc61"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField pattern="K:mm a, z">
-				<reportElement x="447" y="25" width="100" height="20" forecolor="#666666" uuid="94bac195-6a64-410a-9d8e-d3a73963b5b9"/>
+				<reportElement x="451" y="25" width="100" height="20" forecolor="#666666" uuid="94bac195-6a64-410a-9d8e-d3a73963b5b9"/>
 				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
 			</textField>
 		</band>

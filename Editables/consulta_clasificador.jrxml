@@ -73,44 +73,44 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 	<title>
 		<band height="94" splitType="Stretch">
 			<staticText>
-				<reportElement x="130" y="49" width="161" height="16" uuid="cf3a3f3c-20ef-4dd9-ac0b-8ef3e8466cb5"/>
-				<textElement textAlignment="Justified">
+				<reportElement x="54" y="49" width="259" height="16" uuid="cf3a3f3c-20ef-4dd9-ac0b-8ef3e8466cb5"/>
+				<textElement textAlignment="Center">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[CONSULTA DE ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="67" y="33" width="313" height="16" uuid="69f7260d-b70b-40a9-9137-b0aeee665086"/>
+				<reportElement x="54" y="33" width="332" height="16" uuid="69f7260d-b70b-40a9-9137-b0aeee665086"/>
 				<textElement textAlignment="Center">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
 			</staticText>
-			<image>
-				<reportElement x="386" y="2" width="169" height="75" uuid="a103fd49-93a2-4ec5-b23c-c6854e5162d7"/>
-				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="67" y="17" width="313" height="16" uuid="6a536974-62bc-4967-92ba-f9c48d6e6ee7"/>
+				<reportElement x="54" y="17" width="332" height="16" uuid="6a536974-62bc-4967-92ba-f9c48d6e6ee7"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="67" y="2" width="317" height="16" uuid="fd9e55b5-bba1-4872-8d4b-aabf45323102"/>
+				<reportElement x="54" y="2" width="332" height="16" uuid="fd9e55b5-bba1-4872-8d4b-aabf45323102"/>
 				<textElement textAlignment="Center">
-					<font size="7" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="190" y="49" width="169" height="16" uuid="3849f299-afee-4b42-b5ea-c9278c0f2505"/>
+				<reportElement x="215" y="49" width="134" height="16" uuid="3849f299-afee-4b42-b5ea-c9278c0f2505"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="386" y="2" width="169" height="75" uuid="a103fd49-93a2-4ec5-b23c-c6854e5162d7"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
@@ -131,31 +131,31 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="16" uuid="794f373c-560d-48f6-9ca6-2209d98417f7"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="794f373c-560d-48f6-9ca6-2209d98417f7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clave de Nivel]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="226cb7b1-ebef-40d4-8c10-7a547271b666"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="226cb7b1-ebef-40d4-8c10-7a547271b666"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{clave_nivel}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="99" uuid="ba2ae1e0-196c-4db3-ba4f-27ceaf96af93">
+					<jr:column width="115" uuid="ba2ae1e0-196c-4db3-ba4f-27ceaf96af93">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="99" height="17" uuid="17af401a-f2cc-48d1-87a1-eda6967af327"/>
+								<reportElement mode="Opaque" x="0" y="0" width="115" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="17af401a-f2cc-48d1-87a1-eda6967af327"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripción del Nivel]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="99" height="20" uuid="92bff14d-0f55-498b-8f77-5e3239e510ed"/>
+								<reportElement x="0" y="0" width="115" height="30" uuid="92bff14d-0f55-498b-8f77-5e3239e510ed"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion_nivel}]]></textFieldExpression>
 							</textField>
@@ -165,31 +165,31 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="17" uuid="8add42e1-57a1-43a8-bb29-ff720c00520e"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="8add42e1-57a1-43a8-bb29-ff720c00520e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clave del registro]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="53048362-3d6f-43d5-90c4-1b18f4d4ed44"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="53048362-3d6f-43d5-90c4-1b18f4d4ed44"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{clave_registro}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="109" uuid="1f228d35-1f92-405c-89ed-0e1f3748d265">
+					<jr:column width="120" uuid="1f228d35-1f92-405c-89ed-0e1f3748d265">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="109" height="16" uuid="a63811ca-86f3-41fb-a33f-ab6770775c17"/>
+								<reportElement mode="Opaque" x="0" y="0" width="120" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="a63811ca-86f3-41fb-a33f-ab6770775c17"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripción del registro]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="109" height="20" uuid="e50a05f0-2483-4d9b-bbed-b35ecea7376b"/>
+								<reportElement x="0" y="0" width="120" height="30" uuid="e50a05f0-2483-4d9b-bbed-b35ecea7376b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion_registro}]]></textFieldExpression>
 							</textField>
@@ -199,14 +199,14 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="126" height="17" uuid="46a77e93-a15e-4b11-b4de-79e67a48757c"/>
+								<reportElement mode="Opaque" x="0" y="0" width="126" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="46a77e93-a15e-4b11-b4de-79e67a48757c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clasificación Programática]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="126" height="20" uuid="2b75630a-ebb7-4bb9-a123-49cde457de8f"/>
+								<reportElement x="0" y="0" width="126" height="30" uuid="2b75630a-ebb7-4bb9-a123-49cde457de8f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{clasificacion_programatica}]]></textFieldExpression>
 							</textField>
@@ -216,14 +216,14 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="17" uuid="31290ce9-ed6e-4797-a8eb-febb74445f60"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="31290ce9-ed6e-4797-a8eb-febb74445f60"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Afectable]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="eb199683-b9ee-41e7-9c1b-ec203147024f"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="eb199683-b9ee-41e7-9c1b-ec203147024f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{afectable}]]></textFieldExpression>
 							</textField>
@@ -233,14 +233,14 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="17" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="17" uuid="18fe7472-ff40-46e1-ba94-265bc83af1c6"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="18fe7472-ff40-46e1-ba94-265bc83af1c6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Estatus]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="5d991c9a-fc7b-4c39-b1f4-8b3ca1057ec9"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5d991c9a-fc7b-4c39-b1f4-8b3ca1057ec9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
 							</textField>
@@ -262,11 +262,8 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 	</columnFooter>
 	<pageFooter>
 		<band height="61" splitType="Stretch">
-			<line>
-				<reportElement x="10" y="0" width="535" height="2" forecolor="#999999" uuid="92427136-7969-478e-a730-559a984fbd17"/>
-			</line>
 			<staticText>
-				<reportElement positionType="Float" x="277" y="36" width="100" height="20" forecolor="#666666" uuid="c371963c-11ea-48c2-9d4b-32677c12e7ca"/>
+				<reportElement positionType="Float" x="265" y="36" width="100" height="20" forecolor="#666666" uuid="c371963c-11ea-48c2-9d4b-32677c12e7ca"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
@@ -275,7 +272,7 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="277" y="16" width="100" height="20" forecolor="#666666" uuid="cc44acfb-2fb4-46a6-94e4-050f0a62d625"/>
+				<reportElement positionType="Float" x="265" y="17" width="100" height="20" forecolor="#666666" uuid="cc44acfb-2fb4-46a6-94e4-050f0a62d625"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
