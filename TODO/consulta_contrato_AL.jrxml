@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consulta_contrato_y_soporte_digital_AL" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="435ed7f6-10db-465d-9e67-c85b44060910">
+	<property name="ireport.zoom" value="1.7715610000000088"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="6138"/>
+	<subDataset name="datos" uuid="0b660a16-0111-44f0-83f8-9500f0440a2c">
+		<queryString language="SQL">
+			<![CDATA[SELECT (art.nivel) AS "Clave de nivel", (ma.descripcion) AS "Descripción de nivel", (art.clave_articulo) AS "Clave", (art.descripcion_articulo) AS "Descripción", (um.descripcion) AS "Unidad de medida",CASE WHEN art.afectable = false THEN 'NO AFECTABLE' WHEN art.afectable = true THEN 'AFECTABLE' ELSE 'NA' END AS "Afectable", (art.clasificacion_objeto_gasto) AS "Clasificador por Objeto de Gasto", (art.descripcion_objeto_gasto) AS "Descripción COG", (art.estatus) AS "Estatus",CASE WHEN art.autorizado = false THEN 'NO AUTORIZADO' WHEN art.afectable = true THEN 'AUTORIZADO' ELSE 'NA' END AS "Autorizado"
+,CONCAT (usr.nombre,' ',usr.primer_apellido) AS "Último usuario modificador"
+FROM catalog.articulos_aux art
+
+INNER JOIN entity.mascara_articulo ma ON ma.nivel = art.nivel
+INNER JOIN catalog.unidad_medida um ON um.id_unidad_medida = art.unidad_medida
+FULL OUTER JOIN entity.usuario usr ON usr.id_usuario = art.ultimo_usuario_modificador
+WHERE unidad_medida = um.id_unidad_medida
+AND art.periodo =2019 AND um.id_periodo = art.periodo AND ma.id_periodo = art.periodo
+AND art.ur = 1 AND um.id_unidad_responsable = art.ur AND ma.id_unidad_responsable = art.ur
+AND art.id_instance =42
+ORDER BY art.nivel]]>
+		</queryString>
+		<field name="Clave de nivel" class="java.lang.Long"/>
+		<field name="Descripción de nivel" class="java.lang.String"/>
+		<field name="Clave" class="java.lang.String"/>
+		<field name="Descripción" class="java.lang.String"/>
+		<field name="Unidad de medida" class="java.lang.String"/>
+		<field name="Afectable" class="java.lang.String"/>
+		<field name="Clasificador por Objeto de Gasto" class="java.lang.Long"/>
+		<field name="Descripción COG" class="java.lang.String"/>
+		<field name="Estatus" class="java.lang.String"/>
+		<field name="Autorizado" class="java.lang.String"/>
+		<field name="Último usuario modificador" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="operation.contrato" uuid="41552531-952c-420b-9b90-a79a69a4f328">
+		<queryString language="SQL">
+			<![CDATA[SELECT *
+FROM operation.contrato]]>
+		</queryString>
+		<field name="ur" class="java.lang.Long"/>
+		<field name="periodo" class="java.lang.Long"/>
+		<field name="id_contrato" class="java.lang.Long"/>
+		<field name="fecha_registro" class="java.sql.Timestamp"/>
+		<field name="duep" class="java.lang.String"/>
+		<field name="contrato" class="java.lang.String"/>
+		<field name="proyecto_compra" class="java.lang.String"/>
+		<field name="proceso_origen" class="java.lang.String"/>
+		<field name="fondo_contable" class="java.lang.String"/>
+		<field name="fecha_contrato" class="java.sql.Date"/>
+		<field name="estatus" class="java.lang.String"/>
+		<field name="contacto_recepcion" class="java.lang.String"/>
+		<field name="area_requiriente" class="java.lang.Long"/>
+		<field name="proveedor" class="java.lang.Long"/>
+		<field name="nombre_comercial" class="java.lang.Long"/>
+		<field name="direccion" class="java.lang.Long"/>
+		<field name="estado" class="java.lang.Long"/>
+		<field name="telefono" class="java.lang.Long"/>
+		<field name="representante_legal" class="java.lang.Long"/>
+		<field name="lugar_entrega" class="java.lang.String"/>
+		<field name="tiempo_entrega" class="java.sql.Date"/>
+		<field name="condiciones_pago" class="java.lang.String"/>
+		<field name="requiere_anticipo" class="java.lang.String"/>
+		<field name="anticipo" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="operation.detalle_contrato" uuid="55998bfc-10d8-43d9-bc37-83b95d0a3e1f">
+		<queryString language="SQL">
+			<![CDATA[SELECT *
+FROM operation.detalle_contrato]]>
+		</queryString>
+		<field name="ur" class="java.lang.Long"/>
+		<field name="periodo" class="java.lang.Long"/>
+		<field name="id_contrato" class="java.lang.Long"/>
+		<field name="id_detalle_contrato" class="java.lang.Long"/>
+		<field name="fecha_registro" class="java.sql.Timestamp"/>
+		<field name="bloque" class="java.lang.Long"/>
+		<field name="clave_articulo" class="java.lang.String"/>
+		<field name="c_objeto_gasto" class="java.lang.String"/>
+		<field name="caracteristica_esp" class="java.lang.String"/>
+		<field name="clave_presupuestal" class="java.lang.String"/>
+		<field name="centro_registro" class="java.lang.Long"/>
+		<field name="cantidad" class="java.lang.Long"/>
+		<field name="unidad_medida" class="java.lang.Long"/>
+		<field name="precio_unitario" class="java.math.BigDecimal"/>
+		<field name="descuento" class="java.math.BigDecimal"/>
+		<field name="imp_valor_agregado" class="java.math.BigDecimal"/>
+		<field name="otros_imp" class="java.math.BigDecimal"/>
+		<field name="importe_unitario" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
+		<field name="importe_total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="ur" class="java.lang.Long"/>
+	<parameter name="Clave" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{Clave}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="oficio" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_expedicion_oficio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="registro_publico_numero" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="registro_foja_inicial" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="registro_foja_final" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="registro_volumen" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="registro_fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_testimonio" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_acta_numero" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_acta_volumen" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_acta_fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="corredor_publico" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folio_mercantil_folio" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="folio_mercantil_fecha" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_numero_rfc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="clausula_servicios_para" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_fecha_limite" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_obligaciones" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ur_obligaciones" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="proveedor_cuenta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="vigencia_contrato" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="poliza_anual_mantenimiento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select con.*,dc.*, a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), to_char(current_date,'yyyy') b, u.nombre_usuario
+FROM
+(SELECT *
+FROM operation.contrato)AS con,
+(SELECT *
+FROM operation.detalle_contrato)AS dc,
+entity.usuario u
+INNER JOIN entity.mascara_articulo a ON u.id_usuario = a.ultimo_usuario_modificador
+where a.id_unidad_responsable = $P{ur}
+LIMIT 1]]>
+	</queryString>
+	<field name="ur" class="java.lang.Long"/>
+	<field name="periodo" class="java.lang.Long"/>
+	<field name="id_contrato" class="java.lang.Long"/>
+	<field name="fecha_registro" class="java.sql.Timestamp"/>
+	<field name="contrato" class="java.lang.String"/>
+	<field name="duep" class="java.lang.String"/>
+	<field name="proyecto_compra" class="java.lang.String"/>
+	<field name="proceso_origen" class="java.lang.String"/>
+	<field name="fondo_contable" class="java.lang.String"/>
+	<field name="fecha_contrato" class="java.sql.Date"/>
+	<field name="estatus" class="java.lang.String"/>
+	<field name="contacto_recepcion" class="java.lang.String"/>
+	<field name="area_requiriente" class="java.lang.Long"/>
+	<field name="proveedor" class="java.lang.Long"/>
+	<field name="nombre_comercial" class="java.lang.Long"/>
+	<field name="direccion" class="java.lang.Long"/>
+	<field name="estado" class="java.lang.Long"/>
+	<field name="telefono" class="java.lang.Long"/>
+	<field name="representante_legal" class="java.lang.Long"/>
+	<field name="lugar_entrega" class="java.lang.String"/>
+	<field name="tiempo_entrega" class="java.sql.Date"/>
+	<field name="condiciones_pago" class="java.lang.String"/>
+	<field name="requiere_anticipo" class="java.lang.String"/>
+	<field name="anticipo" class="java.math.BigDecimal"/>
+	<field name="id_detalle_contrato" class="java.lang.Long"/>
+	<field name="bloque" class="java.lang.Long"/>
+	<field name="clave_articulo" class="java.lang.String"/>
+	<field name="c_objeto_gasto" class="java.lang.String"/>
+	<field name="caracteristica_esp" class="java.lang.String"/>
+	<field name="clave_presupuestal" class="java.lang.String"/>
+	<field name="centro_registro" class="java.lang.Long"/>
+	<field name="cantidad" class="java.lang.Long"/>
+	<field name="unidad_medida" class="java.lang.Long"/>
+	<field name="precio_unitario" class="java.math.BigDecimal"/>
+	<field name="descuento" class="java.math.BigDecimal"/>
+	<field name="imp_valor_agregado" class="java.math.BigDecimal"/>
+	<field name="otros_imp" class="java.math.BigDecimal"/>
+	<field name="importe_unitario" class="java.math.BigDecimal"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="importe_total" class="java.math.BigDecimal"/>
+	<field name="id_unidad_responsable" class="java.lang.Long"/>
+	<field name="to_char" class="java.lang.String"/>
+	<field name="b" class="java.lang.String"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="71" y="20" width="426" height="20" uuid="d056816c-47bd-49c1-98fc-173689f104e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="52" width="426" height="16" uuid="8eaa6f90-19c4-4554-a05a-72eabba20989"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE PRESTACIÓN DE SERVICIOS]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="76" width="369" height="64" uuid="f7d6636f-45ed-4a28-b3cb-1fef0c2772e4"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="369" y="76" width="57" height="20" uuid="7d3bc086-e013-4d88-b1ab-337eeba073df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PROVEEDOR:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="96" width="81" height="20" uuid="5d001066-6100-4885-8ac9-2883c6a2a7c0"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ÁREA REQUIRENTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="369" y="116" width="71" height="20" uuid="30450f20-076d-406b-9456-7efc3041e333"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IMPORTE TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="426" y="76" width="143" height="20" uuid="d3e217b3-e1d1-4ac7-81c3-34bfd182c08e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="96" width="119" height="20" uuid="153d1896-e867-473a-ba68-fc47b50af260"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area_requiriente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="117" width="129" height="20" uuid="27ba6128-3cc5-458d-bfb2-f5036d03c8ef"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="712" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="2" width="572" height="20" forecolor="#004987" backcolor="#004987" uuid="3655b360-5c89-4759-86b1-ec656a096000"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="108" y="2" width="362" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="51e29ef7-3967-4521-8495-c3b397b8c044"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CONTRATO DE ADQUISICIÓN DE BIENES Y PRESTACIÓN DE SERVICIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="27" width="66" height="20" uuid="78d3f73f-0ecb-4940-b84c-fd4db92f8d36"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO No.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="47" width="572" height="49" uuid="9118eeee-1e7a-4694-a640-33c9d280b665"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Contrato de Adquisición de Bienes y Prestación de Servicios, que celebran por una parte la Universidad Tecnológica de Aguascalientes, representada en este acto por el "+$F{representante_legal}+", en su carácter de Rector, a quien se le denominará 'La UTAgs', y por la otra parte "+$F{nombre_comercial}+", representada en este acto por el C. "+$F{proveedor}+", a quien se le denominará “El Proveedor”; en lo sucesivo y para efectos del presente contrato cuando los celebrantes actúen de manera conjunta se les denominará como “Las Partes”, al tenor de los siguientes antecedentes, declaraciones y cláusulas:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="193" y="105" width="166" height="20" uuid="d27a45f5-4943-4d3b-bfad-80cc9ac81d63"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A N T E C E D E N T E S]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="126" width="572" height="48" uuid="4a97c774-a719-43f6-8234-89341fe39cd5"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mediante requisición de compra número "+$F{proyecto_compra}+"/2019 se solicitó a la Dirección de Administración y Finanzas de esta Universidad la contratación de la Adquisición de Bienes y la Prestación de los Servicios, para cumplir con los fines de "+$F{c_objeto_gasto}+"\n\nPor lo antes expuesto y en cumplimiento a lo dispuesto por el artículo 66 de la Ley de Adquisiciones, Arrendamientos y Servicios del Estado de Aguascalientes y sus Municipios, en adelante 'La Ley', se procede al otorgamiento del presente contrato en términos de las siguientes:"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="3" y="176" width="569" height="10" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="3190e61c-1f93-4d0c-bdaf-ca5816dce075"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="193" y="175" width="166" height="20" uuid="c8dd05cc-f33a-4935-b2b7-b5ee20633a57"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="193" width="107" height="20" uuid="e575402d-629e-4c82-937e-3be24a6c84c1"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Primera: "La UTAgs" declara:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="213" width="569" height="40" uuid="abaf9aa9-297f-4d46-b0db-14c5be035d61"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA['1.1.   Que es un Organismo Público Descentralizado del Gobierno del Estado de Aguascalientes, con personalidad jurídica y patrimonio propio integrada al Subsistema de Universidades Tecnológicas, adoptando el Modelo Pedagógico y los Sistemas Educativos que señale la Coordinación General de Universidades Tecnológicas y Politécnicas y el Instituto de Educación de Aguascalientes, de conformidad con su Ley Orgánica que la crea, por decreto 122 publicado el 11 de agosto del 1991, debidamente inscrita en el Registro Público de la Propiedad bajo el número 47 a la 60 del segundo legajo del registro de entes Paraestatales en fecha 15 de octubre de 1999.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="258" width="569" height="62" uuid="af6e1e81-236b-4e6e-aa87-bc4b46b7445d"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1.2.   Que dentro de su objetivo y finalidad, establecidas en la Ley Orgánica de la Universidad Tecnológica de Aguascalientes, se encuentran la de formar profesionistas con sentido innovador en la incorporación de los avances científicos y tecnológicos, realizar investigación en las áreas de su competencia, que se traduzcan en aportaciones concretas que contribuyan al mejoramiento y eficacia en la producción industrial y de servicios, impartir y desarrollar programas de superación académica y apoyo técnico en colaboración con las autoridades estatales y los grupos industriales, tendientes al beneficio de la comunidad universitaria y de la población en general, promover la cultura tecnológica entre los diversos sectores de la población, extender las funciones de vinculación hacia los sectores público, privado y social para la consolidación del desarrollo tecnológico, científico y social de la Entidad, impulsar estrategias de participación y concertación con los sectores público, privado y social, para la proyección de las actividades productivas, con los más altos niveles de eficiencia y sentido social.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="328" width="569" height="40" uuid="db1d40aa-497e-45a5-8669-2dcd83d6ede5"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1.3.   Que su Representante Legal cuenta con todas las facultades necesarias para suscribir este tipo de instrumentos, de acuerdo a lo previsto en el artículo 5 de la Ley Orgánica de la Administración Pública del Estado de Aguascalientes; Fracción I, Articulo 15 de la Ley para el Control de las Entidades Paraestatales del Estado de Aguascalientes, el artículo 12 de la Ley Orgánica de la Universidad Tecnológica de Aguascalientes; artículos 21, 24 fracción IV del Estatuto Orgánico de la Universidad Tecnológica de Aguascalientes y los artículos 15 y 42 de la Ley de Control Entes Paraestatales del Estado de Aguascalientes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="429" width="569" height="21" uuid="a128daaf-cc33-487f-ba4a-a2a8f52f7d5d"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1.5.   Que tiene establecido su domicilio para oír y recibir todo tipo de notificaciones derivadas del presente contrato el ubicado en Blvd. Juan Pablo II No. 1302, Fraccionamiento Ex -Hacienda La Cantera, C.P. 20200, en la Ciudad de Aguascalientes, Aguascalientes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="453" width="569" height="25" uuid="0fb32570-27a8-4081-bc96-d05db5e7d056"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[1.6.   Que su registro federal de contribuyentes es UTA-910811-4C9. a nombre de la Secretaría de Finanzas, única dependencia del Gobierno del Estado autorizada para realizar pagos, quien tiene su domicilio fiscal en Avenida de la Convención Oriente número 102, Colonia del Trabajo, C.P. 20180, en la Ciudad de Aguascalientes, Aguascalientes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="484" width="124" height="10" uuid="1967ccca-b618-48d4-bd0c-47d53d66f963"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Segunda: "El Proveedor" declara:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="372" width="569" height="53" uuid="b8cf1495-78a6-4457-95ab-2dc53647ee17"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["1.4.   Que el "+$F{representante_legal}+", se identifica plenamente en este acto en su calidad de Rector de la Universidad Tecnológica de Aguascalientes, según consta mediante el Oficio Nº "+$P{oficio}+", expedido por el C. Gobernador Constitucional del Estado, Gobernador Constitucional del Estado de Aguascalientes, de fecha "+$P{fecha_expedicion_oficio}+" el cual se encuentra debidamente inscrito en el Registro Público de la Propiedad en el Apartado Entes Paraestatales bajo el número "+$P{registro_publico_numero}+" fojas de la "+$P{registro_foja_inicial}+" a la "+$P{registro_foja_final}+" del volumen "+$P{registro_volumen}+" de  fecha "+$P{registro_fecha}+", con fundamento  en los artículos 12 y 14 de la Ley Orgánica de la Universidad Tecnológica de Aguascalientes, el Rector tiene calidad de Representante Legal de la Universidad y cuenta con las facultades para suscribir el presente Contrato y del artículo 15 de la Ley para el Control de las Entes Paraestatales del Estado de Aguascalientes."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="497" width="566" height="20" uuid="f3337d8a-5338-4d48-b879-bd95817b5ea4"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2.1.   Que es una sociedad constituida mediante el Testimonio "+$P{proveedor_testimonio}+"."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="517" width="566" height="46" uuid="05ae3bc7-67a2-4102-ad9e-c55f2c593d9c"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2.2.   Que la "+$F{nombre_comercial}+", acredita su carácter de representación y facultades mediante Testimonio del Acta número "+$P{proveedor_acta_numero}+" volumen "+$P{proveedor_acta_volumen}+" de fecha "+$P{proveedor_acta_fecha}+" otorgada ante la fe y protocolo del  "+$P{corredor_publico}+", Corredor Público número 1000, del Estado de México inscrita en el Registro Público de la Propiedad y de Comercio del Estado de México con el folio mercantil electrónico número "+$P{folio_mercantil_folio}+" el "+$P{folio_mercantil_fecha}+" y manifiesta contar con las facultades suficientes para suscribir el presente contrato y obligar a su representada en términos del mismo; facultades que a la fecha no le han sido revocadas ni modificadas y que puede ejercer de forma individual."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="570" width="565" height="25" uuid="71c5955f-e49e-4e39-acd1-e17ca1e8cead"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[2.3.   Que manifiesta que por estar dentro de su objeto social, la comercialización de bienes y prestación de servicios afines a los señalados en la cláusula segunda y anexos de este instrumento jurídico, tiene la experiencia, capacidad técnica y financiera para cumplir con lo pactado en el presente contrato.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="595" width="566" height="19" uuid="1f0365cf-ac53-4e85-aa3f-57ede01ea87f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2.4.   Que tiene establecido su domicilio fiscal en "+$F{direccion}+", datos que señala para oír y recibir todo tipo de notificaciones derivadas del presente contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="615" width="566" height="19" uuid="27ee1c9c-4637-48bb-82c5-62a92bedfe2a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2.5.   Que cuenta con el Registro Federal de Contribuyentes número "+$P{proveedor_numero_rfc}+", encontrándose al corriente en el cumplimiento de las obligaciones fiscales a su cargo.."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="636" width="565" height="11" uuid="cb5408bf-afd0-4ab4-8bda-068e02a464c6"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[2.6.   Que manifiesta bajo protesta de decir verdad que cuenta con el Registro Patronal ante el IMSS número 1.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="654" width="566" height="19" uuid="4d795218-427e-41ff-9293-517f4f0c172d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2.7.   Que manifiesta bajo protesta de decir verdad que a la fecha de celebración del presente contrato los accionistas de "+$F{nombre_comercial}+" , no desempeñan empleo, cargo o comisión en el servicio público."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="681" width="565" height="25" uuid="425918a9-517d-4ea3-8531-068c1803e5c3"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[2.8.   Que está en aptitud legal para celebrar el contrato ya que no se ubica en alguno de los supuestos contemplados en el artículo 71 de “La Ley”.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="709" width="567" height="1" uuid="defce255-cccd-422a-b959-8b93df753b5a"/>
+			</break>
+			<textField>
+				<reportElement x="290" y="27" width="100" height="20" uuid="0b2bdff9-814b-408f-9316-6f82252ec4ec"/>
+				<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="914">
+			<staticText>
+				<reportElement x="0" y="35" width="570" height="24" uuid="019a1f5e-c573-47a4-b984-6e8c5d317afd"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[3.1.   Que reconocen la personalidad y la capacidad para la celebración del presente contrato, señalando que no existe error, dolo o cualquier otra circunstancia que pudiera afectar o invalidar su vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="14" width="166" height="10" uuid="49d3cf8a-f204-48a5-9c52-4762dca984c2"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tercera: "Las partes" conjuntamente declaran:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="569" height="22" uuid="a212c61c-784e-4544-8041-5dc721247e1c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[3.2.   Que cualquier modificación durante la vigencia del presente contrato en las declaraciones asentadas en este apartado, deberá notificarse de inmediato a la otra parte por escrito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="81" width="568" height="17" uuid="74b423b0-59ee-4c32-88fb-18fbe885a4cc"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[3.3.   Que conocen los términos y condiciones que se pactan en el presente contrato.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="110" width="569" height="10" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="682e5020-7bd8-4dfa-9ed9-7c8de8d1549d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="203" y="110" width="166" height="20" uuid="49a35063-0e1c-4f71-8c80-4abe02ced968"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAUSULAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="130" width="569" height="17" uuid="87150f2e-8aff-4812-a659-74699b93063c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[PRIMERA. OBJETO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="147" width="568" height="19" uuid="a1267593-5036-4ac8-baa7-7e99dfeef268"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El objeto del presente instrumento es formalizar la Adquisición de los Bienes y Servicios para "+$P{clausula_servicios_para}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="166" width="568" height="26" uuid="c3e6fd3c-a9c1-4b40-8b4a-1a235ebe024b"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[“El Proveedor” deberá entregar y proporcionar “Los Bienes y/o Servicios” de acuerdo a lo estipulado en el presente instrumento legal, sus anexos y conforme a las especificaciones y control que emita para tal efecto “la UTAgs”.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="192" width="568" height="17" uuid="3ce356e8-459d-437a-8659-ddc62405fc03"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[SEGUNDA. DESCRIPCIÓN DE LOS BIENES Y/O SERVICIOS.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="209" width="568" height="26" uuid="345955c6-d881-44a4-8ed1-dfd2500b260c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[La descripción completa de “Los Bienes y/o Servicios” objeto del presente contrato, así como número de partida, cantidad, unidad de medida, precio unitario fijo, y el monto total a pagar como contraprestación, se especifican a continuación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="235" width="568" height="19" uuid="870ca51d-1ab1-4142-80a3-ef4885570147"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El monto total adjudicado y a pagar a 'El Proveedor' equivale a la cantidad de "+$F{total}+", más el respectivo Impuesto al Valor Agregado por un monto de"+$F{imp_valor_agregado}+" lo que arroja un total a pagar de "+$F{importe_total}+", I.V.A. Incluido."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="258" width="568" height="26" uuid="080c53f8-9543-4f63-89d7-71f88a629d5c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Los impuestos y derechos que procedan con motivo de “Los Bienes y/o Servicios” objeto del presente contrato, serán pagados por “El Proveedor”; “la UTAgs” solo cubrirá el Impuesto al Valor Agregado correspondiente, de acuerdo a lo establecido en las disposiciones legales vigentes en la materia. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="284" width="568" height="17" uuid="d92e6897-e431-41fe-9e23-a0647e79e08c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[TERCERA. TÉRMINOS Y CONDICIONES DE LA ENTREGA DE LOS BIENES Y/O PRESTACIÓN DE LOS SERVICIOS.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="301" width="568" height="25" uuid="27c00d9b-cc9c-456c-b7bc-0e80ed6f58e7"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se obliga a entregar y/o prestar 'Los Bienes y/o Servicios' a partir de la fecha de firma del presente contrato y a concluir con su entrega y/o prestación a más tardar el día "+$P{proveedor_fecha_limite}+". A entera satisfacción de “la UTAgs”; apegándose a lo establecido en los anexos del presente contrato y en su propuesta técnica."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="326" width="568" height="26" uuid="bf02906e-8ad7-482b-930d-38ed9200481b"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Las condiciones específicas de la contratación se encuentran en los anexos 1 y 2 del presente instrumento, mismo que una vez firmado por las partes, pasará a formar parte integral del presente contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="352" width="568" height="26" uuid="402819dc-ccb0-4f00-ab89-b6bbc3c69d21"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[“La UTAgs” no estará obligada a recibir “Los Bienes y/o Servicios”, si estos no cumplen con los requisitos establecidos en el presente contrato y sus anexos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="378" width="568" height="17" uuid="63e3e753-6a4f-434b-b276-7bf826c7167d"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[CUARTA. OBLIGACIONES DE “EL PROVEEDOR”.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="395" width="568" height="24" uuid="fc1e520d-0c33-4657-b4b4-04cb2b05ecbd"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Para el debido cumplimiento del objeto del presente Contrato, “EL PROVEEDOR” tendrá como obligaciones además de las consignadas en el presente instrumento, las siguientes:"
++$P{proveedor_obligaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="419" width="568" height="17" uuid="38190c61-569b-44f9-a265-8585fab7dba0"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[QUINTA. OBLIGACIONES DE “LA UTAGS”.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-1" y="436" width="570" height="24" uuid="474337e6-5e79-4701-ae2c-d253faa2f834"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Para el debido cumplimiento del objeto del presente Contrato, “La UTAgs” tendrá como obligaciones además de las consignadas en el presente instrumento, las siguientes::"
++$P{ur_obligaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="461" width="568" height="17" uuid="3d94ed89-93cd-4634-97ac-90abfc3fed2a"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA['SEXTA. RESPONSABLES.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="478" width="568" height="44" uuid="13edbd71-0c92-49bf-8015-3eeef91f4a99"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En términos de lo dispuesto por los artículos 6 y 78 de 'La Ley' los responsables de verificar que 'Los Bienes y/o Servicios' se destinen al cumplimiento del proyecto para el cual fueron contratados, así como de dar seguimiento, supervisar y vigilar el cumplimiento de las obligaciones contraídas mediante el presente contrato, serán el C."+$F{representante_legal}
++" Así mismo, en términos de lo dispuesto por el artículo 4° párrafo segundo, de “La Ley”, el encargado del trámite de pago; es decir de la ejecución, validación y comprobación del gasto, será la Dirección de Administración y Finanzas."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="522" width="568" height="33" uuid="bd52c4bd-795d-424b-8768-9aef1d94d274"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Los servidores públicos señalados en la presente cláusula serán los encargados de verificar que la entrega y/o prestación de “Los Bienes y/o Servicios” se efectúe bajo las condiciones de tiempo y forma requeridos, de conformidad con las especificaciones establecidas en este instrumento legal. Así mismo, también serán los encargados de reportar en tiempo y forma de cualquier incumplimiento de “El Proveedor”, para efecto de que se inicie el procedimiento establecido en el artículo 76 de “la Ley”.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="555" width="568" height="33" uuid="50f1e218-8b31-4ddf-a815-45cce1b05e2d"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Así mismo, y der ser necesario, para casos específicos, “la UTAgs” emitirá escritos de designación de los servidores públicos que serán los responsables de darles seguimiento; escritos que una vez emitidos y recibidos se harán del conocimiento de “El Proveedor”.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="588" width="568" height="17" uuid="9d080678-be2c-4f61-8575-a864ecc7fd2a"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[SÉPTIMA. FORMA DE PAGO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="605" width="568" height="44" uuid="39d96745-5be2-4d17-b296-b90edf6e0dcf"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["La contraprestación señalada en la cláusula segunda del presente contrato será pagada a “El Proveedor” en moneda nacional y mediante transferencia electrónica a la cuenta bancaria designada expresamente por “El Proveedor” siendo esta la"+$P{Clave}+", y en términos del artículo 72 de “La Ley” el pago se realizará una vez que se tenga hecha la entrega del bien y/o se hayan prestado los servicios, así mismo se requiere se presenten en las oficinas administrativas de 'la UTAgs', el Comprobante Fiscal Digital por Internet (CFDI) que ampare la prestación y/o entrega de 'Los Bienes y/o  Servicios', a que se refiere la cláusula segunda de este instrumento legal, acompañado de la solicitud de pago debidamente requisitada y aprobada por los servidores públicos señalados en la cláusula que antecede."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="649" width="568" height="25" uuid="a65ca0c5-8c2f-43a9-902b-734414789dcc"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Dicho comprobante deberá cumplir con los requisitos fiscales vigentes que establezca la Secretaría de Hacienda y Crédito Público y se expedirá a nombre de “la UTAgs”, cuyos datos fiscales quedaron asentados en los numerales 1.5 y 1.6 del apartado de declaraciones del presente contrato.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="674" width="568" height="22" uuid="a268cc2e-dce0-4bcc-add6-c4ae7bc66783"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[En caso de que “El Proveedor” no presente en tiempo y forma la documentación requerida para el trámite de pago, la fecha de pago se correrá el mismo número de días que dure el trámite de pago.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="696" width="568" height="17" uuid="6fae4e1d-b6dc-4c29-818b-737713120f6f"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[OCTAVA. OBLIGACIONES FISCALES.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="713" width="568" height="39" uuid="4439ad52-f974-4199-ae92-e08ae1700e95"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="false"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[“El Proveedor” se obliga a solicitar opinión positiva por internet en la página del Sistema de Administración Tributaria (SAT) en la opción “Mi Portal”, por medio de la cual se constate que se encuentra al corriente con sus obligaciones fiscales. Dicha opinión se deberá entregar dentro de los treinta días naturales posteriores a la firma del presente contrato, en el Departamento de Adquisiciones de “la UTAgs”, el incumplimiento a lo señalado en la presente clausula podrá ser motivo de rescisión del presente contrato sin responsabilidad alguna para “la UTAgs”.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="752" width="568" height="17" uuid="98251911-db86-4c47-a8b5-70b25d8f1950"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[NOVENA. VIGENCIA DEL CONTRATO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="769" width="568" height="44" uuid="580b8770-a2b2-401d-b480-a031ea76749a"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["La vigencia de este contrato será desde su fecha de firma y hasta el "+$P{vigencia_contrato}+", o bien hasta que se den por concluidas todas y cada una de las obligaciones contraídas en este instrumento legal. Lo anterior sin perjuicio del vencimiento de los períodos de garantía establecidos en la cláusula octava del presente contrato, durante los cuales estará vigente el actual instrumento legal, para efectos de ejercitar las acciones de garantía que correspondan por la mala calidad de “Los Bienes y/o Servicios” o en su caso por el incumplimiento de las obligaciones a cargo de 'El Proveedor'."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="813" width="568" height="17" uuid="bc7828d6-0679-4ec4-9c48-e44c3869edf7"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA. GARANTÍAS.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="830" width="568" height="23" uuid="03fb69c7-df28-401d-b66d-a2d6eff710d3"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A) GARANTÍA DE CALIDAD DE LOS BIENES.- “El Proveedor”, en términos de lo dispuesto por la fracción III del artículo 69 y artículo 70 de “La Ley”, se obliga a garantizar la calidad de los bienes por el periodo de un año contado a partir de la entrega, a entera satisfacción de los servidores públicos señalados en la cláusula cuarta del presente contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="853" width="568" height="23" uuid="588f4236-8416-4354-96bf-a676b1176322"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Si durante el período de garantía anteriormente señalado, se presenta algún defecto, irregularidad o mala calidad en los bienes, “El Proveedor” queda obligado a reponer los bienes entregados en malas condiciones en un plazo de no mayor de 7 días, a partir de que le sea notificado el hecho, sin cargo adicional para 'la UTAgs'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="876" width="568" height="23" uuid="5c5bee7a-6389-4bb5-9a2e-06e5eee6bc2e"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De igual manera 'El Proveedor' se compromete a que en caso de resultar algún conflicto relacionado con la legalidad y el origen de los bienes objeto del actual instrumento legal, asume por completo dicha responsabilidad."]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="907" width="100" height="1" uuid="8eafc0ce-15bc-46de-8fe2-a8d926469a3c"/>
+			</break>
+		</band>
+		<band height="914">
+			<textField>
+				<reportElement x="1" y="7" width="568" height="45" uuid="f2479627-7340-4aa1-b271-0a0fb78e0161"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["B) GARANTÍA DE CALIDAD DE LOS SERVICIOS. 'El Proveedor', en términos de lo dispuesto por los artículos 69 fracción III y 70 de 'La Ley', se obliga a garantizar la calidad de los servicios durante el periodo de vigencia del presente contrato. Si durante el período de garantía anteriormente señalado, se presenta alguna irregularidad o mala calidad en los servicios contratados, 'El Proveedor' queda obligado a regularizar los servicios objeto del presente contrato de forma inmediata, periodo que será contado a partir de su notificación a 'El Proveedor', sin cargo adicional para 'la UTAgs'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="52" width="568" height="23" uuid="31ac76b1-496c-4fde-a8d7-561f0f4b8edd"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Asimismo, 'El Proveedor' se obliga a responder por los defectos, irregularidades o mala calidad de los servicios, así como de cualquier otra responsabilidad en que hubiese incurrido en los términos señalados en este contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="75" width="568" height="39" uuid="06224a3d-13a7-4745-924f-dc49b7e9b519"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' deberá contar con personal técnico especializado en el ramo, herramientas, técnicas y equipos adecuados para la prestación del servicio requerido, así como contar con las licencias y permisos necesarios para el desarrollo de su actividad, a fin de garantizar que el servicio objeto de este contrato sea proporcionado con la calidad, oportunidad y eficiencia requerida para tal efecto, comprometiéndose a realizarlo a satisfacción de 'la UTAgs' y con estricto apego a lo establecido en el presente contrato y sus anexos."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="114" width="568" height="63" uuid="888b547d-fcc3-45e7-91f9-c99ab6db0d56"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C) GARANTÍA DE CUMPLIMIENTO.- Con el fin de garantizar el cumplimiento de todas y cada una de las obligaciones que el presente contrato impone y de acuerdo con lo que establece el artículo 69 fracción II y párrafo tercero de “La Ley”, “El Proveedor” presentará a “la UTAgs”, dentro de los diez días naturales posteriores a la firma del presente contrato, fianza otorgada por compañía autorizada, conforme a lo contemplado en el artículo 63 del Código Fiscal del Estado de Aguascalientes, debiendo precisar el tipo de bienes y/o servicios a garantizar; cuyo importe constituirá el monto de la reclamación con cargo al título de crédito, por la cantidad equivalente al 10% del monto autorizado para cada ejercicio fiscal, por la cantidad equivalente al 10% del monto total adjudicado en este contrato, incluyendo el I.V.A. correspondiente y que en términos del artículo 70 de 'La Ley' deberá exhibir a favor de 'la UTAgs'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="177" width="568" height="39" uuid="2b16d4e7-70b4-4753-b8bd-e9c3d48a49c9"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dicho medio de garantía tendrá vigencia hasta el total cumplimiento de las obligaciones consignadas en el presente contrato y se hará efectivo cuando 'El Proveedor' no entregue y/o preste “Los Bienes y/o Servicios” contratados al amparo del presente instrumento jurídico a entera satisfacción de “la UTAgs”, en el plazo estipulado, así como por no cumplir con cualquier otra obligación a su cargo consignada en el presente contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="216" width="568" height="27" uuid="ced01a4f-0380-4248-be50-be5bd7d16739"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Así mismo la garantía referida estará vigente aún durante la substanciación de los recursos legales o juicios que se interpongan hasta que se pronuncie resolución definitiva, de forma tal que su vigencia no podrá acotarse en razón del plazo de ejecución del contrato principal o fuente de las obligaciones, o cualquier otra circunstancia."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="243" width="568" height="27" uuid="9a421645-e775-4cbf-8d42-41256dde58eb"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De igual forma esta garantía permanecerá en vigor aún en los casos en que 'la UTAgs', a través de los responsables de la recepción y de dar seguimiento a la entrega y/o prestación de 'Los Bienes y/o Servicios', señalados en la cláusula cuarta del presente contrato, otorgue prórrogas o esperas a 'El Proveedor' para el cumplimiento de sus obligaciones."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="270" width="568" height="17" uuid="9224b32c-8ae8-456e-8d6e-0f94cd3c9d95"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA PRIMERA. POLIZA ANUAL DE MANTENIMIENTO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="287" width="568" height="39" uuid="27eb17eb-d007-4716-a91c-83bd2f4b4586"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El presente instrumento contempla: "+$P{poliza_anual_mantenimiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="326" width="568" height="17" uuid="82ad5a69-41b8-43d9-9c70-db8c31ecb265"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA SEGUNDA. PROHIBICIÓN DE CESIÓN DE DERECHOS Y OBLIGACIONES.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="343" width="568" height="27" uuid="19bebf4c-76be-4dd7-962d-d8cb70804df9"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De conformidad con lo previsto por el artículo 67 último párrafo de 'La Ley', 'El Proveedor' se obliga a no ceder en favor de cualquier otra persona, los derechos y obligaciones a su cargo, derivados de este contrato; lo anterior con excepción de los derechos de cobro en cuyo caso deberá contar con el consentimiento por escrito de 'la UTAgs'."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="370" width="568" height="17" uuid="cbbf0a3e-f157-492e-9233-b1336f3c7aa9"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA TERCERA. CONFIDENCIALIDAD.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="387" width="568" height="44" uuid="e11b0aa8-1a80-4e1f-a3d0-a938d319f56c"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'Las Partes' tienen y asumen la obligación de guardar el secreto y la confidencialidad de toda la información tangible o intangible, imágenes, datos y documentos a la que tengan acceso durante la vigencia del presente contrato. Dicha información no será revelada, parcial o completamente sin previo consentimiento por escrito de la otra parte, ni será utilizada para ningún otro propósito que no esté relacionado con el presente instrumento legal; teniendo por única excepción a lo establecido anteriormente, la obligación de alguna de las partes de reunir u otorgar información en términos de la legislación aplicable o por requerimiento de autoridad competente."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="431" width="568" height="34" uuid="6b529de8-e3dc-4c19-a04e-c6e786683226"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'Las Partes' aceptan y reconocen que tiene pleno conocimiento del tratamiento que debe darle a los datos personales que en virtud del presente contrato tienen acceso, por lo que a la firma del actual instrumento legal se obligan a tomar y ejecutar las medidas necesarias para dar cabal cumplimiento a las obligaciones que como sujetos obligados le impone la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, su Reglamento y demás disposiciones aplicables."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="465" width="568" height="17" uuid="db83293a-25dd-4e28-a777-d751662ca9c4"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA CUARTA. DERECHOS DE AUTOR.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="482" width="568" height="55" uuid="b9ccefa7-c8b5-4a5b-987c-b782985c0220"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se obliga a defender a “la UTAgs”, sin cargo alguno para éstos, de las reclamaciones de terceros basadas en que los servicios prestados constituyan trasgresión a algún derecho de autor o invasión u otra violación a alguna patente, o cualquier otro derecho o título relativo a la propiedad intelectual o industrial, siempre y cuando 'la UTAgs' le den aviso por escrito de tales reclamaciones en un plazo no mayor de cinco (5) días hábiles, contados a partir del día siguiente en que se hubiere practicado el emplazamiento o notificación. Asimismo, en ese plazo “la UTAgs” deberá entregar la información y asistencia del caso, o establecer las causas por las cuales estén impedidas de proporcionarlas. En este mismo supuesto, 'la UTAgs' se obligan a efectuar las gestiones necesarias a fin de que 'El Proveedor' pueda representarlas en el proceso o procedimiento respectivo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="537" width="568" height="34" uuid="4a8137b8-7f02-4f6b-ba18-9963fdb2c0f0"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En el caso de que se dictara sentencia definitiva en contra de 'la UTAgs', con o sin intervención de 'El Proveedor', este último se obliga a pagar las sumas a que sean condenadas 'la UTAgs', o las cantidades que se deriven del arreglo que se tuviere con el tercero. En todo caso, 'El Proveedor' se obliga a tomar las medidas necesarias para que se continúe con la prestación de los servicios objeto de este contrato a 'la UTAgs', sujeto a que previamente se haya notificado a 'El Proveedor' de la reclamación de que se trate."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="571" width="568" height="17" uuid="0aaad158-159a-43f9-9e22-05b85c9ae8c0"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA QUINTA. PRECIO SUJETO A AJUSTES POR CIRCUNSTANCIAS AJENAS A LA VOLUNTAD DE LAS PARTES.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="588" width="568" height="44" uuid="cd88c488-cc9d-407b-9bcc-b72f873c9e58"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De conformidad con lo dispuesto por el último párrafo del artículo 65 de “La Ley”, cuando con posterioridad a la adjudicación del presente contrato se presenten circunstancias económicas de tipo general, como resultado de situaciones supervenientes ajenas a la responsabilidad de las partes y que provoquen directamente un aumento o reducción en los precios de “Los Bienes y/o Servicios”, aún no entregados, prestados o aún no pagados, y que por tal razón no pudieron haber sido objeto de consideración en la proposición de “El Proveedor” que sirvió de base para la adjudicación del presente, 'la UTAgs' podrá reconocer incrementos o requerir reducciones, conforme a las disposiciones que en su caso emita resulten aplicables."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="636" width="568" height="17" uuid="482c0e71-b30e-4320-847b-56dc0470c510"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA SEXTA. INCREMENTO EN LOS BIENES Y/O SERVICIOS.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="653" width="568" height="44" uuid="08ec6a7c-abd7-4df1-85fd-73b46e484e6e"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De conformidad con lo dispuesto por el último párrafo del artículo 65 de “La Ley”, cuando con posterioridad a la adjudicación del presente contrato se presenten circunstancias económicas de tipo general, como resultado de situaciones supervenientes ajenas a la responsabilidad de las partes y que provoquen directamente un aumento o reducción en los precios de “Los Bienes y/o Servicios”, aún no entregados, prestados o aún no pagados, y que por tal razón no pudieron haber sido objeto de consideración en la proposición de “El Proveedor” que sirvió de base para la adjudicación del presente, 'la UTAgs' podrá reconocer incrementos o requerir reducciones, conforme a las disposiciones que en su caso emita resulten aplicables."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="697" width="568" height="17" uuid="61aabb16-702e-4b9a-9f8d-13aed99d0331"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA SÉPTIMA. EXCLUSIÓN LABORAL.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="714" width="568" height="47" uuid="0526aef6-ab17-495e-b973-dffa085b4613"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se constituye por su carácter de patrón, en responsable único de las relaciones presentes o futuras, entre éste y las personas que designe para la entrega y/o prestación de 'Los Bienes y/o Servicios', así como de las dificultades o conflictos que pudieran surgir entre éste y dichas personas o de estas últimas entre sí. También será responsable de los accidentes que se originen con motivo de la entrega y/o prestación de 'Los Bienes y/o Servicios', asimismo de todos los daños y perjuicios que se llegaren a ocasionar a 'la UTAgs' o a terceros con motivo o como consecuencia de dicho accidente, si el mismo es imputable a las personas que destine 'El Proveedor' para el cumplimiento del presente contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="761" width="568" height="31" uuid="0277f56f-c801-4e46-9803-9e058f470e05"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se obliga a que el personal que destine para la entrega y/o prestación de “Los Bienes y/o Servicios”, goce al menos de las prestaciones mínimas que se establecen en la Ley Federal del Trabajo y en otras disposiciones de carácter laboral. En particular y respecto a las prestaciones de seguridad social, todos los trabajadores que “El Proveedor” destine para la entrega y/o prestación de “Los Bienes y/o Servicios”, deberán encontrarse debidamente inscritos como tales, ante el Instituto Mexicano del Seguro Social. "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="792" width="568" height="35" uuid="2e5d2764-76e1-425d-bca6-c5464bd7417d"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' por su carácter de patrón para con sus trabajadores, se encargará de delimitar legalmente, que en ningún caso se deberá tomar a “la UTAgs” como patrones directos o sustitutos, obligándose desde este momento a que si por alguna razón se llegare a dar el caso de fincárseles alguna responsabilidad a “la UTAgs” por ese concepto, “El Proveedor” les reembolsará cualquier gasto en que incurrieran por tal motivo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="827" width="568" height="34" uuid="8f2ec945-774d-4c5c-8320-03095cd9a656"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se obliga a cumplir cabalmente con las obligaciones en materia de trabajo infantil acatando las prohibiciones que en materia de contratación de menores establece la Ley Federal del Trabajo, así como las exigencias previstas por dicho ordenamiento para la protección del trabajo de adolescentes permitido y en su caso las prohibiciones correspondientes en términos de los artículos 175 y 176 del mismo ordenamiento."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="861" width="568" height="34" uuid="c89c455a-bca8-4710-9c5f-d06b15db2a1a"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["'El Proveedor' se hace responsable ante 'la UTAgs' de la conducta y eficiencia de las personas que destine para la entrega y/o prestación de 'Los Bienes y/o Servicios'. Igualmente, en el evento de que “El Proveedor” no cumpla con alguna de las obligaciones que en virtud de este contrato, del uso, de la buena fe o de la Ley están a su cargo, será responsable de los daños y perjuicios que su incumplimiento cause a 'la UTAgs' o a terceros. "]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="906" width="100" height="1" uuid="3efec80f-f855-4903-9023-4685dc7db539"/>
+			</break>
+		</band>
+		<band height="914">
+			<staticText>
+				<reportElement x="0" y="95" width="568" height="17" uuid="9ae6eef4-3cca-41f8-bc8e-1b8d8488000c"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA OCTAVA. RESCISIÓN DEL CONTRATO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="17" width="568" height="34" uuid="0ae85147-3d7d-4e42-8305-1c7f4946763b"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sin perjuicio de lo anterior, 'la UTAgs' podrá rescindir administrativamente el presente contrato sin responsabilidad alguna a su cargo, haciendo en su caso efectiva la garantía a que se refiere la cláusula octava inciso c) del actual instrumento legal, o bien, exigir su cumplimiento; en este último caso, sólo se entenderá concedida una espera, si “la UTAgs” a solicitud escrita de 'El Proveedor' así lo comunican a éste de la misma forma."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="51" width="568" height="34" uuid="f188e780-fe96-48b2-8b21-40a38171a273"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En el caso de que se dictara laudo definitivo en contra de 'la UTAgs', con o sin intervención de 'El Proveedor', éste se obliga a pagar las sumas a que sean condenadas, o en su caso, las cantidades que se deriven del arreglo que se tuviere con el tercero. En todo caso, 'El Proveedor' quedará obligado a tomar las medidas necesarias para que se continúe con la entrega y/o prestación de 'Los Bienes y/o Servicios'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="112" width="568" height="26" uuid="225a9f4e-bff8-4b86-b46f-c7dcd8bc0b45"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En caso de incumplimiento a las obligaciones a cargo de 'El Proveedor', 'la UTAg' podrá rescindir administrativamente el presente contrato; lo anterior de conformidad con lo dispuesto por el artículo 76 de 'la Ley'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="138" width="568" height="26" uuid="7bc5fb8f-e651-4171-9cf1-14ef997d84e0"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El presente contrato se podrá rescindir bajo los siguientes supuestos, los cuales se mencionan a continuación de manera enunciativa, más no limitativa. "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="164" width="568" height="35" uuid="0300e145-11ae-495e-8520-a774532118bb"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Son causas de rescisión del presente contrato sin responsabilidad para 'El Proveedor':"
++"\na) El incumplimiento en el pago de “Los Bienes y/o Servicios” de conformidad a lo establecido en este contrato."
++"\nb) Cualquier otro incumplimiento de los términos y condiciones establecidos en este contrato por parte de 'la UTAgs'."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="199" width="568" height="42" uuid="ebc7bab8-2256-49b9-86b1-040012a79a76"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Son causas de rescisión de este contrato sin responsabilidad para 'la UTAgs':"
++"\na) El incumplimiento en la entrega y prestación de 'Los Bienes y/o Servicios' objeto de este contrato, en los términos y condiciones establecidas en el mismo."
++"\nb) El incumplimiento de 'El Proveedor' respecto de los compromisos establecidos en la garantía de calidad ofrecida para 'Los Bienes y/o Servicios'."
++"\nc) El incumplimiento de 'El Proveedor' respecto de los compromisos establecidos en la garantía de anticipo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="241" width="568" height="42" uuid="6df4f117-ad89-404a-9b30-0126db6e7a44"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["d)La falta de presentación de la garantía de cumplimiento del contrato, en los términos señalados para tales efectos."
++"\ne)La divulgación de parte de 'El Proveedor' de la información tangible y/o intangible, imágenes, datos y documentos a que tenga acceso durante la vigencia de este contrato, sin haber recabado antes el consentimiento por escrito de 'la UTAgs'."
++"\nf)El que ante la solicitud de 'la UTAgs' de ampliar la adquisición de los bienes y/o contratación de los servicios objeto de este contrato, 'El Proveedor' no respete el precio unitario estipulado en la cláusula segunda del presente contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="283" width="568" height="42" uuid="da7c2f5e-43d0-4855-a2ff-b82977f7de96"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["g)El incumplimiento de la reposición por la mala calidad de 'Los Bienes y/o Servicios', de conformidad con lo dispuesto por el Código Civil del Estado de Aguascalientes."
++"\nh)La falta de presentación del documento con el que acredite estar al corriente en el cumplimiento de sus obligaciones fiscales referido en la cláusula octava."
++"\ni)El incumplimiento en las obligaciones laborales establecidas en la cláusula décima cuarta del presente contrato."
++"\nj)Cualquier otro incumplimiento de los términos y condiciones establecidos en este contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="325" width="568" height="33" uuid="615d0f94-2f6e-463c-8d0f-4cbface45af0"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["No obstante lo anterior, en términos de lo dispuesto por el artículo 89 de 'La Ley' cuando derivado del presente instrumento “El Proveedor” incumpla con las obligaciones que le imponen todas las demás disposiciones legales y administrativas aplicables, 'El Proveedor' será el único responsable de su actuar, así como de las sanciones penales y administrativas que dicho incumplimiento acarree."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="359" width="568" height="17" uuid="5151365c-259e-4e62-ad22-8f97559a254e"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[DÉCIMA NOVENA. PENA CONVENCIONAL.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="376" width="568" height="42" uuid="5f295fad-9fb2-456c-bc3a-f5bfffa2e902"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De conformidad con lo dispuesto por el artículo 74 de 'La Ley', cuando 'El Proveedor' no entregue y/o preste “Los Bienes y/o Servicios” conforme a lo establecido en el presente contrato, queda obligado a pagar a 'la UTAgs por cada' día natural de mora, una pena convencional de 2 al millar, en función de 'Los Bienes y/o Servicios' no entregados y/o prestados oportunamente. La mora se calculará en días calendario desde la fecha en que se hubiera suscitado el incumplimiento por parte de 'El Proveedor' hasta la fecha en que se verifique por escrito y aceptado e conformidad por “la UTAgs” la entrega de los bienes y/o correcta prestación de los servicios. El monto de estas penas excederán del monto de la garantía de cumplimiento del contrato. 'la UTAgs' podrá además exigir el cumplimiento o la rescisión del contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="418" width="568" height="26" uuid="3c157bf7-4993-4a4a-8337-18c8e0bc0377"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dicha pena convencional se descontará de la porción de mora con el máximo de las liquidaciones o pagos que deban hacérsele en la proporción que corresponda o se llevarán a cabo los trámites necesarios para constituirle un crédito fiscal en caso de que el pago ya se le haya efectuado en términos del artículo 72 párrafo segundo, de 'La Ley'."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="444" width="568" height="17" uuid="b617637c-8aa4-4c18-91fd-74dd0c7977a4"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[VIGÉSIMA. TERMINACIÓN ANTICIPADA DEL CONTRATO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="461" width="568" height="26" uuid="191038a3-bba0-4468-868a-e55e35336136"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De conformidad con lo dispuesto por el artículo 77 de 'La Ley', se podrá dar por terminado anticipadamente el contrato, cuando concurran razones de interés general, o bien, cuando por causas justificadas, se extinga la necesidad de 'Los Bienes y/o Servicios' contratados originalmente y se demuestre que de continuar con el cumplimiento de las obligaciones pactadas, se ocasionaría algún daño o perjuicio al Estado."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="489" width="568" height="26" uuid="88cd1192-88e2-4e62-98e4-b27bf1338ea9"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cuando se actualice este supuesto, 'la UTAgs' reembolsará a 'El Proveedor' los gastos no recuperables en que haya incurrido, siempre que estos sean razonables, estén debidamente comprobados y se relacionen directamente con el presente contrato."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="515" width="568" height="17" uuid="a7e3b196-0e35-44b0-94c9-9ec397ec0c5d"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[VIGÉSIMA PRIMERA. MODIFICACIONES AL CONTRATO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="532" width="568" height="35" uuid="3ab3a8dc-4100-4610-ba81-899458af9a76"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+					<paragraph lineSpacing="AtLeast"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En términos de lo dispuesto por el artículo 110 de 'La Ley', para la interpretación y cumplimiento del presente contrato, así como para todo aquello que no esté expresamente estipulado en el mismo, 'Las Partes' se someten a las leyes y jurisdicción de los Tribunales del Estado de Aguascalientes. Por lo tanto, 'El Proveedor' renuncia al fuero que pudiera corresponderle por razón de su domicilio presente, futuro o por cualquier otra causa."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="567" width="568" height="19" uuid="af60b775-f72a-4fa9-8ade-b91154335acf"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El presente contrato se firma en dos ejemplares originales en la Ciudad de Aguascalientes, Aguascalientes, el día "+$F{fecha_registro}+"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="111" y="618" width="58" height="17" uuid="fe94ff6a-254d-41ec-be20-aa36f1eaa80b"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Por "La UTAgs"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="618" width="68" height="17" uuid="83f8a53b-4a08-42a5-a42c-2978c7b8985b"/>
+				<textElement textAlignment="Justified">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[Por "El Proveedor"]]></text>
+			</staticText>
+			<line>
+				<reportElement x="37" y="685" width="206" height="1" uuid="ce5c2bf9-847b-4d01-a751-fe637966a91c"/>
+			</line>
+			<staticText>
+				<reportElement x="62" y="707" width="157" height="19" uuid="734a521d-411b-4456-ba28-a03d48a118ff"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[RECTOR DE LA UNIVERSIDAD TECNÓLOGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="707" width="157" height="19" uuid="9d7a20d0-fcba-4b8a-a2a8-fef9af1ac210"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[REPRESENTANTE LEGAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="311" y="684" width="206" height="1" uuid="27ff7b79-a491-4d8f-9ea2-e699abc2f30a"/>
+			</line>
+			<staticText>
+				<reportElement x="250" y="765" width="58" height="17" uuid="8754ff3c-04bf-404e-a0d9-7252ded0abe9"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[PARTE TÉCNICA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="37" y="842" width="206" height="1" uuid="d710c627-50b8-46f3-b5f1-7e47dab85949"/>
+			</line>
+			<staticText>
+				<reportElement x="62" y="864" width="157" height="19" uuid="7cdabd88-6aeb-4e0f-9828-9349b46b38c8"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+					<paragraph lineSpacing="Single" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNÓLOGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="311" y="841" width="206" height="1" uuid="79aab410-2312-46cf-be5a-604f55e9c6b8"/>
+			</line>
+			<textField>
+				<reportElement x="62" y="687" width="157" height="20" uuid="9e11ab9e-eef8-49e3-b252-66e2988b6891"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{representante_legal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="687" width="157" height="20" uuid="1677f00e-7000-4c3a-8e62-f7bfdcc856f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="846" width="157" height="20" uuid="fc5307ec-1a04-4b6c-8914-fb2e64ad1992"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="244" y="3" width="140" height="20" forecolor="#666666" uuid="12bebee6-1d64-445f-b3ed-28ad8d5d727b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha  y hora de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="399" y="3" width="100" height="20" forecolor="#666666" uuid="433068c9-85a1-4a64-b0df-1edaab8ef409"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="K:mm a, z">
+				<reportElement x="399" y="23" width="171" height="20" forecolor="#666666" uuid="f66c1f4e-fe49-4515-95d2-f30f18c9bf23"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="244" y="23" width="140" height="20" forecolor="#666666" uuid="836ca0c7-596f-45b1-b63d-35d8b0a8fa9d"/>
+				<textElement textAlignment="Right">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField pattern="K:mm a, z">
+				<reportElement x="499" y="3" width="71" height="20" forecolor="#666666" uuid="69c3afc3-68bb-4d1b-a5e8-bb362e063738"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="34" width="100" height="20" uuid="d07fb6ec-fcec-4aa4-ae41-7579df4a1f1a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
