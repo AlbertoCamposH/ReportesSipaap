@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_Clave_presupuestal_Jsus" language="groovy" pageWidth="842" pageHeight="595" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6e9e52e-ecae-4676-8af9-2ffb8555963b">
-	<property name="ireport.zoom" value="0.7513148009015781"/>
+	<property name="ireport.zoom" value="0.8264462809917368"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="183"/>
+	<property name="ireport.y" value="224"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -126,13 +126,10 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cps.nombre AS catalogo, mce.nivel AS nivel, cas.descripcion AS descripcion,
-CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
-from catalog.catalogos AS cas
-INNER JOIN catalog.catalogos_presupuestales AS cps ON (cps.id_periodo = cas.id_periodo AND cps.id_catalogo = cas.id_catalogo AND cps.id_seccion = 1)
-INNER JOIN catalog.clasificador_presupuestal AS cpl ON (cpl.id_clasificador_presupuestal = 1)
-INNER JOIN entity.mascara_cve_egreso AS mce ON (mce.id_catalogo = cps.id_catalogo)
-WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
+			<![CDATA[SELECT cps.nombre AS catalogo, sm.nivel AS nivel, sm.descripcion AS descripcion, CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
+FROM catalog.catalogos_presupuestales AS cps
+INNER JOIN catalog.segmento_mascara AS sm ON (sm.id_unidad_responsable = cps.id_unidad_responsable AND sm.id_periodo = cps.id_periodo AND sm.id_catalogo = cps.id_catalogo AND sm.id_seccion = 1)
+WHERE cps.id_unidad_responsable = $P{ur} AND cps.id_periodo = $P{id_periodo}]]>
 		</queryString>
 		<field name="catalogo" class="java.lang.String"/>
 		<field name="nivel" class="java.lang.Long"/>
@@ -147,13 +144,10 @@ WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cps.nombre AS catalogo, mce.nivel AS nivel, cas.descripcion AS descripcion,
-CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
-from catalog.catalogos AS cas
-INNER JOIN catalog.catalogos_presupuestales AS cps ON (cps.id_periodo = cas.id_periodo AND cps.id_catalogo = cas.id_catalogo AND cps.id_seccion = 2)
-INNER JOIN catalog.clasificador_presupuestal AS cpl ON (cpl.id_clasificador_presupuestal = 2)
-INNER JOIN entity.mascara_cve_egreso AS mce ON (mce.id_catalogo = cps.id_catalogo)
-WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
+			<![CDATA[SELECT cps.nombre AS catalogo, sm.nivel AS nivel, sm.descripcion AS descripcion, CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
+FROM catalog.catalogos_presupuestales AS cps
+INNER JOIN catalog.segmento_mascara AS sm ON (sm.id_unidad_responsable = cps.id_unidad_responsable AND sm.id_periodo = cps.id_periodo AND sm.id_catalogo = cps.id_catalogo AND sm.id_seccion = 2)
+WHERE cps.id_unidad_responsable = $P{ur} AND cps.id_periodo = $P{id_periodo}]]>
 		</queryString>
 		<field name="catalogo" class="java.lang.String"/>
 		<field name="nivel" class="java.lang.Long"/>
@@ -168,13 +162,10 @@ WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cps.nombre AS catalogo, mce.nivel AS nivel, cas.descripcion AS descripcion,
-CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
-from catalog.catalogos AS cas
-INNER JOIN catalog.catalogos_presupuestales AS cps ON (cps.id_periodo = cas.id_periodo AND cps.id_catalogo = cas.id_catalogo AND cps.id_seccion = 3)
-INNER JOIN catalog.clasificador_presupuestal AS cpl ON (cpl.id_clasificador_presupuestal = 3)
-INNER JOIN entity.mascara_cve_egreso AS mce ON (mce.id_catalogo = cps.id_catalogo)
-WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
+			<![CDATA[SELECT cps.nombre AS catalogo, sm.nivel AS nivel, sm.descripcion AS descripcion, CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
+FROM catalog.catalogos_presupuestales AS cps
+INNER JOIN catalog.segmento_mascara AS sm ON (sm.id_unidad_responsable = cps.id_unidad_responsable AND sm.id_periodo = cps.id_periodo AND sm.id_catalogo = cps.id_catalogo AND sm.id_seccion = 3)
+WHERE cps.id_unidad_responsable = $P{ur} AND cps.id_periodo = $P{id_periodo}]]>
 		</queryString>
 		<field name="catalogo" class="java.lang.String"/>
 		<field name="nivel" class="java.lang.Long"/>
@@ -189,13 +180,10 @@ WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cps.nombre AS catalogo, mce.nivel AS nivel, cas.descripcion AS descripcion,
-CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
-from catalog.catalogos AS cas
-INNER JOIN catalog.catalogos_presupuestales AS cps ON (cps.id_periodo = cas.id_periodo AND cps.id_catalogo = cas.id_catalogo AND cps.id_seccion = 4)
-INNER JOIN catalog.clasificador_presupuestal AS cpl ON (cpl.id_clasificador_presupuestal = 4)
-INNER JOIN entity.mascara_cve_egreso AS mce ON (mce.id_catalogo = cps.id_catalogo)
-WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
+			<![CDATA[SELECT cps.nombre AS catalogo, sm.nivel AS nivel, sm.descripcion AS descripcion, CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
+FROM catalog.catalogos_presupuestales AS cps
+INNER JOIN catalog.segmento_mascara AS sm ON (sm.id_unidad_responsable = cps.id_unidad_responsable AND sm.id_periodo = cps.id_periodo AND sm.id_catalogo = cps.id_catalogo AND sm.id_seccion = 4)
+WHERE cps.id_unidad_responsable = $P{ur} AND cps.id_periodo = $P{id_periodo}]]>
 		</queryString>
 		<field name="catalogo" class="java.lang.String"/>
 		<field name="nivel" class="java.lang.Long"/>
@@ -210,13 +198,10 @@ WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cps.nombre AS catalogo, mce.nivel AS nivel, cas.descripcion AS descripcion,
-CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
-from catalog.catalogos AS cas
-INNER JOIN catalog.catalogos_presupuestales AS cps ON (cps.id_periodo = cas.id_periodo AND cps.id_catalogo = cas.id_catalogo AND cps.id_seccion = 5)
-INNER JOIN catalog.clasificador_presupuestal AS cpl ON (cpl.id_clasificador_presupuestal = 5)
-INNER JOIN entity.mascara_cve_egreso AS mce ON (mce.id_catalogo = cps.id_catalogo)
-WHERE cas.id_periodo = $P{id_periodo} and cas.ur = $P{ur}]]>
+			<![CDATA[SELECT cps.nombre AS catalogo, sm.nivel AS nivel, sm.descripcion AS descripcion, CASE WHEN cps.visible = True THEN 'SI' WHEN cps.visible = False THEN 'NO' ELSE 'Na' END AS Visibilidad
+FROM catalog.catalogos_presupuestales AS cps
+INNER JOIN catalog.segmento_mascara AS sm ON (sm.id_unidad_responsable = cps.id_unidad_responsable AND sm.id_periodo = cps.id_periodo AND sm.id_catalogo = cps.id_catalogo AND sm.id_seccion = 5)
+WHERE cps.id_unidad_responsable = $P{ur} AND cps.id_periodo = $P{id_periodo}]]>
 		</queryString>
 		<field name="catalogo" class="java.lang.String"/>
 		<field name="nivel" class="java.lang.Long"/>
@@ -271,37 +256,37 @@ LIMIT 1]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="90" splitType="Stretch">
+		<band height="108" splitType="Stretch">
 			<staticText>
-				<reportElement x="178" y="16" width="441" height="16" uuid="6017abbf-add0-4ecc-a879-20a8686c1fb3"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+				<reportElement positionType="Float" x="151" y="36" width="441" height="16" uuid="6017abbf-add0-4ecc-a879-20a8686c1fb3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PUBLICA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="179" y="31" width="440" height="16" uuid="48daec4e-0edb-4c0e-bd3d-a1d4e1c0ab7f"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="true"/>
+				<reportElement positionType="Float" x="151" y="54" width="441" height="16" uuid="48daec4e-0edb-4c0e-bd3d-a1d4e1c0ab7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="178" y="63" width="441" height="16" uuid="0fb3a32e-82a5-4993-938d-6f766277476a"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+				<reportElement positionType="Float" x="151" y="86" width="441" height="16" uuid="0fb3a32e-82a5-4993-938d-6f766277476a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE ESTRUCTURA DE CLAVE PRESUPUESTAL DEL EGRESO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="178" y="47" width="441" height="16" uuid="53afecf2-6fce-468c-b189-31d54f665626"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+				<reportElement positionType="Float" x="151" y="70" width="441" height="16" uuid="53afecf2-6fce-468c-b189-31d54f665626"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
 			</staticText>
 			<image>
-				<reportElement x="623" y="8" width="176" height="71" uuid="e4e3ccab-6c0d-411a-94e9-de8d1ef4f424"/>
+				<reportElement positionType="Float" x="613" y="39" width="171" height="63" uuid="e4e3ccab-6c0d-411a-94e9-de8d1ef4f424"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 		</band>
@@ -438,9 +423,9 @@ LIMIT 1]]>
 				<textFieldExpression><![CDATA[$F{operativag}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="435">
+		<band height="350">
 			<staticText>
-				<reportElement positionType="Float" x="91" y="6" width="173" height="22" uuid="7ef8fac1-b334-4986-98b3-345fd7b09c28"/>
+				<reportElement positionType="Float" x="91" y="6" width="204" height="22" uuid="7ef8fac1-b334-4986-98b3-345fd7b09c28"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -461,14 +446,7 @@ LIMIT 1]]>
 				<text><![CDATA[Clasificación Geográfica]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="95" y="262" width="174" height="22" uuid="66767a96-32db-46c1-ba9a-7f0f279731e7"/>
-				<textElement>
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[Clasificación Ingresos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="103" y="352" width="173" height="22" uuid="519d05cd-0c6e-4597-b0ea-aaa060a6ae29"/>
+				<reportElement positionType="Float" x="93" y="269" width="205" height="22" uuid="519d05cd-0c6e-4597-b0ea-aaa060a6ae29"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -496,21 +474,14 @@ LIMIT 1]]>
 				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="104" y="380" width="368" height="41" forecolor="#FF0033" uuid="72b69cd1-7c5b-4fab-a54f-cfb2efc3e44e"/>
-				<textElement textAlignment="Center">
-					<font size="13" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="97" y="288" width="368" height="41" forecolor="#FF0033" uuid="e9b1d5e9-a7ac-453f-bbb8-e8271b16bce6"/>
+				<reportElement positionType="Float" x="94" y="297" width="368" height="41" forecolor="#FF0033" uuid="72b69cd1-7c5b-4fab-a54f-cfb2efc3e44e"/>
 				<textElement textAlignment="Center">
 					<font size="13" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table" style="table" positionType="Float" x="95" y="32" width="366" height="39" uuid="abf03fef-fcc2-4c6e-96be-26ec08344380"/>
+				<reportElement key="table" style="table" positionType="Float" x="94" y="32" width="366" height="39" uuid="abf03fef-fcc2-4c6e-96be-26ec08344380"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="tabla 3" uuid="5a059ea9-b920-4d57-b10f-413eb907ee99">
 						<datasetParameter name="ur">
@@ -531,7 +502,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="162" height="20" uuid="bd185192-e094-4163-b0d9-f2913c315e04"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
@@ -548,7 +519,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="144" height="20" uuid="5134e8a6-a893-4259-bdb7-3b2a7ef26d11"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
@@ -565,7 +536,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="143" height="29" uuid="40d0e4e2-689b-4d61-a227-ee5c4d6d504a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
@@ -582,7 +553,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="148" height="20" uuid="646a04ef-9bca-4a6f-8c26-8eff34a9f8c8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{visibilidad}]]></textFieldExpression>
@@ -613,7 +584,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="163" height="20" uuid="02f334c0-c04b-4eb3-a5fb-da2755b1d6ef"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
@@ -630,7 +601,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="145" height="20" uuid="0cfc1e66-9fdb-4b8a-801d-aaa655e9773e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
@@ -647,7 +618,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="142" height="29" uuid="6d505ccd-a88a-408c-9665-74170c05ab88"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
@@ -664,7 +635,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="29" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="147" height="20" uuid="e8b69d07-3178-4a10-9bc6-5c62a2be6753"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{visibilidad}]]></textFieldExpression>
@@ -695,7 +666,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="163" height="20" uuid="36cb642a-1b1a-47b4-91b3-1dac903db23d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
@@ -712,7 +683,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="143" height="20" uuid="0242a193-9022-4bf7-9b26-8b8e6901d1c9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
@@ -729,7 +700,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="146" height="31" uuid="3194b598-437a-47dd-a76b-b4b005fad775"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
@@ -746,7 +717,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="31" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="144" height="20" uuid="2b733a0e-2d05-4778-8d63-311ab4a69bb3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{visibilidad}]]></textFieldExpression>
@@ -756,89 +727,7 @@ LIMIT 1]]>
 				</jr:table>
 			</componentElement>
 			<componentElement>
-				<reportElement key="table 3" style="table 3" positionType="Float" x="99" y="284" width="366" height="45" uuid="99d260f1-1adf-414a-bbba-d81fab71297d"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla 6" uuid="5bdf6923-3422-4557-bff3-bdda6452242f">
-						<datasetParameter name="ur">
-							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
-						</datasetParameter>
-						<datasetParameter name="id_periodo">
-							<datasetParameterExpression><![CDATA[$P{id_periodo}]]></datasetParameterExpression>
-						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="163" uuid="cda5fa37-23ce-43f5-bd75-fd063f00352d">
-						<jr:tableHeader style="table 3_TH" height="3" rowSpan="1"/>
-						<jr:columnHeader style="table 3_CH" height="17" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="163" height="15" forecolor="#FFFFFF" backcolor="#004987" uuid="d03240c1-aae0-4fa9-963a-3cde10f7e1a6"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Catálogo]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="163" height="20" uuid="67402295-6391-476e-94f1-98cce15f0aee"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="145" uuid="74b90a8f-6fd0-4d33-b877-6080039b0867">
-						<jr:tableHeader style="table 3_TH" height="3" rowSpan="1"/>
-						<jr:columnHeader style="table 3_CH" height="17" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="145" height="15" forecolor="#FFFFFF" backcolor="#004987" uuid="b1c7ddce-288f-497e-a789-98e203890852"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Nivel]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="145" height="20" uuid="7b9ff146-1bcf-4357-ac06-c8f7adc31bc5"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="143" uuid="277e567e-bbbe-4d6f-b8d3-f6e9968c1157">
-						<jr:tableHeader style="table 3_TH" height="3" rowSpan="1"/>
-						<jr:columnHeader style="table 3_CH" height="17" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="143" height="15" forecolor="#FFFFFF" backcolor="#004987" uuid="351cb9c5-225a-4671-ae46-b8601eaeb494"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Descripción]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="143" height="30" uuid="db728fd2-34ac-4408-9a6a-cbf8e33bfc5f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="142" uuid="369a444c-f387-44ea-8536-9bb658d3ebcb">
-						<jr:tableHeader style="table 3_TH" height="3" rowSpan="1"/>
-						<jr:columnHeader style="table 3_CH" height="17" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="142" height="15" forecolor="#FFFFFF" backcolor="#004987" uuid="ece6cafe-9b2c-46c9-b88e-0ef2cc566ec5"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Visibilidad]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="142" height="20" uuid="d4703fff-ddf4-4db4-93d9-488aaf0d3199"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{visibilidad}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<componentElement>
-				<reportElement key="table 4" style="table 4" positionType="Float" x="105" y="380" width="367" height="41" uuid="f458e838-02bc-4b8f-a18e-a86876ae6070"/>
+				<reportElement key="table 4" style="table 4" positionType="Float" x="95" y="297" width="367" height="41" uuid="f458e838-02bc-4b8f-a18e-a86876ae6070"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="tabla 7" uuid="dba044c2-5b98-41af-a49a-ee8d43c238c2">
 						<datasetParameter name="ur">
@@ -859,7 +748,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="160" height="20" uuid="35832c35-41c9-472d-8c94-1c111412e5cc"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{catalogo}]]></textFieldExpression>
@@ -876,7 +765,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="146" height="20" uuid="b000baef-6f60-4b3e-a1f2-4c13492c9aa3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nivel}]]></textFieldExpression>
@@ -893,7 +782,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="143" height="30" uuid="b462a8e3-dd0d-4673-b8c2-8f271a3b442c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
@@ -910,7 +799,7 @@ LIMIT 1]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="145" height="20" uuid="d1d3c90d-9b0f-4618-ba2b-6e407a59a95b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{visibilidad}]]></textFieldExpression>

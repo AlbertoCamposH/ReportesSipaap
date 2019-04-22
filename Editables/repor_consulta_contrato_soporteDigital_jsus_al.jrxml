@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_consulta_contrato_soporteDigital_jsus_al" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c926994-d46d-406c-b522-b1b3b8636b3f">
+	<property name="ireport.zoom" value="0.9090909090909095"/>
+	<property name="ireport.x" value="15"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<image>
+				<reportElement positionType="Float" x="610" y="6" width="192" height="83" uuid="5b25cbfd-1216-4ad2-a9d6-03940c7bfb52"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="15" width="427" height="16" uuid="1bdd0cb9-0da9-4b93-aec0-4c5d8cdf23bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="31" width="427" height="20" uuid="27d54f6b-60de-499d-afd1-3b2c30185df1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="51" width="427" height="16" uuid="91dc4de8-030e-478f-ab4d-dd70aee6cbd1"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="183" y="67" width="427" height="16" uuid="02c5d0b6-8be4-4a83-8ba9-0095201b01a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO ÚNICO DEL EJERCICIO DEL PRESUPUESTO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="294" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="37" y="26" width="289" height="61" uuid="8087e010-1bc4-4e90-9332-0f12801da5a8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="326" y="26" width="452" height="61" uuid="fda4d03a-ff5d-48eb-8d11-a98a22af6258"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="36" width="289" height="20" uuid="74e15eb3-424e-4477-8b43-f4d1e09c8a53"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[BENEFICIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="56" width="289" height="20" uuid="49eeaac0-07c0-473f-b098-620d11aa21c5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE LA SOLICITUD]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="37" y="87" width="289" height="61" uuid="ef56e47d-df0c-4184-8267-84f4c6d6275d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="326" y="87" width="452" height="61" uuid="f65e1a04-c4c7-4231-a376-1f57f7d49d33"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="108" width="289" height="20" uuid="479a91e7-acd4-4582-b0b7-e6b1a3c39fd1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE REGISTRO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="37" y="148" width="289" height="20" uuid="317f4e8c-2c56-4339-b17b-e9971eb46a79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="326" y="148" width="452" height="20" uuid="2632f7d2-80fe-4811-bb14-6f788dcf754d"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="148" width="289" height="20" uuid="cdb929c9-15cc-4ea1-9e8e-f41d031dd8eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRÁMITE:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="37" y="168" width="741" height="61" uuid="2eb19b81-5ce9-4e3e-9878-d8ff0fc58c3a"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="38" y="169" width="184" height="20" uuid="8290fb7f-c515-4ca6-9405-4a100fcc9233"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="37" y="229" width="741" height="61" uuid="bf768e53-12b1-423c-bb25-04795e2afddb"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="39" y="231" width="184" height="20" uuid="e42b6a30-aaa9-4510-a277-6acc720cbfd8"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALIDACIÓN PROGRAMÁTICA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="583" y="0" width="64" height="13" uuid="a17bdacb-9b99-48cc-bed3-e34777ac3162"/>
+				<text><![CDATA[DUEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="583" y="13" width="64" height="13" uuid="29f14d82-0555-4462-9992-982764590c18"/>
+				<text><![CDATA[PÓLIZA]]></text>
+			</staticText>
+		</band>
+		<band height="286">
+			<staticText>
+				<reportElement positionType="Float" x="442" y="246" width="153" height="20" uuid="cedcee6b-b29c-45d4-bf4e-4747b95baa39"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Puesto Ejemplo]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="244" y="233" width="100" height="1" uuid="601762cf-77ee-459b-a9f9-6bc18566567e"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="223" y="266" width="134" height="20" uuid="0ae0183c-f904-4ba7-bb2f-5994620355a0"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Recibió]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="442" y="266" width="153" height="20" uuid="ed308d96-9011-431f-a001-3707cffb9b59"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Autorizó]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="469" y="232" width="100" height="1" uuid="cef2d977-8ab6-469d-b105-0bc716db217c"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="223" y="246" width="134" height="20" uuid="2f8e17eb-4ce9-40d0-97aa-55d45aeebae0"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Puesto Ejemplo]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="36" y="4" width="741" height="20" backcolor="#003366" uuid="c23a791e-f5c1-4a48-83ca-a7eb3b494519"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="4" width="740" height="20" forecolor="#FFFFFF" uuid="f934fcb2-c006-48b8-a688-5fa9b5ddc991"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DETALLES DEL TRÁMITE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="36" y="106" width="741" height="20" backcolor="#003366" uuid="9b8ebdc0-75b0-4b8c-a3bb-cc255a8892de"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="37" y="106" width="740" height="20" forecolor="#FFFFFF" uuid="b67684a5-9e9a-4fc2-bce0-ec0d577831c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[AFECTACIÓN CONTABLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="568" y="77" width="100" height="20" uuid="614e2b5e-be42-4a16-8c4f-050782519f0a"/>
+				<text><![CDATA[Importe Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="493" y="176" width="175" height="20" uuid="01028609-8019-47fc-af36-2814e3bd3325"/>
+				<text><![CDATA[APLICACIÓN PRESUPUESTAL]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="51" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="633" y="11" width="100" height="20" forecolor="#666666" uuid="cc4d8955-ead2-4865-a03b-2d52cfb9d206"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="K:mm a, z">
+				<reportElement positionType="Float" x="733" y="11" width="69" height="20" forecolor="#666666" uuid="f05d7670-91f2-4626-852b-7df4a859b92f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="527" y="31" width="100" height="20" forecolor="#666666" uuid="11b73f55-e50b-4bd1-94ac-03b483984039"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="527" y="11" width="100" height="20" forecolor="#666666" uuid="2629efef-f457-4833-814c-19e27939d118"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

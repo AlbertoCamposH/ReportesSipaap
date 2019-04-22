@@ -62,32 +62,32 @@ LIMIT 1]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="55" y="17" width="328" height="16" uuid="66d1721e-82a6-4c64-b889-dc5c5e63b45e"/>
+				<reportElement x="49" y="19" width="353" height="16" uuid="66d1721e-82a6-4c64-b889-dc5c5e63b45e"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="2" width="332" height="16" uuid="41016e68-4315-4f8a-9e2f-87ea990bbb0d"/>
+				<reportElement x="49" y="2" width="357" height="16" uuid="41016e68-4315-4f8a-9e2f-87ea990bbb0d"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="55" y="49" width="331" height="16" uuid="46568d7f-a211-4642-8789-e4efc6fd0195"/>
+				<reportElement x="49" y="55" width="356" height="16" uuid="46568d7f-a211-4642-8789-e4efc6fd0195"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[MONTOS PARA EJECUCIÓN DE PROCESOS DE ADQUISICIONES]]></text>
 			</staticText>
 			<image>
-				<reportElement x="386" y="0" width="169" height="75" uuid="dd974566-7a69-47ed-be62-3a1db64a354b"/>
+				<reportElement x="411" y="2" width="144" height="73" uuid="dd974566-7a69-47ed-be62-3a1db64a354b"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="55" y="33" width="328" height="16" uuid="d966fd5a-1bf4-480d-b0fc-f7660b4bfa9a"/>
+				<reportElement x="49" y="37" width="353" height="16" uuid="d966fd5a-1bf4-480d-b0fc-f7660b4bfa9a"/>
 				<textElement textAlignment="Center">
 					<font size="8" isBold="false"/>
 				</textElement>
@@ -97,6 +97,13 @@ LIMIT 1]]>
 	</title>
 	<detail>
 		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="101" y="7" width="368" height="40" forecolor="#FF0033" uuid="7ab3373c-d68f-424b-8dbf-83367314bc64"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
 			<componentElement>
 				<reportElement key="table" style="table" x="55" y="0" width="473" height="125" uuid="658273ad-0440-4265-89f3-6ce3633f3854"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -110,64 +117,64 @@ LIMIT 1]]>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="6ee00032-8aaa-425a-9bc1-e60cf23a9b92">
-						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="2e8f559b-4b34-40aa-ba55-7994bc5522be"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[periodo]]></text>
+								<text><![CDATA[Periodo]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="e665e494-6911-4b48-af57-d309ef0770fd"/>
 								<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="127" uuid="54d7578a-5d2f-43f0-a7e3-236bf8663d4e">
-						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="127" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="de13a6fe-72f2-4147-b146-f120536e7905"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[proceso]]></text>
+								<text><![CDATA[Proceso]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="127" height="20" uuid="ab026403-a9e7-4085-ad07-7cca3032a474"/>
 								<textFieldExpression><![CDATA[$F{proceso}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="9a43c6d9-ca60-4577-8c92-fc8e91c92b96">
-						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="381dbe83-be3b-4493-b62e-87310a36a3d5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[importe_minimo]]></text>
+								<text><![CDATA[Importe Mínimo]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="b9c1b980-c2e6-46b4-a69a-09d85070fd3b"/>
 								<textFieldExpression><![CDATA[$F{importe_minimo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="13a92b1e-b464-4f08-92fd-083ee052c674">
-						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="5179ab5a-818e-4974-8c7b-470d3546e130"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[importe_maximo]]></text>
+								<text><![CDATA[Importe Máximo]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="f1345c44-3c20-49df-9ef6-0082eeb34c4a"/>
 								<textFieldExpression><![CDATA[$F{importe_maximo}]]></textFieldExpression>
 							</textField>
@@ -187,20 +194,20 @@ LIMIT 1]]>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="278" y="33" width="100" height="20" forecolor="#666666" uuid="e00e3218-1126-4629-bea7-fd339812dd1b"/>
+				<reportElement positionType="Float" x="266" y="33" width="100" height="20" forecolor="#666666" uuid="e00e3218-1126-4629-bea7-fd339812dd1b"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="384" y="13" width="100" height="20" forecolor="#666666" uuid="1cdfa6d0-5074-4afd-9ded-4d9dbc21cc8e"/>
+				<reportElement x="371" y="13" width="113" height="20" forecolor="#666666" uuid="1cdfa6d0-5074-4afd-9ded-4d9dbc21cc8e"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField pattern="K:mm a, z">
-				<reportElement x="386" y="33" width="98" height="20" forecolor="#666666" uuid="b0f6a1fa-2f20-4623-aefa-61a109368786"/>
+			<textField pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement x="372" y="33" width="98" height="20" forecolor="#666666" uuid="b0f6a1fa-2f20-4623-aefa-61a109368786"/>
 				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="278" y="13" width="100" height="20" forecolor="#666666" uuid="fafb44bc-fd93-44f7-b04c-b66bc93099c1"/>
+				<reportElement positionType="Float" x="264" y="13" width="100" height="20" forecolor="#666666" uuid="fafb44bc-fd93-44f7-b04c-b66bc93099c1"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>

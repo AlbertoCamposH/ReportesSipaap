@@ -100,7 +100,7 @@ WHERE id_catalogo = $P{id_catalogo} AND id_periodo = $P{id_periodo}]]>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="215" y="49" width="134" height="16" uuid="3849f299-afee-4b42-b5ea-c9278c0f2505"/>
 				<textElement>
 					<font size="8"/>
