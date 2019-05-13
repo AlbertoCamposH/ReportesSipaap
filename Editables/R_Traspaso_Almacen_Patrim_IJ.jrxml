@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Traspaso_Almacen_Patrim_IJ" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5985d31a-a50c-44d8-a3e2-236bfee9c752">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="32"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select id_activo_fijo, fecha_elaboracion, almacen_destino, clave_almacen, justificacion from operation.activo_fijo_aux
+where ur = 1 and periodo = 2019 and id_activo_fijo  = '']]>
+	</queryString>
+	<field name="id_activo_fijo" class="java.lang.String"/>
+	<field name="fecha_elaboracion" class="java.sql.Timestamp"/>
+	<field name="almacen_destino" class="java.lang.Long"/>
+	<field name="clave_almacen" class="java.lang.Long"/>
+	<field name="justificacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="98" splitType="Stretch">
+			<staticText>
+				<reportElement x="152" y="42" width="453" height="16" uuid="2ffb9454-63ad-4889-b149-50c613aac0e9"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="605" y="5" width="193" height="84" uuid="06746bc1-a82f-4f78-b762-232c1ecef641"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="152" y="22" width="453" height="20" uuid="a7fefa15-97f4-4060-925a-7090bf62f514"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="58" width="453" height="16" uuid="b88a04b4-00ac-4dd9-a86b-99e1671e635b"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRASPASO DE ALMACEN DE PATRIMONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="6" width="453" height="16" uuid="44f518e9-ecd2-4648-92a3-fcc2ac44f5eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="193" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="38" y="15" width="747" height="164" uuid="443f4d55-1b9f-4efe-8762-9ee1470d63fd"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="37" width="100" height="20" uuid="e20cdf40-c078-472e-9d55-24286afbe281"/>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="67" width="100" height="20" uuid="b671468b-9daf-4925-bf92-43fd15b94964"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="100" width="100" height="20" uuid="68954134-3f3b-4eef-8448-cceb79d42586"/>
+				<text><![CDATA[Almacén Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="130" width="100" height="20" uuid="056ff026-a4bf-46cb-8e3e-cbf0af657b9e"/>
+				<text><![CDATA[Almacén Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="454" y="37" width="100" height="20" uuid="3ef6b482-b54e-4b03-a0ba-3d655ade9f4c"/>
+				<text><![CDATA[Justificación]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="216" y="37" width="197" height="20" uuid="2642da24-0194-4ad4-83e1-376837d867de"/>
+				<textFieldExpression><![CDATA[$F{id_activo_fijo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="216" y="67" width="197" height="20" uuid="0913e9e5-62aa-4618-a00b-d969df15b76c"/>
+				<textFieldExpression><![CDATA[$F{fecha_elaboracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="216" y="100" width="197" height="20" uuid="08c81754-e3f9-4107-b7fc-0f51608c509e"/>
+				<textFieldExpression><![CDATA[$F{almacen_destino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="216" y="130" width="197" height="20" uuid="28cebd74-7019-463a-b3ab-a820d2e70124"/>
+				<textFieldExpression><![CDATA[$F{clave_almacen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="571" y="39" width="201" height="126" uuid="00a5d6bc-f57e-496f-9da4-e1b66d26b9a7"/>
+				<textFieldExpression><![CDATA[$F{justificacion}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="97"/>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

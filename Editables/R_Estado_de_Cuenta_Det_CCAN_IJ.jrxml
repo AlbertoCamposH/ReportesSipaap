@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Estado_de_Cuenta_Det_CCAN_IJ" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="da997e74-bac1-425c-af7e-3831b460b129">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_compromiso" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="importe_comprometido" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="importe_devengado" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="saldo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select compromiso.id_beneficiario, CONCAT( beneficiario.nombre,' ', beneficiario.primer_apellido, ' ', beneficiario.segundo_apellido) AS nombre, compromiso.centro_registro, catalogo.descripcion, compromiso.concepto, compromiso.id_duep, compromiso.fecha_elaboracion from operation.compromisos_anual compromiso
+inner join entity.beneficiario beneficiario on beneficiario.id_beneficiario = compromiso.id_beneficiario
+inner join catalog.catalogos catalogo on catalogo.ur=compromiso.ur and catalogo.id_periodo=compromiso.id_periodo and compromiso.id_centro_registro = catalogo.id_catalogo and catalogo.id_cat=compromiso.centro_registro
+where compromiso.ur = $P{ur} and compromiso.id_periodo = $P{periodo} and compromiso.id_compromiso = $P{id_compromiso}
+]]>
+	</queryString>
+	<field name="id_beneficiario" class="java.lang.Long"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="centro_registro" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="concepto" class="java.lang.String"/>
+	<field name="id_duep" class="java.lang.String"/>
+	<field name="fecha_elaboracion" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="151" y="41" width="453" height="16" uuid="27ae68a7-b1c8-4912-8777-adcd3af838ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="21" width="453" height="20" uuid="21e560b8-ca5b-4484-bd77-63d5e4d22321"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="57" width="453" height="16" uuid="8eb3f13c-9c4b-4aae-9008-49a3c9e6341e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO DE CUENTA DETALLADO DE COMPROMISOS ANUALES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="5" width="453" height="16" uuid="38a27447-3b8a-46c7-bd48-e8299481daa4"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="604" y="4" width="193" height="84" uuid="8927cb8c-101a-40c2-b4d4-b67861d6a7d6"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="224" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="32" y="11" width="753" height="201" uuid="0093e037-6105-400f-b90d-496a54e34eeb"/>
+			</rectangle>
+			<line>
+				<reportElement x="212" y="11" width="1" height="201" uuid="f173eac2-9ded-4749-b30b-55b3e203ffa7"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="32" y="46" width="601" height="1" uuid="ef57611f-d4b3-42d1-b6ee-ff92f231c057"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="32" y="80" width="601" height="1" uuid="4ef22c4c-0012-4a72-af89-92573c3e90f4"/>
+			</line>
+			<line>
+				<reportElement x="633" y="11" width="1" height="201" uuid="8d03fd82-284d-424e-8b42-9d4b254e0285"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="32" y="11" width="180" height="35" uuid="a39e01ae-8b83-4ada-9a35-978d365ccf61"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[BENEFICIARIO DE LA SOLICITUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="46" width="180" height="34" uuid="23ee1bed-a7fd-4b65-b165-4b8ddca7ce4a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CENTRO DE REGISTRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="81" width="180" height="30" uuid="063898d9-58cc-4c69-adcc-e96cd169dfc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="634" y="11" width="100" height="20" uuid="4d7ac8b3-f04d-4cca-9009-44ac34b2954d"/>
+				<text><![CDATA[ DUEP Asociado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="633" y="51" width="124" height="20" uuid="62fb7305-a3d7-4770-95ed-5deae077c979"/>
+				<text><![CDATA[ FECHA DE REGISTRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="634" y="91" width="151" height="20" uuid="4bae814c-0422-4a32-b707-b08b52336907"/>
+				<text><![CDATA[ IMPORTE COMPROMETIDO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="645" y="31" width="129" height="20" uuid="44f4fc47-5d5e-4d4b-80c6-5a9dfc978d98"/>
+				<textFieldExpression><![CDATA[ $F{id_duep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="645" y="71" width="129" height="20" uuid="3aa1af42-5586-411b-beaa-138c3fa55932"/>
+				<textFieldExpression><![CDATA[ $F{fecha_elaboracion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="634" y="131" width="140" height="20" uuid="2fafcbda-6fcc-4166-a465-ad9651f051d6"/>
+				<text><![CDATA[ IMPORTE DEVENGADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="634" y="171" width="140" height="20" uuid="b1746c2e-ea53-4c56-933d-9fe1ad43503c"/>
+				<text><![CDATA[ SALDO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="225" y="11" width="409" height="35" uuid="720976a7-dc60-4ad9-adef-071b9d42b0fe"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_beneficiario}+$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="225" y="47" width="408" height="34" uuid="099a3785-30ab-431a-9c20-04bbb93217df"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{centro_registro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="80" width="408" height="132" uuid="5891c129-9f0c-423a-ad97-3ac3b36e1fd2"/>
+				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="645" y="111" width="129" height="20" uuid="01463a5b-1dfe-4d74-9380-622337ebece2"/>
+				<textFieldExpression><![CDATA[ $P{importe_comprometido}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="645" y="151" width="129" height="20" uuid="63f7115b-5d29-495f-a036-4ae7156b2134"/>
+				<textFieldExpression><![CDATA[ $P{importe_devengado}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="645" y="191" width="129" height="20" uuid="5efc6115-995c-43eb-bc5c-b6bb4220113d"/>
+				<textFieldExpression><![CDATA[ $P{saldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="66" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="633" y="26" width="100" height="20" forecolor="#666666" uuid="47537dc2-db16-4013-9135-f238f53fcd02"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="46" width="100" height="20" forecolor="#666666" uuid="4b8a4c19-ea78-4708-b2df-7fd82d69b3bf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="26" width="100" height="20" forecolor="#666666" uuid="d424c8c1-9ce0-4fe2-9b4a-a5802155437f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="633" y="46" width="100" height="20" forecolor="#666666" uuid="1b8dfc71-9caa-45ca-b319-3eeb54c596f5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="733" y="26" width="69" height="20" forecolor="#666666" uuid="01fb7d9e-d73c-4856-abc3-aff3d7c7bb86"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

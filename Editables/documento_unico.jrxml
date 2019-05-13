@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="documento_unico" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3cf80d5-2930-4e2f-b364-24bc72bf585d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="130"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -115,7 +115,7 @@ duep.total_importe, duep.total,
 to_char(current_date,'dd/mm/yyyy') from operation.duep duep
 inner join entity.beneficiario beneficiario on beneficiario.id_beneficiario = duep.beneficiario
 inner join entity.beneficiario_cuenta_bancaria bcb on bcb.id_beneficiario = beneficiario.id_beneficiario
-inner join catalog.banco cb on cb.id = bcb.id_banco
+inner join catalog.banco cb on cb.id_banco = bcb.id_banco
 inner join catalog.catalogos catalogos on catalogos.id_cat = duep.id_unidad_ejecutora_gasto
 inner join catalog.catalogos_presupuestales presupuestales on catalogos.id_catalogo = presupuestales.id_catalogo
 where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{folio_duep} limit 1]]>
@@ -143,7 +143,7 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 			<staticText>
 				<reportElement positionType="Float" x="195" y="37" width="440" height="16" uuid="a3c9803c-ca0b-48c4-9a50-20f4475aea5b"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="7" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
 			</staticText>
@@ -157,7 +157,7 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 			<staticText>
 				<reportElement positionType="Float" x="195" y="1" width="427" height="16" uuid="3962ae12-f6f7-4885-836a-6a617b55c76a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="7" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
@@ -168,14 +168,14 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 			<staticText>
 				<reportElement positionType="Float" x="195" y="17" width="427" height="20" uuid="648f6b84-fa78-4c56-ba02-f981fe5dab14"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="195" y="53" width="427" height="16" uuid="ed2e839f-c0b9-49c8-8eea-3dfd2e79e6d9"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="7" isBold="true"/>
+					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONSULTA DE CATÁLOGO DE UNIDADES DE MEDIDA]]></text>
 			</staticText>
@@ -306,21 +306,23 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="39" y="19" width="741" height="20" uuid="8e0b73ca-2400-418a-b543-1f206926f12c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement positionType="Float" mode="Opaque" x="39" y="19" width="741" height="20" forecolor="#FFFFFF" backcolor="#004987" uuid="8e0b73ca-2400-418a-b543-1f206926f12c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[DETALLE DEL TRÁMITE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="549" y="86" width="153" height="20" uuid="7b229d8e-3cbe-48be-8e39-8a42a5d7ffec"/>
+				<reportElement positionType="Float" x="519" y="86" width="183" height="20" uuid="7b229d8e-3cbe-48be-8e39-8a42a5d7ffec"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[APLICACIÓN PRESUPUESTAL]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="549" y="106" width="153" height="20" uuid="655ba367-ad16-464c-8566-70a8e1611b17"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CUENTA POR PAGAR]]></text>
 			</staticText>
@@ -393,8 +395,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="65" height="30" uuid="c207bb5f-4ca4-4f4f-b637-12549546a194"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="65" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="c207bb5f-4ca4-4f4f-b637-12549546a194"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -410,8 +414,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="e3846df1-ac15-42f5-a236-a9b9d0e47ed6"/>
-								<textElement textAlignment="Center"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="e3846df1-ac15-42f5-a236-a9b9d0e47ed6"/>
+								<textElement textAlignment="Center">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[CLAVE DEL ARTÍCULO]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -426,8 +432,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="68" height="30" uuid="0cccb797-5c39-40e8-9464-45bf93e21d8f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="68" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="0cccb797-5c39-40e8-9464-45bf93e21d8f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[COG]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -442,8 +450,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="83" height="30" uuid="c21f5229-184a-495c-8c3b-8f80621753ef"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="83" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="c21f5229-184a-495c-8c3b-8f80621753ef"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[PROGRAMA]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -458,8 +468,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="8b32b2bd-5aeb-4a69-be16-b0a4127a2478"/>
-								<textElement textAlignment="Center"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="8b32b2bd-5aeb-4a69-be16-b0a4127a2478"/>
+								<textElement textAlignment="Center">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[CLAVE PRESUPUESTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -474,8 +486,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="13575ec4-80a2-4c1c-bd38-e39bed31d6b9"/>
-								<textElement textAlignment="Center"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="13575ec4-80a2-4c1c-bd38-e39bed31d6b9"/>
+								<textElement textAlignment="Center">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[FOLIO COMPROBANTE]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -490,8 +504,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="58848937-7348-4d36-ac5e-d8295648a0ef"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="58848937-7348-4d36-ac5e-d8295648a0ef"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[PROVEEDOR]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -506,8 +522,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b7bae912-de21-4dfe-b5b4-6b6814be8716"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="b7bae912-de21-4dfe-b5b4-6b6814be8716"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[CANTIDAD]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -523,8 +541,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="66" height="30" uuid="58fd3685-c4f3-4976-9cb6-7bf73c1b11d5"/>
-								<textElement textAlignment="Center"/>
+								<reportElement mode="Opaque" x="0" y="0" width="66" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="58fd3685-c4f3-4976-9cb6-7bf73c1b11d5"/>
+								<textElement textAlignment="Center">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[COSTO UNITARIO]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -540,8 +560,10 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 						<jr:tableHeader style="table 2_TH" height="5" rowSpan="1"/>
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="74" height="30" uuid="846fea56-b981-42e8-b503-19d2c37df7f5"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement mode="Opaque" x="0" y="0" width="74" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="846fea56-b981-42e8-b503-19d2c37df7f5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[IMPORTE]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -564,9 +586,6 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo} and duep.folio_duep = $P{fo
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="16" width="801" height="1" forecolor="#999999" uuid="4dc7ab9d-5520-4f5e-9bc3-5cb7273ad1c9"/>
-			</line>
 			<textField>
 				<reportElement x="548" y="53" width="201" height="20" uuid="336a198e-ef26-4201-980d-762d1d4f0671"/>
 				<textElement textAlignment="Right"/>

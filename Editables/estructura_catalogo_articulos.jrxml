@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estructura_catalogo_articulos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac0aa7f0-5d7b-4d2d-ab05-801d2569c7bb">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="64"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -83,7 +83,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable}  and id_periodo = $P{id
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), id_periodo as b, concat_ws('', id_periodo, '-', nivel, '-', num_caracteres), usuario.nombre_usuario from entity.mascara_articulo a
+		<![CDATA[select a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), id_periodo as b, concat_ws('', id_periodo, '-', nivel, '-', num_caracteres), usuario.nombre_usuario, a.ultimo_usuario_modificador from entity.mascara_articulo a
 inner join entity.usuario usuario on  usuario.id_usuario = a.ultimo_usuario_modificador
 where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_periodo} limit 1]]>
 	</queryString>
@@ -92,13 +92,14 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 	<field name="b" class="java.lang.Long"/>
 	<field name="concat_ws" class="java.lang.String"/>
 	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="ultimo_usuario_modificador" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="78" splitType="Stretch">
 			<staticText>
-				<reportElement x="109" y="62" width="288" height="16" uuid="c134b7fd-72cd-417f-b0da-82e3102dfecb"/>
+				<reportElement x="95" y="48" width="252" height="16" uuid="c134b7fd-72cd-417f-b0da-82e3102dfecb"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -107,7 +108,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 			<staticText>
 				<reportElement x="95" y="16" width="324" height="16" uuid="9e2d2cc7-9bac-482d-8db7-b28fa2d257e1"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
@@ -118,19 +119,19 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 			<staticText>
 				<reportElement x="95" y="32" width="324" height="16" uuid="e9beb567-a523-4585-a9b1-0cc033b207d9"/>
 				<textElement textAlignment="Center">
-					<font size="7" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="95" y="0" width="324" height="16" uuid="afbaf19a-0a8c-4c67-a11e-0ca130217b02"/>
+				<reportElement x="59" y="0" width="360" height="16" uuid="afbaf19a-0a8c-4c67-a11e-0ca130217b02"/>
 				<textElement textAlignment="Center">
-					<font size="7" isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="407" y="62" width="79" height="16" uuid="122e538c-55e9-4fef-a86f-f38449dcbafa"/>
+				<reportElement x="357" y="48" width="62" height="16" uuid="122e538c-55e9-4fef-a86f-f38449dcbafa"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
@@ -163,7 +164,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="21" uuid="20a166d8-0a7c-45c3-a3d0-50e8e96cc999"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="21" forecolor="#FFFFFF" backcolor="#004987" uuid="20a166d8-0a7c-45c3-a3d0-50e8e96cc999"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -182,7 +183,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="127" height="21" uuid="ca68b8b3-b6bc-4992-bef9-dd8cbb7e6bd8"/>
+								<reportElement mode="Opaque" x="0" y="0" width="127" height="21" forecolor="#FFFFFF" backcolor="#004987" uuid="ca68b8b3-b6bc-4992-bef9-dd8cbb7e6bd8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -200,7 +201,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="138" height="21" uuid="be22d44a-3807-49c7-a307-c1cc0a283489"/>
+								<reportElement mode="Opaque" x="0" y="0" width="138" height="21" forecolor="#FFFFFF" backcolor="#004987" uuid="be22d44a-3807-49c7-a307-c1cc0a283489"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -219,7 +220,7 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="21" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="124" height="21" uuid="bd0e8e2d-368c-4edd-a53e-590a3de3edbd"/>
+								<reportElement mode="Opaque" x="0" y="0" width="124" height="21" forecolor="#FFFFFF" backcolor="#004987" uuid="bd0e8e2d-368c-4edd-a53e-590a3de3edbd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -258,16 +259,12 @@ where a.id_unidad_responsable =$P{id_unidad_responsable} and id_periodo=$P{id_pe
 	<pageFooter>
 		<band height="65">
 			<staticText>
-				<reportElement positionType="Float" x="286" y="25" width="100" height="20" forecolor="#666666" uuid="7734432f-cb1a-4b2c-8ec8-e94e87bae2d2"/>
+				<reportElement positionType="Float" x="276" y="25" width="100" height="20" forecolor="#666666" uuid="7734432f-cb1a-4b2c-8ec8-e94e87bae2d2"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="5" width="555" height="1" forecolor="#999999" uuid="e28e306a-b4d3-4181-9dee-5f1d1fe0bf03"/>
-			</line>
 			<staticText>
 				<reportElement positionType="Float" x="286" y="45" width="100" height="20" forecolor="#666666" uuid="2343b733-c922-4aff-bc50-d64a674031b5"/>
-				<textElement textAlignment="Right"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">

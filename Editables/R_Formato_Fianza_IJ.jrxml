@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Formato_Fianza_IJ" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6fdf5386-eccd-4e61-9442-ec32f50cb351">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="anticipo" uuid="b03878e8-1b62-4d41-9983-6daa3f3f3862">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id_duepContrato" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select afianzadora_anticipo as nombre_afianzadora, fecha_emision_anticipo,
+vigencia_anticipo, importe_anticipo from operation.fianza where ur = $P{ur} and periodo = $P{periodo} and id_duep_contrato_pedido = $P{id_duepContrato}]]>
+		</queryString>
+		<field name="nombre_afianzadora" class="java.lang.String"/>
+		<field name="fecha_emision_anticipo" class="java.sql.Timestamp"/>
+		<field name="vigencia_anticipo" class="java.sql.Timestamp"/>
+		<field name="importe_anticipo" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="cumplimiento" uuid="44173b23-9299-45d5-99ae-b7aaa8e976f4">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id_duep_contrato_pedido" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select afianzadora_anticipo as nombre_afianzadora, fecha_emision_cumplimiento, vigencia_cumplimiento, importe_cumplimiento from operation.fianza where ur = $P{ur} and periodo = $P{periodo} and id_duep_contrato_pedido = $P{id_duep_contrato_pedido}]]>
+		</queryString>
+		<field name="nombre_afianzadora" class="java.lang.String"/>
+		<field name="fecha_emision_cumplimiento" class="java.sql.Timestamp"/>
+		<field name="vigencia_cumplimiento" class="java.sql.Timestamp"/>
+		<field name="importe_cumplimiento" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="calidad" uuid="4bade074-518f-49af-ba95-3a655551c951">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id_duep_contrato_pedido" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select afianzadora_calidad as nombre_afianzadora, fecha_emision_calidad,
+vigencia_calidad, importe_calidad from operation.fianza where ur = $P{ur} and periodo = $P{periodo} and id_duep_contrato_pedido = $P{id_duep_contrato_pedido}]]>
+		</queryString>
+		<field name="nombre_afianzadora" class="java.lang.String"/>
+		<field name="fecha_emision_calidad" class="java.sql.Timestamp"/>
+		<field name="vigencia_calidad" class="java.sql.Timestamp"/>
+		<field name="importe_calidad" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_validacion" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_duep_contrato_pedido" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select validacion.id_duep_contrato_pedido, contrato.folio_con_ordecom, concat_ws(' ', beneficiario.nombre, beneficiario.primer_apellido,  beneficiario.segundo_apellido) proveedor from operation.validacion_garantia validacion
+inner join operation.duep_contrato_pedido contrato on validacion.id_duep_contrato_pedido = contrato.id_duep_contrato_pedido
+inner join entity.beneficiario beneficiario on beneficiario.id_beneficiario = contrato.proveedor
+where validacion.ur =$P{ur} and validacion.periodo = $P{periodo} and validacion.id_validacion_garantia = $P{id_validacion} and validacion.id_duep_contrato_pedido = $P{id_duep_contrato_pedido}]]>
+	</queryString>
+	<field name="id_duep_contrato_pedido" class="java.lang.Long"/>
+	<field name="folio_con_ordecom" class="java.lang.String"/>
+	<field name="proveedor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="156" y="42" width="453" height="16" uuid="5b4efad4-510b-41b2-ad4e-95020caff7e2"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="58" width="453" height="16" uuid="e7a538ad-b130-4d4e-adca-2a00bd08f924"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE VALIDACIÓN DE GARANTÍAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="6" width="453" height="16" uuid="5beb7471-22d0-445c-b183-6725e76eefe1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="609" y="5" width="193" height="84" uuid="0c50b0b5-7b0c-4fc3-af51-3a2fee6fd971"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="156" y="22" width="453" height="20" uuid="85df0ac5-13d8-45cb-a379-6235368e0cbd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="15" y="21" width="774" height="84" uuid="d0fe9ace-6409-431d-a43e-2d484d93fe4a"/>
+			</rectangle>
+			<line>
+				<reportElement positionType="Float" x="15" y="63" width="594" height="1" uuid="b439896c-a03f-4c48-8b80-ea9dd946901e"/>
+			</line>
+			<line>
+				<reportElement x="609" y="21" width="1" height="84" uuid="334d08f7-341f-49e7-ab82-0ce8245ba315"/>
+			</line>
+			<line>
+				<reportElement x="167" y="21" width="1" height="84" uuid="2c4b62d9-d9cf-4255-9c9c-81448fa1b077"/>
+			</line>
+			<staticText>
+				<reportElement x="26" y="33" width="141" height="20" uuid="891d4bef-82dc-4fae-872c-6f8a9abffcf5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[BENEFICIARIO CONTRATO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="26" y="75" width="141" height="20" uuid="d9388cf6-9b5a-4fdc-990a-10b7f55d35c1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPO DE GARANTIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="180" y="75" width="100" height="20" uuid="edd97b3e-a8a4-4d3c-bca6-4bddc9b7c57f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fianza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="623" y="33" width="44" height="20" uuid="76bef15a-7a9d-4890-8ac4-d202ec3d64b0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="623" y="75" width="68" height="20" uuid="8c1ce165-d261-4c1f-bd07-d35f822eb787"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="180" y="33" width="430" height="20" uuid="7092e1fa-4912-46ee-b769-bdd567127eb3"/>
+				<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="667" y="33" width="100" height="20" uuid="e1358f04-8925-4a40-a2f9-0a1bebcf9b80"/>
+				<textFieldExpression><![CDATA[$F{id_duep_contrato_pedido}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="689" y="75" width="100" height="20" uuid="a781e78c-4920-4865-982b-44b58634bc31"/>
+				<textFieldExpression><![CDATA[$F{folio_con_ordecom}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="228">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="802" height="20" uuid="4ed65a54-2b14-4c81-8d2d-7abfd04d6418"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORMACIÓN DE LA FIANZA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="802" height="20" forecolor="#FF0033" uuid="dbac4a7b-627a-4921-9eb6-2c0732162b72"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="111" width="802" height="20" forecolor="#FF0033" uuid="48932d2d-1bf7-4847-9165-bce3d567b669"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="177" width="802" height="20" forecolor="#FF0033" uuid="2a14a92b-d7bb-46d3-9ea4-3ae35c2a8390"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="154" width="802" height="67" uuid="4840499a-3a18-4838-8dd4-ed6575b5908d"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="calidad" uuid="92803476-9bbf-4e69-b3fb-d0ab6bcb23db">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_duep_contrato_pedido">
+							<datasetParameterExpression><![CDATA[$P{id_duep_contrato_pedido}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="115" uuid="b9635562-b043-4f05-8d18-86ab49790f9b">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="115" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="ca69f2fc-cb05-44e3-9dd8-6f78eab1cc17"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[GARANTIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="115" height="20" uuid="df19f497-0cf7-4f9d-9f5f-f60d434f7e11"/>
+								<text><![CDATA[Calidad]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="203" uuid="bc15f790-eac3-4ca6-bc9c-992fad2310e8">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="203" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="323a68c5-33ac-454b-b99b-33179fedc029"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[NOMBRE AFIANZADORA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="203" height="20" uuid="33c27138-4ea6-4531-9bde-6f16aa061288"/>
+								<textFieldExpression><![CDATA[$F{nombre_afianzadora}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="159" uuid="493a1ae8-fdf3-48bc-ac67-999b468d1270">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="159" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="ddeddad5-6d08-4c9e-8df3-387a897c9222"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="159" height="20" uuid="cf949685-111e-4b33-9e08-83aa769be77d"/>
+								<textFieldExpression><![CDATA[$F{fecha_emision_calidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="167" uuid="df550ea7-e321-4653-b334-a9cd4e78ef4f">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="167" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="13bb2e56-78bd-4986-9d9f-a371f23442a4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[VIGENCIA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="167" height="20" uuid="07467d19-325e-44f6-8bcd-7c890b7c73d2"/>
+								<textFieldExpression><![CDATA[$F{vigencia_calidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="129cf0eb-29a3-4a2c-bdd4-15477e4ad9c9">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="146" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="8bcf81e5-7ca6-4ab4-b456-a990dad17ef4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[IMPORTE GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="146" height="20" uuid="6078d0ba-55b7-498d-8a82-35307f3a37bb"/>
+								<textFieldExpression><![CDATA[$F{importe_calidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="87" width="802" height="67" uuid="c0c6ef59-750f-4384-aeb5-d8430d95dc1b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="cumplimiento" uuid="8d2c4b04-31a7-4473-abf1-233bf4671386">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_duep_contrato_pedido">
+							<datasetParameterExpression><![CDATA[$P{id_duep_contrato_pedido}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="115" uuid="906ce6b0-168e-49b4-a3cd-568cd417739d">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="115" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="daba175f-d425-4233-aab6-52ed14f1602b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[GARANTIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="115" height="20" uuid="f1c5718c-b7ca-4014-84f5-ef1ffbb334e1"/>
+								<text><![CDATA[Cumplimiento]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="203" uuid="3954bc41-a94e-436f-a454-47fa0043b01e">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="203" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="453777b8-09b3-400b-8b19-637193c91f1f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[NOMBRE AFIANZADORA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="203" height="20" uuid="915a987c-a030-4703-a1b4-8eb07a4e347b"/>
+								<textFieldExpression><![CDATA[$F{nombre_afianzadora}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="159" uuid="c7256c7c-e698-44a4-b865-525b1c57e2f5">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="159" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="1e96c9f2-f54a-4bb7-aa1d-d236c88e6a0f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="159" height="20" uuid="0a591723-c22b-474b-ba6f-714a5e9781bb"/>
+								<textFieldExpression><![CDATA[$F{fecha_emision_cumplimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="167" uuid="9b832622-a651-4756-b28e-29691859be35">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="167" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="cbc92c81-1c36-4f56-8830-731a7e30adcd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[VIGENCIA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="167" height="20" uuid="013af994-234c-49f4-905d-e7ff5ed589db"/>
+								<textFieldExpression><![CDATA[$F{vigencia_cumplimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="1297fe81-4684-4425-85a9-b432bf042691">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="146" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="48f51587-2d84-469a-9336-1afb2165cba4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[IMPORTE GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="146" height="20" uuid="392f4632-3295-4dc6-b98b-2d44efb7989d"/>
+								<textFieldExpression><![CDATA[$F{importe_cumplimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="20" width="802" height="67" uuid="567b2a2a-edec-481b-a9e1-aec2ae7eaabd"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="anticipo" uuid="5aaf464c-4647-4c29-9179-9258b6938aaf">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_duepContrato">
+							<datasetParameterExpression><![CDATA[$P{id_duep_contrato_pedido}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="115" uuid="1c6a69d6-c03f-4ef6-9f89-08ccf0fe0da1">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="115" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="56236b43-16a2-4eb5-bcbf-d823ef2e23cb"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[GARANTIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="115" height="20" uuid="c1ebcf21-6020-41ed-8c93-d925fdfbc438"/>
+								<text><![CDATA[Anticipo]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="203" uuid="8e8bb6bc-f87f-4dbf-b75d-f295e8dc731c">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="203" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="22c4dd80-c261-4f01-9a52-457caecd9008"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[NOMBRE AFIANZADORA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="203" height="20" uuid="7e163d88-b190-4c23-b297-1193626729f9"/>
+								<textFieldExpression><![CDATA[$F{nombre_afianzadora}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="159" uuid="ec9980c0-d525-4bb8-abda-65d458bac361">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="159" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="fae31d4c-88e8-49a5-9461-1e6c383ff521"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="159" height="20" uuid="fa2c4ac7-9168-4117-a478-6cecfac5cf1b"/>
+								<textFieldExpression><![CDATA[$F{fecha_emision_anticipo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="167" uuid="2c500a60-82f0-4e74-b414-86491a629573">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="167" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="978c5084-1c62-4a38-a8f7-c5e73dab0e0b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[VIGENCIA GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="167" height="20" uuid="fb7cedd2-d804-4261-9515-aab43386905c"/>
+								<textFieldExpression><![CDATA[$F{vigencia_anticipo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="182220a4-45f7-4408-aedc-90f825a3a428">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="146" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="446c7f5e-71e3-4a34-9e88-4861bb95c884"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[IMPORTE GARANTÍA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="146" height="20" uuid="cf9b9826-d6a7-4f39-af0c-24be5ccea567"/>
+								<textFieldExpression><![CDATA[$F{importe_anticipo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="708" y="14" width="69" height="20" forecolor="#666666" uuid="e302d4c9-9b2c-4ca9-8c30-0603a8f62e76"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="609" y="34" width="178" height="20" forecolor="#666666" uuid="88838d5c-649d-42b5-9ffc-b8f08e173cf5"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="499" y="14" width="109" height="20" forecolor="#666666" uuid="25c92d95-7670-42c8-aa95-ab21ed303ef7"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="609" y="14" width="100" height="20" forecolor="#666666" uuid="ee3dc7ca-fa32-4526-88a0-9ae20dced992"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="499" y="34" width="109" height="20" forecolor="#666666" uuid="8ee26893-c281-4a9e-85ba-8b3f3c335539"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

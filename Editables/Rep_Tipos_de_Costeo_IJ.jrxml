@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rep_Tipos_de_Costeo_IJ" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3afa63f5-5262-43b4-aa50-0f1bbc702377">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="tabla" uuid="f032e604-6803-4f58-8548-8689437f55c9">
+		<queryString language="SQL">
+			<![CDATA[select costeo.id_periodo, costeo.tipo_costeo, costeo.fecha_elaboracion, CONCAT( usuario.nombre,' ', usuario.primer_apellido, ' ', usuario.segundo_apellido) AS usuario_alta from catalog.tipo_costeo costeo
+inner join entity.usuario usuario on usuario.id_unidad_responsable = costeo.ur and usuario.id_usuario = costeo.usuario_alta
+where id_tipo_costeo = 1 and ur = 1 and id_periodo = 2019]]>
+		</queryString>
+		<field name="id_periodo" class="java.lang.Long"/>
+		<field name="tipo_costeo" class="java.lang.String"/>
+		<field name="fecha_elaboracion" class="java.sql.Timestamp"/>
+		<field name="usuario_alta" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_tipo_costeo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select usuario_alta from catalog.tipo_costeo where id_tipo_costeo = 1 and ur = 1 and id_periodo = 2019]]>
+	</queryString>
+	<field name="usuario_alta" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="52" width="292" height="16" uuid="d3423254-6bec-4cee-95a3-96026ad42b64"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE TIPOS DE COSTEO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="4" width="342" height="16" uuid="d87e68a8-485e-455a-93cc-5cfbf15ab1d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="20" width="292" height="16" uuid="186fb3fb-85ff-4988-bb47-480235007f31"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="376" y="9" width="161" height="59" uuid="48941c7d-0c37-43e6-8169-d776a59223d1"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="84" y="36" width="292" height="16" uuid="8ee2ce25-740a-46eb-8fa9-ea238babd8ae"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="94" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="59" y="39" width="441" height="55" uuid="87dcc512-3833-45d5-8a00-624af7167b4d"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tabla" uuid="0ebeb595-af46-4c21-a073-5d3a2c3f1436">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="69d3f725-1a35-403a-803b-0b0551ddc104">
+						<jr:tableHeader style="table_TH" height="1" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="3fcd9ef9-8cf5-48d8-8278-06a0f82b9798"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[AÑO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20" uuid="dca2d2b4-a2bc-44de-ba23-1617bdc5cbf5"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{id_periodo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="93" uuid="77a5f096-4d31-4e5c-bb22-a572e919fd8e">
+						<jr:tableHeader style="table_TH" height="1" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="93" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="ac26f272-ff4d-4d91-a8b5-02c0c94eb423"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[TIPO DE COSTEO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="93" height="20" uuid="09f4ae2c-9bd8-4bc3-85c2-3ae97d2df745"/>
+								<textFieldExpression><![CDATA[$F{tipo_costeo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="110" uuid="4658609a-ed12-46f9-86ff-f123827610d8">
+						<jr:tableHeader style="table_TH" height="1" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="110" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="1ea6d03c-f7d4-46ac-bed8-0d121228ae71"/>
+								<textElement textAlignment="Center">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA DE MODIFICACIÓN]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="110" height="20" uuid="4ae9541e-62e4-40c2-8b47-d9c01af58a7f"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{fecha_elaboracion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="147" uuid="f6414fd9-00c5-4489-a7ff-442a3eb98374">
+						<jr:tableHeader style="table_TH" height="1" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="147" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="f456a97d-d770-4daf-83af-32128f234a53"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[USUARIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="147" height="20" uuid="f5440627-a944-4fe5-9b55-397f697dd841"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{usuario_alta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="48" y="8" width="462" height="14" forecolor="#FFFFFF" backcolor="#004987" uuid="068b59d0-bf58-4ea0-80cc-22bf4adaf1fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIPOS DE COSTEO A REALIZAR]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="476" y="11" width="69" height="20" forecolor="#666666" uuid="77d7659a-4ed2-4c91-893a-2d98d57cee56"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="276" y="11" width="100" height="20" forecolor="#666666" uuid="969f6e29-0165-40cc-b822-9bd2dab00aac"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="376" y="11" width="100" height="20" forecolor="#666666" uuid="12550e64-20aa-45de-9d38-915c50fb5132"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="276" y="31" width="100" height="20" forecolor="#666666" uuid="d8236282-c970-4117-84e2-78d72003c587"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="376" y="31" width="100" height="20" forecolor="#666666" uuid="7a2c940d-dba4-4c9b-9e27-62b803746861"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

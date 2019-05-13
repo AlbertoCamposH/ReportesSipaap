@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="asignacion_calendarizada_IJUA" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f2db6e4-5766-4290-ba07-3d0118e68f0c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="tabla" uuid="a9089780-ce81-4f08-9f73-0b7c6f8a2f07">
+		<parameter name="id_periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="presupuesto_egreso" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select estatus.descripcion, hijo.id_clave_egreso, hijo.clave_presupuestal, hijo.techo_presupuestal, hijo.enero, hijo.febrero, hijo.marzo, hijo.abril, hijo.mayo, hijo.junio, hijo.julio, hijo.agosto, hijo.septiembre, hijo.octubre, hijo.noviembre, hijo.diciembre, hijo.total
+from operation.presupuesto_egresos_det hijo
+inner join operation.presupuesto_egresos padre on padre.id_presupuesto_egresos = hijo.id_presupuesto_egresos
+inner join catalog.estatus_presupuesto_eg estatus on estatus.id_estatus = padre.estatus
+where hijo.id_unidad_responsable = $P{ur} and hijo.id_periodo = $P{id_periodo} and hijo.id_presupuesto_egresos = $P{presupuesto_egreso}]]>
+		</queryString>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="id_clave_egreso" class="java.lang.String"/>
+		<field name="clave_presupuestal" class="java.lang.String"/>
+		<field name="techo_presupuestal" class="java.math.BigDecimal"/>
+		<field name="enero" class="java.math.BigDecimal"/>
+		<field name="febrero" class="java.math.BigDecimal"/>
+		<field name="marzo" class="java.math.BigDecimal"/>
+		<field name="abril" class="java.math.BigDecimal"/>
+		<field name="mayo" class="java.math.BigDecimal"/>
+		<field name="junio" class="java.math.BigDecimal"/>
+		<field name="julio" class="java.math.BigDecimal"/>
+		<field name="agosto" class="java.math.BigDecimal"/>
+		<field name="septiembre" class="java.math.BigDecimal"/>
+		<field name="octubre" class="java.math.BigDecimal"/>
+		<field name="noviembre" class="java.math.BigDecimal"/>
+		<field name="diciembre" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="sumames" uuid="41e45573-dd58-4732-a7be-c37ae5183bb5">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id_presupuesto_egresos" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(techo_presupuestal) as tec, sum(enero) as enero, sum(febrero) as febrero, sum(marzo) as marzo, sum(abril) as abril, sum(mayo) as mayo, sum(junio) as junio,
+sum(julio) as julio, sum(agosto) as agosto,sum(septiembre) as septiembre, sum(octubre) as octubre,  sum(noviembre) as noviembre, sum(diciembre) as diciembre from operation.presupuesto_egresos_det
+where id_unidad_responsable = $P{ur} and id_periodo = $P{periodo} and id_presupuesto_egresos = $P{id_presupuesto_egresos}]]>
+		</queryString>
+		<field name="tec" class="java.math.BigDecimal"/>
+		<field name="enero" class="java.math.BigDecimal"/>
+		<field name="febrero" class="java.math.BigDecimal"/>
+		<field name="marzo" class="java.math.BigDecimal"/>
+		<field name="abril" class="java.math.BigDecimal"/>
+		<field name="mayo" class="java.math.BigDecimal"/>
+		<field name="junio" class="java.math.BigDecimal"/>
+		<field name="julio" class="java.math.BigDecimal"/>
+		<field name="agosto" class="java.math.BigDecimal"/>
+		<field name="septiembre" class="java.math.BigDecimal"/>
+		<field name="octubre" class="java.math.BigDecimal"/>
+		<field name="noviembre" class="java.math.BigDecimal"/>
+		<field name="diciembre" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_presupuesto_egresos" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select ultimo_usuario_modificador from operation.presupuesto_egresos where id_unidad_responsable = $P{ur} and id_periodo = $P{id_periodo} and id_presupuesto_egresos = $P{id_presupuesto_egresos}]]>
+	</queryString>
+	<field name="ultimo_usuario_modificador" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="151" y="37" width="453" height="16" uuid="d258abef-cd35-4065-8b90-136202e5ebdb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="1" width="453" height="16" uuid="e3b15e8b-4d2b-44ef-8a81-fc5859c5b6a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="17" width="453" height="20" uuid="d5d07fc9-8bd3-4e2a-84cd-7783c1097914"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="53" width="453" height="16" uuid="afc3017a-973d-4571-9693-c6fc583dc447"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESUPUESTO DEL EGRESO POR APROBAR]]></text>
+			</staticText>
+			<image>
+				<reportElement x="604" y="0" width="193" height="84" uuid="7ba83247-d5ec-4f91-a8e4-0082ddd2b59d"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="115" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="31" width="742" height="20" forecolor="#FF0033" uuid="4884829e-7778-41d7-ba74-1df22cb6fd73"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="135" y="82" width="43" height="20" uuid="7b82d2a6-71e7-4d80-aa4e-250716847747"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="-11" y="0" width="823" height="82" uuid="dd18f1ad-7d48-4914-884a-c3ea50417a01"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tabla" uuid="8183ae41-bd75-4143-a9fa-c6751bfb4dee">
+						<datasetParameter name="id_periodo">
+							<datasetParameterExpression><![CDATA[$P{id_periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="presupuesto_egreso">
+							<datasetParameterExpression><![CDATA[$P{id_presupuesto_egresos}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="45" uuid="664b59e1-b3b2-4759-9df1-fe92fd8c117d">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="45" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="b48fd593-71d5-4132-9f0c-684b559edac0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ESTATUS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="20" uuid="f90e7805-23e7-4b29-a8e4-51cbc9bdddb1"/>
+								<textElement textAlignment="Center">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="53" uuid="73a839bb-5d28-4917-8411-86be1f982b86">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="53" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="fbd8e8c1-ec0f-4ba2-a89a-cf26d17fad63"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID CLAVE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="53" height="20" uuid="0ad77794-0682-4a8b-8a61-6e6653519395"/>
+								<textElement textAlignment="Center">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{id_clave_egreso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="a73ed985-ac82-4fb8-bc0f-b9d48c687d63">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="71" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="d9b9908d-fa78-4d1c-8165-0a187714accc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CLAVE PRESUPUESTAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="71" height="20" uuid="32a7b595-2f34-4288-b519-b71a95a1e441"/>
+								<textElement textAlignment="Center">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{clave_presupuestal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="74" uuid="451251e4-90ef-4e92-8abe-3038901dcb41">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="74" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="26b790ec-8cf3-49d2-9f32-e5a0f05d94c6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TECHO PRESUPUESTAL ANUAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="74" height="20" uuid="3e6383c6-a61c-45ba-bd0a-9ee647dba310"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{techo_presupuestal}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="52" uuid="33315df5-66b0-4bf7-95ff-7a35890a1f00">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="52" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="78e14dde-115f-4232-9d26-10592fc32e94"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ENERO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="52" height="20" uuid="15230b0d-8834-4ff3-9ddc-d7bbe905fa95"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{enero}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="357b8e60-bb31-4a27-b7df-b9dd3cfe0e5a">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="48" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="5e8048e4-d5f8-400e-b033-5543fca9509d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FEBRERO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="48" height="20" uuid="a7966328-1c4b-4d6b-bf86-12ed2bd4c5b9"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{febrero}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="5333e84f-c79f-48d0-8aac-dce54ec28759">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="45" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="37472980-73ce-4eb7-9cdb-a04bd17166d6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[MARZO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="20" uuid="b17edea9-0397-4f36-b7d8-0f92bae52e57"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{marzo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="51" uuid="946e1eb1-afa0-40ba-9057-c5ce1c32d411">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="51" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="05ce147d-a393-4ba8-9912-b0d264a8941b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ABRIL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="51" height="20" uuid="c622e0c8-0bb4-4500-9740-6055d76db9fc"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{abril}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="6d82b942-9234-4f77-82f2-4eb4dd805a13">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="49" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="00a8db8f-79ca-4915-8dfa-3d7bc84b79c3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[MAYO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="49" height="20" uuid="6d21b45d-1cd4-4fae-88cc-d345d900012f"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{mayo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="47" uuid="e1f5f746-ecaf-4a88-9952-d59f9d6306f1">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="47" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="d87b14e7-c466-4887-9dd3-968afc60b146"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[JUNIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="47" height="20" uuid="51809495-3995-4a1e-94bd-1729230a2cea"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{junio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="ec8fe44f-74b5-4677-8ead-890333af2743">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="48" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="0f83fac0-6875-4a1b-9b06-6408f3ab51cc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[JULIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="48" height="20" uuid="c998f96e-1828-4598-938d-d5dc3ce09d1d"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{julio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="734e2b22-ed68-4aec-a95b-923427e06505">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="48" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="9ba955f9-3147-4792-914d-d2c99a3daaf4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[AGOSTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="48" height="20" uuid="43dcfef0-b949-4dba-b9e9-19fb0842e336"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{agosto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="bcc6b3d6-4841-4593-acc5-137856d3a782">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="f8dbab2a-9cf3-4a3d-a2d2-a5fcc5b08ed4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SEPTIEMBRE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="50" height="20" uuid="66321505-1443-4ac7-a17e-8a0c44eacaf8"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{septiembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="43" uuid="02fc6b05-11b8-40a6-ad9e-51aa636f7cf6">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="43" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="3b9d80b2-182a-4bf0-bc3a-fc30d37ed060"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[OCTUBRE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="43" height="20" uuid="d30c9b38-8f19-4404-a562-d73f125753d7"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{octubre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="bfc9af89-bd4e-4a3a-abcd-6f2ace7cf453">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="48" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="432b7e43-77a3-4109-9a4e-d25a2646dd44"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[NOVIEMBRE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="48" height="20" uuid="dff55a3d-320f-41d6-a2b5-be0ac0b7231c"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{noviembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="51" uuid="af99506a-3d2d-4f3e-a3ee-12f959c0efd9">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="51" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="f6613b0d-cddf-4882-b1ca-26e9605c58b5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[DICIEMBRE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="51" height="20" uuid="51d4a7a2-4eea-4e85-8f7f-39f299fe5979"/>
+								<textElement textAlignment="Right">
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{diciembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" positionType="Float" x="178" y="82" width="621" height="33" uuid="282ded36-6b9d-484c-82fc-f8f898c13e81"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="sumames" uuid="d48a1c91-4488-4ff5-8507-b4fbe58d4982">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{id_periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_presupuesto_egresos">
+							<datasetParameterExpression><![CDATA[$P{id_presupuesto_egresos}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="57" uuid="b129f036-3bad-464f-a910-5e2e97b83ec0">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="57" height="20" uuid="7a0304ae-ee2f-44d3-b702-99c2b10e1b9e"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tec}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="c8f2adf7-bd37-4ff1-8dbd-debea5b541ab">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="49" height="20" uuid="75ac1858-341f-45cb-a000-588710b850e6"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{enero}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="47" uuid="6cea50dc-d178-470a-aeea-f6377d0df849">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="47" height="20" uuid="f60beae8-1edc-43fc-99a9-ba06fc358d77"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{febrero}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="43" uuid="59aafe2a-f04a-4825-b196-c20272c610f4">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="43" height="20" uuid="626b2639-4a5c-4a93-a5ba-8b0d7087bf59"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{marzo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="51" uuid="5fc4d047-418a-4100-a4b4-e110312df597">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="51" height="20" uuid="5407838d-cb0f-42a6-9230-110a338f99ee"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{abril}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="5903ac29-eb99-47f9-adb8-55b088d16282">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="2" y="0" width="48" height="20" uuid="b6bd8383-1beb-4f34-b16e-43365707fea0"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{mayo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="39d60571-c56a-47f0-9917-e3b572865ae1">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="49" height="20" uuid="36d154b5-90ba-4945-959e-bc364e747017"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{junio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="1e9d1dd8-9fa6-415d-9167-2b8ccb82265e">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="49" height="20" uuid="c92b6350-0b24-42ef-8f21-ef2d8134392a"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{julio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="47" uuid="97fbb556-50ec-48ba-9255-873d2e3dc87a">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="47" height="20" uuid="58a12021-b576-4363-88e1-2cf4ad3b29d0"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{agosto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="52" uuid="2304e145-2fba-4e43-a37f-86c334c6b658">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="52" height="20" uuid="52978b84-4aa3-4ec5-9bab-e61cbd4901cb"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{septiembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="42" uuid="d6f463ea-53e9-4edc-a6fe-495903e267c2">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="42" height="20" uuid="0e53f0d1-bc48-4366-8643-4b575791b23c"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{octubre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="45" uuid="cf9a55ea-e0c5-475e-a18b-bf8cb5e36f27">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="45" height="20" uuid="80b0dace-614b-4512-87ee-8780445fe688"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{noviembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="52" uuid="84b7ced8-c368-4486-81e7-d1455f7f9c41">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="52" height="20" uuid="80022eb6-ec5e-4a9f-9671-6ddae6c26f51"/>
+								<textElement textAlignment="Right">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{diciembre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="524" y="33" width="109" height="20" forecolor="#666666" uuid="659408b4-ef22-408d-bca5-d7d9c445f4a9"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="524" y="13" width="109" height="20" forecolor="#666666" uuid="aed25a4b-4a82-4f89-911b-fba6e23e20f7"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="634" y="13" width="100" height="20" forecolor="#666666" uuid="be40cf08-81cb-4158-a913-2250cc9defa8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="733" y="13" width="69" height="20" forecolor="#666666" uuid="9a36a1de-0b89-4446-a636-d6dcd2ee892e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="633" y="33" width="100" height="20" forecolor="#666666" uuid="1e80a100-b527-4250-93fc-bc046a849985"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
