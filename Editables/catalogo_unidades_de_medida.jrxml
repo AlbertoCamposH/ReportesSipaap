@@ -68,50 +68,50 @@ LIMIT 1]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="87" splitType="Stretch">
+		<band height="102" splitType="Stretch">
 			<staticText>
-				<reportElement x="120" y="53" width="559" height="16" uuid="02c6cfb2-23ab-4bb6-83b2-3a753086f57a"/>
+				<reportElement x="99" y="67" width="580" height="16" uuid="02c6cfb2-23ab-4bb6-83b2-3a753086f57a"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+					<font fontName="SansSerif" size="7" isBold="false"/>
 				</textElement>
 				<text><![CDATA[CONSULTA DE CATÁLOGO DE UNIDADES DE MEDIDA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="7" y="69" width="418" height="16" uuid="0bedb0b2-e86d-460e-bcca-c96d5d005c89"/>
+				<reportElement x="99" y="83" width="299" height="16" uuid="0bedb0b2-e86d-460e-bcca-c96d5d005c89"/>
 				<textElement textAlignment="Right">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+					<font fontName="SansSerif" size="7" isBold="false"/>
 				</textElement>
 				<text><![CDATA[     				                                        Ejercicio Fiscal   ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="427" y="69" width="100" height="16" uuid="28ae8430-a7d7-4d86-a557-f595b280928c"/>
+				<reportElement x="408" y="83" width="133" height="16" uuid="28ae8430-a7d7-4d86-a557-f595b280928c"/>
 				<textElement>
-					<font size="10"/>
+					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="679" y="19" width="122" height="50" uuid="8f8b33f3-9a1a-4ce3-a30e-388b9385e038"/>
+				<reportElement x="680" y="14" width="122" height="50" uuid="8f8b33f3-9a1a-4ce3-a30e-388b9385e038"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="120" y="35" width="559" height="16" uuid="af970eca-8716-497f-9d95-e9720ff3293f"/>
+				<reportElement x="99" y="49" width="580" height="16" uuid="af970eca-8716-497f-9d95-e9720ff3293f"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+					<font fontName="SansSerif" size="7" isBold="false"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="0" width="559" height="16" uuid="6bc488cd-0455-4be8-890e-68879241b376"/>
+				<reportElement x="99" y="14" width="580" height="16" uuid="6bc488cd-0455-4be8-890e-68879241b376"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="10" isBold="false"/>
+					<font fontName="SansSerif" size="7" isBold="false"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="15" width="559" height="20" uuid="39d7b4c4-9c1d-465f-b602-c73ff4538330"/>
+				<reportElement x="99" y="29" width="580" height="20" uuid="39d7b4c4-9c1d-465f-b602-c73ff4538330"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10"/>
+					<font size="7"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
