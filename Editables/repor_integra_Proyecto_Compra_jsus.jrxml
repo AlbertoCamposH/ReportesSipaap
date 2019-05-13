@@ -61,15 +61,17 @@ WHERE cd.ur = $P{ur} AND cd.periodo = $P{id_periodo} AND cd.id_compras = $P{foli
 	<parameter name="id_periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="folio" class="java.lang.String">
+	<parameter name="id_compras" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT c.id_compras AS Folio, c.periodo AS Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra, sum(cd.importe_total) AS Importe_total, u.nombre_usuario FROM operation.compras AS c
+		<![CDATA[SELECT c.id_compras AS Folio, c.periodo AS Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra, sum(cd.importe_total) AS Importe_total FROM operation.compras AS c
 INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.folio_req = c.folio_req AND cd.id_compras = c.id_compras)
-INNER JOIN entity.usuario AS u ON (u.id_usuario = c.ultimo_usuario_modificador)
-WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{folio}
-GROUP BY Folio, Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra, u.nombre_usuario
+WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{id_compras}
+GROUP BY Folio, Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra
 LIMIT 1]]>
 	</queryString>
 	<field name="folio" class="java.lang.String"/>
@@ -78,7 +80,6 @@ LIMIT 1]]>
 	<field name="referencia" class="java.lang.String"/>
 	<field name="importe_letra" class="java.lang.String"/>
 	<field name="importe_total" class="java.math.BigDecimal"/>
-	<field name="nombre_usuario" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -230,7 +231,7 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table" style="table" positionType="Float" x="0" y="0" width="802" height="73" uuid="4a3ce6dd-33c9-4f69-861b-464533bd5dba"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla" uuid="68d5cd33-a185-4521-98ca-c08ea61f1b4a">
+					<datasetRun subDataset="tabla" uuid="8d8d8ed6-0c8e-4312-b1ca-a8f90621217c">
 						<datasetParameter name="ur">
 							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -238,7 +239,7 @@ LIMIT 1]]>
 							<datasetParameterExpression><![CDATA[$P{id_periodo}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="folio">
-							<datasetParameterExpression><![CDATA[$P{folio}]]></datasetParameterExpression>
+							<datasetParameterExpression><![CDATA[$P{id_compras}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -483,7 +484,7 @@ LIMIT 1]]>
 			</staticText>
 			<textField pattern="K:mm a, z">
 				<reportElement x="633" y="20" width="98" height="20" forecolor="#666666" uuid="7a29762d-975a-48a0-9aa7-41fc461b4256"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
