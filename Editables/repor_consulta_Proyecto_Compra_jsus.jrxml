@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_consulta_orden_pago_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d87a50d2-7736-4882-93a6-e476831d194d">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="273"/>
+	<property name="ireport.y" value="34"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -40,7 +40,7 @@
 			<![CDATA[SELECT cd.id_compras, cd.id_compras_det AS bloque, cd.clave_articulo, cd.clasificador_objeto_gasto, cd.cantidad, cd.centro_registro, cd.fondo_contable, ca.descripcion AS id_fuente_financiamiento,
 cd.importe_unitario, cd.importe_total
 FROM operation.compras AS c
-INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.folio_req = c.folio_req AND cd.id_compras = c.id_compras)
+INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.id_compras = c.id_compras)
 INNER JOIN catalog.catalogos AS ca ON (ca.ur = cd.ur AND ca.id_periodo = cd.periodo AND ca.id_catalogo = cd.id_cat_fuente_financiamiento AND ca.id_cat = cd.id_fuente_financiamiento)
 WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{folio}]]>
 		</queryString>
@@ -69,7 +69,7 @@ WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{folio}]
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT c.id_compras AS Folio, c.periodo AS Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra, sum(cd.importe_total) AS Importe_total FROM operation.compras AS c
-INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.folio_req = c.folio_req AND cd.id_compras = c.id_compras)
+INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.id_compras = c.id_compras)
 WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{id_compras}
 GROUP BY c.folio_req, Folio, Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra]]>
 	</queryString>
