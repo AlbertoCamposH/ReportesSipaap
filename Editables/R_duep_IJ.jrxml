@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_duep_IJ" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba9990d5-f648-4428-83ea-1b0b310caa90">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="195"/>
+	<property name="ireport.y" value="368"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -158,7 +158,7 @@ from operation.activo_fijo_det det
 inner join catalog.articulos articulo on articulo.clave_articulo = det.articulo
 inner join catalog.unidad_medida medida on medida.id_unidad_medida = det.unidad_medida
 where det.ur = $P{ur} and det.periodo = $P{periodo} and id_activo_fijo=$P{id_activo_fijo}
-order by det.fecha_elaboracion]]>
+order by det.fecha_elaboracion limit 1]]>
 		</queryString>
 		<field name="bloque" class="java.lang.String"/>
 		<field name="tipo_bloque" class="java.lang.Long"/>
@@ -248,7 +248,7 @@ where duep.ur =$P{ur}  and duep.periodo =$P{periodo}  and duep.id_activo_fijo = 
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="82" splitType="Stretch">
+		<band height="72" splitType="Stretch">
 			<staticText>
 				<reportElement x="179" y="35" width="420" height="16" uuid="5132614c-429e-494a-bcc3-ef2b71a27263"/>
 				<textElement textAlignment="Center">
@@ -278,183 +278,183 @@ where duep.ur =$P{ur}  and duep.periodo =$P{periodo}  and duep.id_activo_fijo = 
 				<text><![CDATA[DOCUMENTO ÚNICO DEL EJERCICIO DEL PRESUPUESTO]]></text>
 			</staticText>
 			<image>
-				<reportElement x="608" y="3" width="174" height="79" uuid="79215986-00d1-40bc-b660-a3b8200616a2"/>
+				<reportElement x="619" y="3" width="163" height="69" uuid="79215986-00d1-40bc-b660-a3b8200616a2"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 		</band>
 	</title>
 	<detail>
-		<band height="300" splitType="Stretch">
+		<band height="252" splitType="Stretch">
 			<rectangle>
-				<reportElement positionType="Float" x="37" y="16" width="134" height="34" uuid="b9bb4c67-269d-465e-bb96-4562554f0a75"/>
+				<reportElement positionType="Float" x="37" y="6" width="134" height="34" uuid="b9bb4c67-269d-465e-bb96-4562554f0a75"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="171" y="84" width="428" height="16" uuid="e39176f3-bce7-4c16-aa91-2ea192d89e11"/>
+				<reportElement positionType="Float" x="171" y="74" width="428" height="16" uuid="e39176f3-bce7-4c16-aa91-2ea192d89e11"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="37" y="50" width="134" height="34" uuid="83037aab-38bf-449e-ad09-3e7007a7fa06"/>
+				<reportElement positionType="Float" x="37" y="40" width="134" height="34" uuid="83037aab-38bf-449e-ad09-3e7007a7fa06"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="37" y="100" width="562" height="106" uuid="fe0adc21-8cdf-46a6-82cb-23e8f1f39362"/>
+				<reportElement positionType="Float" x="38" y="90" width="562" height="87" uuid="fe0adc21-8cdf-46a6-82cb-23e8f1f39362"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="599" y="49" width="66" height="16" uuid="50549685-b1f1-494e-ab9f-3bdadfcaf013"/>
+				<reportElement positionType="Float" x="599" y="39" width="66" height="16" uuid="50549685-b1f1-494e-ab9f-3bdadfcaf013"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[ESTATUS:]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="37" y="84" width="134" height="16" uuid="0326c9ed-94c3-443d-8bd1-bbd55b9e6355"/>
+				<reportElement positionType="Float" x="37" y="74" width="134" height="16" uuid="0326c9ed-94c3-443d-8bd1-bbd55b9e6355"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="599" y="84" width="119" height="16" uuid="066715fe-08e9-4c52-926c-866ca69507c8"/>
+				<reportElement positionType="Float" x="599" y="74" width="119" height="16" uuid="066715fe-08e9-4c52-926c-866ca69507c8"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[PÓLIZA COMPROMISO:]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="171" y="16" width="428" height="34" uuid="3b38df8c-4e71-4732-8a85-5f6026eafe79"/>
+				<reportElement positionType="Float" x="171" y="6" width="428" height="34" uuid="3b38df8c-4e71-4732-8a85-5f6026eafe79"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="599" y="16" width="188" height="190" uuid="3c6b34b8-b952-41bc-89c5-e3a847a1c993"/>
+				<reportElement positionType="Float" x="599" y="6" width="188" height="171" uuid="3c6b34b8-b952-41bc-89c5-e3a847a1c993"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="37" y="16" width="134" height="34" uuid="f4ad7792-12c7-42b1-85ff-b138788f32c8"/>
+				<reportElement positionType="Float" x="37" y="6" width="134" height="34" uuid="f4ad7792-12c7-42b1-85ff-b138788f32c8"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[BENEFICIARIO DE LA SOLICITUD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="600" y="131" width="129" height="16" uuid="447c9bcb-e226-4c02-9806-6e989bd61f92"/>
+				<reportElement positionType="Float" x="600" y="108" width="129" height="16" uuid="447c9bcb-e226-4c02-9806-6e989bd61f92"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ORDEN DE COMPRA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="599" y="49" width="66" height="16" uuid="b60316b3-0296-4a86-b9f0-089bb4fe1e49"/>
+				<reportElement positionType="Float" x="599" y="38" width="66" height="16" uuid="b60316b3-0296-4a86-b9f0-089bb4fe1e49"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ESTATUS:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="37" y="84" width="134" height="16" uuid="ee5f4d2d-e445-41a6-a3e9-9cebbf1ef51b"/>
+				<reportElement positionType="Float" x="37" y="74" width="134" height="16" uuid="ee5f4d2d-e445-41a6-a3e9-9cebbf1ef51b"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TRÁMITE:]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="171" y="50" width="428" height="34" uuid="7914295c-14c2-4619-b654-b1d10edf23f6"/>
+				<reportElement positionType="Float" x="171" y="40" width="428" height="34" uuid="7914295c-14c2-4619-b654-b1d10edf23f6"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="37" y="50" width="134" height="34" uuid="0a31a5ef-89f7-4ec3-a1df-c4279321a865"/>
+				<reportElement positionType="Float" x="37" y="40" width="134" height="34" uuid="0a31a5ef-89f7-4ec3-a1df-c4279321a865"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CENTRO DE REGISTRO]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement positionType="Float" x="37" y="206" width="750" height="71" uuid="e09ae1a6-56d3-49c4-b31d-85a5819903e4"/>
+				<reportElement positionType="Float" x="37" y="177" width="750" height="71" uuid="e09ae1a6-56d3-49c4-b31d-85a5819903e4"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="599" y="16" width="66" height="16" uuid="008e7541-8826-41ad-9d1f-44a4403017c3"/>
+				<reportElement positionType="Float" x="599" y="6" width="66" height="16" uuid="008e7541-8826-41ad-9d1f-44a4403017c3"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[DUEP:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="600" y="84" width="66" height="16" uuid="10b1c1a4-2d61-45de-b36f-071f4eea4121"/>
+				<reportElement positionType="Float" x="600" y="73" width="66" height="16" uuid="10b1c1a4-2d61-45de-b36f-071f4eea4121"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[FECHA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="37" y="100" width="134" height="16" uuid="0aa33e9c-8ada-4af8-8ae0-c7890d8efc06"/>
+				<reportElement positionType="Float" x="37" y="90" width="134" height="16" uuid="0aa33e9c-8ada-4af8-8ae0-c7890d8efc06"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONCEPTO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="37" y="206" width="186" height="16" uuid="ab042bde-d5f3-45e6-9856-c3b5558378d1"/>
+				<reportElement positionType="Float" x="38" y="177" width="186" height="16" uuid="ab042bde-d5f3-45e6-9856-c3b5558378d1"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[VALIDACIÓN PROGRÁMATICA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="599" y="167" width="129" height="16" uuid="1dfeec51-c22f-432e-98b9-dd80da7a343b"/>
+				<reportElement positionType="Float" x="599" y="142" width="129" height="16" uuid="1dfeec51-c22f-432e-98b9-dd80da7a343b"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONTRATO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="171" y="84" width="429" height="16" uuid="3118d1ea-c1ca-4d9a-aafe-1ed4abd55f42"/>
+				<reportElement positionType="Float" x="171" y="74" width="429" height="16" uuid="3118d1ea-c1ca-4d9a-aafe-1ed4abd55f42"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RECEPCIÓN DE ACTIVO FIJO]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="37" y="116" width="562" height="87" uuid="a2f87ce2-47be-45af-85d0-98864a1319a6"/>
+				<reportElement positionType="Float" x="37" y="106" width="562" height="51" uuid="a2f87ce2-47be-45af-85d0-98864a1319a6"/>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="600" y="65" width="187" height="20" uuid="718ed2d3-b3a6-41d5-870a-70b09b107cbf"/>
+				<reportElement positionType="Float" x="600" y="54" width="187" height="20" uuid="718ed2d3-b3a6-41d5-870a-70b09b107cbf"/>
 				<textFieldExpression><![CDATA[$F{des_estatus}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="600" y="100" width="186" height="20" uuid="9df862b0-14e2-46b7-a44d-6ba683bc1b57"/>
+				<reportElement positionType="Float" x="600" y="88" width="186" height="20" uuid="9df862b0-14e2-46b7-a44d-6ba683bc1b57"/>
 				<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="199" y="32" width="242" height="17" uuid="63aea1ea-e014-4e56-a2d8-e34444438f37"/>
+				<reportElement positionType="Float" x="199" y="22" width="242" height="17" uuid="63aea1ea-e014-4e56-a2d8-e34444438f37"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rfc}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="199" y="16" width="59" height="16" uuid="ec2544e1-52c4-4bd6-a012-c4c4592eed06"/>
+				<reportElement positionType="Float" x="199" y="6" width="59" height="16" uuid="ec2544e1-52c4-4bd6-a012-c4c4592eed06"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="272" y="16" width="316" height="16" uuid="27e95f56-e87e-421e-b1a3-176a5d491e3f"/>
+				<reportElement x="272" y="6" width="316" height="16" uuid="27e95f56-e87e-421e-b1a3-176a5d491e3f"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="600" y="34" width="187" height="18" uuid="d7a24bc9-9386-46ea-85e2-a93ca0fb2eaf"/>
+				<reportElement x="600" y="21" width="187" height="18" uuid="d7a24bc9-9386-46ea-85e2-a93ca0fb2eaf"/>
 				<textFieldExpression><![CDATA[$F{id_activo_fijo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="306" y="49" width="135" height="35" uuid="40a9cd9e-3557-4181-971f-029c10c15943"/>
+				<reportElement x="306" y="39" width="135" height="35" uuid="40a9cd9e-3557-4181-971f-029c10c15943"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="173" y="52" width="133" height="32" uuid="9e008432-c4a5-4552-b95f-c2962e489fdf"/>
+				<reportElement x="173" y="42" width="133" height="32" uuid="9e008432-c4a5-4552-b95f-c2962e489fdf"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="600" y="147" width="100" height="20" uuid="0006ecd3-1b94-40a9-909c-1e4c1d22bce4"/>
+				<reportElement x="600" y="123" width="100" height="20" uuid="0006ecd3-1b94-40a9-909c-1e4c1d22bce4"/>
 				<textFieldExpression><![CDATA[$F{folio_contrato_compra}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="600" y="183" width="100" height="20" uuid="a3337d91-2702-4f5c-9d36-e17c32a7db0a"/>
+				<reportElement x="600" y="157" width="100" height="20" uuid="a3337d91-2702-4f5c-9d36-e17c32a7db0a"/>
 			</textField>
 		</band>
-		<band height="274">
+		<band height="257">
 			<staticText>
 				<reportElement x="28" y="42" width="742" height="20" forecolor="#FF0033" uuid="2250650d-b90f-4e4d-a1dc-4ed5fbeaf74c"/>
 				<textElement textAlignment="Center">
@@ -484,41 +484,41 @@ where duep.ur =$P{ur}  and duep.periodo =$P{periodo}  and duep.id_activo_fijo = 
 				<text><![CDATA[CUENTA POR PAGAR:]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="237" y="183" width="100" height="1" uuid="3b6f498a-6a46-4191-921b-e3e54eb6a97b"/>
+				<reportElement positionType="Float" x="243" y="164" width="100" height="1" uuid="3b6f498a-6a46-4191-921b-e3e54eb6a97b"/>
 			</line>
 			<staticText>
-				<reportElement positionType="Float" x="435" y="196" width="153" height="20" uuid="1534132d-05ba-4442-8546-3da8127d42e8"/>
+				<reportElement positionType="Float" x="441" y="177" width="153" height="20" uuid="1534132d-05ba-4442-8546-3da8127d42e8"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[Jefe de Departamento Contabilidad]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="462" y="182" width="100" height="1" uuid="55e78f5f-9d8c-4432-8879-92213105c98c"/>
+				<reportElement positionType="Float" x="468" y="163" width="100" height="1" uuid="55e78f5f-9d8c-4432-8879-92213105c98c"/>
 			</line>
 			<staticText>
-				<reportElement positionType="Float" x="216" y="216" width="134" height="20" uuid="690bb88f-3e38-4588-9c20-5d4eca72f4df"/>
+				<reportElement positionType="Float" x="222" y="197" width="134" height="20" uuid="690bb88f-3e38-4588-9c20-5d4eca72f4df"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[Generó]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="435" y="216" width="153" height="20" uuid="2b6044c1-78a7-40d2-8470-161b634dd08e"/>
+				<reportElement positionType="Float" x="441" y="197" width="153" height="20" uuid="2b6044c1-78a7-40d2-8470-161b634dd08e"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[Autorizó]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="216" y="196" width="134" height="20" uuid="2d568621-98d7-4461-bd70-f29dd01c9634"/>
+				<reportElement positionType="Float" x="222" y="177" width="134" height="20" uuid="2d568621-98d7-4461-bd70-f29dd01c9634"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[Asistente de contabilidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="113" y="254" width="403" height="20" uuid="48e0d25b-bd2e-44ea-a80c-b8fa5ebd3e80"/>
+				<reportElement positionType="Float" x="119" y="235" width="403" height="20" uuid="48e0d25b-bd2e-44ea-a80c-b8fa5ebd3e80"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -829,25 +829,25 @@ where duep.ur =$P{ur}  and duep.periodo =$P{periodo}  and duep.id_activo_fijo = 
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="61" splitType="Stretch">
+		<band height="49" splitType="Stretch">
 			<staticText>
-				<reportElement positionType="Float" x="504" y="21" width="109" height="20" forecolor="#666666" uuid="9e503502-f1cf-462f-a45a-48581346e5da"/>
+				<reportElement positionType="Float" x="510" y="2" width="109" height="20" forecolor="#666666" uuid="9e503502-f1cf-462f-a45a-48581346e5da"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="613" y="41" width="164" height="20" forecolor="#666666" uuid="998e2286-ad2f-4fd3-a000-e0b43fdba43e"/>
+				<reportElement x="619" y="22" width="164" height="20" forecolor="#666666" uuid="998e2286-ad2f-4fd3-a000-e0b43fdba43e"/>
 				<textFieldExpression><![CDATA[$F{ultimo_usuario_modificador}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement positionType="Float" x="613" y="21" width="100" height="20" forecolor="#666666" uuid="00ed5409-e9d9-4180-82a1-0b5bcc7e5ec5"/>
+				<reportElement positionType="Float" x="619" y="2" width="100" height="20" forecolor="#666666" uuid="00ed5409-e9d9-4180-82a1-0b5bcc7e5ec5"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="504" y="41" width="109" height="20" forecolor="#666666" uuid="1345630c-7cef-4755-a72a-659ef02742bb"/>
+				<reportElement positionType="Float" x="510" y="22" width="109" height="20" forecolor="#666666" uuid="1345630c-7cef-4755-a72a-659ef02742bb"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="713" y="21" width="69" height="20" forecolor="#666666" uuid="2982ea30-dd68-4308-b008-3584c1ff63f4"/>
+				<reportElement positionType="Float" x="719" y="2" width="69" height="20" forecolor="#666666" uuid="2982ea30-dd68-4308-b008-3584c1ff63f4"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>

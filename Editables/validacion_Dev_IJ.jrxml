@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="validacion_Dev_IJ" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="349ef50d-f864-4890-bb28-082e57eaa3c7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="109"/>
+	<property name="ireport.y" value="218"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -60,12 +60,23 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select folio_duep, descripcion, tipo, proceso_origen from operation.duep where ur = $P{ur} and periodo = $P{periodo} and folio_duep = $P{folio_duep}]]>
+			<![CDATA[select
+folio_duep,
+descripcion,
+tipo,
+proceso_origen,
+proceso.nombre
+
+from operation.duep
+full outer join  catalog.procesos proceso on proceso.id_proceso = duep.proceso_origen
+
+where ur =$P{ur}  and periodo = $P{periodo} and folio_duep =$P{folio_duep}]]>
 		</queryString>
 		<field name="folio_duep" class="java.lang.Long"/>
 		<field name="descripcion" class="java.lang.String"/>
 		<field name="tipo" class="java.lang.String"/>
-		<field name="proceso_origen" class="java.lang.String"/>
+		<field name="proceso_origen" class="java.lang.Long"/>
+		<field name="nombre" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="folio_duep" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -76,23 +87,38 @@
 	<parameter name="periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="usuario" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<queryString>
-		<![CDATA[select duep.ur, duep.folio_duep, duep.beneficiario, duep.id_cat_unidad_ejecutora_gasto, duep.id_unidad_ejecutora_gasto, catalogos.descripcion as direccion, presupuestales.nombre as departamento,
-duep.concepto, duep.ultimo_usuario_modificador, duep.comentarios,
-CONCAT( beneficiario.nombre,' ', beneficiario.primer_apellido, ' ', beneficiario.segundo_apellido) AS nombre, tipo_duep.nombre as tramite,
-beneficiario.rfc from operation.duep duep
-inner join entity.beneficiario beneficiario on beneficiario.id_beneficiario = duep.beneficiario
-inner join catalog.catalogos catalogos on catalogos.id_cat = duep.id_unidad_ejecutora_gasto
-inner join catalog.catalogos_presupuestales presupuestales on catalogos.id_catalogo = presupuestales.id_catalogo
+		<![CDATA[select
+duep.ur,
+duep.folio_duep,
+duep.folio_comprobante,
+duep.beneficiario,
+duep.id_cat_unidad_ejecutora_gasto,
+duep.id_unidad_ejecutora_gasto,
+catalogos.descripcion as direccion,
+presupuestales.nombre as departamento,
+duep.concepto,
+duep.ultimo_usuario_modificador,
+duep.comentarios,
+CONCAT( beneficiario.nombre,' ', beneficiario.primer_apellido, ' ', beneficiario.segundo_apellido) AS nombre,
+tipo_duep.nombre as tramite,
+beneficiario.rfc,
+CONCAT( usuario.nombre,' ', usuario.primer_apellido, ' ', usuario.segundo_apellido) AS usuario
+
+from operation.duep duep
+
+full outer join  entity.beneficiario beneficiario on beneficiario.id_beneficiario = duep.beneficiario
+full outer join  entity.beneficiario_cuenta_bancaria bcb on bcb.id_beneficiario = beneficiario.id_beneficiario
+full outer join  catalog.catalogos catalogos on catalogos.id_cat = duep.id_unidad_ejecutora_gasto
+full outer join  catalog.catalogos_presupuestales presupuestales on presupuestales.id_catalogo = duep.id_cat_unidad_ejecutora_gasto
 full outer join catalog.estatus_duep estatus_duep on estatus_duep.id_estatus = duep.estatus_duep
-inner join catalog.tipo_duep tipo_duep on tipo_duep.id_tipo_duep = duep.tramite
-where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{folio_duep} limit 1]]>
+full outer join  catalog.tipo_duep tipo_duep on tipo_duep.id_tipo_duep = duep.tramite
+full outer join  entity.usuario usuario on usuario.id_usuario = duep.ultimo_usuario_modificador
+where duep.ur = $P{ur} and duep.periodo =$P{periodo}  and duep.folio_duep = $P{folio_duep} limit 1]]>
 	</queryString>
 	<field name="ur" class="java.lang.Long"/>
 	<field name="folio_duep" class="java.lang.Long"/>
+	<field name="folio_comprobante" class="java.lang.String"/>
 	<field name="beneficiario" class="java.lang.Long"/>
 	<field name="id_cat_unidad_ejecutora_gasto" class="java.lang.Long"/>
 	<field name="id_unidad_ejecutora_gasto" class="java.lang.String"/>
@@ -104,6 +130,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 	<field name="nombre" class="java.lang.String"/>
 	<field name="tramite" class="java.lang.String"/>
 	<field name="rfc" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -152,14 +179,14 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<reportElement x="431" y="12" width="100" height="91" uuid="cb6e0032-aa98-4436-9cfa-a7ff3c2d94c2"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="30" y="12" width="175" height="20" uuid="e5da4de9-acd0-4d22-9ca0-50d23da99b97"/>
+				<reportElement x="30" y="12" width="244" height="20" uuid="e5da4de9-acd0-4d22-9ca0-50d23da99b97"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[ BENEFICIARIO DE LA SOLICITUD:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="35" width="128" height="20" uuid="73e525b8-1d4d-412d-aff1-daa4c1c3753f"/>
+				<reportElement x="30" y="35" width="151" height="20" uuid="73e525b8-1d4d-412d-aff1-daa4c1c3753f"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
@@ -180,7 +207,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<text><![CDATA[ CONCEPTO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="431" y="12" width="100" height="20" uuid="2014db45-264e-4a0d-89ec-015c77467a2b"/>
+				<reportElement x="431" y="15" width="100" height="20" uuid="2014db45-264e-4a0d-89ec-015c77467a2b"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -208,39 +235,39 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<text><![CDATA[b) El trámite contiene evidencias suficiente de la recepción de los bienes o servicios por parte del Centro de Registro ejecutor del gasto.]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="215" y="12" width="23" height="20" uuid="b6945eb4-e5a9-4496-8f0e-f483dfd9781f"/>
+				<reportElement positionType="Float" x="274" y="12" width="23" height="20" uuid="b6945eb4-e5a9-4496-8f0e-f483dfd9781f"/>
 				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="158" y="35" width="116" height="20" uuid="5e323915-f777-4755-860a-aacee801d0ed"/>
+				<reportElement x="181" y="35" width="116" height="20" uuid="5e323915-f777-4755-860a-aacee801d0ed"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="94" y="63" width="337" height="20" uuid="48f2da6f-70e2-4133-a9f8-1545bc7c10cc"/>
 				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="112" y="83" width="319" height="20" uuid="15262ab9-1837-47e1-a2d8-eba4e6f673e7"/>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="431" y="32" width="100" height="20" uuid="434eb7cd-a304-4ef9-beb5-f82f0287a14c"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{folio_duep}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{folio_comprobante}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="249" y="12" width="182" height="20" uuid="8e04d6d2-2604-4913-a521-e451b4d0b9a6"/>
+				<reportElement x="303" y="12" width="128" height="20" uuid="8e04d6d2-2604-4913-a521-e451b4d0b9a6"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="274" y="35" width="157" height="28" uuid="b1e240f5-b50a-445b-aa89-c82888a5b67e"/>
+				<reportElement x="297" y="35" width="134" height="28" uuid="b1e240f5-b50a-445b-aa89-c82888a5b67e"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
@@ -366,7 +393,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 								<textElement>
 									<font size="8"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{proceso_origen}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -394,7 +421,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="388" y="30" width="167" height="20" forecolor="#666666" uuid="6f7202ca-3955-4407-a505-8127e4e64347"/>
-				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
