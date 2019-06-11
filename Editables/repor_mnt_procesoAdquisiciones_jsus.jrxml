@@ -49,13 +49,15 @@ WHERE ur = $P{ur} AND periodo = $P{id_periodo}]]>
 	<parameter name="id_periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT u.nombre_usuario FROM operation.compras AS c
-INNER JOIN entity.usuario AS u ON (u.id_usuario = c.ultimo_usuario_modificador)
+		<![CDATA[SELECT c.ur FROM operation.compras AS c
 WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo}
 LIMIT 1]]>
 	</queryString>
-	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="ur" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -204,7 +206,7 @@ LIMIT 1]]>
 			</textField>
 			<textField pattern="K:mm a, z" isBlankWhenNull="true">
 				<reportElement x="372" y="33" width="98" height="20" forecolor="#666666" uuid="b0f6a1fa-2f20-4623-aefa-61a109368786"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="264" y="13" width="100" height="20" forecolor="#666666" uuid="fafb44bc-fd93-44f7-b04c-b66bc93099c1"/>

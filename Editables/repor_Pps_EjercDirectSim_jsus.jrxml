@@ -52,13 +52,15 @@ WHERE pds.ur = $P{ur} AND pds.periodo = $P{id_periodo}]]>
 	<parameter name="id_periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT u.nombre_usuario FROM catalog.partidas_duep_simultaneo AS pds
-INNER JOIN entity.usuario AS u ON (u.id_usuario = pds.ultimo_usuario_modificador)
+		<![CDATA[SELECT ur FROM catalog.partidas_duep_simultaneo AS pds
 WHERE pds.ur = $P{ur} AND pds.periodo = $P{id_periodo}
 LIMIT 1]]>
 	</queryString>
-	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="ur" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -230,7 +232,7 @@ LIMIT 1]]>
 			</textField>
 			<textField pattern="K:mm a, z">
 				<reportElement positionType="Float" x="384" y="20" width="102" height="20" forecolor="#666666" uuid="10f205ed-2b86-4d50-a770-e237a52dedd1"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

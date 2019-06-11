@@ -60,11 +60,9 @@ WHERE opd.ur = $P{ur} AND opd.id_periodo = $P{id_periodo} AND opd.orden_pago = $
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT op.orden_pago,cc.descripcion AS fondo_contable, CAST(op.fecha_registro AS VARCHAR(10)) , op.poliza, CONCAT(b.nombre,' ',b.primer_apellido,' ',b.segundo_apellido) AS beneficiario, bcb.cuenta_bancaria, CAST(op.fecha_programacion_pago AS VARCHAR(10)), opd.importe,
-opd.importe_letra, u.nombre_usuario
+		<![CDATA[SELECT op.orden_pago,cc.descripcion AS fondo_contable, CAST(op.fecha_registro AS VARCHAR(10)) , op.poliza, CONCAT(b.nombre,' ',b.primer_apellido,' ',b.segundo_apellido) AS beneficiario,  CAST(op.fecha_programacion_pago AS VARCHAR(10)), opd.importe,
+opd.importe_letra
 FROM operation.orden_pago AS op
-INNER JOIN entity.usuario AS u ON (u.id_usuario = op.ultimo_usuario_modificador)
-INNER JOIN entity.beneficiario_cuenta_bancaria AS bcb ON (bcb.id_beneficiario = op.beneficiario)
 INNER JOIN entity.beneficiario AS b ON (b.id_beneficiario = op.beneficiario)
 INNER JOIN catalog.estatus_orden_pago AS eop ON (eop.id_estatus = op.estatus_orden_pago)
 INNER JOIN catalog.catalogos AS cc ON (cc.ur = op.ur AND cc.id_periodo = op.id_periodo AND cc.id_cat = op.id_fondo_contable AND cc.id_catalogo = op.id_cat_fondo_contable)
@@ -78,11 +76,9 @@ LIMIT 1]]>
 	<field name="fecha_registro" class="java.lang.String"/>
 	<field name="poliza" class="java.lang.Long"/>
 	<field name="beneficiario" class="java.lang.String"/>
-	<field name="cuenta_bancaria" class="java.lang.String"/>
 	<field name="fecha_programacion_pago" class="java.lang.String"/>
 	<field name="importe" class="java.math.BigDecimal"/>
 	<field name="importe_letra" class="java.lang.String"/>
-	<field name="nombre_usuario" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -235,13 +231,6 @@ LIMIT 1]]>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="404" y="33" width="150" height="24" uuid="9aceef3b-7a95-4905-9a38-1fb777e4232f"/>
-				<textElement verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cuenta_bancaria}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="404" y="69" width="150" height="13" uuid="d5784701-aba4-4b22-9753-346b32171fed"/>

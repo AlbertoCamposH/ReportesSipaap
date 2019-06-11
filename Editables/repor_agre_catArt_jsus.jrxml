@@ -33,12 +33,12 @@
 		<parameter name="periodo" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="clave_articulo" class="java.lang.String">
+		<parameter name="id_instance" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
 			<![CDATA[SELECT a.clave_nivel, a.descripcion_nivel, a.clave_registro, a.descripcion_registro, a.tipo_modificacion FROM catalog.articulos_aux AS a
-WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.clave_articulo = $P{clave_articulo}]]>
+WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.id_instance = $P{id_instance}]]>
 		</queryString>
 		<field name="clave_nivel" class="java.lang.Long"/>
 		<field name="descripcion_nivel" class="java.lang.String"/>
@@ -52,7 +52,7 @@ WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.clave_articulo = $P{clave_
 	<parameter name="periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="clave_articulo" class="java.lang.String">
+	<parameter name="id_instance" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="usuario" class="java.lang.String">
@@ -60,7 +60,7 @@ WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.clave_articulo = $P{clave_
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT clave_nivel FROM catalog.articulos_aux AS a
-WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.clave_articulo = $P{clave_articulo}
+WHERE a.ur = $P{ur} AND a.periodo = $P{periodo} AND a.id_instance = $P{id_instance}
 LIMIT 1]]>
 	</queryString>
 	<field name="clave_nivel" class="java.lang.Long"/>
@@ -115,15 +115,15 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table" style="table" x="1" y="0" width="554" height="55" uuid="c864089f-e2c7-40dc-9050-ab6a8a13d2fd"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla" uuid="dcda7e6b-1ac5-4865-900c-fb56f2282362">
+					<datasetRun subDataset="tabla" uuid="49e94ce8-f24b-45e8-ab55-e1b739cbff11">
 						<datasetParameter name="ur">
 							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="periodo">
 							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
 						</datasetParameter>
-						<datasetParameter name="clave_articulo">
-							<datasetParameterExpression><![CDATA[$P{clave_articulo}]]></datasetParameterExpression>
+						<datasetParameter name="id_instance">
+							<datasetParameterExpression><![CDATA[$P{id_instance}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -131,7 +131,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="313bf063-bef3-4b87-bda8-ed781d309d2c"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="313bf063-bef3-4b87-bda8-ed781d309d2c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clave de Nivel]]></text>
 							</staticText>
@@ -148,7 +148,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="145" height="30" uuid="7ab43706-f277-4932-9765-791a2aea0f72"/>
+								<reportElement mode="Opaque" x="0" y="0" width="145" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="7ab43706-f277-4932-9765-791a2aea0f72"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripción de Nivel]]></text>
 							</staticText>
@@ -165,7 +165,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="042ee708-dad0-4b22-8d0f-d982f8384e61"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="042ee708-dad0-4b22-8d0f-d982f8384e61"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Clave de Registro]]></text>
 							</staticText>
@@ -182,7 +182,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="141" height="30" uuid="fb348e54-eb01-4dd8-91de-0ebce50e162f"/>
+								<reportElement mode="Opaque" x="0" y="0" width="141" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="fb348e54-eb01-4dd8-91de-0ebce50e162f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripción del Registro]]></text>
 							</staticText>
@@ -199,7 +199,7 @@ LIMIT 1]]>
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a417cd86-f864-44e9-8332-bdcff2e6dec2"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="a417cd86-f864-44e9-8332-bdcff2e6dec2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Tipo de Modificación]]></text>
 							</staticText>

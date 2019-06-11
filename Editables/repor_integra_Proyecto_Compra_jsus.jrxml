@@ -69,7 +69,7 @@ WHERE cd.ur = $P{ur} AND cd.periodo = $P{id_periodo} AND cd.id_compras = $P{foli
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT c.id_compras AS Folio, c.periodo AS Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra, sum(cd.importe_total) AS Importe_total FROM operation.compras AS c
-INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.id_compras = c.id_compras)
+INNER JOIN operation.compras_det AS cd ON (cd.ur = c.ur AND cd.periodo = c.periodo AND cd.folio_req = c.folio_req AND cd.id_compras = c.id_compras)
 WHERE c.ur = $P{ur} AND c.periodo = $P{id_periodo} AND c.id_compras = $P{id_compras}
 GROUP BY Folio, Fecha, c.id_fuente_financiamiento, c.referencia, c.importe_letra
 LIMIT 1]]>

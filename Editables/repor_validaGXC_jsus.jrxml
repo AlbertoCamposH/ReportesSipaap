@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_progSolViat_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f8ea611-8779-4236-b621-1c94d4d0a64c">
-	<property name="ireport.zoom" value="0.7513148009015777"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_validaGXC_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9474dc86-16be-40de-bfcc-82279f392cb2">
+	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -49,48 +49,48 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="tabla" uuid="1cdecd89-1bc6-4108-bcd9-5a7a5cc59fc4">
+	<subDataset name="tabla" uuid="c7566f77-90ad-4cf0-bae9-03cda4a1defc">
 		<parameter name="ur" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<parameter name="periodo" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="folio" class="java.lang.Long">
+		<parameter name="folio_duep" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT dd.articulo, dd.c_objeto_gasto, dd.clave_presupuestal, dd.folio_comprobante, dd.cantidad, dd.u_medida, dd.precio_unitario, dd.importe, dd.programa_presupuestal, dd.indicador
+			<![CDATA[SELECT dd.folio_duep, dd.c_objeto_gasto, dd.clave_presupuestal, dd.folio_comprobante, dd.cantidad, dd.unidad_medida, dd.precio_unitario, dd.total, dd.programa_presupuestal, dd.indicador, dd.folio_duep_detalle AS meta_asociada
 FROM operation.duep_detalle AS dd
-WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio}]]>
+WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio_duep}]]>
 		</queryString>
-		<field name="articulo" class="java.lang.String"/>
+		<field name="folio_duep" class="java.lang.Long"/>
 		<field name="c_objeto_gasto" class="java.lang.String"/>
 		<field name="clave_presupuestal" class="java.lang.String"/>
 		<field name="folio_comprobante" class="java.lang.String"/>
 		<field name="cantidad" class="java.math.BigDecimal"/>
-		<field name="u_medida" class="java.lang.Long"/>
+		<field name="unidad_medida" class="java.lang.Long"/>
 		<field name="precio_unitario" class="java.math.BigDecimal"/>
-		<field name="importe" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
 		<field name="programa_presupuestal" class="java.lang.String"/>
 		<field name="indicador" class="java.lang.String"/>
+		<field name="meta_asociada" class="java.lang.Long"/>
 	</subDataset>
-	<subDataset name="suma_1" uuid="d6bbc2de-1806-4f26-bbc6-0ee81f577d25">
+	<subDataset name="suma" uuid="4096facb-dab4-42cd-b8f5-8a34e3108c46">
 		<parameter name="ur" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<parameter name="periodo" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="folio" class="java.lang.Long">
+		<parameter name="folio_duep" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT dd.importe
-FROM operation.duep_detalle AS dd
-WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio}]]>
+			<![CDATA[SELECT dd.total FROM operation.duep_detalle AS dd
+WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio_duep}]]>
 		</queryString>
-		<field name="importe" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -98,18 +98,20 @@ WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio}]
 	<parameter name="periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="folio" class="java.lang.Long">
+	<parameter name="folio_duep" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="usuario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT d.folio_duep, d.id_unidad_ejecutora_gasto, d.tramite, d.concepto FROM operation.duep AS d
-WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
+		<![CDATA[SELECT d.folio_duep, dd.centro_registro, d.tramite, d.concepto FROM operation.duep AS d
+INNER JOIN operation.duep_detalle AS dd ON (dd.ur = d.ur AND dd.periodo = d.periodo AND dd.folio_duep = d.folio_duep)
+WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep}
+LIMIT 1]]>
 	</queryString>
 	<field name="folio_duep" class="java.lang.Long"/>
-	<field name="id_unidad_ejecutora_gasto" class="java.lang.String"/>
+	<field name="centro_registro" class="java.lang.Long"/>
 	<field name="tramite" class="java.lang.Long"/>
 	<field name="concepto" class="java.lang.String"/>
 	<background>
@@ -118,169 +120,178 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement positionType="Float" x="155" y="20" width="473" height="16" uuid="0c5e69b2-ee6d-4abe-a4d3-5402c1321b2a"/>
+				<reportElement positionType="Float" x="118" y="5" width="463" height="16" uuid="bf765c4d-9696-41c5-8ffb-499d4de4082b"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="118" y="40" width="463" height="16" uuid="61ebd3d2-bd6b-467e-bc3f-0fa73abf474e"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="118" y="22" width="463" height="16" uuid="6dc88a1c-f01f-441c-b627-e1a662340700"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
 			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="155" y="2" width="473" height="16" uuid="e7240276-0a60-4323-affc-7e99d38d977c"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="155" y="39" width="473" height="16" uuid="5e603792-f9a8-4576-95fa-85e4f6c85287"/>
-				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
-			</staticText>
 			<image>
-				<reportElement positionType="Float" x="628" y="0" width="174" height="79" uuid="8f982acb-653c-4a67-85ac-53e0511d4593"/>
+				<reportElement positionType="Float" x="594" y="-1" width="174" height="79" uuid="8fd38e28-f1b9-4c14-8ac8-884aa775614f"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement positionType="Float" x="155" y="58" width="473" height="16" uuid="102be546-2c73-4de6-8861-f9c9816042ed"/>
+				<reportElement positionType="Float" x="118" y="58" width="463" height="16" uuid="3b4dc34a-72be-4662-888a-eb8bce8141e4"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="true"/>
+					<font size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[RESUMEN DE AFECTACIÓN PROGRAMÁTICA]]></text>
 			</staticText>
 		</band>
 	</title>
 	<detail>
-		<band height="232" splitType="Stretch">
+		<band height="222" splitType="Stretch">
 			<rectangle>
-				<reportElement positionType="Float" x="8" y="0" width="255" height="20" uuid="5a1eef65-4174-405c-b3c5-ddf15acccd63"/>
+				<reportElement positionType="Float" x="0" y="1" width="149" height="20" uuid="7d030cd7-d05f-4b6e-81bb-f53cf797e100"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="8" y="20" width="255" height="14" uuid="da402253-f8ff-4a83-ba59-f41f68003f8c"/>
+				<reportElement positionType="Float" x="0" y="21" width="149" height="20" uuid="ec8f8ba3-730c-4517-8aaf-39dc7ba84771"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="8" y="34" width="255" height="20" uuid="ed457bd7-e5da-4811-b0b7-80b32f36d528"/>
+				<reportElement positionType="Float" x="0" y="41" width="149" height="20" uuid="2f549d6c-2371-4600-b506-bc68bb573d16"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="8" y="54" width="794" height="27" uuid="d2d43b62-33b7-4b28-a3d4-55b358d3c25f"/>
+				<reportElement positionType="Float" x="0" y="61" width="801" height="32" uuid="d22e2eeb-c715-4c2f-9809-23d5988afa24"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="155" y="0" width="647" height="20" uuid="2a96e1d2-ba99-4363-9994-7930b3533e1f"/>
+				<reportElement positionType="Float" x="149" y="1" width="652" height="20" uuid="4bfd54ea-a121-491e-859e-8f058eb9fa3b"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="155" y="20" width="647" height="14" uuid="82641a04-417e-4a23-9417-17247a329c1c"/>
+				<reportElement positionType="Float" x="149" y="21" width="652" height="20" uuid="03455320-562f-4f6a-a4e0-76266c8fc376"/>
 			</rectangle>
 			<rectangle>
-				<reportElement positionType="Float" x="155" y="34" width="647" height="20" uuid="0c4445f0-7a50-47d6-a32c-68e689c50047"/>
+				<reportElement positionType="Float" x="149" y="41" width="652" height="20" uuid="2225539a-a667-4eb6-a610-e9c8ed784691"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="8" y="0" width="147" height="20" uuid="04f9977f-ba0a-4eac-92f9-7f7c80d700b9"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement positionType="Float" x="0" y="1" width="149" height="20" uuid="9766d2d0-3564-46dd-baa1-6afff21b8d1f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[FOLIO DUEP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="8" y="20" width="147" height="14" uuid="1e9a3d26-7b75-426f-a759-968c4b2ac934"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement positionType="Float" x="0" y="21" width="149" height="20" uuid="1c33d6d3-5c9f-435e-9718-81b00ce0c4e2"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[CENTRO DE REGISTRO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="8" y="34" width="147" height="20" uuid="2c7442d5-1e67-4bd2-ac7c-2826a5f78e93"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement positionType="Float" x="0" y="41" width="149" height="20" uuid="ca81758b-c833-4eb2-96fc-f0d69c731449"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[TRÁMITE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="8" y="54" width="147" height="20" uuid="c6b72326-2992-4158-a64c-abdb6520d1fb"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[CONCEPTO:]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement positionType="Float" x="8" y="93" width="794" height="14" backcolor="#004987" uuid="d0a9e9ca-0a30-4e6b-bda5-b619fa73dabd"/>
-			</rectangle>
-			<staticText>
-				<reportElement positionType="Float" x="8" y="93" width="794" height="14" forecolor="#FFFFFF" uuid="4b424c8f-c746-4ab9-a17c-6f6bb7304077"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement positionType="Float" x="0" y="61" width="149" height="32" uuid="edba8a58-69ca-46c7-9dab-f68c5b95ac8f"/>
+				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[DETALLES DE LA AFECTACIÓN PROGRAMATICA]]></text>
+				<text><![CDATA[CONCEPTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="93" width="802" height="20" forecolor="#FFFFFF" backcolor="#004B87" uuid="9f7ef73f-f713-4e48-b57b-3317279001f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE LA AFECTACIÓN PROGRAMÁTICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="441" y="189" width="119" height="20" uuid="d1d6fc20-14e3-4093-8445-d75cfe973f87"/>
+				<text><![CDATA[Aplicación Presupuestal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="226" y="120" width="368" height="23" forecolor="#FF0033" uuid="d7a05ccf-424e-40eb-a191-b23ee91ce2dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="155" y="0" width="647" height="20" uuid="1e350121-31ee-4680-9b4d-9e7f73b8f972"/>
+				<reportElement positionType="Float" x="149" y="1" width="652" height="20" uuid="6b5723c6-6238-4dae-9765-fd9c9d1b192b"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{folio_duep}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="155" y="20" width="647" height="14" uuid="e5dea571-ec35-410e-baf5-d1b8c82356ef"/>
+				<reportElement positionType="Float" x="150" y="21" width="652" height="20" uuid="cfd70dce-719f-4521-a5b8-16be52a6b6cd"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{id_unidad_ejecutora_gasto}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{centro_registro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="155" y="34" width="647" height="20" uuid="23ad8762-8b22-4343-af3a-cc6a3c47a558"/>
+				<reportElement positionType="Float" x="150" y="41" width="652" height="20" uuid="6f115924-5b5f-4aa5-a6f2-7f678019fa1d"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="155" y="54" width="647" height="27" uuid="bf53d454-9da7-434c-a86e-a0a8f177eafd"/>
+				<reportElement positionType="Float" x="149" y="61" width="652" height="32" uuid="3ab60f02-5af5-4f7a-b448-5f6cac46174b"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" x="134" y="120" width="525" height="20" forecolor="#FF0033" uuid="60987531-38e7-4bb0-ba8c-ac8696d3e807"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
 			<componentElement>
-				<reportElement key="table" style="table" positionType="Float" x="8" y="107" width="794" height="80" uuid="4f0183b2-9a52-4afa-a19e-81e21bb9189c"/>
+				<reportElement key="table" style="table" x="0" y="113" width="801" height="54" uuid="2e86db42-634d-47c9-b0b7-157c4629a3a1"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla" uuid="816e67b7-9022-4bd9-a1a7-f7cbab6d8be8">
+					<datasetRun subDataset="tabla" uuid="8b06c960-eba4-49d3-9fb9-b37e65112184">
 						<datasetParameter name="ur">
 							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="periodo">
 							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
 						</datasetParameter>
-						<datasetParameter name="folio">
-							<datasetParameterExpression><![CDATA[$P{folio}]]></datasetParameterExpression>
+						<datasetParameter name="folio_duep">
+							<datasetParameterExpression><![CDATA[$P{folio_duep}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="89" uuid="fd97692b-c824-44a2-b1dc-fececd240f6f">
+					<jr:column width="55" uuid="3fda9389-3335-4005-a650-4b18176389a5">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="62" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="027c1703-5b0a-4ba7-a200-e0d9bd666a2d"/>
+								<reportElement mode="Opaque" x="0" y="0" width="55" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="aa9a581d-c664-40f3-9132-388287005cd9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Articulo]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="62" height="20" uuid="38730020-c598-4acc-a351-7b295b1a9a02"/>
+								<reportElement x="0" y="0" width="55" height="20" uuid="62e5f7fe-84fc-481f-8b2c-0a02dcad7f5b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{articulo}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{folio_duep}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="83" uuid="a23f7271-e7bc-497f-b36e-460731ccf3bd">
+					<jr:column width="74" uuid="aff3a25a-d7ab-4d41-9e8e-a856da290acc">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="83" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="e1897894-1af2-41c7-930e-51b7f948821d"/>
+								<reportElement mode="Opaque" x="0" y="0" width="74" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="a73e66e4-5506-4169-99be-a1af6386b3a9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[COG]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="83" height="20" uuid="c497d4d6-8bf7-45f2-a00b-45a161373ade"/>
+								<reportElement x="0" y="0" width="74" height="20" uuid="c2e45957-519d-4301-9a58-f4c154bccd78"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -288,20 +299,20 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="76" uuid="2ba8e142-8a81-4892-ab0c-6817dd1e5ed1">
+					<jr:column width="73" uuid="e87fd940-7507-455d-95db-8b0e89462e96">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="76" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="84ce0cd7-eadc-4709-8758-d5b77c3556f2"/>
+								<reportElement mode="Opaque" x="0" y="0" width="73" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="7df00a65-445e-4512-b0bf-d27b48809818"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Clave Presupuestal]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="76" height="20" uuid="fa5e346b-bd9e-4af3-bdbb-1ca36e331df0"/>
+								<reportElement x="0" y="0" width="73" height="20" uuid="ad9ccc55-39d3-4bd9-a0c6-1406f11a1546"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -309,20 +320,20 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="73" uuid="d8104ed4-0af0-431d-a0be-17113f15af2c">
+					<jr:column width="90" uuid="1267dfc6-739a-4fe6-ad0e-80f41a478164">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="73" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="74578801-a755-4bb8-a778-076db07fc39e"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="15341f9a-7645-4774-9a66-14d4d314a5f2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Folio del Comprobante]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="73" height="20" uuid="b551c776-7979-41ef-b913-cccddc993f9a"/>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a1edd16a-b789-4de6-9191-c28ce63b74d7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -330,20 +341,20 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="76" uuid="33ae0347-7382-445d-981d-4c0041c118ca">
+					<jr:column width="54" uuid="8958cc55-4b86-43ea-a914-a3993111185b">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="76" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="2f38d692-9634-424f-bae6-9f9c28620472"/>
+								<reportElement mode="Opaque" x="0" y="0" width="54" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="d87f3bd5-a6bd-4f7d-82ba-7ace733c06f0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Cantidad]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="76" height="20" uuid="62b1584f-7c42-4fdf-a441-4ce9ceb85046"/>
+								<reportElement x="0" y="0" width="54" height="20" uuid="36c6f2f4-4d76-47e4-9235-377284cb34df"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -351,41 +362,41 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="663f5821-e134-42d0-b755-ceab8ef5925b">
+					<jr:column width="70" uuid="8ac9f9b2-38cc-454e-9dea-da71a8fb128a">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="e2f709f5-ee35-410d-a6e1-ed399df50b70"/>
+								<reportElement mode="Opaque" x="0" y="0" width="70" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="387bf2f5-44bf-4c21-808f-bcbc78b1e43e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Unidad de Medida]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="20" uuid="085c0564-b6bd-48d4-b09c-f102113909eb"/>
+								<reportElement x="0" y="0" width="70" height="20" uuid="9c96e046-16ae-4743-bf40-1f6c25b9744e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{u_medida}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{unidad_medida}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="72" uuid="03496d73-173d-424a-9155-5c86b6506786">
+					<jr:column width="70" uuid="4755d8cc-43a5-4f49-a0bd-2988383a4e7d">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="72" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="3c74ac03-681e-4585-88e9-92962c21f36a"/>
+								<reportElement mode="Opaque" x="0" y="0" width="70" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="623246a7-83e4-4b8a-ae43-9ad1ed14f36c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Importe Unitario]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="72" height="20" uuid="d76c6927-ce88-4b56-ac9c-5e8fd67ad219"/>
+								<reportElement x="0" y="0" width="70" height="20" uuid="fa01f8c7-0b4b-4848-aed8-2edad9080cc3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -393,41 +404,41 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="73" uuid="245ca6c7-bf34-4364-ba29-422a4a6140ec">
+					<jr:column width="61" uuid="e73cafb2-c212-4a78-84cc-373544d1b370">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="73" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="b9130435-9eda-4204-af4b-82f825487f9b"/>
+								<reportElement mode="Opaque" x="0" y="0" width="61" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="c998cb23-d39a-4d69-8fb9-f905b2899677"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Importe Total]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="73" height="20" uuid="1f0fe2ff-392e-49d6-a58e-460da76f322e"/>
+								<reportElement x="0" y="0" width="61" height="20" uuid="82f960b6-6a42-498b-9c60-c0df8815f611"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="03ba3938-857c-4267-b5fd-08998a2192e8">
+					<jr:column width="73" uuid="58315a5b-f2aa-49a0-a4c3-238ec39e88a7">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="d119fc57-d2a6-4a2f-8e60-fbb80962eb83"/>
+								<reportElement mode="Opaque" x="0" y="0" width="73" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="a63c6ebd-8aa0-4373-8423-dfebb3ff33ca"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Programa Presupuestal]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="20" uuid="9f932e71-6e11-416a-891d-1ab4d05a93f0"/>
+								<reportElement x="0" y="0" width="73" height="20" uuid="b744303b-b0f7-4278-998d-6ec931222334"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -435,20 +446,20 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="72" uuid="6111e68c-ace1-4be7-8db8-b07715ed0314">
+					<jr:column width="90" uuid="0983f962-b184-4b7b-a881-43a3bc538eb2">
 						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="72" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="a67dd703-136a-4dda-b440-b0b81ad4a5fc"/>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="68c91cd4-3f95-4c8e-bfe8-cfb0ef6f1c5e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="9"/>
+									<font size="8"/>
 								</textElement>
 								<text><![CDATA[Indicador]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="72" height="20" uuid="5b9c822b-bba5-4813-9093-98ba881e27b4"/>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f71a8451-22e2-4263-bad7-ebceb3bca416"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -456,24 +467,49 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
+					<jr:column width="90" uuid="13224c54-5143-46d0-9b36-60fac0b8a733">
+						<jr:tableHeader style="table_TH" height="3" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="57e80da5-3a9e-4c7a-9a58-43d645b10a08"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[Meta Asociada]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="90" height="20" uuid="c41a9198-306d-4c00-9ccc-817cddeb23a2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{meta_asociada}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
 				</jr:table>
 			</componentElement>
-			<staticText>
-				<reportElement positionType="Float" x="322" y="212" width="147" height="20" uuid="f8ff95b6-55c8-4663-b77d-4a13ef0530fe"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Aplicación Presupuestal]]></text>
-			</staticText>
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="466" y="212" width="135" height="20" uuid="07941875-a256-4369-864a-b1c5b0af48f1"/>
+				<reportElement key="table 1" style="table 1" x="560" y="189" width="152" height="20" uuid="3a3d80a3-7abf-4695-8336-10651bc1bdc1"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="suma_1" uuid="b2509718-8f70-4c9d-8fc1-587c4274784f">
+					<datasetRun subDataset="suma" uuid="3d44f517-5720-441e-8a1e-aec873d8636b">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="folio_duep">
+							<datasetParameterExpression><![CDATA[$P{folio_duep}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="135" uuid="4c7c76e1-599b-4b01-bc16-ab7a3925061b">
+					<jr:column width="154" uuid="af32633c-bc54-43ed-8f52-67a7c49be69a">
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="134" height="20" uuid="b9165cd8-dd7b-4499-9109-b61df6625deb"/>
-								<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+							<textField>
+								<reportElement x="0" y="0" width="152" height="20" uuid="d4a14736-ceeb-42da-8a6d-fb4725f65917"/>
+								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -482,29 +518,29 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio}]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<staticText>
-				<reportElement positionType="Float" x="522" y="32" width="100" height="20" forecolor="#666666" uuid="d6267f7c-1483-4d8f-a933-85fbb55e87e9"/>
+				<reportElement positionType="Float" x="527" y="20" width="100" height="20" forecolor="#666666" uuid="70e8b1af-f658-475f-8cdd-c3775281a63e"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Usuario:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement positionType="Float" x="628" y="12" width="100" height="20" forecolor="#666666" uuid="2d700b4c-1e0d-47fc-84bf-edd983217188"/>
+				<reportElement positionType="Float" x="633" y="0" width="100" height="20" forecolor="#666666" uuid="507454bc-a6e0-4006-aba6-a20e840c33c4"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="633" y="20" width="168" height="20" forecolor="#666666" uuid="9a3e5512-6fc4-481f-ab33-02fa386745c5"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
 			<textField pattern="K:mm a, z">
-				<reportElement positionType="Float" x="728" y="12" width="69" height="20" forecolor="#666666" uuid="a04ee8ed-35ba-4d46-a3cf-c23f4c744848"/>
+				<reportElement positionType="Float" x="733" y="0" width="69" height="20" forecolor="#666666" uuid="f7b46b33-9e6a-4b2a-8aff-4138e1fe1a76"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="522" y="12" width="100" height="20" forecolor="#666666" uuid="2b5da59e-92b1-460f-8a6f-0b3fc6320417"/>
+				<reportElement positionType="Float" x="527" y="0" width="100" height="20" forecolor="#666666" uuid="27cf3213-f5b9-43e2-8a7a-829964aacd65"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Fecha de impresión:]]></text>
 			</staticText>
-			<textField pattern="K:mm a, z" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="628" y="33" width="100" height="20" forecolor="#666666" uuid="1069181c-fb7c-4c0c-a436-3bee6bd5004a"/>
-				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_registr_oficioComision_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="787c5c8c-bd83-425b-9de2-348eb8c5daa9">
 	<property name="ireport.zoom" value="0.9090909090909107"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="240"/>
+	<property name="ireport.x" value="69"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -136,8 +136,7 @@ INNER JOIN catalog.estatus_oficio_comision AS eoc ON (eoc.id_estatus = oc.id_est
 INNER JOIN catalog.oficio_comision_viaticos_requeridos AS ocvr ON (ocvr.ur = oc.ur AND ocvr.periodo = oc.periodo AND ocvr.oficio_comision = oc.id_oficio)
 WHERE oc.ur = $P{ur} AND oc.periodo = $P{periodo} AND oc.id_oficio = $P{id_oficio}
 GROUP BY oc.comisionado_titular, oc.puesto, oc.id_centro_registro, oc.fecha_registro, oc.folio_comision, eoc.descripcion,oc.nombre_comision, oc.pais_destino, oc.estado_destino, oc.municipio_destino, oc.objetivo, oc.tipo_comision, oc.fecha_salida, oc.fecha_regreso
-LIMIT 1
-]]>
+LIMIT 1]]>
 	</queryString>
 	<field name="comisionado_titular" class="java.lang.Long"/>
 	<field name="puesto" class="java.lang.Long"/>
@@ -160,7 +159,7 @@ LIMIT 1
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement positionType="Float" x="138" y="5" width="463" height="16" uuid="c836f628-e46c-4068-8639-7fac85466682"/>
+				<reportElement positionType="Float" x="107" y="5" width="525" height="16" uuid="c836f628-e46c-4068-8639-7fac85466682"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -188,7 +187,7 @@ LIMIT 1
 				<text><![CDATA[OFICIO DE COMISIÓN]]></text>
 			</staticText>
 			<image>
-				<reportElement positionType="Float" x="628" y="0" width="174" height="79" uuid="5854a4a5-1ef2-4ef8-8ed2-e54643eafe12"/>
+				<reportElement positionType="Float" x="636" y="5" width="157" height="74" uuid="5854a4a5-1ef2-4ef8-8ed2-e54643eafe12"/>
 				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
 			</image>
 		</band>

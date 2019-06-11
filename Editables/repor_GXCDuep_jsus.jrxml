@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_ejecDDuep_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2dea21d1-86cd-4ba8-8762-433af8322347">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="267"/>
+	<property name="ireport.y" value="128"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -301,7 +301,7 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 			<staticText>
 				<reportElement positionType="Float" x="165" y="102" width="461" height="33" uuid="283e9bef-1ad8-41d5-ab9a-64a5f462cf43"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[EJERCICIO DIRECTO SIMULTANEO]]></text>
+				<text><![CDATA[SOLICITUD DE GASTO POR COMPROBAR]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement positionType="Float" x="626" y="4" width="154" height="191" uuid="96a2f740-b556-4f07-880c-518c95f14f2d"/>
@@ -319,17 +319,17 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 			<staticText>
 				<reportElement positionType="Float" x="626" y="79" width="122" height="20" uuid="66c52e4d-4f6e-4c06-852a-b163d2faf9fe"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
-				<text><![CDATA[PÓLIZA COMPROMISO:]]></text>
+				<text><![CDATA[OFICIO DE SOLICITUD:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="627" y="115" width="122" height="20" uuid="8e65e43d-bb21-4be8-b979-eaa232d899d6"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
-				<text><![CDATA[PÓLIZA DEVENGO:]]></text>
+				<text><![CDATA[FECHA:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="628" y="151" width="122" height="20" uuid="e6e3fa0e-a855-482e-b88e-ba71de4b36bd"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
-				<text><![CDATA[FECHA:]]></text>
+				<text><![CDATA[PÓLIZA COMPROMISO:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="175" y="5" width="451" height="44" uuid="25bb725e-110f-44a0-838b-616f7aeae6c9"/>
@@ -337,7 +337,7 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="165" y="135" width="461" height="60" uuid="ca57af04-8f08-4657-9def-3efce6e6315b"/>
+				<reportElement positionType="Float" x="175" y="135" width="451" height="60" uuid="ca57af04-8f08-4657-9def-3efce6e6315b"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>

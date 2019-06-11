@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_comprServicios_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e35d1a81-f4ac-4274-90a6-97f27ce4049a">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="304"/>
+	<property name="ireport.y" value="64"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -129,19 +129,20 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT cas.id_compromiso_anual_sp AS bloque, cas.id_cog, a.descripcion_objeto_gasto, cas.id_clave_presupuestal, cas.id_programa_presupuestario, cas.id_centro_registro, cas.id_fondo_contable, cas.importe_casp
-FROM operation.compromiso_anual_sp AS cas
-INNER JOIN catalog.articulos AS a ON (a.ur = cas.ur AND a.periodo = cas.id_periodo AND a.id_cat_clasificacion_objeto_gasto = cas.id_cat_cog)
-WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_anual_sp = $P{id_compromiso}]]>
+			<![CDATA[SELECT cas.id_compromiso AS bloque, substring(a.clave_articulo,1,5) AS cog, a.descripcion AS descripcion_cog, cas.clave_presupuestal, cs.descripcion AS programa_presupuestal, cas.id_centro_registro, cas.id_fondo_contable, to_char(cas.importe_total, '99,999,990.00') AS importe_total
+FROM operation.compromisos_anual_det AS cas
+INNER JOIN catalog.articulos AS a ON (a.ur = cas.ur AND a.periodo = cas.id_periodo AND a.clave_articulo = cas.articulo)
+INNER JOIN catalog.catalogos AS cs ON (cs.ur = cas.ur AND cs.id_periodo = cas.id_periodo AND cs.id_catalogo = cas.id_programa_presupuestal AND cs.id_cat = cas.programa_presupuestal)
+WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
 		<field name="bloque" class="java.lang.Long"/>
-		<field name="id_cog" class="java.lang.Long"/>
-		<field name="descripcion_objeto_gasto" class="java.lang.String"/>
-		<field name="id_clave_presupuestal" class="java.lang.String"/>
-		<field name="id_programa_presupuestario" class="java.lang.Long"/>
+		<field name="cog" class="java.lang.String"/>
+		<field name="descripcion_cog" class="java.lang.String"/>
+		<field name="clave_presupuestal" class="java.lang.String"/>
+		<field name="programa_presupuestal" class="java.lang.String"/>
 		<field name="id_centro_registro" class="java.lang.Long"/>
-		<field name="id_fondo_contable" class="java.lang.Long"/>
-		<field name="importe_casp" class="java.math.BigDecimal"/>
+		<field name="id_fondo_contable" class="java.lang.String"/>
+		<field name="importe_total" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="tabla2" uuid="3320abeb-3bc3-41c1-9687-96606cac6309">
 		<parameter name="ur" class="java.lang.Long">
@@ -154,19 +155,19 @@ WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT ma.origen_poliza, ma.folio_movimiento_auxiliar, dma.clave_cuenta_contable, dma.referencia, dma.concepto_bloque, ma.importe_total_cargo, ma.importe_total_abono
-FROM operation.compromiso_anual_sp AS cas
+			<![CDATA[SELECT ma.origen_poliza, ma.folio_movimiento_auxiliar, dma.clave_cuenta_contable, dma.referencia, dma.concepto_bloque, to_char(ma.importe_total_cargo, '99,999,990.00') AS importe_total_cargo, to_char(ma.importe_total_abono, '99,999,990.00') AS importe_total_abono
+FROM operation.compromisos_anual AS cas
 INNER JOIN operation.movimientos_auxiliares AS ma ON (ma.ur = cas.ur AND ma.periodo = cas.id_periodo AND ma.folio_movimiento_auxiliar = cas.poliza_comprometido)
 INNER JOIN operation.detalle_movimientos_auxiliares AS dma ON (dma.ur = ma.ur AND dma.id_periodo = ma.periodo AND dma.id_movimiento_auxiliar = ma.folio_movimiento_auxiliar)
-WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_anual_sp = $P{id_compromiso}]]>
+WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
 		<field name="origen_poliza" class="java.lang.Long"/>
 		<field name="folio_movimiento_auxiliar" class="java.lang.Long"/>
 		<field name="clave_cuenta_contable" class="java.lang.String"/>
 		<field name="referencia" class="java.lang.String"/>
 		<field name="concepto_bloque" class="java.lang.String"/>
-		<field name="importe_total_cargo" class="java.math.BigDecimal"/>
-		<field name="importe_total_abono" class="java.math.BigDecimal"/>
+		<field name="importe_total_cargo" class="java.lang.String"/>
+		<field name="importe_total_abono" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="suma1" uuid="de86e483-43d9-4b1d-8e7b-747f04b89f4e">
 		<parameter name="ur" class="java.lang.Long">
@@ -179,12 +180,11 @@ WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT SUM(cas.importe_casp)
-FROM operation.compromiso_anual_sp AS cas
-WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_anual_sp = $P{id_compromiso}
-]]>
+			<![CDATA[SELECT to_char(SUM(cas.importe_total), '99,999,990.00') AS sum
+FROM operation.compromisos_anual_det AS cas
+WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
-		<field name="sum" class="java.math.BigDecimal"/>
+		<field name="sum" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="suma2" uuid="f14fd5eb-8da5-4355-90f0-bea3f4551e91">
 		<parameter name="ur" class="java.lang.Long">
@@ -197,14 +197,13 @@ WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT SUM(ma.importe_total_cargo) AS cargo, SUM(ma.importe_total_abono) AS abono
-FROM operation.compromiso_anual_sp AS cas
+			<![CDATA[SELECT to_char(SUM(ma.importe_total_cargo), '99,999,990.00') AS cargo, to_char(SUM(ma.importe_total_abono), '99,999,990.00') AS abono
+FROM operation.compromisos_anual AS cas
 INNER JOIN operation.movimientos_auxiliares AS ma ON (ma.ur = cas.ur AND ma.periodo = cas.id_periodo AND ma.folio_movimiento_auxiliar = cas.poliza_comprometido)
-WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_anual_sp = $P{id_compromiso}
-]]>
+WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
-		<field name="cargo" class="java.math.BigDecimal"/>
-		<field name="abono" class="java.math.BigDecimal"/>
+		<field name="cargo" class="java.lang.String"/>
+		<field name="abono" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -215,12 +214,16 @@ WHERE cas.ur = $P{ur} AND cas.id_periodo = $P{id_periodo} AND cas.id_compromiso_
 	<parameter name="id_compromiso" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT ca.id_beneficiario, ca.id_centro_registro, ca.tramite, ca.concepto, ca.observaciones_compromiso_anual, ca.id_duep, ca.estatus, ca.tipo_compromiso, ca.fecha_compromiso, u.nombre_usuario
+		<![CDATA[SELECT ca.id_compromiso, ca.id_beneficiario, ca.id_centro_registro, ca.tramite, ca.concepto, ca.observaciones_compromiso_anual, ca.id_duep, ca.estatus, tc.tipo_compromiso, ca.fecha_compromiso
 FROM operation.compromisos_anual AS ca
-INNER JOIN entity.usuario AS u ON (u.id_usuario = ca.ultimo_usuario_modificador)
+INNER JOIN catalog.tipo_compromiso AS tc ON (tc.id_tipo_compromiso = ca.id_tipo_compromiso)
 WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $P{id_compromiso}]]>
 	</queryString>
+	<field name="id_compromiso" class="java.lang.Long"/>
 	<field name="id_beneficiario" class="java.lang.Long"/>
 	<field name="id_centro_registro" class="java.lang.Long"/>
 	<field name="tramite" class="java.lang.String"/>
@@ -230,7 +233,6 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 	<field name="estatus" class="java.lang.String"/>
 	<field name="tipo_compromiso" class="java.lang.String"/>
 	<field name="fecha_compromiso" class="java.sql.Date"/>
-	<field name="nombre_usuario" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -239,7 +241,7 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 			<staticText>
 				<reportElement positionType="Float" x="126" y="6" width="463" height="16" uuid="55c855b9-0bdd-410c-b1e6-47138c6a5cb5"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
@@ -253,14 +255,14 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 			<staticText>
 				<reportElement positionType="Float" x="126" y="41" width="463" height="16" uuid="fa3972eb-b334-4429-9f4f-d0604776e7af"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="126" y="58" width="463" height="16" uuid="6918f245-9756-4fbc-97c3-96a732447c91"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DOCUMENTO UNICO DEL EJERCICIO DEL PRESUPUESTO]]></text>
 			</staticText>
@@ -493,14 +495,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="e80ceff8-ff9b-471e-80f7-73d2acc44a13"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="99a3db0d-81dd-4b67-9c2b-9e576a3d9228"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{bloque}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -510,15 +516,19 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="2abd516c-2e1d-4ca1-8d64-9c8dd865f3f3"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[COG]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="32e3343b-7477-4d63-896f-c594928019fb"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_cog}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cog}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -527,15 +537,19 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="105" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="bc2ade23-366e-43b7-a577-635112ae6222"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[DESCRIPCIÓN DEL COG]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="105" height="37" uuid="63c90019-d072-461a-a7c1-14cd8168c98f"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{descripcion_objeto_gasto}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descripcion_cog}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -544,15 +558,19 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="100" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="c1fd6369-2d98-4233-86cb-652f2e34fc25"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CLAVE PRESUPUESTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="100" height="37" uuid="04d012f2-53b1-4bb4-b974-e5af58c5e729"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_clave_presupuestal}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{clave_presupuestal}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -561,15 +579,19 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="580fc3d2-8709-4611-a875-32c0ad508939"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[PROGRAMA PRESUPUESTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="b6138510-0ec1-46ba-8ac8-3deb806ea8b6"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_programa_presupuestario}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{programa_presupuestal}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -578,14 +600,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="92a0a1dd-c546-4c49-8548-5188d5200cdc"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CENTRO DE REGISTRO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="c88e5ab2-2053-417c-b812-36a7edc2772c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{id_centro_registro}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -595,14 +621,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="da884c6a-d295-4990-a11d-3c037e15fb04"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[FONDO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="155f3239-e3af-461e-9aae-117fe2d6e066"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{id_fondo_contable}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -612,15 +642,19 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="bf87a496-2397-45f1-8608-35c58ac28d17"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[IMPORTE COMPROMETIDO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="38" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="37" uuid="7d79e957-14cf-4c1f-b02e-c18bb24ef258"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{importe_casp}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -646,14 +680,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="58e98a19-fa09-40bd-a042-d983be1cd8e6"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[POLIZA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="34" forecolor="#000000" uuid="59f4bdcd-61d8-43ed-afda-5adca1ced773"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{origen_poliza}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -663,14 +701,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="c2c75341-7e41-4d7d-bed7-6f66951430b1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="34" forecolor="#000000" uuid="3b7fdc08-0dbd-49ed-98ed-a43875d61761"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{folio_movimiento_auxiliar}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -680,14 +722,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="eee7c18f-2153-460f-96d4-5508d705b5ca"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CUENTA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="34" forecolor="#000000" uuid="9172a2f9-6b09-425f-a92e-99296766515e"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{clave_cuenta_contable}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -697,14 +743,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="136" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="74174a24-f2c9-415f-b7f0-b7e9985eaada"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[DESCRIPCIÓN]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="136" height="34" forecolor="#000000" uuid="d0d926b5-b9c7-421e-b987-904539fccd8b"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -714,14 +764,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="158" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="d31e0b94-1aee-4d01-9262-ffaa8f4cdda1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CONCEPTO DEL BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="158" height="34" forecolor="#000000" uuid="a1d3cb96-b9c2-4210-9fca-72e85abb25b0"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{concepto_bloque}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -731,14 +785,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="cf8e7e98-e98f-42f5-9046-b8d25c017a0b"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CARGO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="34" forecolor="#000000" uuid="6ae2329b-173f-4bbc-96d3-9b9299903bc6"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total_cargo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -748,14 +806,18 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="7e71d699-6cc9-4639-8463-3c492e616317"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[ABONO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="34" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="34" forecolor="#000000" uuid="e7eb65f0-2444-4abc-bedb-554ff9e0b889"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total_abono}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -834,7 +896,7 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 			</staticText>
 			<textField pattern="K:mm a, z" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="633" y="21" width="100" height="20" forecolor="#666666" uuid="4036bcad-e41d-4769-ab47-1df6b3c62184"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

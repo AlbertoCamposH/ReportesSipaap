@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_compromisos_an_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0b50ebd-3260-4808-a341-3e6a2f419cc2">
 	<property name="ireport.zoom" value="0.8264462809917362"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="265"/>
+	<property name="ireport.y" value="128"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -106,19 +106,22 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT dca.id_bloque, a.descripcion, a.clasificacion_objeto_gasto, dca.des_especifica, dca.clave_presupuestal, id_programa_presupuestal, dca.id_unidad_medida, dca.importe_total
-FROM operation.detalle_compromiso_anual AS dca
-INNER JOIN catalog.articulos AS a ON (dca.ur = a.ur AND dca.id_periodo = a.periodo AND dca.articulo = a.clave_articulo)
-WHERE dca.ur = $P{ur} AND dca.id_periodo = $P{id_periodo} AND dca.id_compromiso = $P{id_compromiso}]]>
+			<![CDATA[SELECT cad.id_compromiso AS id_bloque, a.descripcion_articulo, substring(a.clave_articulo,1,5) as cog, cad.des_especifica, cad.clave_presupuestal, cs.descripcion AS programa_presupuestal, um.descripcion AS unidad_medida, to_char(cad.importe_total, '99,999,990.00') AS importe_total
+FROM operation.compromisos_anual_det AS cad
+INNER JOIN catalog.articulos AS a ON (cad.ur = a.ur AND cad.id_periodo = a.periodo AND cad.articulo = a.clave_articulo)
+INNER JOIN catalog.catalogos AS cs ON (cs.ur = cad.ur AND cs.id_periodo = cad.id_periodo AND cs.id_catalogo = cad.id_programa_presupuestal AND cs.id_cat = cad.programa_presupuestal)
+INNER JOIN catalog.unidad_medida AS um ON (um.id_unidad_responsable = cad.ur AND um.id_periodo = cad.id_periodo AND um.id_unidad_medida = cad.id_unidad_medida)
+WHERE cad.ur = $P{ur} AND cad.id_periodo = $P{id_periodo} AND cad.id_compromiso = $P{id_compromiso}
+]]>
 		</queryString>
 		<field name="id_bloque" class="java.lang.Long"/>
-		<field name="descripcion" class="java.lang.String"/>
-		<field name="clasificacion_objeto_gasto" class="java.lang.Long"/>
+		<field name="descripcion_articulo" class="java.lang.String"/>
+		<field name="cog" class="java.lang.String"/>
 		<field name="des_especifica" class="java.lang.String"/>
 		<field name="clave_presupuestal" class="java.lang.String"/>
-		<field name="id_programa_presupuestal" class="java.lang.Long"/>
-		<field name="id_unidad_medida" class="java.lang.Long"/>
-		<field name="importe_total" class="java.math.BigDecimal"/>
+		<field name="programa_presupuestal" class="java.lang.String"/>
+		<field name="unidad_medida" class="java.lang.String"/>
+		<field name="importe_total" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="tabla2" uuid="2a0b4740-5b3f-4e29-b76d-7bee3fcba4cb">
 		<parameter name="ur" class="java.lang.Long">
@@ -131,7 +134,8 @@ WHERE dca.ur = $P{ur} AND dca.id_periodo = $P{id_periodo} AND dca.id_compromiso 
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT ma.origen_poliza, ma.folio_movimiento_auxiliar, dma.clave_cuenta_contable, dma.referencia, dma.concepto_bloque, ma.importe_total_cargo, ma.importe_total_abono FROM operation.compromisos_anual AS ca
+			<![CDATA[SELECT ma.origen_poliza, ma.folio_movimiento_auxiliar, dma.clave_cuenta_contable, dma.referencia, dma.concepto_bloque, to_char(ma.importe_total_cargo, '99,999,990.00') AS importe_total_cargo, to_char(ma.importe_total_abono, '99,999,990.00') AS importe_total_abono
+FROM operation.compromisos_anual AS ca
 INNER JOIN operation.movimientos_auxiliares AS ma ON (ma.ur = ca.ur AND ma.periodo = ca.id_periodo AND ma.folio_movimiento_auxiliar = ca.poliza_comprometido)
 INNER JOIN operation.detalle_movimientos_auxiliares AS dma ON (dma.ur = ma.ur AND dma.id_periodo = ma.periodo AND dma.id_movimiento_auxiliar = ma.folio_movimiento_auxiliar)
 WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $P{id_compromiso}]]>
@@ -141,8 +145,8 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 		<field name="clave_cuenta_contable" class="java.lang.String"/>
 		<field name="referencia" class="java.lang.String"/>
 		<field name="concepto_bloque" class="java.lang.String"/>
-		<field name="importe_total_cargo" class="java.math.BigDecimal"/>
-		<field name="importe_total_abono" class="java.math.BigDecimal"/>
+		<field name="importe_total_cargo" class="java.lang.String"/>
+		<field name="importe_total_abono" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="suma1" uuid="3556c98c-5318-4c5f-adc3-d0aaae598a3e">
 		<parameter name="ur" class="java.lang.Long">
@@ -155,12 +159,12 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT SUM(dca.importe_total)
-FROM operation.detalle_compromiso_anual AS dca
-INNER JOIN catalog.articulos AS a ON (dca.ur = a.ur AND dca.id_periodo = a.periodo AND dca.articulo = a.clave_articulo)
-WHERE dca.ur = $P{ur} AND dca.id_periodo = $P{id_periodo} AND dca.id_compromiso = $P{id_compromiso}]]>
+			<![CDATA[SELECT to_char(SUM(cad.importe_total), '99,999,990.00') AS sum
+FROM operation.compromisos_anual_det AS cad
+INNER JOIN catalog.articulos AS a ON (cad.ur = a.ur AND cad.id_periodo = a.periodo AND cad.articulo = a.clave_articulo)
+WHERE cad.ur = $P{ur} AND cad.id_periodo = $P{id_periodo} AND cad.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
-		<field name="sum" class="java.math.BigDecimal"/>
+		<field name="sum" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="suma2" uuid="84dc17a2-579e-4fd3-b98b-bd46ca447df5">
 		<parameter name="ur" class="java.lang.Long">
@@ -173,13 +177,13 @@ WHERE dca.ur = $P{ur} AND dca.id_periodo = $P{id_periodo} AND dca.id_compromiso 
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT SUM(ma.importe_total_cargo) AS cargo, SUM(ma.importe_total_abono) AS abono
+			<![CDATA[SELECT to_char(SUM(ma.importe_total_cargo), '99,999,990.00') AS cargo, to_char(SUM(ma.importe_total_abono), '99,999,990.00') AS abono
 FROM operation.compromisos_anual AS ca
 INNER JOIN operation.movimientos_auxiliares AS ma ON (ma.ur = ca.ur AND ma.periodo = ca.id_periodo AND ma.folio_movimiento_auxiliar = ca.poliza_comprometido)
 WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $P{id_compromiso}]]>
 		</queryString>
-		<field name="cargo" class="java.math.BigDecimal"/>
-		<field name="abono" class="java.math.BigDecimal"/>
+		<field name="cargo" class="java.lang.String"/>
+		<field name="abono" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -190,10 +194,13 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 	<parameter name="id_compromiso" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT ca.id_beneficiario, ca.id_centro_registro, ca.tramite, ca.concepto, ca.observaciones_compromiso_anual, ca.id_duep, ca.estatus, ca.tipo_compromiso, ca.fecha_compromiso, u.nombre_usuario
+		<![CDATA[SELECT ca.id_beneficiario, ca.id_centro_registro, ca.tramite, ca.concepto, ca.observaciones_compromiso_anual, ca.id_duep, ca.estatus, tc.tipo_compromiso, ca.fecha_compromiso
 FROM operation.compromisos_anual AS ca
-INNER JOIN entity.usuario AS u ON (u.id_usuario = ca.ultimo_usuario_modificador)
+INNER JOIN catalog.tipo_compromiso AS tc ON (tc.id_tipo_compromiso = ca.id_tipo_compromiso)
 WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $P{id_compromiso}
 LIMIT 1]]>
 	</queryString>
@@ -206,7 +213,6 @@ LIMIT 1]]>
 	<field name="estatus" class="java.lang.String"/>
 	<field name="tipo_compromiso" class="java.lang.String"/>
 	<field name="fecha_compromiso" class="java.sql.Date"/>
-	<field name="nombre_usuario" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -215,7 +221,7 @@ LIMIT 1]]>
 			<staticText>
 				<reportElement positionType="Float" x="150" y="3" width="463" height="16" uuid="b9e0776c-2b9e-4a30-b267-69e06e751ccb"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
 			</staticText>
@@ -229,14 +235,14 @@ LIMIT 1]]>
 			<staticText>
 				<reportElement positionType="Float" x="150" y="38" width="463" height="16" uuid="ec63066f-4838-44c0-9327-52a59992420a"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="150" y="55" width="463" height="16" uuid="bba3b447-df94-45dc-a155-09757ecb164c"/>
 				<textElement textAlignment="Center">
-					<font size="10" isBold="false"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DOCUMENTO UNICO DEL EJERCICIO DEL PRESUPUESTO]]></text>
 			</staticText>
@@ -435,14 +441,18 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="a73aa116-888c-495d-9732-a9e63a793fee"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="8679782a-9867-4c9b-ad0d-ee0fcbdde141"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{id_bloque}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -452,15 +462,19 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="ba054031-636b-4fae-b152-0f847b76baa3"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[ARTICULO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="63597413-842a-4b1d-9689-e73be4451d8b"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descripcion_articulo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -469,15 +483,19 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="c196418d-bd28-4c69-93f5-91c66a74d21e"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[COG]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="807b8ba4-2150-4048-9224-3d3bf943e04a"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{clasificacion_objeto_gasto}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cog}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -486,14 +504,18 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="126" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="3a10e04d-3859-4f5a-a94c-2884c828c561"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[DESCRIPCIÓN ESPECÍFICA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="126" height="44" uuid="11bc854d-2fb8-44a3-8189-6ea712d64574"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{des_especifica}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -503,14 +525,18 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="cb1b8b10-1e22-4b75-bf9f-da64e546cae2"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CLAVE PRESUPUESTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="92943826-8c64-4c7b-b6ea-5fc52b570068"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{clave_presupuestal}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -520,15 +546,19 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="bdd55aa1-c049-4622-93e3-fd60663cb5d4"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[PROGRAMA PRESUPUESTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="f8f375fd-7699-4e27-915c-b81009c5b1ed"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_programa_presupuestal}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{programa_presupuestal}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -537,15 +567,19 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="0e5dce6c-e6bd-4ba5-adfd-5847966c6d61"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[UNIDAD DE MEDIDA]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="44" uuid="85b5f9f7-8801-44df-872f-f5688ae83737"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_unidad_medida}]]></textFieldExpression>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{unidad_medida}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -554,14 +588,18 @@ LIMIT 1]]>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="80" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="2b7f8b08-089f-4877-a8c7-2c78887453d1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[IMPORTE TOTAL]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="44" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="80" height="44" uuid="d3c9297c-2d28-4332-83a0-4d913fd2b018"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -609,11 +647,13 @@ LIMIT 1]]>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="493718e8-31d5-44f7-b25d-1bc9f72b45c9">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="b531c8b9-e6f2-4530-b8ce-f2478376281c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[PÓLIZA]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -621,17 +661,21 @@ LIMIT 1]]>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="72ebdfff-b866-48d1-8cb6-6944ede7e5e7"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{origen_poliza}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="195cb8c5-2fab-4dcc-9276-e2a59603bbbd">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="fc28d226-0fe3-4498-b2d7-77f12b0c4631"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -639,17 +683,21 @@ LIMIT 1]]>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="bd751775-ecb9-4863-be09-ee2f4531ca01"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{folio_movimiento_auxiliar}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="3075fbd7-0428-4692-b9a8-d3e7d05dfe14">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="184ec9c7-839f-42f6-a8e1-afa3dd60b68c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CUENTA]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -657,75 +705,93 @@ LIMIT 1]]>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="85a3cbaa-3628-4c73-afcd-765133bb7daf"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{clave_cuenta_contable}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="129" uuid="83dd306d-c52a-4779-ac7e-3b0ef7384373">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="129" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="d6baeec9-772c-4353-96ce-d30c8055a870"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[DESCRIPCIÓN]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="129" height="20" uuid="21aa9bdd-bf01-47cf-8432-ee7f98d1b0ea"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="168" uuid="81d2c485-4862-4dfb-b351-91382524cfa2">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="168" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="1828d5c5-5b59-4358-808f-85d029b4b7a3"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CONCEPTO DEL BLOQUE]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="168" height="20" uuid="5d127717-36e6-4f82-8014-36c04778c804"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{concepto_bloque}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="dcdaf2fd-bc36-499e-83a8-eacfa46d1aaf">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="2fa96e23-cb5f-493e-96a8-38dfd4640f45"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[CARGO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="31d765d5-9242-4cf7-8fd9-5ac9fdc5bbdd"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total_cargo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="813e2c7e-0095-4209-b195-3d9cd9e90441">
-						<jr:tableHeader style="table 1_TH" height="5" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="2" rowSpan="1"/>
 						<jr:columnHeader style="table 1_CH" height="19" rowSpan="1">
 							<staticText>
 								<reportElement mode="Opaque" x="0" y="0" width="90" height="17" forecolor="#FFFFFF" backcolor="#004987" uuid="89a37074-9735-48c2-88f1-29b5070dc000"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<text><![CDATA[ABONO]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="6a6b26cc-9725-443f-96b4-b18130b0cace"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total_abono}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -735,7 +801,7 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table 2" style="table 2" x="660" y="115" width="128" height="20" uuid="0a2f250b-569f-43c3-9b47-31525cb35a5f"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="suma1" uuid="4657f979-7dca-4c75-821a-ffe96c2cbfa2">
+					<datasetRun subDataset="suma1" uuid="2cc985bb-b7f3-4c67-baba-d0d8adee9d5c">
 						<datasetParameter name="ur">
 							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -820,7 +886,7 @@ LIMIT 1]]>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="632" y="21" width="100" height="20" forecolor="#666666" uuid="e5732c13-e27f-4bbd-b2d6-66a5fdd78319"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

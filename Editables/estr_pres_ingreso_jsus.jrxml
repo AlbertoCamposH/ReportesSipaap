@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_estructura_presupuestal_ingreso_jsus" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d5d1dff-92fd-4eba-9da3-7beda117a7fc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="115"/>
+	<property name="ireport.y" value="185"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -205,6 +205,9 @@ WHERE cp.id_unidad_responsable = $P{ur} AND cp.id_periodo = $P{periodo} AND cp.i
 	<parameter name="periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT DISTINCT
 	CONCAT (a.CompletaA, b.CompletaE, c.CompletaI, d.CompletaG) AS completa, CONCAT(a.OperativaA, b.OperativaE, c.OperativaI, d.OperativaG) AS operativa, cpo.id_periodo AS Fecha, cs.descripcion AS Separacion
@@ -287,12 +290,12 @@ LIMIT 1]]>
 				<reportElement positionType="Float" x="15" y="4" width="530" height="29" uuid="62b33589-3024-41e5-89da-8a353e3dfb04"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="45" y="4" width="100" height="29" uuid="959c5466-bf83-4f5b-b03c-3078ec0f3133"/>
+				<reportElement positionType="Float" x="45" y="4" width="100" height="29" uuid="959c5466-bf83-4f5b-b03c-3078ec0f3133"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Año]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="263" y="4" width="140" height="29" uuid="0535405f-fc85-4240-8797-f2c3c4c1a7fa"/>
+				<reportElement positionType="Float" x="263" y="4" width="140" height="29" uuid="0535405f-fc85-4240-8797-f2c3c4c1a7fa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Separación de Segmento:]]></text>
 			</staticText>
@@ -367,9 +370,30 @@ LIMIT 1]]>
 				<reportElement positionType="Float" x="266" y="346" width="246" height="1" uuid="52a47ef8-8210-46c0-aaed-bb00a55310cb"/>
 			</line>
 			<staticText>
-				<reportElement positionType="Float" x="189" y="97" width="337" height="23" forecolor="#FF0033" uuid="59eb2d8b-ae13-49c7-8fdc-68cc67ee8b8c"/>
+				<reportElement positionType="Float" x="189" y="97" width="356" height="23" forecolor="#FF0033" uuid="59eb2d8b-ae13-49c7-8fdc-68cc67ee8b8c"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="12" isBold="true" isUnderline="false"/>
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="193" y="157" width="352" height="23" forecolor="#FF0033" uuid="e3821579-c49e-483b-824c-c2e24dae22e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="193" y="214" width="352" height="23" forecolor="#FF0033" uuid="8d4b0530-c795-4614-8373-673d6bd44975"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="193" y="273" width="352" height="23" forecolor="#FF0033" uuid="3f0d9b6b-3cc7-469b-8e86-47ff7f480efa"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
@@ -420,27 +444,6 @@ LIMIT 1]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<staticText>
-				<reportElement positionType="Float" x="193" y="157" width="337" height="23" forecolor="#FF0033" uuid="e3821579-c49e-483b-824c-c2e24dae22e6"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="12" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="193" y="214" width="337" height="23" forecolor="#FF0033" uuid="8d4b0530-c795-4614-8373-673d6bd44975"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="12" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" x="193" y="273" width="337" height="23" forecolor="#FF0033" uuid="3f0d9b6b-3cc7-469b-8e86-47ff7f480efa"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="12" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
 			<componentElement>
 				<reportElement key="table 1" style="table 1" positionType="Float" x="194" y="156" width="335" height="41" uuid="515902ad-522c-418c-be2a-1e8c9458a4ce"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -597,7 +600,7 @@ LIMIT 1]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<textField pattern="K:mm a, z">
 				<reportElement positionType="Float" x="486" y="2" width="69" height="20" forecolor="#666666" uuid="959df1f5-ad7d-4ff8-a70c-966bd9a849f2"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
@@ -611,6 +614,18 @@ LIMIT 1]]>
 				<reportElement positionType="Float" x="386" y="2" width="100" height="20" forecolor="#666666" uuid="cd0402cf-cc42-43cf-968c-0877d23e7e3b"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<textField pattern="K:mm a, z">
+				<reportElement x="386" y="31" width="169" height="20" forecolor="#666666" uuid="710c2722-82dc-47f7-9070-955a899f3b31"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="240" y="31" width="140" height="20" forecolor="#666666" uuid="b68175ba-2a8c-4c7a-b3ef-d143968bf413"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
