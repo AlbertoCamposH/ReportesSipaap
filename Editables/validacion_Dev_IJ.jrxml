@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="validacion_Dev_IJ" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="349ef50d-f864-4890-bb28-082e57eaa3c7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="218"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -179,37 +179,37 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo}  and duep.folio_duep = $P{f
 				<reportElement x="431" y="12" width="100" height="91" uuid="cb6e0032-aa98-4436-9cfa-a7ff3c2d94c2"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="30" y="12" width="244" height="20" uuid="e5da4de9-acd0-4d22-9ca0-50d23da99b97"/>
+				<reportElement x="30" y="12" width="151" height="20" uuid="e5da4de9-acd0-4d22-9ca0-50d23da99b97"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ BENEFICIARIO DE LA SOLICITUD:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="30" y="35" width="151" height="20" uuid="73e525b8-1d4d-412d-aff1-daa4c1c3753f"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ CENTRO DE REGISTRO:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="30" y="63" width="64" height="20" uuid="a4c98ecb-ca98-48da-9007-8d876e764fe6"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ TRÁMITE:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="30" y="83" width="82" height="20" uuid="663e7580-c8b4-472a-a6a9-c86dbfa68f77"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ CONCEPTO:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="431" y="15" width="100" height="20" uuid="2014db45-264e-4a0d-89ec-015c77467a2b"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ DUEP:]]></text>
 			</staticText>
@@ -235,32 +235,35 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo}  and duep.folio_duep = $P{f
 				<text><![CDATA[b) El trámite contiene evidencias suficiente de la recepción de los bienes o servicios por parte del Centro de Registro ejecutor del gasto.]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="274" y="12" width="23" height="20" uuid="b6945eb4-e5a9-4496-8f0e-f483dfd9781f"/>
-				<textElement textAlignment="Right">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="181" y="35" width="116" height="20" uuid="5e323915-f777-4755-860a-aacee801d0ed"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="94" y="63" width="337" height="20" uuid="48f2da6f-70e2-4133-a9f8-1545bc7c10cc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tramite}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="112" y="83" width="319" height="20" uuid="15262ab9-1837-47e1-a2d8-eba4e6f673e7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="431" y="32" width="100" height="20" uuid="434eb7cd-a304-4ef9-beb5-f82f0287a14c"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{folio_comprobante}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="303" y="12" width="128" height="20" uuid="8e04d6d2-2604-4913-a521-e451b4d0b9a6"/>
+				<reportElement x="181" y="12" width="232" height="20" uuid="8e04d6d2-2604-4913-a521-e451b4d0b9a6"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
@@ -268,7 +271,9 @@ where duep.ur = $P{ur} and duep.periodo =$P{periodo}  and duep.folio_duep = $P{f
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="297" y="35" width="134" height="28" uuid="b1e240f5-b50a-445b-aa89-c82888a5b67e"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{departamento}]]></textFieldExpression>
 			</textField>
 		</band>
