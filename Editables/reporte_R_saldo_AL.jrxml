@@ -62,21 +62,22 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT arb.duep, arb.beneficiario, arb.centro_registro,af.concepto, arb.duep, arb.contrato_orden_compra, arb.contrato, arb.fecha_registro
-FROM operation.af_receprcion_bienes arb
-INNER JOIN operation.af_receprcion_bienes_det arbd ON arbd.id_af_receprcion_bienes =arb.id_af_receprcion_bienes
-INNER JOIN operation.activo_fijo af ON af.id_activo_fijo =  arbd.id_af_receprcion_bienes
-WHERE arbd.ur = $P{ur} AND arbd.periodo = $P{periodo} AND id_af_receprcion_bienes_det = $P{folio}
-AND arb.ur = arbd.ur AND arb.periodo = arbd.periodo
-AND arbd.id_af_receprcion_bienes = af.id_activo_fijo]]>
+			<![CDATA[SELECT id_duep_materiales_almacen, CONCAT(be.nombre,' ',be.primer_apellido, ' ', be.segundo_apellido) AS beneficiario,
+CONCAT(contrato,'/',orde_compra) AS contrato, ma.fecha_comprobante, centro_registro, ''total_comprometido, ''comprometido_no_devengado
+FROM operation.materiales_almacen ma
+INNER JOIN operation.detalle_materiales_almacen dma
+ON ma.id_materiales_almacen = dma.id_materiales_almacen
+INNER JOIN entity.beneficiario be
+ON ma.id_beneficiario = be.id_beneficiario
+WHERE ma.ur = $P{ur} AND ma.id_periodo =$P{periodo} AND ma.id_materiales_almacen = $P{folio}]]>
 		</queryString>
-		<field name="duep" class="java.lang.String"/>
-		<field name="beneficiario" class="java.lang.Long"/>
-		<field name="centro_registro" class="java.lang.Long"/>
-		<field name="concepto" class="java.lang.String"/>
-		<field name="contrato_orden_compra" class="java.lang.String"/>
+		<field name="id_duep_materiales_almacen" class="java.lang.String"/>
+		<field name="beneficiario" class="java.lang.String"/>
 		<field name="contrato" class="java.lang.String"/>
-		<field name="fecha_registro" class="java.sql.Timestamp"/>
+		<field name="fecha_comprobante" class="java.sql.Date"/>
+		<field name="centro_registro" class="java.lang.String"/>
+		<field name="total_comprometido" class="java.lang.String"/>
+		<field name="comprometido_no_devengado" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -136,7 +137,7 @@ LIMIT 1]]>
 		</band>
 	</title>
 	<detail>
-		<band height="276" splitType="Stretch">
+		<band height="166" splitType="Stretch">
 			<componentElement>
 				<reportElement key="table 1" style="table 1" mode="Opaque" x="0" y="18" width="802" height="80" forecolor="#FFFFFF" backcolor="#004987" uuid="d7dc188d-3b88-427d-84a7-49788b26c945"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -167,7 +168,7 @@ LIMIT 1]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="117" height="20" isPrintWhenDetailOverflows="true" uuid="b010f6a0-f8e5-4f88-a178-6d9dbc7f5b35"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{duep}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{id_duep_materiales_almacen}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -205,7 +206,7 @@ LIMIT 1]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="107" height="20" isPrintWhenDetailOverflows="true" uuid="c12a4741-3911-438b-96ab-1187b65fd2d7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{centro_registro}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -224,7 +225,7 @@ LIMIT 1]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="124" height="20" isPrintWhenDetailOverflows="true" uuid="df48fa61-5f22-4b4e-ad7b-764460794fae"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{fecha_comprobante}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -243,7 +244,7 @@ LIMIT 1]]>
 							<textField>
 								<reportElement x="0" y="0" width="123" height="20" isPrintWhenDetailOverflows="true" uuid="b86ffe0d-3273-4c0a-a32e-306a59adfb6e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{contrato_orden_compra}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{centro_registro}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -262,7 +263,7 @@ LIMIT 1]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="111" height="20" isPrintWhenDetailOverflows="true" uuid="88e4d18e-9af3-444e-88e5-fadded247943"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{total_comprometido}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -281,15 +282,12 @@ LIMIT 1]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="115" height="20" isPrintWhenDetailOverflows="true" uuid="1731fa16-7b08-49a3-bd2d-ed61f9321cd2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{comprometido_no_devengado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>
-			<line>
-				<reportElement x="0" y="275" width="802" height="1" uuid="60306813-6aab-465d-8758-56eb01634581"/>
-			</line>
 		</band>
 	</detail>
 	<pageFooter>
@@ -317,6 +315,9 @@ LIMIT 1]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="1" width="802" height="1" uuid="60306813-6aab-465d-8758-56eb01634581"/>
+			</line>
 		</band>
 	</pageFooter>
 </jasperReport>

@@ -460,11 +460,11 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<reportElement x="32" y="251" width="750" height="20" uuid="b18212ee-dd12-47c6-b752-d26c3dd16cca"/>
 				<text><![CDATA[META ASOCIADA AL PROGRAMA PRESUPUESTARIO DE LA CLAVE O CLAVES PRESUPUESTALES UTILIZADAS:]]></text>
 			</staticText>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="596" y="57" width="186" height="20" uuid="ccc71cc9-a004-4dbc-b5aa-d5307b3ca9b1"/>
 				<textFieldExpression><![CDATA[$F{duep_asociado}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="596" y="173" width="186" height="20" uuid="aca10b41-5dc3-49f9-89c2-cac3e1303d99"/>
 				<textFieldExpression><![CDATA[$F{poliza_reclasifiacion}]]></textFieldExpression>
 			</textField>

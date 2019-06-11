@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consulta_contrato_y_soporte_digital_AL" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="435ed7f6-10db-465d-9e67-c85b44060910">
 	<property name="ireport.zoom" value="1.7715610000000088"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6138"/>
+	<property name="ireport.y" value="912"/>
 	<subDataset name="datos" uuid="0b660a16-0111-44f0-83f8-9500f0440a2c">
 		<queryString language="SQL">
 			<![CDATA[SELECT (art.nivel) AS "Clave de nivel", (ma.descripcion) AS "Descripción de nivel", (art.clave_articulo) AS "Clave", (art.descripcion_articulo) AS "Descripción", (um.descripcion) AS "Unidad de medida",CASE WHEN art.afectable = false THEN 'NO AFECTABLE' WHEN art.afectable = true THEN 'AFECTABLE' ELSE 'NA' END AS "Afectable", (art.clasificacion_objeto_gasto) AS "Clasificador por Objeto de Gasto", (art.descripcion_objeto_gasto) AS "Descripción COG", (art.estatus) AS "Estatus",CASE WHEN art.autorizado = false THEN 'NO AUTORIZADO' WHEN art.afectable = true THEN 'AUTORIZADO' ELSE 'NA' END AS "Autorizado"

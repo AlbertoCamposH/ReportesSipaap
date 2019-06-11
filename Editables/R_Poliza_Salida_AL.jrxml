@@ -61,7 +61,7 @@
 		</parameter>
 		<queryString>
 			<![CDATA[select ur, clave_cuenta_contable, concepto_bloque, referencia, clave_presupuestal, importe_cargo, importe_abono
-from operation.detalle_movimientos_auxiliares where ur = $P{ur} and id_movimiento_auxiliar = $P{folio_movimiento_auxiliar} and id_periodo = $P{id_periodo}]]>
+from operation.detalle_movimientos_auxiliares where ur = $P{ur} and id_movimiento_auxiliar = $P{folio_movimiento_auxiliar} and id_periodo = $P{id_periodo} AND clave_cuenta_contable NOT LIKE '8%']]>
 		</queryString>
 		<field name="ur" class="java.lang.Long"/>
 		<field name="clave_cuenta_contable" class="java.lang.String"/>

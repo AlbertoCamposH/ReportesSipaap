@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Ingreso_x_Ministrar_AL" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6437c473-d569-4e71-90d5-5e0de9914f3d">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="628" y="0" width="174" height="79" uuid="27fb7223-4348-408e-818b-a0026f6e8bc4"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="165" y="47" width="463" height="16" uuid="ec159b15-0ddd-4c9d-af2c-ee66c8e991fd"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="15" width="463" height="16" uuid="efa0bf3e-51b6-4357-a765-8a2b593e82d1"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="63" width="463" height="16" uuid="42841426-5a74-46b5-89dc-da9c6658dba2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO DE CUENTA DETALLADO DEL DOCUMENTO UNICO DEL EJERCICIO DEL PRESUPUESTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="31" width="463" height="16" uuid="62f776a0-b02f-4416-bfe1-f76b955193a0"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="501" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="3" width="802" height="160" uuid="bafb5244-0b93-4ba0-b4a4-ba6c79d7ae55"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="581" y="3" width="221" height="54" uuid="fe417962-1e45-4b9f-851c-36e7614daa61"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="581" y="57" width="221" height="106" uuid="dd2d4350-c5a8-4a9b-bb84-f301e0bc9227"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="3" width="234" height="160" uuid="ede83263-a392-420d-8c4b-3124793586ff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="163" width="802" height="39" uuid="7bcf0c41-197a-4795-9457-451706b7a6dc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="215" width="802" height="20" forecolor="#004987" backcolor="#004987" uuid="36e06f9c-a04b-4d89-b21c-b0d6744c2792"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="215" width="802" height="20" forecolor="#FFFFFF" uuid="616e5972-5cf6-4279-a3d0-5800693d0c1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[D E T A L L E]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="17" width="31" height="20" uuid="a7d79e30-261c-48bd-88a1-fde40d35f832"/>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="37" width="44" height="20" uuid="838a497a-333a-4635-824f-b932b293f8e3"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="57" width="100" height="20" uuid="03e6c2f6-e68a-45ed-af1a-559a204ce25c"/>
+				<text><![CDATA[Ramo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="77" width="44" height="20" uuid="4a8f828f-1f63-4e3e-84fe-753d203809ac"/>
+				<text><![CDATA[Fondo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="97" width="138" height="20" uuid="808340ce-0528-49a1-ade8-36a187aa4d50"/>
+				<text><![CDATA[Número de ministraciones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="117" width="44" height="20" uuid="4b669fbb-86af-4fd2-93a9-2a952f4e0e9e"/>
+				<text><![CDATA[Estatus:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="163" width="100" height="20" uuid="87910a0c-d368-430a-a377-1939c229a5dd"/>
+				<text><![CDATA[CONCEPTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="51" width="280" height="16" uuid="62d2b729-5b7a-4faf-93c8-308528a6ce2c"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[C.P. 20200 AGUASCALIENTES, AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="31" width="280" height="20" uuid="fcddb1ca-bb31-4915-b131-9e537b92c0e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[BOULEVARD JUAN PABLO II No. 1302 0 EX HACIENDA LA CANTERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="15" width="280" height="16" uuid="ef90aaef-0d22-4efa-a0f0-b35cb5815057"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="67" width="280" height="16" uuid="f2e9f4a4-8df1-4b5a-b22a-830eb21b4fd8"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TELÉFONO 449-9105000 EXT. 149]]></text>
+			</staticText>
+			<image>
+				<reportElement x="330" y="83" width="151" height="68" uuid="588c0cfa-f662-442a-a3ed-a59356b03530"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="582" y="8" width="100" height="20" uuid="2efd871e-d1a6-4c78-aab2-53ae8160bdad"/>
+				<text><![CDATA[Cliente/Beneficiario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="21" width="29" height="20" uuid="1f025f0b-b3c4-4246-9e7d-acc5f1beddb4"/>
+				<text><![CDATA[RFC:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="37" width="100" height="20" uuid="02dffd1d-4746-4c89-97bb-8e9c5bdcbaa9"/>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="67" width="100" height="20" uuid="fec61a01-fa9f-4487-811f-267530eadd7c"/>
+				<text><![CDATA[Importe Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="87" width="100" height="20" uuid="ff1ab8fb-27d3-4c98-b63a-e4301f5aa862"/>
+				<text><![CDATA[Factura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="107" width="100" height="20" uuid="4fb7020a-f023-4d4f-918b-d2d2389f34f3"/>
+				<text><![CDATA[Fecha factura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="129" width="100" height="20" uuid="758ecc46-98f5-4a09-8d92-fd490fcb1a90"/>
+				<text><![CDATA[Receptor CDFI:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

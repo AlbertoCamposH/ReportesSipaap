@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_PAMP_AL" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f950fcbd-d467-473b-8055-4d9dae9c69eb">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select datos.*,  a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), to_char(current_date,'yyyy') b, u.nombre_usuario
+FROM
+(
+SELECT fuente_financiamiento, porcentaje, '' adjuntar_archivo
+FROM operation.porcentaje_ampliacion
+WHERE periodo = $P{periodo}
+AND ur = $P{ur}
+) AS datos, entity.usuario u
+INNER JOIN entity.mascara_articulo a ON u.id_usuario = a.ultimo_usuario_modificador
+where a.id_unidad_responsable =$P{ur}
+LIMIT 1]]>
+	</queryString>
+	<field name="fuente_financiamiento" class="java.lang.String"/>
+	<field name="porcentaje" class="java.lang.Long"/>
+	<field name="adjuntar_archivo" class="java.lang.String"/>
+	<field name="id_unidad_responsable" class="java.lang.Long"/>
+	<field name="to_char" class="java.lang.String"/>
+	<field name="b" class="java.lang.String"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="79" y="19" width="380" height="16" uuid="afea44e9-4744-4d00-9373-5b546e9c7965"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="459" y="10" width="96" height="63" uuid="c239dec4-24f9-4dec-aeed-63ca2d33fe86"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="79" y="1" width="380" height="16" uuid="efd027e9-750e-4003-a168-012bc1b8ec6c"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="79" y="54" width="380" height="16" uuid="d3e502fb-9b84-4426-bbfa-dc947acaca6f"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PORCENTAJES DE AMPLIACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="79" y="36" width="380" height="16" uuid="5492cad1-6818-4d79-91d9-8f6f6fb4f0ef"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="259" y="17" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="f5141ad6-34bd-4748-99fb-772e37f5e586"/>
+				<textFieldExpression><![CDATA[$F{fuente_financiamiento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="134" y="17" width="125" height="20" uuid="017b254f-e3aa-4ea9-99fd-b710854168bd"/>
+				<text><![CDATA[Fuente de Financiamiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="54" width="125" height="20" uuid="efa9f150-0877-448e-8a17-290453320f36"/>
+				<text><![CDATA[Porcentaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="91" width="125" height="20" uuid="9da5b832-9532-479c-a965-abd9b5020c0a"/>
+				<text><![CDATA[Adjuntar Archivo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="259" y="91" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="60c6a1f9-2c46-4947-8924-50adbffc489f"/>
+				<textFieldExpression><![CDATA[$F{adjuntar_archivo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="259" y="54" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="37ddb954-21ab-4304-b774-0fb44e460038"/>
+				<textFieldExpression><![CDATA[$F{porcentaje}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="381" y="13" width="100" height="20" forecolor="#666666" uuid="dcf959f2-573c-4e7b-880b-ea02dfc33a5c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="480" y="13" width="69" height="20" forecolor="#666666" uuid="615ee2e3-3cfd-4869-b457-f97f614d4442"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="259" y="33" width="109" height="20" forecolor="#666666" uuid="6168e113-c7aa-428e-9ed1-5f873280a94c"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="259" y="13" width="109" height="20" forecolor="#666666" uuid="fad71fd1-e212-4923-be5c-acb217bc78c5"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="381" y="33" width="168" height="20" forecolor="#666666" uuid="89d1b4d9-6c2e-420e-8818-2d12a54da542"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

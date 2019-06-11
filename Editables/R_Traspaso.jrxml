@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Ampliac_liq_IJ" language="groovy" pageWidth="985" pageHeight="739" orientation="Landscape" columnWidth="945" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="661e1e20-c76b-4d1a-a175-ba4407ec4aaf">
 	<property name="ireport.zoom" value="1.210000000000003"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="177"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -234,8 +234,7 @@
 	AND ped.fuente_financiamiento = fuente_financiamiento_sub.fuente_financiamiento
 	ORDER BY id_adecuacion_det
 	)AS tabla2
-	WHERE tabla1.bloque_origen = tabla2.bloque_destino
-	]]>
+	WHERE tabla1.bloque_origen = tabla2.bloque_destino]]>
 		</queryString>
 		<field name="bloque_origen" class="java.lang.Long"/>
 		<field name="centro_registro_origen" class="java.lang.String"/>

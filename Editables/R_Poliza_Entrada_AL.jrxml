@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="poliza_contable" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c75237e-1ccb-44fa-9fe3-339a4b46f38a">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="192"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -61,7 +61,7 @@
 		</parameter>
 		<queryString>
 			<![CDATA[select ur, clave_cuenta_contable, concepto_bloque, referencia, clave_presupuestal, importe_cargo, importe_abono
-from operation.detalle_movimientos_auxiliares where ur = $P{ur} and id_movimiento_auxiliar = $P{folio_movimiento_auxiliar} and id_periodo = $P{id_periodo}]]>
+from operation.detalle_movimientos_auxiliares where ur = $P{ur} and id_movimiento_auxiliar = $P{folio_movimiento_auxiliar} and id_periodo = $P{id_periodo} AND clave_cuenta_contable NOT LIKE '8%']]>
 		</queryString>
 		<field name="ur" class="java.lang.Long"/>
 		<field name="clave_cuenta_contable" class="java.lang.String"/>

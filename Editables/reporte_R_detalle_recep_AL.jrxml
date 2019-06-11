@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_R_detalle_recep_AL" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69e3156c-dab8-4dcc-8f62-02f5043cd91a">
-	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.zoom" value="1.100000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="321"/>
+	<property name="ireport.y" value="57"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -38,7 +38,7 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT dma.id_materiales_almacen,id_fondo_contable, id_fuente_financiamiento,
+			<![CDATA[SELECT dma.id_materiales_almacen,id_fondo_contable, ma.fuente_financiamiento,
 cantidad_recibida, fecha_recepcion, precio_unitario, dma.fecha_comprobante, comentarios
 FROM operation.materiales_almacen ma
 INNER JOIN operation.detalle_materiales_almacen dma ON dma.id_materiales_almacen =
@@ -48,9 +48,9 @@ AND ma.ur = dma.ur  AND ma.id_periodo = dma.id_periodo
 AND dma.id_materiales_almacen = $P{folio}]]>
 		</queryString>
 		<field name="id_materiales_almacen" class="java.lang.Long"/>
-		<field name="id_fondo_contable" class="java.lang.Long"/>
-		<field name="id_fuente_financiamiento" class="java.lang.Long"/>
-		<field name="cantidad_recibida" class="java.lang.Long"/>
+		<field name="id_fondo_contable" class="java.lang.String"/>
+		<field name="fuente_financiamiento" class="java.lang.String"/>
+		<field name="cantidad_recibida" class="java.math.BigDecimal"/>
 		<field name="fecha_recepcion" class="java.sql.Date"/>
 		<field name="precio_unitario" class="java.math.BigDecimal"/>
 		<field name="fecha_comprobante" class="java.sql.Date"/>
@@ -320,7 +320,7 @@ LIMIT 1]]>
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="b8bbf725-7532-4cc7-b1cc-c8f666198ed7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{id_fuente_financiamiento}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{fuente_financiamiento}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

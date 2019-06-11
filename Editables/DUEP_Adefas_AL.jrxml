@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DUEP_actualizado_IJ" pageWidth="842" pageHeight="1171" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42a639b2-9100-4805-b764-4d2b5528f832">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="384"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -253,7 +253,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="84" splitType="Stretch">
+		<band height="187" splitType="Stretch">
 			<staticText>
 				<reportElement x="122" y="2" width="463" height="16" uuid="264d23bb-4608-4e04-b9d8-2f4067263f4c"/>
 				<textElement textAlignment="Center">
@@ -306,13 +306,6 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 			<rectangle>
 				<reportElement positionType="Float" x="167" y="39" width="428" height="34" uuid="369cfde2-20c5-487b-b6a0-cfd2293e66fb"/>
 			</rectangle>
-			<staticText>
-				<reportElement positionType="Float" x="595" y="157" width="119" height="16" uuid="d7b3f2e9-1447-4cf6-b614-716c59e2803a"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[ PÓLIZA COMPROMISO:]]></text>
-			</staticText>
 			<rectangle>
 				<reportElement positionType="Float" x="33" y="89" width="562" height="106" uuid="ab780500-b8ef-46dc-b73e-ecf6b32e6b74"/>
 			</rectangle>
@@ -323,11 +316,11 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<reportElement positionType="Float" x="167" y="5" width="428" height="34" uuid="b28c1ff3-02e5-4683-8ef2-17831552cc0f"/>
 			</rectangle>
 			<staticText>
-				<reportElement positionType="Float" x="596" y="5" width="66" height="16" uuid="da38f0a9-3e64-44e3-b717-cfc80d65e0a7"/>
+				<reportElement positionType="Float" x="596" y="5" width="187" height="16" uuid="da38f0a9-3e64-44e3-b717-cfc80d65e0a7"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ DUEP:]]></text>
+				<text><![CDATA[ DUEP ORIGEN:]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement positionType="Float" x="33" y="73" width="134" height="16" uuid="50dbde4b-15f5-4d18-937a-c607b7c6708a"/>
@@ -364,7 +357,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[DUEP ASOCIADO]]></text>
+				<text><![CDATA[DUEP:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="33" y="39" width="134" height="34" uuid="3f7c334c-5cc9-4d4c-939e-f5bc70f495eb"/>
@@ -392,7 +385,7 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[RECLASIFICACIÓN PRESUPUESTAL DEL EGRESO]]></text>
+				<text><![CDATA[PAGO DE ADEUDO DE EJERCICIOS FISCALES ANTERIORES]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" x="33" y="5" width="134" height="34" uuid="aa5f3139-eb1c-4d17-80bb-679ae27bfe1d"/>
@@ -463,10 +456,6 @@ where duep.ur = $P{ur} and duep.periodo = $P{periodo} and duep.folio_duep = $P{f
 			<textField>
 				<reportElement x="596" y="57" width="186" height="20" uuid="ccc71cc9-a004-4dbc-b5aa-d5307b3ca9b1"/>
 				<textFieldExpression><![CDATA[$F{duep_asociado}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="596" y="173" width="186" height="20" uuid="aca10b41-5dc3-49f9-89c2-cac3e1303d99"/>
-				<textFieldExpression><![CDATA[$F{poliza_reclasifiacion}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="448">
