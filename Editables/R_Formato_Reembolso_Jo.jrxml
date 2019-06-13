@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Formato_Reembolso_Jo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab18627f-c659-4ae8-9c20-c97be6d12810">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ordenPago" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cantidad" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT duep,duep_asociado, fecha_registro, importe_reembolsar, cuenta_bancaria_beneficiario
+	FROM operation.orden_pago
+	WHERE ur = $P{ur} AND id_periodo = $P{periodo} AND orden_pago = $P{ordenPago} LIMIT 1;]]>
+	</queryString>
+	<field name="duep" class="java.lang.Long"/>
+	<field name="duep_asociado" class="java.lang.Long"/>
+	<field name="fecha_registro" class="java.sql.Timestamp"/>
+	<field name="importe_reembolsar" class="java.lang.Long"/>
+	<field name="cuenta_bancaria_beneficiario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="91" y="14" width="348" height="14" isPrintWhenDetailOverflows="true" uuid="a90b2d44-60c5-4d90-8530-868897c45d4b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="91" y="0" width="348" height="14" isPrintWhenDetailOverflows="true" uuid="9e26b957-0817-4252-b32f-a2ebecb5d90d"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="91" y="42" width="348" height="15" isPrintWhenDetailOverflows="true" uuid="b21a5f20-1693-484b-806b-7c0671351743"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[FORMATO DE REEMBOLSO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="91" y="28" width="348" height="14" isPrintWhenDetailOverflows="true" uuid="552e2bf7-2d5c-493d-89f2-11388e5806e9"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE FINANZAS Y ADMINISTRACIÓN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="439" y="0" width="160" height="42" uuid="4d30ad9d-6d28-47f4-b4a8-a20f3b243de0"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="218" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="110" height="44" backcolor="#004987" uuid="fe0d3947-b860-4645-9382-e56554aeb6e4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="0" width="133" height="44" backcolor="#004987" uuid="070a1fac-112f-449b-9044-d175d458bc0b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="110" y="0" width="173" height="44" uuid="19575e7b-82ac-403e-950d-049a968985e6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="416" y="0" width="139" height="44" uuid="a37892e9-8651-4b57-89b6-2e96ecb63ded"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="100" height="13" forecolor="#FFFFFF" uuid="6041fb88-c08f-4436-b00d-bae30332b28a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  DUEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="13" width="100" height="13" forecolor="#FFFFFF" uuid="7c81ac02-f765-4779-9de1-998199799965"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  DUEP ASOCIADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="26" width="100" height="13" forecolor="#FFFFFF" uuid="0f9808cd-ee70-459e-893d-8d2486388ef0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="283" y="0" width="133" height="44" forecolor="#FFFFFF" uuid="71d002b3-e81b-42a3-ae6f-0ab6bb6b17d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE DEL REEMBOLSO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="0" width="13" height="44" uuid="d90bd6fc-5a8b-4b4c-9753-fc1e40c7c40c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="66" width="555" height="26" isPrintWhenDetailOverflows="true" uuid="e85763bf-6e18-4ccf-a2fa-0da5fdd61d3f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Recibí la cantidad de $ ____________ correspondiente reembolso por oncepto de reembolso de viaticos, mismos que serán depositados en la cuenta bancaria que a continuación se señala:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="92" width="177" height="13" uuid="72eb6d5d-f5b8-4920-a711-3cb11c12c363"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUENTA BANCARIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="92" width="177" height="13" uuid="ab5abd75-55f5-4223-9d78-c99744705b6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IMPORTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="71" y="105" width="177" height="17" uuid="f4e5be12-45f4-4ec9-a4b1-92917938f286"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="273" y="105" width="177" height="17" uuid="dab3cbb5-76f6-49f0-aa0f-01e02d4569c2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="273" y="105" width="31" height="17" uuid="8d18cadf-1054-4530-a6a3-ff49c737c169"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[   $]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="178" width="177" height="20" uuid="5be36364-71dc-4ade-83e1-cf761441f35f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ENTREGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="178" width="177" height="20" uuid="727a3f36-32a9-4740-9961-8578283ebf6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RECIBE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="333" y="212" width="177" height="1" uuid="f3a33ce3-8cf5-43b1-8898-a8f37919430d"/>
+			</line>
+			<line>
+				<reportElement x="42" y="212" width="177" height="1" uuid="5663e3f3-fc13-4db8-aadf-d8f6427f5bff"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="119" y="0" width="100" height="13" isPrintWhenDetailOverflows="true" uuid="8b04dfa8-afe4-4e21-b4e3-63d3df586613"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{duep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="119" y="13" width="100" height="13" isPrintWhenDetailOverflows="true" uuid="db188e7c-d89f-4c8f-a8de-1470ed603130"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{duep_asociado}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="119" y="26" width="100" height="13" isPrintWhenDetailOverflows="true" uuid="8b3248e1-d6da-4f2d-b16d-e0d650be26e7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="439" y="13" width="100" height="20" isPrintWhenDetailOverflows="true" uuid="bc2760b7-a0b7-428e-8f03-38e1bc37f5b2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_reembolsar}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="91" y="66" width="100" height="11" isPrintWhenDetailOverflows="true" uuid="3e38a168-4184-4bb1-94df-8e0aa1ff6e4e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="71" y="105" width="177" height="17" isPrintWhenDetailOverflows="true" uuid="8e1849be-c090-4d2d-90d6-ec838ed54c81"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuenta_bancaria_beneficiario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="273" y="105" width="177" height="17" isPrintWhenDetailOverflows="true" uuid="ff33f7d7-c51c-46be-b502-4dffbbeb5e18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe_reembolsar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="383" y="29" width="100" height="12" forecolor="#666666" uuid="f658aa4a-b70f-45ae-9457-8a31c5f31594"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="483" y="29" width="69" height="12" forecolor="#666666" uuid="f6562da5-5a66-4e6f-91e7-231a0e68d6dc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="41" width="100" height="11" forecolor="#666666" uuid="fea5cabb-3c01-4181-a1d5-af2619ca2c18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="283" y="41" width="100" height="11" forecolor="#666666" uuid="d31c542f-2b0c-4448-a20c-44c532a2439c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="283" y="29" width="100" height="12" forecolor="#666666" uuid="59afc2de-f760-4137-98f5-942222fc8e9f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
