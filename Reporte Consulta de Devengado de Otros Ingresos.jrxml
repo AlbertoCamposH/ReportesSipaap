@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte Consulta de Devengado de Otros Ingresos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e820d1b-4e0a-4d37-966b-3cf37ed1b4db">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="ds_det" uuid="edab8b88-39a4-4a12-845f-048c1ea4b6a7">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="devengado" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select d.folio_asociado, d.fecha_registro, d.referencia, d.factura,
+d.fecha_factura, d.caja_recaudacion, concat_ws('',e.nombre,' ',e.primer_apellido,' ',e.segundo_apellido) as Beneficiario,
+d.matricula, d.nombre_alumno, d.carrera
+from operation.devengado_ingreso d
+inner join entity.beneficiario e on e.id_beneficiario=d.beneficiario
+where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{devengado}]]>
+		</queryString>
+		<field name="folio_asociado" class="java.lang.String"/>
+		<field name="fecha_registro" class="java.sql.Timestamp"/>
+		<field name="referencia" class="java.lang.String"/>
+		<field name="factura" class="java.lang.String"/>
+		<field name="fecha_factura" class="java.sql.Timestamp"/>
+		<field name="caja_recaudacion" class="java.lang.Long"/>
+		<field name="beneficiario" class="java.lang.String"/>
+		<field name="matricula" class="java.lang.Long"/>
+		<field name="nombre_alumno" class="java.lang.Long"/>
+		<field name="carrera" class="java.lang.Long"/>
+	</subDataset>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="devengado" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select d.folio_asociado, d.fecha_registro, d.referencia, d.factura,
+d.fecha_factura, d.caja_recaudacion, concat_ws('',e.nombre,' ',e.primer_apellido,' ',e.segundo_apellido) as Beneficiario,
+d.matricula, d.nombre_alumno, d.carrera,
+d.grado, d.grupo
+from operation.devengado_ingreso d
+inner join entity.beneficiario e on e.id_beneficiario=d.beneficiario
+where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{devengado}]]>
+	</queryString>
+	<field name="folio_asociado" class="java.lang.String"/>
+	<field name="fecha_registro" class="java.sql.Timestamp"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="factura" class="java.lang.String"/>
+	<field name="fecha_factura" class="java.sql.Timestamp"/>
+	<field name="caja_recaudacion" class="java.lang.Long"/>
+	<field name="beneficiario" class="java.lang.String"/>
+	<field name="matricula" class="java.lang.Long"/>
+	<field name="nombre_alumno" class="java.lang.Long"/>
+	<field name="carrera" class="java.lang.Long"/>
+	<field name="grado" class="java.lang.Long"/>
+	<field name="grupo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="1" y="1" width="801" height="88" uuid="ac5079fb-fbfe-4cc0-9134-ce2d568995e4"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="161" y="63" width="502" height="16" uuid="c4932489-e75a-4bbf-b806-c5900e7595a2"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE INGRESOS DEVENGADOS SERVICIOS ESCOLARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="161" y="31" width="502" height="16" uuid="0197a2a4-a6f5-4e63-a581-ec931506208a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="161" y="15" width="502" height="16" uuid="16359634-ca96-4222-ab1a-9f12b46d8f51"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCLIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="161" y="47" width="502" height="16" uuid="962c3894-27a6-45bf-9a6e-69d39f8a67c6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement positionType="Float" x="664" y="32" width="131" height="48" uuid="8978d711-ab3e-482f-bee1-2350b0a194cb"/>
+				<imageExpression><![CDATA["C:\\Users\\Rafa Macias\\Desktop\\utlogo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="378" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="26" width="802" height="99" uuid="c67bbf5c-dbc7-4cd3-9e17-69f2c584ed05"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="698" y="59" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="f93a8b82-ec6d-4aad-9933-fcd2d9c4b1e2"/>
+				<textFieldExpression><![CDATA[$F{fecha_factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="268" y="87" width="288" height="16" uuid="9d9bde92-62fd-4855-8ef5-0ad9a8ad9e74"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Teléfono 449-9105000 Ext. 149]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="698" y="39" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="461a5a6a-c741-47c2-925d-0cd7d3026c44"/>
+				<textFieldExpression><![CDATA[$F{factura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="596" y="81" width="102" height="16" uuid="3c576845-c3e8-4aa2-924f-bd87f41a8c05"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caja de Recaudación:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="75" y="35" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="65340969-b415-4746-8263-f6dd23ab6cce"/>
+				<textFieldExpression><![CDATA[$F{folio_asociado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="11" y="63" width="64" height="16" uuid="e8cdd4e3-f229-48af-a925-2981e5661d43"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="595" y="26" width="1" height="99" uuid="e2cfce78-75fb-430e-b9b7-2889150079a4"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="11" y="35" width="64" height="16" uuid="c42f6c72-83d0-4c6c-8cd0-c4e0cebdb0c6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="596" y="39" width="102" height="16" uuid="135831ad-0f92-4d70-9267-ea77463306fe"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Factura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="268" y="39" width="288" height="16" uuid="8e69d566-18b0-43af-a4a8-f4333818f5ff"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidad Tecnológica de Aguascalientes]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="75" y="63" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="66025648-5c0f-4fcb-89e2-4e2158553a4c"/>
+				<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="268" y="71" width="288" height="16" uuid="2db875d2-6404-4231-a32f-19a862f65749"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[C.P. 20200 Aguascalientes, Aguascalientes]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="698" y="81" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="2990d6fb-a3f3-4b23-83de-58a04a492db1"/>
+				<textFieldExpression><![CDATA[$F{caja_recaudacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="75" y="87" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="5b7ccb34-3ed0-400e-b904-012279e58d1e"/>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="11" y="87" width="64" height="16" uuid="388f36ea-0d75-48bf-9c52-5bdd04bf82fa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="268" y="55" width="288" height="16" uuid="c26639b7-40ef-426c-b565-d823db616869"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Boulevard Juan Pablo II No. 1302 0 Ex Hacienda la Cantera ]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="228" y="26" width="1" height="99" uuid="0c9c69e0-dbd5-4001-93cb-8ce30931ec1b"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="596" y="59" width="102" height="16" uuid="9bd53ade-4b5b-4172-859f-1ef1248aa0ef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Factura:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="1" y="148" width="802" height="61" uuid="46fa80bc-5046-4788-9846-de0e5dce1e0f"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="158" width="100" height="16" uuid="eb0a4c01-7785-4ac4-93a2-79980d3a277a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente/Beneficiario]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="161" y="158" width="537" height="16" isPrintWhenDetailOverflows="true" uuid="f6c63945-14d5-48af-824f-8baa07795cb1"/>
+				<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="161" y="172" width="537" height="1" uuid="825bbe22-0028-44ab-82e1-2d4c2dde88a5"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="1" y="335" width="234" height="1" uuid="aa5a3633-4e78-476d-bde3-a62ce200bc0d"/>
+			</line>
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="235" width="802" height="42" isPrintWhenDetailOverflows="true" uuid="988e44ac-4fb8-46a6-bc86-4e7628a80525"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="633" y="301" width="100" height="16" uuid="617929fb-d402-4d45-b09d-c5b6b80ab76f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autorizó]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="235" width="802" height="20" forecolor="#FFFFFF" backcolor="#004987" uuid="04a29644-f37b-4751-b927-bfbf8e907da5"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="568" y="334" width="234" height="1" uuid="fe19df89-d208-4443-9823-2b7f207c410b"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="633" y="351" width="100" height="16" uuid="7c611c43-a342-43ec-a9f5-45b1a0cb79b8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="75" y="301" width="100" height="16" uuid="6df30886-12d5-4355-bd9b-69517efc51db"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Elaboró]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="75" y="336" width="100" height="16" uuid="9b6eb291-7978-46aa-af45-7ba176289c73"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="633" y="335" width="100" height="16" uuid="934ea1f5-694d-4ca6-b8fd-0e8b67c279dc"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="75" y="352" width="100" height="16" uuid="c593a1cc-a258-4d8e-a1f8-68e9555a89e7"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="75" y="317" width="100" height="16" uuid="ef11ab6b-0818-4bb8-bb27-68539a8184d4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cargo1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="633" y="317" width="100" height="16" uuid="6de5ee0d-28db-4c02-97ee-34328873a616"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cargo2]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" positionType="Float" x="0" y="254" width="802" height="23" uuid="de68961e-d450-4d89-9d42-935a89776bcf"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ds_det" uuid="fa6ba3b2-ab75-46df-9741-815dcb2954f5">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="77" uuid="f00931d9-ac31-4e4d-bb79-8827debe34ab">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="77" height="30" uuid="a13c40c3-d4af-4852-8583-ddc8ecced8f9"/>
+								<text><![CDATA[folio_asociado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="77" height="20" uuid="eda23c8e-1a0d-44e9-a115-d823fce73a45"/>
+								<textFieldExpression><![CDATA[$F{folio_asociado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="6b5961c2-fde1-4135-aaba-bea1155b6115">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="1d25adc6-0bb8-4a25-9e10-f03ce1439320"/>
+								<text><![CDATA[fecha_registro]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="375f3df1-b7b7-4e08-9f4b-6c1eb36a8de1"/>
+								<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="50925968-6278-48aa-ab4f-72012ac78a20">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="92cbb2d6-623c-4e88-87d4-b9a31dd72f29"/>
+								<text><![CDATA[referencia]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="bcc3c7ae-ffa8-4731-9b8c-0ae158450eeb"/>
+								<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="78" uuid="c22baf8a-c332-4009-bcc6-67eb4c6b9963">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="78" height="30" uuid="4108a5ee-6a68-45d0-aafc-54352af0df62"/>
+								<text><![CDATA[factura]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="78" height="20" uuid="53ae0b41-ceb8-43c4-9674-69a83468b7c3"/>
+								<textFieldExpression><![CDATA[$F{factura}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b50f410a-447d-4050-ac81-2abdce23c76f">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="33206581-d5bc-4e3a-8dac-0cc3b4752aa4"/>
+								<text><![CDATA[fecha_factura]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="51ffee08-6cd3-413f-83cb-d4b980011b6d"/>
+								<textFieldExpression><![CDATA[$F{fecha_factura}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9e52a7ab-bf9d-42e5-b31a-a030bca5abac">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d884f1bc-00fb-48d1-914e-6ce747cebde1"/>
+								<text><![CDATA[caja_recaudacion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="43e3b1d0-d06c-4761-b0d3-6876f0c915c9"/>
+								<textFieldExpression><![CDATA[$F{caja_recaudacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b5a6ca2e-b7f9-4422-8bf9-a8ea9608106b">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e6e63c40-ee62-4b25-b312-d48a85127e5c"/>
+								<text><![CDATA[beneficiario]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="81061918-989e-4d64-85b0-f702081514fc"/>
+								<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="69" uuid="502b7824-f72a-4d73-9441-f492de2e1982">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="69" height="30" uuid="cbc3f3ec-bd0c-42f0-8a89-c390969864ef"/>
+								<text><![CDATA[matricula]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="69" height="20" uuid="28e04821-5f1e-4219-9406-de102af3fc81"/>
+								<textFieldExpression><![CDATA[$F{matricula}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="58" uuid="1a5025de-34d2-43c7-8bac-705c4a94d75e">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="58" height="30" uuid="4180fecd-592c-4dee-8cd1-adde6016509f"/>
+								<text><![CDATA[nombre_alumno]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="58" height="20" uuid="ff4cd228-6c3b-441c-891e-e0165a989760"/>
+								<textFieldExpression><![CDATA[$F{nombre_alumno}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="71" uuid="60847908-3d11-4282-8e7f-ade7f64adbc3">
+						<jr:tableHeader style="table 1_TH" height="4" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="71" height="30" uuid="2dd2f84a-3c7a-42b9-a81e-e3904917b04f"/>
+								<text><![CDATA[carrera]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="71" height="20" uuid="b1bfe429-d204-46b5-b33d-9cc3cd6fd4f4"/>
+								<textFieldExpression><![CDATA[$F{carrera}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
