@@ -86,19 +86,19 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT raad.id_cog, cat.descripcion, raad.clave_cuentas_contables, raad.des_cuenta_contable,
-raad.estatus, raad.fecha_mod
-FROM operation.registro_act_almacen_det raad
+			<![CDATA[SELECT raad.id_cog, cat.descripcion, raad.clave_cuenta, raad.des_clave_cuenta,
+raad.estatus, raad.fecha_elaboracion
+FROM operation.equiv_almacen_det raad
 INNER JOIN catalog.catalogos cat ON  raad.id_cat_cog = cat.id_catalogo
-WHERE raad.ur = $P{ur} AND raad.id_periodo = $P{periodo} AND raad.id_registro_act_almacen = $P{id_almacen}
-AND raad.id_cog = cat.id_cat]]>
+AND raad.id_cog = cat.id_cat
+WHERE raad.ur =$P{ur} AND raad.id_periodo = $P{periodo} AND raad.id_equiv_almacen = $P{id_almacen}]]>
 		</queryString>
 		<field name="id_cog" class="java.lang.String"/>
 		<field name="descripcion" class="java.lang.String"/>
-		<field name="clave_cuentas_contables" class="java.lang.Long"/>
-		<field name="des_cuenta_contable" class="java.lang.String"/>
-		<field name="estatus" class="java.lang.Long"/>
-		<field name="fecha_mod" class="java.sql.Timestamp"/>
+		<field name="clave_cuenta" class="java.lang.String"/>
+		<field name="des_clave_cuenta" class="java.lang.String"/>
+		<field name="estatus" class="java.lang.String"/>
+		<field name="fecha_elaboracion" class="java.sql.Timestamp"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -224,7 +224,7 @@ LIMIT 1]]>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="127" height="20" isPrintWhenDetailOverflows="true" uuid="33645261-32b1-49bf-8ded-c257627f31ed"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{clave_cuentas_contables}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{clave_cuenta}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -240,7 +240,7 @@ LIMIT 1]]>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="121" height="20" isPrintWhenDetailOverflows="true" uuid="261fb956-691d-4fe3-9fa5-3bf48d34b41d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{des_cuenta_contable}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{des_clave_cuenta}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -272,7 +272,7 @@ LIMIT 1]]>
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="129" height="20" isPrintWhenDetailOverflows="true" uuid="506451c5-6ee8-47bf-b7b8-ea8d840de739"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{fecha_mod}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{fecha_elaboracion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

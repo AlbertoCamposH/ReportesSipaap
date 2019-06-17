@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rep_Inv_Ini_AL" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75de7f3c-a848-4e74-a7d6-e5e57abb0264">
 	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="11"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -56,29 +56,30 @@
 		<parameter name="periodo" class="java.lang.Long"/>
 		<parameter name="id_almacen" class="java.lang.Long"/>
 		<queryString>
-			<![CDATA[SELECT DISTINCT articulo AS clave_articulo, des_articulo, des_especifica, cat.descripcion, des_cuenta_contable,
-des_unidad_medida, cantidad_entrada, costo_unitario, total
-FROM operation.registro_act_almacen raa
-INNER JOIN operation.registro_act_almacen_det raad
-ON raa.id_registro_act_almacen = raad.id_registro_act_almacen
-INNER JOIN operation.almacenes alm ON raa.id_almacenes = alm.id_almacenes
-AND raa.ur = alm.ur AND raa.id_periodo = alm.id_periodo
+			<![CDATA[SELECT clave_articulo, des_articulo, des_especifica, cat.descripcion AS cog, des_cuenta_contable,
+um_descripcion AS unidad_medida, ''cantidad, ''costo_unitario, ''total
+FROM operation.inventario_inicial ii
+FULL OUTER JOIN operation.inventario_inicial_det iid
+ON ii.id_inventario_inicial = iid.id_inventario_inicial
 INNER JOIN catalog.catalogos cat
-ON raad.id_cat_cog = cat.id_catalogo
-AND raad.id_cog = cat.id_cat
-WHERE raa.id_periodo = $P{periodo}
-AND raa.ur = $P{ur}
-AND raa.id_registro_act_almacen = $P{id_almacen}]]>
+ON iid.id_cat_cog = cat.id_catalogo
+AND iid.id_cog = cat.id_cat
+WHERE ii.id_periodo = 2001
+AND ii.ur = 1
+AND ii.id_inventario_inicial = 1
+AND iid.ur = ii.ur
+AND iid.id_periodo = ii.id_periodo
+AND iid.id_inventario_inicial = ii.id_inventario_inicial]]>
 		</queryString>
 		<field name="clave_articulo" class="java.lang.String"/>
 		<field name="des_articulo" class="java.lang.String"/>
 		<field name="des_especifica" class="java.lang.String"/>
-		<field name="descripcion" class="java.lang.String"/>
+		<field name="cog" class="java.lang.String"/>
 		<field name="des_cuenta_contable" class="java.lang.String"/>
-		<field name="des_unidad_medida" class="java.lang.String"/>
-		<field name="cantidad_entrada" class="java.lang.Long"/>
-		<field name="costo_unitario" class="java.math.BigDecimal"/>
-		<field name="total" class="java.math.BigDecimal"/>
+		<field name="unidad_medida" class="java.lang.String"/>
+		<field name="cantidad" class="java.lang.String"/>
+		<field name="costo_unitario" class="java.lang.String"/>
+		<field name="total" class="java.lang.String"/>
 	</subDataset>
 	<subDataset name="total" uuid="c2ee252d-1c17-4076-a65f-f0eaf09f66e5">
 		<parameter name="ur" class="java.lang.Long">
@@ -91,20 +92,21 @@ AND raa.id_registro_act_almacen = $P{id_almacen}]]>
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT DISTINCT total
-FROM operation.registro_act_almacen raa
-INNER JOIN operation.registro_act_almacen_det raad
-ON raa.id_registro_act_almacen = raad.id_registro_act_almacen
-INNER JOIN operation.almacenes alm ON raa.id_almacenes = alm.id_almacenes
-AND raa.ur = alm.ur AND raa.id_periodo = alm.id_periodo
+			<![CDATA[SELECT ''total
+FROM operation.inventario_inicial ii
+FULL OUTER JOIN operation.inventario_inicial_det iid
+ON ii.id_inventario_inicial = iid.id_inventario_inicial
 INNER JOIN catalog.catalogos cat
-ON raad.id_cat_cog = cat.id_catalogo
-AND raad.id_cog = cat.id_cat
-WHERE raa.id_periodo = $P{periodo}
-AND raa.ur = $P{ur}
-AND raa.id_registro_act_almacen = $P{id_almacen}]]>
+ON iid.id_cat_cog = cat.id_catalogo
+AND iid.id_cog = cat.id_cat
+WHERE ii.id_periodo = $P{periodo}
+AND ii.ur = $P{ur}
+AND ii.id_inventario_inicial = $P{id_almacen}
+AND iid.ur = ii.ur
+AND iid.id_periodo = ii.id_periodo
+AND iid.id_inventario_inicial = ii.id_inventario_inicial]]>
 		</queryString>
-		<field name="total" class="java.math.BigDecimal"/>
+		<field name="total" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -119,22 +121,27 @@ AND raa.id_registro_act_almacen = $P{id_almacen}]]>
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT distinct folio_registro_act_almacen, fecha_entrada, tipo_movimientos, transaccion,
-alm.nombre, 'afectacion_contable' afectacion_contable
-FROM operation.registro_act_almacen raa
-INNER JOIN operation.registro_act_almacen_det raad
-ON raa.id_registro_act_almacen = raad.id_registro_act_almacen
-INNER JOIN operation.almacenes alm ON raa.id_almacenes = alm.id_almacenes
-AND raa.ur = alm.ur AND raa.id_periodo = alm.id_periodo
-WHERE raa.id_registro_act_almacen = $P{id_almacen}
-AND raa.ur = $P{ur}
-AND raa.id_periodo = $P{periodo}]]>
+		<![CDATA[
+SELECT ii.id_inventario_inicial AS folio, fecha, nombre_almacen, transaccion, ii.id_tipo_movimientos, ''afectacion_contable
+FROM operation.inventario_inicial ii
+FULL OUTER JOIN operation.inventario_inicial_det iid
+ON ii.id_inventario_inicial = iid.id_inventario_inicial
+FULL OUTER JOIN catalog.catalogos cat
+ON iid.id_cat_cog = cat.id_catalogo
+AND iid.id_cog = cat.id_cat
+WHERE ii.id_periodo = $P{periodo}
+AND ii.ur = $P{ur}
+AND ii.id_inventario_inicial = $P{id_almacen}
+AND iid.ur = ii.ur
+AND iid.id_periodo = ii.id_periodo
+AND iid.id_inventario_inicial = ii.id_inventario_inicial
+LIMIT 1]]>
 	</queryString>
-	<field name="folio_registro_act_almacen" class="java.lang.String"/>
-	<field name="fecha_entrada" class="java.sql.Date"/>
-	<field name="tipo_movimientos" class="java.lang.String"/>
+	<field name="folio" class="java.lang.Long"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="nombre_almacen" class="java.lang.String"/>
 	<field name="transaccion" class="java.lang.String"/>
-	<field name="nombre" class="java.lang.String"/>
+	<field name="id_tipo_movimientos" class="java.lang.Long"/>
 	<field name="afectacion_contable" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -206,11 +213,11 @@ AND raa.id_periodo = $P{periodo}]]>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="542" y="14" width="260" height="20" isPrintWhenDetailOverflows="true" uuid="1b97f812-1868-4e9f-81d5-91866cf5217f"/>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombre_almacen}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="183" y="14" width="255" height="20" isPrintWhenDetailOverflows="true" uuid="b23dbd87-0ad0-4677-9dfd-5889ff0746f4"/>
-				<textFieldExpression><![CDATA[$F{folio_registro_act_almacen}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="183" y="34" width="255" height="20" isPrintWhenDetailOverflows="true" uuid="fb2bec21-a6c5-4614-a20b-263840bcfe30"/>
@@ -218,11 +225,11 @@ AND raa.id_periodo = $P{periodo}]]>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="183" y="54" width="255" height="20" isPrintWhenDetailOverflows="true" uuid="d1434337-31fa-4f2f-9755-773e02846742"/>
-				<textFieldExpression><![CDATA[$F{fecha_entrada}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="542" y="34" width="260" height="20" isPrintWhenDetailOverflows="true" uuid="6bfddaff-9082-4b82-b3f9-48b214c6f402"/>
-				<textFieldExpression><![CDATA[$F{tipo_movimientos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{id_tipo_movimientos}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="542" y="54" width="260" height="20" isPrintWhenDetailOverflows="true" uuid="3dde44e1-472b-48d2-8aca-38208d930f6e"/>
@@ -323,7 +330,7 @@ AND raa.id_periodo = $P{periodo}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{cog}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -363,7 +370,7 @@ AND raa.id_periodo = $P{periodo}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{des_unidad_medida}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{unidad_medida}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -383,7 +390,7 @@ AND raa.id_periodo = $P{periodo}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{cantidad_entrada}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

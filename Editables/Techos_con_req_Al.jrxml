@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Techos_sol_amp_Al" pageWidth="696" pageHeight="845" columnWidth="656" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71a920b2-5a14-47ea-b3bb-85340bb4f075">
 	<property name="ireport.zoom" value="1.6105100000000045"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="96"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -37,17 +37,22 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT DISTINCT rd.folio_req_detalle, rd.articulo,rd.articulo, rd.id_cog, rd.programa_presupuestal,rd.clave_presupuestal, rd.descripcion_especifica, rd.cantidad, rd.precio_unitario, rd.importe_total
+			<![CDATA[SELECT DISTINCT  r.folio_req, art.descripcion_articulo, cat.descripcion AS cog,
+cat2.descripcion AS programa, clave_presupuestal, rd.descripcion_especifica,
+rd.cantidad, rd.precio_unitario, rd.importe_total
 FROM operation.requisicion_detalle rd
-INNER JOIN operation.requisicion r ON r.folio_req = rd.folio_req
-WHERE rd.ur = $P{ur} AND rd.periodo = $P{periodo} and r.periodo = rd.periodo
+FULL OUTER JOIN operation.requisicion r ON r.folio_req = rd.folio_req
+full OUTER JOIN catalog.articulos art ON rd.articulo = art.clave_registro
+full OUTER JOIN catalog.catalogos cat ON rd.id_cat_cog = cat.id_catalogo AND rd.id_cog = cat.id_cat
+full OUTER JOIN catalog.catalogos cat2 ON rd.id_cat_programa_presupuestal= cat2.id_catalogo AND rd.programa_presupuestal = cat2.id_cat
+WHERE rd.ur = $P{ur}AND rd.periodo =$P{periodo}  and r.periodo = rd.periodo
 AND rd.folio_req = $P{folio} AND r.folio_req = rd.folio_req
-ORDER BY rd.folio_req_detalle]]>
+ORDER BY r.folio_req]]>
 		</queryString>
-		<field name="folio_req_detalle" class="java.lang.Long"/>
-		<field name="articulo" class="java.lang.String"/>
-		<field name="id_cog" class="java.lang.String"/>
-		<field name="programa_presupuestal" class="java.lang.String"/>
+		<field name="folio_req" class="java.lang.Long"/>
+		<field name="descripcion_articulo" class="java.lang.String"/>
+		<field name="cog" class="java.lang.String"/>
+		<field name="programa" class="java.lang.String"/>
 		<field name="clave_presupuestal" class="java.lang.String"/>
 		<field name="descripcion_especifica" class="java.lang.String"/>
 		<field name="cantidad" class="java.math.BigDecimal"/>
@@ -134,6 +139,13 @@ LIMIT 1]]>
 	</title>
 	<detail>
 		<band height="590" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="165" width="653" height="20" forecolor="#FF0033" uuid="02441ed0-133a-453f-93b4-622140bbea97"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
 			<staticText>
 				<reportElement x="0" y="165" width="656" height="20" forecolor="#FF0033" uuid="9ef365e2-6b20-4ae7-bf19-550e91f6a931"/>
 				<textElement textAlignment="Center">
@@ -310,7 +322,7 @@ LIMIT 1]]>
 								<textElement textAlignment="Center">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{folio_req_detalle}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{folio_req}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -331,7 +343,7 @@ LIMIT 1]]>
 								<textElement textAlignment="Center">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{articulo}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{descripcion_articulo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -352,7 +364,7 @@ LIMIT 1]]>
 								<textElement textAlignment="Center">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{id_cog}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{cog}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -373,7 +385,7 @@ LIMIT 1]]>
 								<textElement textAlignment="Center">
 									<font size="7"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{programa_presupuestal}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{programa}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -518,13 +530,6 @@ LIMIT 1]]>
 				<reportElement x="118" y="100" width="538" height="15" uuid="f192abe2-a688-4ffe-a276-3575deb480f1"/>
 				<textFieldExpression><![CDATA[$F{nombre_indicador}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="3" y="165" width="653" height="20" forecolor="#FF0033" uuid="02441ed0-133a-453f-93b4-622140bbea97"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="118" y="115" width="538" height="15" uuid="7ac75be7-1409-421b-ba6c-aefd0b7c07e4"/>
 				<textFieldExpression><![CDATA[$F{meta_asociada}]]></textFieldExpression>

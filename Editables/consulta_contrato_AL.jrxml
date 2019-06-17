@@ -2,216 +2,166 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consulta_contrato_y_soporte_digital_AL" pageWidth="612" pageHeight="1008" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="435ed7f6-10db-465d-9e67-c85b44060910">
 	<property name="ireport.zoom" value="1.7715610000000088"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="912"/>
+	<property name="ireport.y" value="2262"/>
 	<subDataset name="datos" uuid="0b660a16-0111-44f0-83f8-9500f0440a2c">
-		<queryString language="SQL">
-			<![CDATA[SELECT (art.nivel) AS "Clave de nivel", (ma.descripcion) AS "Descripción de nivel", (art.clave_articulo) AS "Clave", (art.descripcion_articulo) AS "Descripción", (um.descripcion) AS "Unidad de medida",CASE WHEN art.afectable = false THEN 'NO AFECTABLE' WHEN art.afectable = true THEN 'AFECTABLE' ELSE 'NA' END AS "Afectable", (art.clasificacion_objeto_gasto) AS "Clasificador por Objeto de Gasto", (art.descripcion_objeto_gasto) AS "Descripción COG", (art.estatus) AS "Estatus",CASE WHEN art.autorizado = false THEN 'NO AUTORIZADO' WHEN art.afectable = true THEN 'AUTORIZADO' ELSE 'NA' END AS "Autorizado"
-,CONCAT (usr.nombre,' ',usr.primer_apellido) AS "Último usuario modificador"
-FROM catalog.articulos_aux art
-
-INNER JOIN entity.mascara_articulo ma ON ma.nivel = art.nivel
-INNER JOIN catalog.unidad_medida um ON um.id_unidad_medida = art.unidad_medida
-FULL OUTER JOIN entity.usuario usr ON usr.id_usuario = art.ultimo_usuario_modificador
-WHERE unidad_medida = um.id_unidad_medida
-AND art.periodo =2019 AND um.id_periodo = art.periodo AND ma.id_periodo = art.periodo
-AND art.ur = 1 AND um.id_unidad_responsable = art.ur AND ma.id_unidad_responsable = art.ur
-AND art.id_instance =42
-ORDER BY art.nivel]]>
-		</queryString>
-		<field name="Clave de nivel" class="java.lang.Long"/>
-		<field name="Descripción de nivel" class="java.lang.String"/>
-		<field name="Clave" class="java.lang.String"/>
-		<field name="Descripción" class="java.lang.String"/>
-		<field name="Unidad de medida" class="java.lang.String"/>
-		<field name="Afectable" class="java.lang.String"/>
-		<field name="Clasificador por Objeto de Gasto" class="java.lang.Long"/>
-		<field name="Descripción COG" class="java.lang.String"/>
-		<field name="Estatus" class="java.lang.String"/>
-		<field name="Autorizado" class="java.lang.String"/>
-		<field name="Último usuario modificador" class="java.lang.String"/>
-	</subDataset>
-	<subDataset name="operation.contrato" uuid="41552531-952c-420b-9b90-a79a69a4f328">
-		<queryString language="SQL">
-			<![CDATA[SELECT *
-FROM operation.contrato]]>
+		<queryString>
+			<![CDATA[SELECT *, ''representante_legal
+FROM operation.duep_contrato_pedido_ampliacion dcpa
+INNER JOIN operation.duep_contrato_pedido_ampliacion_det dcpad
+ON dcpa.id_duep_contrato_pedido_ampliacion = dcpad.id_duep_contrato_pedido_ampliacion_det
+WHERE dcpa.ur = 1
+AND dcpa.periodo = 2001
+AND dcpa.id_duep_contrato_pedido = 1
+AND dcpad.ur = dcpa.ur
+AND dcpad.periodo = dcpad.periodo]]>
 		</queryString>
 		<field name="ur" class="java.lang.Long"/>
 		<field name="periodo" class="java.lang.Long"/>
-		<field name="id_contrato" class="java.lang.Long"/>
+		<field name="id_duep_contrato_pedido" class="java.lang.Long"/>
+		<field name="id_duep_contrato_pedido_ampliacion" class="java.lang.Long"/>
 		<field name="fecha_registro" class="java.sql.Timestamp"/>
-		<field name="duep" class="java.lang.String"/>
+		<field name="folio_con_ordecom" class="java.lang.String"/>
 		<field name="contrato" class="java.lang.String"/>
+		<field name="folio_amp_contrato" class="java.lang.String"/>
+		<field name="fecha_amp_contrato" class="java.sql.Date"/>
 		<field name="proyecto_compra" class="java.lang.String"/>
-		<field name="proceso_origen" class="java.lang.String"/>
-		<field name="fondo_contable" class="java.lang.String"/>
-		<field name="fecha_contrato" class="java.sql.Date"/>
-		<field name="estatus" class="java.lang.String"/>
-		<field name="contacto_recepcion" class="java.lang.String"/>
-		<field name="area_requiriente" class="java.lang.Long"/>
+		<field name="proceso_origen" class="java.lang.Long"/>
+		<field name="id_cat_fondo" class="java.lang.Long"/>
+		<field name="id_fondo_contable" class="java.lang.String"/>
+		<field name="estatus" class="java.lang.Long"/>
 		<field name="proveedor" class="java.lang.Long"/>
-		<field name="nombre_comercial" class="java.lang.Long"/>
-		<field name="direccion" class="java.lang.Long"/>
-		<field name="estado" class="java.lang.Long"/>
-		<field name="telefono" class="java.lang.Long"/>
-		<field name="representante_legal" class="java.lang.Long"/>
-		<field name="lugar_entrega" class="java.lang.String"/>
-		<field name="tiempo_entrega" class="java.sql.Date"/>
-		<field name="condiciones_pago" class="java.lang.String"/>
-		<field name="requiere_anticipo" class="java.lang.String"/>
-		<field name="anticipo" class="java.math.BigDecimal"/>
-	</subDataset>
-	<subDataset name="operation.detalle_contrato" uuid="55998bfc-10d8-43d9-bc37-83b95d0a3e1f">
-		<queryString language="SQL">
-			<![CDATA[SELECT *
-FROM operation.detalle_contrato]]>
-		</queryString>
-		<field name="ur" class="java.lang.Long"/>
-		<field name="periodo" class="java.lang.Long"/>
-		<field name="id_contrato" class="java.lang.Long"/>
-		<field name="id_detalle_contrato" class="java.lang.Long"/>
-		<field name="fecha_registro" class="java.sql.Timestamp"/>
-		<field name="bloque" class="java.lang.Long"/>
+		<field name="id_cat_area_requiriente" class="java.lang.Long"/>
+		<field name="area_requiriente" class="java.lang.String"/>
+		<field name="porcentaje_ampliacion" class="java.lang.Long"/>
+		<field name="importe_total" class="java.math.BigDecimal"/>
+		<field name="importe_total_ampliacion" class="java.math.BigDecimal"/>
+		<field name="validar_amp_contrato" class="java.lang.Boolean"/>
+		<field name="observacion_validador" class="java.lang.String"/>
+		<field name="usuario_validador_ampcontrato" class="java.lang.Long"/>
+		<field name="validarp_amp_contrato" class="java.lang.Boolean"/>
+		<field name="observacion_validadorp" class="java.lang.String"/>
+		<field name="usuario_validadorp_ampcontrato" class="java.lang.Long"/>
+		<field name="autorizar_amp_contrato" class="java.lang.Boolean"/>
+		<field name="observacion_autorizador" class="java.lang.String"/>
+		<field name="usuario_autorizador_ampcontrato" class="java.lang.Long"/>
+		<field name="id_duep_contrato_pedido_ampliacion_det" class="java.lang.Long"/>
 		<field name="clave_articulo" class="java.lang.String"/>
-		<field name="c_objeto_gasto" class="java.lang.String"/>
-		<field name="caracteristica_esp" class="java.lang.String"/>
-		<field name="clave_presupuestal" class="java.lang.String"/>
-		<field name="centro_registro" class="java.lang.Long"/>
-		<field name="cantidad" class="java.lang.Long"/>
+		<field name="id_cat_cog" class="java.lang.Long"/>
+		<field name="clasificador_objeto_gasto" class="java.lang.String"/>
+		<field name="caracteristica" class="java.lang.String"/>
+		<field name="clave_presup" class="java.lang.String"/>
+		<field name="id_cat_centro_registro" class="java.lang.Long"/>
+		<field name="centro_registro" class="java.lang.String"/>
+		<field name="cantidad" class="java.math.BigDecimal"/>
 		<field name="unidad_medida" class="java.lang.Long"/>
 		<field name="precio_unitario" class="java.math.BigDecimal"/>
 		<field name="descuento" class="java.math.BigDecimal"/>
 		<field name="imp_valor_agregado" class="java.math.BigDecimal"/>
-		<field name="otros_imp" class="java.math.BigDecimal"/>
+		<field name="otros_impuestos" class="java.math.BigDecimal"/>
 		<field name="importe_unitario" class="java.math.BigDecimal"/>
-		<field name="total" class="java.math.BigDecimal"/>
-		<field name="importe_total" class="java.math.BigDecimal"/>
+		<field name="concepto" class="java.lang.String"/>
+		<field name="solicita_ampliacion" class="java.lang.Boolean"/>
+		<field name="ultimo_usuario_modificador" class="java.lang.Long"/>
+		<field name="representante_legal" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long"/>
-	<parameter name="Clave" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{Clave}]]></defaultValueExpression>
-	</parameter>
-	<parameter name="oficio" class="java.lang.Long">
+	<parameter name="periodo" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="fecha_expedicion_oficio" class="java.util.Date">
+	<parameter name="id_contrato" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="registro_publico_numero" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="registro_foja_inicial" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="registro_foja_final" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="registro_volumen" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="registro_fecha" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_testimonio" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_acta_numero" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_acta_volumen" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_acta_fecha" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="corredor_publico" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="folio_mercantil_folio" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="folio_mercantil_fecha" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_numero_rfc" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="clausula_servicios_para" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_fecha_limite" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_obligaciones" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="ur_obligaciones" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="proveedor_cuenta" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="vigencia_contrato" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="poliza_anual_mantenimiento" class="java.lang.String">
+	<parameter name="usuario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select con.*,dc.*, a.id_unidad_responsable, to_char(current_date,'dd/mm/yyyy'), to_char(current_date,'yyyy') b, u.nombre_usuario
-FROM
-(SELECT *
-FROM operation.contrato)AS con,
-(SELECT *
-FROM operation.detalle_contrato)AS dc,
-entity.usuario u
-INNER JOIN entity.mascara_articulo a ON u.id_usuario = a.ultimo_usuario_modificador
-where a.id_unidad_responsable = $P{ur}
+		<![CDATA[SELECT *, ''representante_legal, ''nombre_comercial, ''c_objeto_gasto, ''oficio, ''fecha_expedicion_oficio, ''registro_foja_inicial, ''registro_publico_numero, ''registro_foja_inicial, ''registro_foja_final, ''registro_volumen, ''registro_fecha, ''proveedor_testimonio, ''proveedor_acta_numero,''proveedor_acta_numero, ''proveedor_acta_volumen, '' proveedor_acta_fecha, ''corredor_publico, ''folio_mercantil_folio, ''folio_mercantil_fecha, ''direccion, ''proveedor_numero_rfc, ''nombre_comercial, ''clausula_servicios_para, ''proveedor_obligaciones, ''ur_obligaciones, '' vigencia_contrato, ''poliza_anual_mantenimiento,
+'' proveedor_testimonio, ''total,''proveedor_fecha_limite, '' clave
+FROM operation.duep_contrato_pedido_ampliacion dcpa
+INNER JOIN operation.duep_contrato_pedido_ampliacion_det dcpad
+ON dcpa.id_duep_contrato_pedido_ampliacion = dcpad.id_duep_contrato_pedido_ampliacion_det
+WHERE dcpa.ur = $P{ur}
+AND dcpa.periodo = $P{periodo}
+AND dcpa.id_duep_contrato_pedido = $P{id_contrato}
+AND dcpad.ur = dcpa.ur
+AND dcpad.periodo = dcpad.periodo
+
 LIMIT 1]]>
 	</queryString>
 	<field name="ur" class="java.lang.Long"/>
 	<field name="periodo" class="java.lang.Long"/>
-	<field name="id_contrato" class="java.lang.Long"/>
+	<field name="id_duep_contrato_pedido" class="java.lang.Long"/>
+	<field name="id_duep_contrato_pedido_ampliacion" class="java.lang.Long"/>
 	<field name="fecha_registro" class="java.sql.Timestamp"/>
+	<field name="folio_con_ordecom" class="java.lang.String"/>
 	<field name="contrato" class="java.lang.String"/>
-	<field name="duep" class="java.lang.String"/>
+	<field name="folio_amp_contrato" class="java.lang.String"/>
+	<field name="fecha_amp_contrato" class="java.sql.Date"/>
 	<field name="proyecto_compra" class="java.lang.String"/>
-	<field name="proceso_origen" class="java.lang.String"/>
-	<field name="fondo_contable" class="java.lang.String"/>
-	<field name="fecha_contrato" class="java.sql.Date"/>
-	<field name="estatus" class="java.lang.String"/>
-	<field name="contacto_recepcion" class="java.lang.String"/>
-	<field name="area_requiriente" class="java.lang.Long"/>
+	<field name="proceso_origen" class="java.lang.Long"/>
+	<field name="id_cat_fondo" class="java.lang.Long"/>
+	<field name="id_fondo_contable" class="java.lang.String"/>
+	<field name="estatus" class="java.lang.Long"/>
 	<field name="proveedor" class="java.lang.Long"/>
-	<field name="nombre_comercial" class="java.lang.Long"/>
-	<field name="direccion" class="java.lang.Long"/>
-	<field name="estado" class="java.lang.Long"/>
-	<field name="telefono" class="java.lang.Long"/>
-	<field name="representante_legal" class="java.lang.Long"/>
-	<field name="lugar_entrega" class="java.lang.String"/>
-	<field name="tiempo_entrega" class="java.sql.Date"/>
-	<field name="condiciones_pago" class="java.lang.String"/>
-	<field name="requiere_anticipo" class="java.lang.String"/>
-	<field name="anticipo" class="java.math.BigDecimal"/>
-	<field name="id_detalle_contrato" class="java.lang.Long"/>
-	<field name="bloque" class="java.lang.Long"/>
+	<field name="id_cat_area_requiriente" class="java.lang.Long"/>
+	<field name="area_requiriente" class="java.lang.String"/>
+	<field name="porcentaje_ampliacion" class="java.lang.Long"/>
+	<field name="importe_total" class="java.math.BigDecimal"/>
+	<field name="importe_total_ampliacion" class="java.math.BigDecimal"/>
+	<field name="validar_amp_contrato" class="java.lang.Boolean"/>
+	<field name="observacion_validador" class="java.lang.String"/>
+	<field name="usuario_validador_ampcontrato" class="java.lang.Long"/>
+	<field name="validarp_amp_contrato" class="java.lang.Boolean"/>
+	<field name="observacion_validadorp" class="java.lang.String"/>
+	<field name="usuario_validadorp_ampcontrato" class="java.lang.Long"/>
+	<field name="autorizar_amp_contrato" class="java.lang.Boolean"/>
+	<field name="observacion_autorizador" class="java.lang.String"/>
+	<field name="usuario_autorizador_ampcontrato" class="java.lang.Long"/>
+	<field name="id_duep_contrato_pedido_ampliacion_det" class="java.lang.Long"/>
 	<field name="clave_articulo" class="java.lang.String"/>
-	<field name="c_objeto_gasto" class="java.lang.String"/>
-	<field name="caracteristica_esp" class="java.lang.String"/>
-	<field name="clave_presupuestal" class="java.lang.String"/>
-	<field name="centro_registro" class="java.lang.Long"/>
-	<field name="cantidad" class="java.lang.Long"/>
+	<field name="id_cat_cog" class="java.lang.Long"/>
+	<field name="clasificador_objeto_gasto" class="java.lang.String"/>
+	<field name="caracteristica" class="java.lang.String"/>
+	<field name="clave_presup" class="java.lang.String"/>
+	<field name="id_cat_centro_registro" class="java.lang.Long"/>
+	<field name="centro_registro" class="java.lang.String"/>
+	<field name="cantidad" class="java.math.BigDecimal"/>
 	<field name="unidad_medida" class="java.lang.Long"/>
 	<field name="precio_unitario" class="java.math.BigDecimal"/>
 	<field name="descuento" class="java.math.BigDecimal"/>
 	<field name="imp_valor_agregado" class="java.math.BigDecimal"/>
-	<field name="otros_imp" class="java.math.BigDecimal"/>
+	<field name="otros_impuestos" class="java.math.BigDecimal"/>
 	<field name="importe_unitario" class="java.math.BigDecimal"/>
-	<field name="total" class="java.math.BigDecimal"/>
-	<field name="importe_total" class="java.math.BigDecimal"/>
-	<field name="id_unidad_responsable" class="java.lang.Long"/>
-	<field name="to_char" class="java.lang.String"/>
-	<field name="b" class="java.lang.String"/>
-	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="concepto" class="java.lang.String"/>
+	<field name="solicita_ampliacion" class="java.lang.Boolean"/>
+	<field name="ultimo_usuario_modificador" class="java.lang.Long"/>
+	<field name="representante_legal" class="java.lang.String"/>
+	<field name="nombre_comercial" class="java.lang.String"/>
+	<field name="c_objeto_gasto" class="java.lang.String"/>
+	<field name="oficio" class="java.lang.String"/>
+	<field name="fecha_expedicion_oficio" class="java.lang.String"/>
+	<field name="registro_foja_inicial" class="java.lang.String"/>
+	<field name="registro_publico_numero" class="java.lang.String"/>
+	<field name="registro_foja_final" class="java.lang.String"/>
+	<field name="registro_volumen" class="java.lang.String"/>
+	<field name="registro_fecha" class="java.lang.String"/>
+	<field name="proveedor_testimonio" class="java.lang.String"/>
+	<field name="proveedor_acta_numero" class="java.lang.String"/>
+	<field name="proveedor_acta_volumen" class="java.lang.String"/>
+	<field name="proveedor_acta_fecha" class="java.lang.String"/>
+	<field name="corredor_publico" class="java.lang.String"/>
+	<field name="folio_mercantil_folio" class="java.lang.String"/>
+	<field name="folio_mercantil_fecha" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="proveedor_numero_rfc" class="java.lang.String"/>
+	<field name="clausula_servicios_para" class="java.lang.String"/>
+	<field name="proveedor_obligaciones" class="java.lang.String"/>
+	<field name="ur_obligaciones" class="java.lang.String"/>
+	<field name="vigencia_contrato" class="java.lang.String"/>
+	<field name="poliza_anual_mantenimiento" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<field name="proveedor_fecha_limite" class="java.lang.String"/>
+	<field name="clave" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -384,21 +334,21 @@ LIMIT 1]]>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["1.4.   Que el "+$F{representante_legal}+", se identifica plenamente en este acto en su calidad de Rector de la Universidad Tecnológica de Aguascalientes, según consta mediante el Oficio Nº "+$P{oficio}+", expedido por el C. Gobernador Constitucional del Estado, Gobernador Constitucional del Estado de Aguascalientes, de fecha "+$P{fecha_expedicion_oficio}+" el cual se encuentra debidamente inscrito en el Registro Público de la Propiedad en el Apartado Entes Paraestatales bajo el número "+$P{registro_publico_numero}+" fojas de la "+$P{registro_foja_inicial}+" a la "+$P{registro_foja_final}+" del volumen "+$P{registro_volumen}+" de  fecha "+$P{registro_fecha}+", con fundamento  en los artículos 12 y 14 de la Ley Orgánica de la Universidad Tecnológica de Aguascalientes, el Rector tiene calidad de Representante Legal de la Universidad y cuenta con las facultades para suscribir el presente Contrato y del artículo 15 de la Ley para el Control de las Entes Paraestatales del Estado de Aguascalientes."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["1.4.   Que el "+$F{representante_legal}+", se identifica plenamente en este acto en su calidad de Rector de la Universidad Tecnológica de Aguascalientes, según consta mediante el Oficio Nº "+$F{oficio}+", expedido por el C. Gobernador Constitucional del Estado, Gobernador Constitucional del Estado de Aguascalientes, de fecha "+$F{fecha_expedicion_oficio}+" el cual se encuentra debidamente inscrito en el Registro Público de la Propiedad en el Apartado Entes Paraestatales bajo el número "+$F{registro_publico_numero}+" fojas de la "+$F{registro_foja_inicial}+" a la "+$F{registro_foja_final}+" del volumen "+$F{registro_volumen}+" de  fecha "+$F{registro_fecha}+", con fundamento  en los artículos 12 y 14 de la Ley Orgánica de la Universidad Tecnológica de Aguascalientes, el Rector tiene calidad de Representante Legal de la Universidad y cuenta con las facultades para suscribir el presente Contrato y del artículo 15 de la Ley para el Control de las Entes Paraestatales del Estado de Aguascalientes."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="497" width="566" height="20" uuid="f3337d8a-5338-4d48-b879-bd95817b5ea4"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2.1.   Que es una sociedad constituida mediante el Testimonio "+$P{proveedor_testimonio}+"."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2.1.   Que es una sociedad constituida mediante el Testimonio "+$F{proveedor_testimonio}+"."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="517" width="566" height="46" uuid="05ae3bc7-67a2-4102-ad9e-c55f2c593d9c"/>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2.2.   Que la "+$F{nombre_comercial}+", acredita su carácter de representación y facultades mediante Testimonio del Acta número "+$P{proveedor_acta_numero}+" volumen "+$P{proveedor_acta_volumen}+" de fecha "+$P{proveedor_acta_fecha}+" otorgada ante la fe y protocolo del  "+$P{corredor_publico}+", Corredor Público número 1000, del Estado de México inscrita en el Registro Público de la Propiedad y de Comercio del Estado de México con el folio mercantil electrónico número "+$P{folio_mercantil_folio}+" el "+$P{folio_mercantil_fecha}+" y manifiesta contar con las facultades suficientes para suscribir el presente contrato y obligar a su representada en términos del mismo; facultades que a la fecha no le han sido revocadas ni modificadas y que puede ejercer de forma individual."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2.2.   Que la "+$F{nombre_comercial}+", acredita su carácter de representación y facultades mediante Testimonio del Acta número "+$F{proveedor_acta_numero}+" volumen "+$F{proveedor_acta_volumen}+" de fecha "+$F{proveedor_acta_fecha}+" otorgada ante la fe y protocolo del  "+$F{corredor_publico}+", Corredor Público número 1000, del Estado de México inscrita en el Registro Público de la Propiedad y de Comercio del Estado de México con el folio mercantil electrónico número "+$F{folio_mercantil_folio}+" el "+$F{folio_mercantil_fecha}+" y manifiesta contar con las facultades suficientes para suscribir el presente contrato y obligar a su representada en términos del mismo; facultades que a la fecha no le han sido revocadas ni modificadas y que puede ejercer de forma individual."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="2" y="570" width="565" height="25" uuid="71c5955f-e49e-4e39-acd1-e17ca1e8cead"/>
@@ -420,7 +370,7 @@ LIMIT 1]]>
 				<textElement>
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["2.5.   Que cuenta con el Registro Federal de Contribuyentes número "+$P{proveedor_numero_rfc}+", encontrándose al corriente en el cumplimiento de las obligaciones fiscales a su cargo.."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["2.5.   Que cuenta con el Registro Federal de Contribuyentes número "+$F{proveedor_numero_rfc}+", encontrándose al corriente en el cumplimiento de las obligaciones fiscales a su cargo.."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="2" y="636" width="565" height="11" uuid="cb5408bf-afd0-4ab4-8bda-068e02a464c6"/>
@@ -508,7 +458,7 @@ LIMIT 1]]>
 				<textElement>
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El objeto del presente instrumento es formalizar la Adquisición de los Bienes y Servicios para "+$P{clausula_servicios_para}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El objeto del presente instrumento es formalizar la Adquisición de los Bienes y Servicios para "+$F{clausula_servicios_para}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="166" width="568" height="26" uuid="c3e6fd3c-a9c1-4b40-8b4a-1a235ebe024b"/>
@@ -562,7 +512,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["'El Proveedor' se obliga a entregar y/o prestar 'Los Bienes y/o Servicios' a partir de la fecha de firma del presente contrato y a concluir con su entrega y/o prestación a más tardar el día "+$P{proveedor_fecha_limite}+". A entera satisfacción de “la UTAgs”; apegándose a lo establecido en los anexos del presente contrato y en su propuesta técnica."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["'El Proveedor' se obliga a entregar y/o prestar 'Los Bienes y/o Servicios' a partir de la fecha de firma del presente contrato y a concluir con su entrega y/o prestación a más tardar el día "+$F{proveedor_fecha_limite}+". A entera satisfacción de “la UTAgs”; apegándose a lo establecido en los anexos del presente contrato y en su propuesta técnica."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="326" width="568" height="26" uuid="bf02906e-8ad7-482b-930d-38ed9200481b"/>
@@ -594,7 +544,7 @@ LIMIT 1]]>
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Para el debido cumplimiento del objeto del presente Contrato, “EL PROVEEDOR” tendrá como obligaciones además de las consignadas en el presente instrumento, las siguientes:"
-+$P{proveedor_obligaciones}]]></textFieldExpression>
++$F{proveedor_obligaciones}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="419" width="568" height="17" uuid="38190c61-569b-44f9-a265-8585fab7dba0"/>
@@ -610,7 +560,7 @@ LIMIT 1]]>
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Para el debido cumplimiento del objeto del presente Contrato, “La UTAgs” tendrá como obligaciones además de las consignadas en el presente instrumento, las siguientes::"
-+$P{ur_obligaciones}]]></textFieldExpression>
++$F{ur_obligaciones}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="461" width="568" height="17" uuid="3d94ed89-93cd-4634-97ac-90abfc3fed2a"/>
@@ -657,7 +607,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["La contraprestación señalada en la cláusula segunda del presente contrato será pagada a “El Proveedor” en moneda nacional y mediante transferencia electrónica a la cuenta bancaria designada expresamente por “El Proveedor” siendo esta la"+$P{Clave}+", y en términos del artículo 72 de “La Ley” el pago se realizará una vez que se tenga hecha la entrega del bien y/o se hayan prestado los servicios, así mismo se requiere se presenten en las oficinas administrativas de 'la UTAgs', el Comprobante Fiscal Digital por Internet (CFDI) que ampare la prestación y/o entrega de 'Los Bienes y/o  Servicios', a que se refiere la cláusula segunda de este instrumento legal, acompañado de la solicitud de pago debidamente requisitada y aprobada por los servidores públicos señalados en la cláusula que antecede."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["La contraprestación señalada en la cláusula segunda del presente contrato será pagada a “El Proveedor” en moneda nacional y mediante transferencia electrónica a la cuenta bancaria designada expresamente por “El Proveedor” siendo esta la"+$F{clave}+", y en términos del artículo 72 de “La Ley” el pago se realizará una vez que se tenga hecha la entrega del bien y/o se hayan prestado los servicios, así mismo se requiere se presenten en las oficinas administrativas de 'la UTAgs', el Comprobante Fiscal Digital por Internet (CFDI) que ampare la prestación y/o entrega de 'Los Bienes y/o  Servicios', a que se refiere la cláusula segunda de este instrumento legal, acompañado de la solicitud de pago debidamente requisitada y aprobada por los servidores públicos señalados en la cláusula que antecede."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="649" width="568" height="25" uuid="a65ca0c5-8c2f-43a9-902b-734414789dcc"/>
@@ -704,7 +654,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["La vigencia de este contrato será desde su fecha de firma y hasta el "+$P{vigencia_contrato}+", o bien hasta que se den por concluidas todas y cada una de las obligaciones contraídas en este instrumento legal. Lo anterior sin perjuicio del vencimiento de los períodos de garantía establecidos en la cláusula octava del presente contrato, durante los cuales estará vigente el actual instrumento legal, para efectos de ejercitar las acciones de garantía que correspondan por la mala calidad de “Los Bienes y/o Servicios” o en su caso por el incumplimiento de las obligaciones a cargo de 'El Proveedor'."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["La vigencia de este contrato será desde su fecha de firma y hasta el "+$F{vigencia_contrato}+", o bien hasta que se den por concluidas todas y cada una de las obligaciones contraídas en este instrumento legal. Lo anterior sin perjuicio del vencimiento de los períodos de garantía establecidos en la cláusula octava del presente contrato, durante los cuales estará vigente el actual instrumento legal, para efectos de ejercitar las acciones de garantía que correspondan por la mala calidad de “Los Bienes y/o Servicios” o en su caso por el incumplimiento de las obligaciones a cargo de 'El Proveedor'."]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="813" width="568" height="17" uuid="bc7828d6-0679-4ec4-9c48-e44c3869edf7"/>
@@ -812,7 +762,7 @@ LIMIT 1]]>
 				<textElement textAlignment="Justified">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA["El presente instrumento contempla: "+$P{poliza_anual_mantenimiento}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["El presente instrumento contempla: "+$F{poliza_anual_mantenimiento}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="1" y="326" width="568" height="17" uuid="82ad5a69-41b8-43d9-9c70-db8c31ecb265"/>
@@ -1224,7 +1174,7 @@ LIMIT 1]]>
 			<textField pattern="K:mm a, z">
 				<reportElement x="399" y="23" width="171" height="20" forecolor="#666666" uuid="f66c1f4e-fe49-4515-95d2-f30f18c9bf23"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" x="244" y="23" width="140" height="20" forecolor="#666666" uuid="836ca0c7-596f-45b1-b63d-35d8b0a8fa9d"/>
