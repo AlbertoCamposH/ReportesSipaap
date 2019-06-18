@@ -493,7 +493,7 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table 1" style="table 1" x="560" y="189" width="152" height="20" uuid="3a3d80a3-7abf-4695-8336-10651bc1bdc1"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="suma" uuid="3d44f517-5720-441e-8a1e-aec873d8636b">
+					<datasetRun subDataset="suma" uuid="6cf8a1ad-8342-4c50-b64b-212312655f64">
 						<datasetParameter name="ur">
 							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -507,7 +507,7 @@ LIMIT 1]]>
 					</datasetRun>
 					<jr:column width="154" uuid="af32633c-bc54-43ed-8f52-67a7c49be69a">
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="152" height="20" uuid="d4a14736-ceeb-42da-8a6d-fb4725f65917"/>
 								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 							</textField>

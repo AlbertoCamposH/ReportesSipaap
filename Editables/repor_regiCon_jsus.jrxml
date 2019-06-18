@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_modiCon_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8557619b-36fa-44f5-9214-f92c131c2fa3">
 	<property name="ireport.zoom" value="0.7513148009015777"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="126"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -222,9 +222,10 @@ WHERE dcp.ur = $P{ur} AND dcp.periodo = $P{periodo} AND dcp.id_duep_contrato_ped
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, dcp.motivo_cancelacion, d.folio_duep_a, d.folio_duep, dcp.estatus, dcp.fecha_contrato_pedido, dcp.poliza FROM operation.duep_contrato_pedido AS dcp
+		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, dcp.motivo_cancelacion, d.folio_duep_a, d.folio_duep, dcp.estatus, dcp.fecha_contrato_pedido, dcp.poliza,dcpd.id_cat_centro_registro FROM operation.duep_contrato_pedido AS dcp
 INNER JOIN operation.duep AS d ON (d.ur = dcp.ur AND d.periodo = dcp.periodo AND d.folio_duep = dcp.id_duep_contrato_pedido)
 INNER JOIN entity.beneficiario AS b ON (b.id_beneficiario = d.beneficiario)
+INNER JOIN operation.duep_contrato_pedido_det AS dcpd ON (dcpd.ur = dcp.ur AND dcpd.periodo = dcp.periodo AND dcpd.id_duep_contrato_pedido = dcp.id_duep_contrato_pedido)
 WHERE dcp.ur = $P{ur} AND dcp.periodo = $P{periodo} AND dcp.id_duep_contrato_pedido = $P{id_duep_contrato_pedido}
 LIMIT 1]]>
 	</queryString>
@@ -235,6 +236,7 @@ LIMIT 1]]>
 	<field name="estatus" class="java.lang.Long"/>
 	<field name="fecha_contrato_pedido" class="java.sql.Date"/>
 	<field name="poliza" class="java.lang.Long"/>
+	<field name="id_cat_centro_registro" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -391,6 +393,11 @@ LIMIT 1]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{poliza}]]></textFieldExpression>
 			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="144" y="55" width="463" height="53" uuid="cec87da5-9b90-43e7-849e-7f41ceddbb8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_cat_centro_registro}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="446">
 			<staticText>
@@ -422,7 +429,7 @@ LIMIT 1]]>
 				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="505" y="110" width="100" height="20" uuid="c945965b-ea1e-4c4b-92ef-0fdc992f8b43"/>
+				<reportElement positionType="Float" x="495" y="110" width="100" height="20" uuid="c945965b-ea1e-4c4b-92ef-0fdc992f8b43"/>
 				<text><![CDATA[Importe Total:]]></text>
 			</staticText>
 			<line>
@@ -605,7 +612,7 @@ LIMIT 1]]>
 				<text><![CDATA[AFECTACIÓN PRESUPUESTAL]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table 2" style="table 2" positionType="Float" x="605" y="110" width="156" height="20" uuid="6aa4b3ef-dd54-4471-9a8e-6fae4190b781"/>
+				<reportElement key="table 2" style="table 2" positionType="Float" x="595" y="110" width="139" height="20" uuid="6aa4b3ef-dd54-4471-9a8e-6fae4190b781"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="importeTotal" uuid="331a1e20-22b1-4dbe-83dd-e7a11494d67c">
 						<datasetParameter name="ur">
@@ -621,8 +628,9 @@ LIMIT 1]]>
 					</datasetRun>
 					<jr:column width="158" uuid="f0502102-5b0c-4b02-aafa-2fab30a03062">
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
-							<textField isBlankWhenNull="true">
+							<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="157" height="20" uuid="ce0d9268-b6a6-4b47-8c65-ac9d2b5fede3"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -630,7 +638,7 @@ LIMIT 1]]>
 				</jr:table>
 			</componentElement>
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="607" y="265" width="150" height="20" uuid="46e99640-f1da-4d5e-a148-d8bb3fcd2547"/>
+				<reportElement key="table 3" style="table 3" x="607" y="265" width="127" height="20" uuid="46e99640-f1da-4d5e-a148-d8bb3fcd2547"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="afectacion" uuid="1e31a4c5-52a0-4c4f-8b4a-b5d9fdb7e862">
 						<datasetParameter name="ur">
@@ -646,16 +654,18 @@ LIMIT 1]]>
 					</datasetRun>
 					<jr:column width="90" uuid="9c56b78e-db8f-4c9d-8da0-5ef28856e8ff">
 						<jr:detailCell style="table 3_TD" height="20">
-							<textField isBlankWhenNull="true">
+							<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="080ab121-79ec-4961-b6d2-e7c930d1fc4f"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="ad9991ba-396f-4050-bfb2-dc55d86776fe">
 						<jr:detailCell style="table 3_TD" height="20">
-							<textField isBlankWhenNull="true">
+							<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="20" uuid="880b5949-1941-430a-accd-0d640a1b201f"/>
+								<textElement textAlignment="Right"/>
 								<textFieldExpression><![CDATA[$F{abono}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -665,7 +675,16 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table 4" style="table 4" x="15" y="27" width="745" height="80" uuid="a1e11df5-4789-4798-8298-85a4d98b5a98"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla1" uuid="2744c7dc-dc46-4f22-abd4-4abc857be6e8">
+					<datasetRun subDataset="tabla1" uuid="84ae27ed-f423-469d-8a1d-5dc0cebfa8b1">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_duep_contrato_pedido">
+							<datasetParameterExpression><![CDATA[$P{id_duep_contrato_pedido}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="46" uuid="018e8075-2f45-4891-96e3-5fea49a37db7">
@@ -710,11 +729,11 @@ LIMIT 1]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="75" uuid="7e18c521-c6ae-4628-bf43-f66e58bef6af">
+					<jr:column width="59" uuid="7e18c521-c6ae-4628-bf43-f66e58bef6af">
 						<jr:tableHeader style="table 4_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="23e68d52-190a-491c-85c2-0edddc29d623"/>
+								<reportElement mode="Opaque" x="0" y="0" width="59" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="23e68d52-190a-491c-85c2-0edddc29d623"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -723,7 +742,7 @@ LIMIT 1]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="21" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="75" height="20" uuid="6c19a0f0-bffb-453d-8118-7adfcb92a919"/>
+								<reportElement x="0" y="0" width="59" height="20" uuid="6c19a0f0-bffb-453d-8118-7adfcb92a919"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -836,11 +855,11 @@ LIMIT 1]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="70" uuid="681c0f36-337b-4072-ba6e-c9de43f33fa8">
+					<jr:column width="57" uuid="681c0f36-337b-4072-ba6e-c9de43f33fa8">
 						<jr:tableHeader style="table 4_TH" height="3" rowSpan="1"/>
 						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="70" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="d7f0d485-5172-4bf6-98ed-8039e5044757"/>
+								<reportElement mode="Opaque" x="0" y="0" width="57" height="30" forecolor="#FFFFFF" backcolor="#004B87" uuid="d7f0d485-5172-4bf6-98ed-8039e5044757"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -849,7 +868,7 @@ LIMIT 1]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="21" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="70" height="20" uuid="527346ea-c2da-4351-a776-1e39e35960ee"/>
+								<reportElement x="0" y="0" width="57" height="20" uuid="527346ea-c2da-4351-a776-1e39e35960ee"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>

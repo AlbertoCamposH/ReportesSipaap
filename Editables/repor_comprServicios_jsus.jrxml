@@ -351,7 +351,7 @@ WHERE ca.ur = $P{ur} AND ca.id_periodo = $P{id_periodo} AND ca.id_compromiso = $
 				<textFieldExpression><![CDATA[$F{id_beneficiario}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" x="161" y="54" width="422" height="16" uuid="cee454f5-393e-4e29-9c70-794e6fad7291"/>
+				<reportElement positionType="Float" x="165" y="54" width="421" height="16" uuid="cee454f5-393e-4e29-9c70-794e6fad7291"/>
 				<textFieldExpression><![CDATA[$F{id_centro_registro}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">

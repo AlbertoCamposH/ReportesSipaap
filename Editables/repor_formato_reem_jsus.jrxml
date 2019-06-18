@@ -1,27 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_formato_reem_jsus" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="09847c4b-8e1f-488f-82ab-f2aa11c44199">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="182"/>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement positionType="Float" x="408" y="0" width="147" height="79" uuid="2cba5977-1e4a-403f-9ada-ae295a21de4d"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="59" width="383" height="16" uuid="667cab1d-faa2-44d3-9ed4-e58d4e148f25"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMATO DE REEMOBOLSO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="24" width="383" height="16" uuid="c6c4405c-6250-4adc-bbc2-6b8465400194"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="6" width="383" height="16" uuid="f5b9afe4-5bd0-40a1-9add-c2a2d9cb4496"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="41" width="383" height="16" uuid="77a930c8-88f0-48c6-b1a7-87e246e79721"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE ADMINISTRACIÓN Y  FINANZAS]]></text>
+			</staticText>
+		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="253" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="6" y="2" width="164" height="20" uuid="60cc3886-fca4-49b4-9084-f7d78b59a418"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="6" y="22" width="164" height="20" uuid="70dc4d6c-85f5-48f4-ae18-907d529d8c55"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="170" y="2" width="381" height="20" uuid="e4c77730-2214-4d55-98e2-b4ffcfb1d7c8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="170" y="22" width="381" height="20" uuid="9ac23dc3-e118-4004-b30e-c9e81470d27b"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="2" width="132" height="20" uuid="633e59fe-3d02-48d0-a0d8-490dd3334177"/>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="6" y="22" width="132" height="20" uuid="054a0a06-a80a-4931-abd7-c225b0ebc0bb"/>
+				<text><![CDATA[FECHA CORTE DE CAJA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="48" width="503" height="23" forecolor="#FF0033" uuid="7d1bdb8e-aedb-453c-a205-4597146c5e56"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="150" width="503" height="23" forecolor="#FF0033" uuid="ad06e8c3-9d09-4f10-b2cf-3fc1000b8051"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+		</band>
+		<band height="196">
+			<staticText>
+				<reportElement positionType="Float" x="23" y="0" width="503" height="23" forecolor="#FF0033" uuid="93e5a9e7-2ab5-44a4-9734-013fa3b7abfc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="106" width="503" height="23" forecolor="#FF0033" uuid="d14af00d-fe1b-41b7-adeb-0cc3500441ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
+			</staticText>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="265" y="0" width="109" height="20" forecolor="#666666" uuid="4b2260ee-8d00-4e97-aa03-6449ea466c30"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="387" y="0" width="100" height="20" forecolor="#666666" uuid="928c5f16-74eb-4ae0-b2ae-ed99db54ddd5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="486" y="0" width="69" height="20" forecolor="#666666" uuid="2fb2637c-4b32-45f9-b2a4-4192b664597d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="386" y="22" width="169" height="20" forecolor="#666666" uuid="aced7831-8212-41b1-b6ca-d1f0f7d591e1"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="265" y="22" width="109" height="20" forecolor="#666666" uuid="39a782ae-2301-4f7b-a4fe-a6595dd51eb5"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>

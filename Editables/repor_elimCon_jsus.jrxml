@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_modiCon_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8557619b-36fa-44f5-9214-f92c131c2fa3">
 	<property name="ireport.zoom" value="0.7513148009015777"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="224"/>
+	<property name="ireport.y" value="48"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -222,9 +222,10 @@ WHERE dcp.ur = $P{ur} AND dcp.periodo = $P{periodo} AND dcp.id_duep_contrato_ped
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, dcp.motivo_cancelacion, d.folio_duep_a, d.folio_duep, dcp.estatus, dcp.fecha_contrato_pedido, dcp.poliza FROM operation.duep_contrato_pedido AS dcp
+		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, dcp.motivo_cancelacion, d.folio_duep_a, d.folio_duep, dcp.estatus, dcp.fecha_contrato_pedido, dcp.poliza, dcpd.id_cat_centro_registro FROM operation.duep_contrato_pedido AS dcp
 INNER JOIN operation.duep AS d ON (d.ur = dcp.ur AND d.periodo = dcp.periodo AND d.folio_duep = dcp.id_duep_contrato_pedido)
 INNER JOIN entity.beneficiario AS b ON (b.id_beneficiario = d.beneficiario)
+INNER JOIN operation.duep_contrato_pedido_det AS dcpd ON (dcpd.ur = dcp.ur AND dcpd.periodo = dcp.periodo AND dcpd.id_duep_contrato_pedido = dcp.id_duep_contrato_pedido)
 WHERE dcp.ur = $P{ur} AND dcp.periodo = $P{periodo} AND dcp.id_duep_contrato_pedido = $P{id_duep_contrato_pedido}
 LIMIT 1]]>
 	</queryString>
@@ -235,6 +236,7 @@ LIMIT 1]]>
 	<field name="estatus" class="java.lang.Long"/>
 	<field name="fecha_contrato_pedido" class="java.sql.Date"/>
 	<field name="poliza" class="java.lang.Long"/>
+	<field name="id_cat_centro_registro" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -390,6 +392,11 @@ LIMIT 1]]>
 				<reportElement positionType="Float" x="603" y="141" width="152" height="19" uuid="8313ca91-bf26-46fb-a7a0-8531f6007573"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{poliza}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="144" y="55" width="463" height="50" uuid="c91bac88-6080-4c37-a3c9-ac552d091b67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_cat_centro_registro}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="446">
@@ -665,7 +672,16 @@ LIMIT 1]]>
 			<componentElement>
 				<reportElement key="table 4" style="table 4" x="15" y="27" width="745" height="80" uuid="a1e11df5-4789-4798-8298-85a4d98b5a98"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="tabla1" uuid="2744c7dc-dc46-4f22-abd4-4abc857be6e8">
+					<datasetRun subDataset="tabla1" uuid="f9cd4d79-1315-44f2-aeeb-f986ee4a9e4d">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id_duep_contrato_pedido">
+							<datasetParameterExpression><![CDATA[$P{id_duep_contrato_pedido}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="46" uuid="018e8075-2f45-4891-96e3-5fea49a37db7">

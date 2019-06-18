@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="repor_ejecDDuep_jsus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2dea21d1-86cd-4ba8-8762-433af8322347">
 	<property name="ireport.zoom" value="0.8264462809917354"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="128"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -93,6 +93,26 @@
 		<box>
 			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
 			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
 		</box>
 	</style>
 	<subDataset name="tabla1" uuid="e3f247ca-3401-454b-90b4-16ba8abbb6e6">
@@ -187,6 +207,23 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 		</queryString>
 		<field name="abono" class="java.math.BigDecimal"/>
 	</subDataset>
+	<subDataset name="suma" uuid="54194f08-c2e5-48b0-9f7f-46d2c5413051">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="folio_duep" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT  SUM(dd.precio_unitario) AS suma
+FROM operation.duep_detalle AS dd
+WHERE dd.ur = $P{ur} AND dd.periodo = $P{periodo} AND dd.folio_duep = $P{folio_duep}]]>
+		</queryString>
+		<field name="suma" class="java.math.BigDecimal"/>
+	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -200,14 +237,21 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, d.concepto,d.folio_duep_a, d.estatus_duep FROM operation.duep AS d
+		<![CDATA[SELECT concat (b.nombre, ' ', b.primer_apellido, ' ', b.segundo_apellido) AS beneficiario, d.id_centro_registro, d.concepto, d.valida_programaticamente,
+d.folio_duep, d.estatus_duep, d.folio_oficio_solicitud, d.fecha_autorizacion, d.id_compromiso
+FROM operation.duep AS d
 INNER JOIN entity.beneficiario AS b ON (b.id_beneficiario = d.beneficiario)
 WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep}]]>
 	</queryString>
 	<field name="beneficiario" class="java.lang.String"/>
+	<field name="id_centro_registro" class="java.lang.String"/>
 	<field name="concepto" class="java.lang.String"/>
-	<field name="folio_duep_a" class="java.lang.String"/>
+	<field name="valida_programaticamente" class="java.lang.Boolean"/>
+	<field name="folio_duep" class="java.lang.Long"/>
 	<field name="estatus_duep" class="java.lang.Long"/>
+	<field name="folio_oficio_solicitud" class="java.lang.String"/>
+	<field name="fecha_autorizacion" class="java.sql.Timestamp"/>
+	<field name="id_compromiso" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -343,11 +387,33 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="630" y="25" width="142" height="18" uuid="c7c77056-6165-42f5-a6a4-c7a827160d7a"/>
-				<textFieldExpression><![CDATA[$F{folio_duep_a}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{folio_duep}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="629" y="61" width="142" height="18" uuid="1f7ef017-9007-451b-ba14-60771a708745"/>
 				<textFieldExpression><![CDATA[$F{estatus_duep}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="165" y="49" width="461" height="53" uuid="e0e72247-f33b-424e-9d87-bf25f25b6519"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_centro_registro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="31" y="211" width="749" height="44" uuid="7ce38241-c880-4951-a599-7a88ef688e20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{valida_programaticamente}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="627" y="97" width="142" height="18" uuid="90c1132e-bfca-44aa-a76c-e976a356b785"/>
+				<textFieldExpression><![CDATA[$F{folio_oficio_solicitud}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="627" y="133" width="142" height="18" uuid="7de54014-c193-42cb-b2e5-0d36f4eaea93"/>
+				<textFieldExpression><![CDATA[$F{fecha_autorizacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="626" y="171" width="142" height="18" uuid="37f9d12e-5ee4-4dee-8fc0-027139adb028"/>
+				<textFieldExpression><![CDATA[$F{id_compromiso}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="357">
@@ -920,6 +986,56 @@ WHERE d.ur = $P{ur} AND d.periodo = $P{periodo} AND d.folio_duep = $P{folio_duep
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="109" height="20" uuid="6205f9b8-5e16-4cea-a42a-0875175d2abc"/>
 								<textFieldExpression><![CDATA[$F{abono}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="566" y="85" width="202" height="20" uuid="4ca2714a-612e-4d2d-8ca9-0aa3ba146bef"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="suma" uuid="55925a0a-7f07-40d1-ae84-cf09f80d67dc">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="folio_duep">
+							<datasetParameterExpression><![CDATA[$P{folio_duep}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="202" uuid="b74e4167-0f58-43c5-9875-15ecba459bd7">
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="199" height="20" uuid="20a7ff50-821f-4125-86f3-391ba96d865d"/>
+								<textFieldExpression><![CDATA[$F{suma}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="566" y="107" width="202" height="20" uuid="1f090314-8e3d-43dd-a514-754de5c12749"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="suma" uuid="569c30ed-75c4-459e-8994-930731702479">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="folio_duep">
+							<datasetParameterExpression><![CDATA[$P{folio_duep}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="202" uuid="cf3f5e47-34e5-4c8c-aaa5-b9d7ab0bba3b">
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="199" height="20" uuid="97ba725e-5350-4c97-8080-57f860107b36"/>
+								<textFieldExpression><![CDATA[$F{suma}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

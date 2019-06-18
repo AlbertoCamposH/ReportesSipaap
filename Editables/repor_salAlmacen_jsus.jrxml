@@ -38,8 +38,9 @@
 		</parameter>
 		<queryString>
 			<![CDATA[SELECT rd.articulo, rd.id_unidad_medida, rd.des_cuenta_contable, rd.observaciones, rd.fondo_contable, rd.cantidad_entrada, rd.costo_unitario, rd.total
-FROM operation.registro_act_almacen_det AS rd
-WHERE rd.ur = $P{ur} AND rd.id_periodo = $P{periodo} AND rd.id_registro_act_almacen = $P{id_registro_act_almacen}]]>
+FROM operation.registro_act_almacen AS r
+INNER JOIN operation.registro_act_almacen_det AS rd ON (rd.ur = r.ur AND rd.id_periodo = r.id_periodo AND rd.id_registro_act_almacen = r.id_registro_act_almacen)
+WHERE rd.ur = $P{ur} AND rd.id_periodo = $P{periodo} AND rd.id_registro_act_almacen = $P{id_registro_act_almacen} AND r.id_tipo_movimientos = 2]]>
 		</queryString>
 		<field name="articulo" class="java.lang.String"/>
 		<field name="id_unidad_medida" class="java.lang.Long"/>
@@ -65,7 +66,7 @@ WHERE rd.ur = $P{ur} AND rd.id_periodo = $P{periodo} AND rd.id_registro_act_alma
 	<queryString>
 		<![CDATA[SELECT r.id_registro_act_almacen ,r.nombre, r.transaccion, r.concepto, r.folio_registro_act_almacen, r.fecha_entrada, SUM(rd.total) AS total FROM operation.registro_act_almacen AS r
 INNER JOIN operation.registro_act_almacen_det AS rd ON (rd.ur = r.ur AND rd.id_periodo = r.id_periodo AND rd.id_registro_act_almacen = r.id_registro_act_almacen)
-WHERE  r.ur = $P{ur} AND r.id_periodo = $P{periodo} AND r.id_registro_act_almacen = $P{id_registro_act_almacen}
+WHERE  r.ur = $P{ur} AND r.id_periodo = $P{periodo} AND r.id_registro_act_almacen = $P{id_registro_act_almacen} AND r.id_tipo_movimientos = 2
 GROUP BY r.id_registro_act_almacen ,r.nombre, r.transaccion, r.concepto, r.folio_registro_act_almacen, r.fecha_entrada]]>
 	</queryString>
 	<field name="id_registro_act_almacen" class="java.lang.Long"/>
