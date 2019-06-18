@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Dev_Ingreso_x_Ministrar_IJ" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff8b9bba-dc11-4cf0-a51a-e4b74e29bf57">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="388"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="tabla" uuid="b2be8b6b-a4e6-459b-815e-2ab3c8b507fb">
+		<parameter name="id_devengado_ing" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select principal.folio_devengado_ingreso, clasificador_rubro.descripcion as clasificado_rubro_ingreso, fondo.descripcion as fondo_contable, centro_registro.descripcion as centro_registro, clave_presupuestal_ingreso as clave_presupuestal, principal.importe from operation.devengado_ingreso_detalle principal
+full outer join catalog.catalogos centro_registro on centro_registro.ur = principal.ur and centro_registro.id_periodo = principal.periodo and centro_registro.id_catalogo = principal.id_cat_centro_registro  and centro_registro.id_cat = principal.id_centro_registro
+inner join catalog.catalogos fondo on fondo.ur = principal.ur and fondo.id_periodo = principal.periodo and fondo.id_catalogo = principal.id_cat_fondo_contable and fondo.id_cat = principal.id_fondo_contable
+full outer join catalog.catalogos clasificador_rubro on clasificador_rubro.ur = principal.ur and clasificador_rubro.id_periodo = principal.periodo and clasificador_rubro.id_catalogo = principal.id_cat_clasificador_rubro_ingreso and clasificador_rubro.id_cat = principal.id_clasificador_rubro_ingreso
+where principal.ur = $P{ur} and principal.periodo =  $P{periodo} and principal.folio_devengado_ingreso =$P{id_devengado_ing} order by principal.folio_devengado_ingreso]]>
+		</queryString>
+		<field name="folio_devengado_ingreso" class="java.lang.Long"/>
+		<field name="clasificado_rubro_ingreso" class="java.lang.String"/>
+		<field name="fondo_contable" class="java.lang.String"/>
+		<field name="centro_registro" class="java.lang.String"/>
+		<field name="clave_presupuestal" class="java.lang.String"/>
+		<field name="importe" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="usuario" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ur" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id_fudep" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select principal.folio_fudep, principal.num_credito, principal.entidad_contratante, tipo_deuda.descripcion as tipo_deuda, principal.registro_estatal, principal.num_inscripcion_shcp, estatus.descripcion as estatus, principal.fecha_contratacion,
+principal.fecha_vencimiento, principal.monto_original_contratado, principal.saldo_recaudar, ambito.descripcion as ambito, entidad.descripcion as tipo_entidad, principal.frecuencia_pago,
+perfil_amortizacion.descripcion as perfil_amortizacion, principal.tasa_armortizacon, tasa.descripcion as tipo_tasa_amortizacion,  principal.referencia_autorizacion, principal.institucion_acredora
+from operation.fudep principal
+inner join catalog.tipo_deuda tipo_deuda on tipo_deuda.id_tipo_deuda = principal.tipo_deuda
+inner join catalog.estatus_fudep estatus on estatus.id_estatus_fudep = principal.estatus
+inner join catalog.ambito ambito on ambito.id_ambito = principal.ambito
+inner join catalog.tipo_entidad entidad on entidad.id_tipo_entidad = principal.tipo_entidad
+inner join catalog.perfil_amortizacion perfil_amortizacion on perfil_amortizacion.id_perfil_amortizacion = principal.perfil_amortizacion
+inner join catalog.tipo_tasa_amortizacion tasa on tasa.id_tipo_tasa_amortizacion = principal.tipo_tasa_amortizacion
+where principal.ur = $P{ur} and principal.periodo = $P{periodo} and principal.id_fudep =$P{id_fudep}]]>
+	</queryString>
+	<field name="folio_fudep" class="java.lang.Long"/>
+	<field name="num_credito" class="java.lang.String"/>
+	<field name="entidad_contratante" class="java.lang.String"/>
+	<field name="tipo_deuda" class="java.lang.String"/>
+	<field name="registro_estatal" class="java.lang.String"/>
+	<field name="num_inscripcion_shcp" class="java.lang.String"/>
+	<field name="estatus" class="java.lang.String"/>
+	<field name="fecha_contratacion" class="java.sql.Timestamp"/>
+	<field name="fecha_vencimiento" class="java.sql.Timestamp"/>
+	<field name="monto_original_contratado" class="java.lang.String"/>
+	<field name="saldo_recaudar" class="java.lang.String"/>
+	<field name="ambito" class="java.lang.String"/>
+	<field name="tipo_entidad" class="java.lang.String"/>
+	<field name="frecuencia_pago" class="java.lang.String"/>
+	<field name="perfil_amortizacion" class="java.lang.String"/>
+	<field name="tasa_armortizacon" class="java.lang.String"/>
+	<field name="tipo_tasa_amortizacion" class="java.lang.String"/>
+	<field name="referencia_autorizacion" class="java.lang.String"/>
+	<field name="institucion_acredora" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<image>
+				<reportElement x="610" y="3" width="193" height="84" uuid="e09aec4a-460c-4019-b5bc-20ff56117997"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="157" y="19" width="453" height="20" uuid="c4f8bc92-8df6-4bb9-bc1b-36fba77c838a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="55" width="453" height="16" uuid="ea888bfe-c063-4e9d-9899-58ceb2a7534f"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE  RECAUDO DE INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="39" width="453" height="16" uuid="8bd22f6b-b205-4d56-b637-7e3f585690c4"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE  ADMINISTRACIÓN Y FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="3" width="453" height="16" uuid="ace98407-30cb-4c21-a203-e71a768066db"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="202" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="562" y="87" width="100" height="20" uuid="83595ce6-8114-4acd-bd16-63831d703ffb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Caja de Recaudación:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="23" y="1" width="763" height="159" uuid="e4c207da-1e9a-4cd6-a65c-d2a868a60342"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="262" y="11" width="299" height="26" uuid="dfae0521-3f6b-42f6-b468-cfcb6681ab11"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidad Tecnológica de Aguascalientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="262" y="37" width="299" height="13" uuid="095a66de-4bc7-4223-ba27-e5d05c874956"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Boulevard Juan Pablo II No. 1302 0 Ex Hacienda la Cantera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="561" y="50" width="100" height="20" uuid="7b7cf031-b5c6-492e-8baa-ae0af570ef32"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha de Contratación::]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="97" width="83" height="20" uuid="d1e0d090-4723-4d48-8670-5576a80e20af"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Registro Estatal:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="561" y="1" width="1" height="159" uuid="13b21d7d-2fb9-43fa-8e00-c614cfa060ef"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="561" y="70" width="100" height="20" uuid="0aae7f8e-3641-44cd-b3af-f79f1fe023a8"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Fecha de Vencimiento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="17" width="83" height="20" uuid="47055de4-db59-4039-86fe-f0f8340acddb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ FUDEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="77" width="83" height="20" uuid="8178fd5e-2f1a-4a27-b4a9-cd00962dd652"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Tipo de Deuda:]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="262" y="1" width="1" height="159" uuid="acdd1200-78ae-431a-bdda-8f588e3108ec"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="262" y="50" width="299" height="13" uuid="885741ec-6356-4f4c-bcc5-447b38391c85"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C.P. 20200 Aguascalientes, Aguascalientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="262" y="63" width="299" height="14" uuid="1026cf85-698f-40e5-a173-85b16ea5a166"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Teléfono 449-9105000 Ext. 149]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="563" y="30" width="98" height="20" uuid="ced17db4-dd70-458b-b87e-f2b4de3da191"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estatus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="561" y="90" width="151" height="20" uuid="b71d8f75-b0bb-47da-83a0-fe822d3d51cb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Monto original contratado en pesos:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="Float" x="23" y="170" width="763" height="20" uuid="dd726107-a7dc-4dfe-a336-e301e9d2a9b0"/>
+			</rectangle>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="170" width="239" height="20" uuid="3818a18c-b081-4281-8500-5702489667aa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESTINO DEL CRÉDITO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="37" width="84" height="20" uuid="af882251-8694-4354-a45c-7b6ea6172900"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ No. de Crédito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="57" width="83" height="20" uuid="0b80d1a8-a37b-4ccf-b022-aa2450775844"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Contratante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="117" width="117" height="20" uuid="2a05daee-98a4-42fe-8c0f-5aa518fb0e48"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ No. de inscripción SHCP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="563" y="110" width="98" height="20" uuid="44a81377-dfe6-4490-96f0-eee85270f923"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo por Recaudar:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="107" y="17" width="155" height="20" uuid="c5ac2dd4-2b25-4eca-a215-7a622566dc20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{folio_fudep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="107" y="37" width="155" height="20" uuid="1b5415d0-102d-4fca-ba4f-671ce05ded4b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_credito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="107" y="57" width="155" height="20" uuid="aa764654-53b3-4fad-9afe-1bcee6532ebc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entidad_contratante}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="107" y="77" width="155" height="20" uuid="1acd95fd-fc1b-47c4-b0f1-a584adfe2be2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_deuda}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="107" y="97" width="155" height="20" uuid="05b59d4d-209e-4895-838b-26a74409c8f5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registro_estatal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="141" y="117" width="121" height="20" uuid="40f7762e-6cfc-4aee-b0f2-e1eda6606e55"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_inscripcion_shcp}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="661" y="30" width="125" height="20" uuid="76d1853d-a3b3-4266-992b-f2f70d0e8948"/>
+				<textFieldExpression><![CDATA[$F{estatus}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="662" y="50" width="124" height="20" uuid="f7c39bd2-2f90-4247-a67e-3f70548de894"/>
+				<textFieldExpression><![CDATA[$F{fecha_contratacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="662" y="70" width="124" height="20" uuid="88ffaf15-b8fe-48ce-9977-95cbb7f392f6"/>
+				<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="712" y="90" width="74" height="20" uuid="663bd74b-211a-47f2-961e-cdf3602f1759"/>
+				<textFieldExpression><![CDATA[$F{monto_original_contratado}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="661" y="110" width="125" height="20" uuid="1a53aab8-dcfa-4ac5-83bd-2b78fd60ffde"/>
+				<textFieldExpression><![CDATA[$F{saldo_recaudar}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="393">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="23" y="0" width="763" height="14" forecolor="#FFFFFF" backcolor="#004987" uuid="16649a58-7339-46aa-9756-d51a75937628"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="29" width="100" height="20" uuid="0900313f-3575-4da0-99f3-9bb548e41fa5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. de Crédito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="69" width="100" height="20" uuid="d7323607-4da4-4cfe-932f-3a432015c57f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ambito:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="109" width="100" height="20" uuid="7ebd8fbf-16da-47f5-bb30-4c6f8874cae6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Entidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="189" width="133" height="20" uuid="1e8ca098-d19a-4e78-a028-82d9b0d6e37b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Perfil de Amortización:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="149" width="154" height="20" uuid="1cfb9caf-c60b-478b-911f-bcc8e6f3a5d2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Frecuencia de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="229" width="167" height="20" uuid="9b1df678-bf4a-4960-abde-0cd70150f6ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Tasa de Amortización:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="269" width="134" height="20" uuid="3078f829-39c3-4335-9171-16d44e817317"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tasa de Amortización:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="311" width="167" height="20" uuid="541e961f-cd9f-440b-b96e-976a516aa921"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia de Autorización:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="25" y="351" width="133" height="20" uuid="d7d26ed9-9ff6-4aa6-9bba-2a4a105edc2f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Insitución Acreedora:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="49" width="537" height="20" uuid="e53e177f-a82b-43ee-a95b-030925c6dbc9"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_credito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="89" width="539" height="20" uuid="47d29d04-2d0a-4d2c-b51e-a2b060151e53"/>
+				<textFieldExpression><![CDATA[$F{ambito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="129" width="537" height="20" uuid="f85ed5a3-8240-4355-b493-1d57f3e43e35"/>
+				<textFieldExpression><![CDATA[$F{tipo_entidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="169" width="537" height="20" uuid="4f5e21b9-1b2a-4bd8-a2c0-ecc1052c3644"/>
+				<textFieldExpression><![CDATA[$F{frecuencia_pago}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="209" width="537" height="20" uuid="72c8b85f-a1c8-4d28-a331-5e1b5d3405c8"/>
+				<textFieldExpression><![CDATA[$F{perfil_amortizacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="24" y="249" width="537" height="20" uuid="da39ed07-600b-49fb-b24a-4d7ef1639c5a"/>
+				<textFieldExpression><![CDATA[$F{tipo_tasa_amortizacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="25" y="289" width="536" height="20" uuid="4a10c218-4569-4481-bfd2-df3cd7dd083d"/>
+				<textFieldExpression><![CDATA[$F{tasa_armortizacon}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="25" y="331" width="536" height="20" uuid="24fade52-003c-4951-96fd-3e068d7bcefc"/>
+				<textFieldExpression><![CDATA[$F{referencia_autorizacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="23" y="371" width="539" height="20" uuid="d671964f-dc68-458f-8e97-48e0a8542a75"/>
+				<textFieldExpression><![CDATA[$F{institucion_acredora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="632" y="14" width="100" height="20" forecolor="#666666" uuid="e7b746c9-72f3-48fd-8577-f504cc1266af"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="734" y="14" width="69" height="20" forecolor="#666666" uuid="8e465ba6-4817-45bd-a7b3-1fedbfa9d29b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="632" y="34" width="100" height="20" forecolor="#666666" uuid="2800862a-c26a-41b4-ba53-bb099a110e55"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="522" y="34" width="109" height="20" forecolor="#666666" uuid="d1fc4b67-bb42-43cd-9931-694366f14a71"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="522" y="14" width="109" height="20" forecolor="#666666" uuid="f0a9b969-3b93-48ec-bf60-7664f6155cb3"/>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
