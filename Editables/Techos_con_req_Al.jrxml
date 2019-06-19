@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Techos_sol_amp_Al" pageWidth="696" pageHeight="845" columnWidth="656" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71a920b2-5a14-47ea-b3bb-85340bb4f075">
 	<property name="ireport.zoom" value="1.6105100000000045"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="493"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -66,6 +66,9 @@ ORDER BY r.folio_req]]>
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="periodo" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="usuario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -139,13 +142,6 @@ LIMIT 1]]>
 	</title>
 	<detail>
 		<band height="590" splitType="Stretch">
-			<staticText>
-				<reportElement x="3" y="165" width="653" height="20" forecolor="#FF0033" uuid="02441ed0-133a-453f-93b4-622140bbea97"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[No se encuentran datos existentes en la base de datos]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="0" y="165" width="656" height="20" forecolor="#FF0033" uuid="9ef365e2-6b20-4ae7-bf19-550e91f6a931"/>
 				<textElement textAlignment="Center">
@@ -319,7 +315,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="58" height="30" isPrintWhenDetailOverflows="true" uuid="942d5837-04f0-4948-9b39-7e308d8ab641"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{folio_req}]]></textFieldExpression>
@@ -340,7 +336,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="67" height="30" isPrintWhenDetailOverflows="true" uuid="3bd4d466-2641-4027-9bfa-7628cc4dbf6b"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{descripcion_articulo}]]></textFieldExpression>
@@ -361,7 +357,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="58" height="30" isPrintWhenDetailOverflows="true" uuid="3247fd35-9312-4f75-a6f4-e26f2d7e0f7c"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{cog}]]></textFieldExpression>
@@ -382,7 +378,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" uuid="10d2c75b-51cc-4e23-8d52-fc8d05473764"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{programa}]]></textFieldExpression>
@@ -403,7 +399,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" uuid="2d6772b6-a502-4e93-af89-1793cf13d1c9"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{clave_presupuestal}]]></textFieldExpression>
@@ -424,7 +420,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="88" height="30" isPrintWhenDetailOverflows="true" uuid="2ff4ce4d-a350-4915-abe1-99ba4174d502"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{descripcion_especifica}]]></textFieldExpression>
@@ -445,7 +441,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="58" height="30" isPrintWhenDetailOverflows="true" uuid="c93ee5a7-bbd0-42eb-ae1f-13181804df92"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
@@ -466,7 +462,7 @@ LIMIT 1]]>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="81" height="30" isPrintWhenDetailOverflows="true" uuid="4f0e409a-041a-4829-aa15-09da8a22e063"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{precio_unitario}]]></textFieldExpression>
@@ -489,7 +485,7 @@ LIMIT 1]]>
 						<jr:detailCell height="30" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="55" height="30" isPrintWhenDetailOverflows="true" uuid="851e811f-8159-4323-a3e6-e4adbaf7b8f2"/>
-								<textElement textAlignment="Center">
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
@@ -522,15 +518,15 @@ LIMIT 1]]>
 			<line>
 				<reportElement x="0" y="28" width="656" height="2" forecolor="#999999" uuid="2fc4d5f3-1db7-448d-8d49-bb7e806e9824"/>
 			</line>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="118" y="85" width="538" height="15" uuid="cc8e40a4-c3a3-4b31-8e06-058f0ada9f52"/>
 				<textFieldExpression><![CDATA[$F{nombre_programa}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="118" y="100" width="538" height="15" uuid="f192abe2-a688-4ffe-a276-3575deb480f1"/>
 				<textFieldExpression><![CDATA[$F{nombre_indicador}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="118" y="115" width="538" height="15" uuid="7ac75be7-1409-421b-ba6c-aefd0b7c07e4"/>
 				<textFieldExpression><![CDATA[$F{meta_asociada}]]></textFieldExpression>
 			</textField>
@@ -550,11 +546,6 @@ LIMIT 1]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField pattern="K:mm a, z">
-				<reportElement x="487" y="23" width="169" height="20" forecolor="#666666" uuid="6dc82307-d5c9-4c63-b564-7d282d8ba856"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
-			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="487" y="3" width="100" height="20" forecolor="#666666" uuid="7edfd1db-bd55-494c-8462-1b04eeee5c8e"/>
 				<textElement verticalAlignment="Middle"/>
@@ -567,6 +558,10 @@ LIMIT 1]]>
 				</textElement>
 				<text><![CDATA[Fecha  y hora de impresión:]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="487" y="25" width="154" height="20" uuid="9008ad41-b94d-49d8-8c9f-c9529aad1feb"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>
