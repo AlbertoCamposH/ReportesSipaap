@@ -15,9 +15,6 @@
 	<parameter name="ordenPago" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="cantidad" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
 	<queryString>
 		<![CDATA[SELECT duep,duep_asociado, fecha_registro, importe_reembolsar, cuenta_bancaria_beneficiario
 	FROM operation.orden_pago
@@ -201,7 +198,7 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{cantidad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{importe_reembolsar}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="71" y="105" width="177" height="17" isPrintWhenDetailOverflows="true" uuid="8e1849be-c090-4d2d-90d6-ec838ed54c81"/>
