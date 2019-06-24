@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="5_Reporte_corte_Jo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62e459cf-403b-45c0-a526-0211201d5cef">
-	<property name="ireport.zoom" value="0.90909090909091"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="34"/>
+	<property name="ireport.zoom" value="1.3310000000000035"/>
+	<property name="ireport.x" value="104"/>
+	<property name="ireport.y" value="115"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -63,6 +63,146 @@
 			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
 		</box>
 	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
 	<subDataset name="RegCorte" uuid="4b573471-88d0-4a69-9ecb-d763a1be16ed">
 		<parameter name="ur" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -74,28 +214,16 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT ccd.id_corte_caja_det, (b.nombre||' '||b.primer_apellido||' '||b.segundo_apellido) AS beneficiario,'FormaCobro' AS formaC,
- fondoContable.descripcion AS fondo, 'CuentaBancaria' AS cuenta,ccd.importe_total
-FROM (SELECT DISTINCT cc.id_fondo_contable,c.descripcion FROM operation.corte_caja cc
-	INNER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+			<![CDATA[SELECT cc.folio_corte_caja, (b.nombre||' '||b.primer_apellido||' '||b.segundo_apellido) AS beneficiario, 'Forma Cobro' AS formaC,
+	c.descripcion AS fondo, 'Cuenta Bancaria' AS cuenta, cc.importe_total
+FROM operation.corte_caja cc
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
 	WHERE cc.ur = $P{ur}
 	AND cc.id_periodo = $P{periodo}
-	AND cc.id_corte_caja = $P{idCorte}
-	AND c.ur = cc.ur
-	AND c.id_periodo = cc.id_periodo
-	)AS fondoContable,
-	operation.corte_caja_det ccd
-	INNER JOIN operation.corte_caja cc ON ccd.id_corte_caja = cc.id_corte_caja
-	INNER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
-	WHERE ccd.ur = $P{ur}
-	AND ccd.id_periodo = $P{periodo}
-	AND ccd.id_corte_caja = $P{idCorte}
-	AND cc.ur = ccd.ur
-	AND cc.id_periodo = ccd.id_periodo
-	AND cc.id_fondo_contable = fondoContable.id_fondo_contable
-	ORDER BY ccd.id_corte_caja_det;]]>
+	AND cc.id_corte_caja = $P{idCorte};]]>
 		</queryString>
-		<field name="id_corte_caja_det" class="java.lang.Long"/>
+		<field name="folio_corte_caja" class="java.lang.String"/>
 		<field name="beneficiario" class="java.lang.String"/>
 		<field name="formac" class="java.lang.String"/>
 		<field name="fondo" class="java.lang.String"/>
@@ -113,14 +241,100 @@ FROM (SELECT DISTINCT cc.id_fondo_contable,c.descripcion FROM operation.corte_ca
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT SUM(ccd.importe_total) AS total
+			<![CDATA[SELECT SUM(cc.importe_total) AS total
 FROM operation.corte_caja cc
-INNER JOIN operation.corte_caja_det ccd ON cc.id_corte_caja = ccd.id_corte_caja
-WHERE cc.ur = $P{ur}
-AND cc.id_periodo = $P{periodo}
-AND cc.id_corte_caja = $P{idCorte};]]>
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
+	WHERE cc.ur = $P{ur}
+	AND cc.id_periodo = $P{periodo}
+	AND cc.id_corte_caja = $P{idCorte};
+]]>
 		</queryString>
 		<field name="total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SubTarjeta" uuid="9e63ee79-cf2c-4960-bea1-20f014fbb119">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="idCorte" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT SUM(cc.cobros_tarjeta) AS totalT
+FROM operation.corte_caja cc
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
+	WHERE cc.ur = $P{ur}
+	AND cc.id_periodo = $P{periodo}
+	AND cc.id_corte_caja = $P{idCorte};]]>
+		</queryString>
+		<field name="totalt" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SubEfectivo" uuid="1c1903ef-0628-45c0-a044-d33591617c25">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="idCorte" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT SUM(cc.importe_efectivo) AS totale
+FROM operation.corte_caja cc
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
+	WHERE cc.ur = $P{ur}
+	AND cc.id_periodo = $P{periodo}
+	AND cc.id_corte_caja = $P{idCorte};]]>
+		</queryString>
+		<field name="totale" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SubCheque" uuid="aa916828-f30d-4de4-ab7d-c0b2ef93b3ef">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="idCorte" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT SUM(cc.cobros_cheque) AS totalc
+FROM operation.corte_caja cc
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
+	WHERE cc.ur = $P{ur}
+	AND cc.id_periodo = $P{periodo}
+	AND cc.id_corte_caja = $P{idCorte}]]>
+		</queryString>
+		<field name="totalc" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SubOtras" uuid="8660004c-6c76-4524-99f2-bb031d22ea29">
+		<parameter name="ur" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="periodo" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="idCorte" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT SUM(cc.formas_cobro) AS totalo
+FROM operation.corte_caja cc
+FULL OUTER JOIN catalog.catalogos c ON (cc.id_cat_fondo_contable = c.id_catalogo AND cc.id_fondo_contable = c.id_cat)
+FULL OUTER JOIN entity.beneficiario b ON cc.id_beneficiario = b.id_beneficiario
+	WHERE cc.ur = $P{ur}
+	AND cc.id_periodo = $P{periodo}
+	AND cc.id_corte_caja = $P{idCorte};]]>
+		</queryString>
+		<field name="totalo" class="java.math.BigDecimal"/>
 	</subDataset>
 	<parameter name="usuario" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -135,15 +349,14 @@ AND cc.id_corte_caja = $P{idCorte};]]>
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT ccd.folio_corte_caja, ccd.fecha_elaboracion, cc.numero_caja
+		<![CDATA[SELECT cc.folio_corte_caja, cc.fecha_registro, cc.numero_caja
 FROM operation.corte_caja cc
-INNER JOIN operation.corte_caja_det ccd ON cc.id_corte_caja = ccd.id_corte_caja
 WHERE cc.ur = $P{ur}
 AND cc.id_periodo = $P{periodo}
 AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 	</queryString>
 	<field name="folio_corte_caja" class="java.lang.String"/>
-	<field name="fecha_elaboracion" class="java.sql.Timestamp"/>
+	<field name="fecha_registro" class="java.sql.Timestamp"/>
 	<field name="numero_caja" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -185,7 +398,7 @@ AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 		</band>
 	</title>
 	<detail>
-		<band height="274" splitType="Stretch">
+		<band height="359" splitType="Stretch">
 			<rectangle>
 				<reportElement positionType="Float" x="0" y="0" width="555" height="48" uuid="3a1b3f54-a9c6-43d7-90de-e20de86fed03"/>
 			</rectangle>
@@ -218,164 +431,48 @@ AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 				<text><![CDATA[CAJA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="314" y="147" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="cbedcc59-429c-4a81-8579-b1ad9f6f034b"/>
-				<textElement>
+				<reportElement positionType="Float" x="314" y="189" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="cbedcc59-429c-4a81-8579-b1ad9f6f034b"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Subtotal Cobros con Cheque]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="314" y="159" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="c7829c5f-97ad-4a63-b649-ef7662b09201"/>
-				<textElement>
+				<reportElement positionType="Float" x="314" y="211" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="c7829c5f-97ad-4a63-b649-ef7662b09201"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Subtotal Cobros Otras Formas de Cobro]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="314" y="171" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="c6d41887-5a9e-43df-bc7c-7a17ea09e250"/>
-				<textElement>
+				<reportElement positionType="Float" x="314" y="233" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="c6d41887-5a9e-43df-bc7c-7a17ea09e250"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Subtotal Cobros en Efectivo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="314" y="197" width="106" height="12" isPrintWhenDetailOverflows="true" uuid="b1a10c70-fc75-4eaf-af2c-35f30df68113"/>
+				<reportElement positionType="Float" x="314" y="268" width="106" height="12" isPrintWhenDetailOverflows="true" uuid="b1a10c70-fc75-4eaf-af2c-35f30df68113"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Importe total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="314" y="135" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="8bfced1e-ca6a-416b-acca-37259adf99e0"/>
-				<textElement>
+				<reportElement positionType="Float" x="314" y="167" width="172" height="12" isPrintWhenDetailOverflows="true" uuid="8bfced1e-ca6a-416b-acca-37259adf99e0"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Subtotal Cobros con Tarjeta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="242" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="6044352f-4eea-4adb-9b1e-a41f2ca84ca5"/>
+				<reportElement positionType="Float" x="0" y="325" width="555" height="20" isPrintWhenDetailOverflows="true" uuid="6044352f-4eea-4adb-9b1e-a41f2ca84ca5"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Elaboró]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="204" y="242" width="148" height="1" isPrintWhenDetailOverflows="true" uuid="334fd29d-d92f-46ab-a68e-1327e7112d0c"/>
+				<reportElement positionType="Float" x="204" y="325" width="148" height="1" isPrintWhenDetailOverflows="true" uuid="334fd29d-d92f-46ab-a68e-1327e7112d0c"/>
 			</line>
-			<componentElement>
-				<reportElement key="table" style="table" x="0" y="76" width="555" height="50" uuid="f67be439-90de-491d-8553-a615901acf16"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="RegCorte" uuid="e2c07894-e511-4482-becf-ea0a379fecc4">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="90" uuid="7a83b4d2-1c0c-424a-a622-c4fec1759d80">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="90dc94dd-22d4-47f5-b924-2fc99155bdb8"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[FOLIO DE INGRESO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="9f32c69d-44a7-418b-a0a4-e7970bd84236"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{id_corte_caja_det}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="b6996ed3-14e2-42f3-a757-114345431d45">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="a058caea-6316-41a4-88d0-84cffb19bff8"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[BENEFICIARIO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="b9f3188c-7cab-4570-b8a9-df67e8498f8a"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="8d499a4b-d073-4a6b-8f39-6ff5dfab5395">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="12337b81-bc24-43a6-8c17-c001da4f6e4c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[FORMA COBRO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="c2f7f9ea-9a3b-478e-b943-59bc078bd0d9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{formac}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="8ff532de-46b5-43e1-add7-ee65a35e4981">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="22dac9a8-74fc-42ed-8e5c-83a30077cd58"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[FONDO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="81fdc611-db4d-4f7a-bc95-a7affade7462"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{fondo}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="104" uuid="692accd6-5032-47f7-b1f0-a7c1816e0851">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="104" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="39c727f3-2745-457c-ac74-24b36b323a64"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[CUENTA BANCARIA DE DEPOSITO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="104" height="20" isPrintWhenDetailOverflows="true" uuid="0192b235-494b-4e41-9dfd-cd3e9949e69c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="ea36861c-7aed-40c8-9028-6e9812fcceed">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement mode="Opaque" x="0" y="0" width="90" height="30" forecolor="#FFFFFF" backcolor="#004987" uuid="08cb874d-989c-45b1-a2c7-669a23d6ea37"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[IMPORTE TOTAL]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="ac0b9afc-7725-4e6f-abab-507faec97398"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="49" y="0" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="f806645f-6282-45e3-9469-ba535f28d850"/>
 				<textElement verticalAlignment="Middle">
@@ -388,7 +485,7 @@ AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{fecha_elaboracion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="49" y="32" width="100" height="16" isPrintWhenDetailOverflows="true" uuid="e2769863-474a-48cb-b97a-1d2656668fd4"/>
@@ -398,7 +495,7 @@ AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 				<textFieldExpression><![CDATA[$F{numero_caja}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement key="table 2" style="table 2" positionType="Float" x="423" y="197" width="132" height="12" isPrintWhenDetailOverflows="true" uuid="fd9c5b2a-4a11-4e1c-845e-e70a79f29a81"/>
+				<reportElement key="table 2" style="table 2" x="486" y="268" width="69" height="12" isPrintWhenDetailOverflows="true" uuid="fd9c5b2a-4a11-4e1c-845e-e70a79f29a81"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Importe" uuid="e5e2334e-f7e9-44f0-96bc-ab7994c67de0">
 						<datasetParameter name="ur">
@@ -416,7 +513,259 @@ AND cc.id_corte_caja = $P{idCorte} LIMIT 1;]]>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 								<reportElement positionType="Float" x="0" y="0" width="131" height="20" isPrintWhenDetailOverflows="true" uuid="8597e7d2-6b6a-4087-9f3a-258dc0bbe2a7"/>
-								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+								<textElement verticalAlignment="Top">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[  $F{total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" positionType="Float" x="0" y="76" width="555" height="50" uuid="42c2e405-a928-45d9-b94b-a5a859ee9ffc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="RegCorte" uuid="7f550ccd-61f2-43ea-bcc5-1b99b3b78a85">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idCorte">
+							<datasetParameterExpression><![CDATA[$P{idCorte}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="925ab70c-ac85-4270-943f-fac03011d070">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="57bba3f0-b0c4-471a-ae4a-8ed7f37583cf"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FOLIO DE INGRESO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="18798ae9-6c3f-4212-a1b5-5750f4087c9d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{folio_corte_caja}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="108" uuid="14fe7191-6bd9-4d18-8d00-b16469c3a3f0">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="108" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="24dccddc-94be-4091-a9df-170f57944f5a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CLIENTE / BENEFICIARIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="108" height="20" isPrintWhenDetailOverflows="true" uuid="39cd0c8c-5f79-4110-98d9-46aee7598c8a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="49097b80-a891-4074-9230-3bf06221af3f">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="c6c8cc5f-66ee-4113-bd96-aef9e03e5066"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FORMA COBRO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="514bd1eb-489f-4f5a-9bc1-aaba5188aad3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{formac}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b53b216f-16b7-4232-9624-46a997b2efd5">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="82cc4508-37d8-430b-9bed-ab4488e69727"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FONDO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="5a636d4d-303a-4e99-98c3-889f9112a301"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fondo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="0acfb4b7-e677-4b6a-8650-d7678a9a4047">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="ae919260-26ea-464b-85d1-f3c31a353068"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CUENTA BANCARIA DE DEPOSITO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="a7c12de5-8f2a-4649-9e47-19c3fa4db9f3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="306b3213-00f0-4d4c-9186-d428979ed274">
+						<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="90" height="30" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" backcolor="#004987" uuid="f03ab3cc-01d7-4c03-b85b-0cb3fefadfc8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[IMPORTE TOTAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="214ad359-1d63-4830-a829-087ac19e589d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{importe_total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 6" style="table 6" x="486" y="189" width="69" height="12" uuid="89c063bc-b88b-4d19-adc1-2ed7d08cc0e5"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="SubCheque" uuid="9d3d1c26-ab05-43f4-89d2-17a71c37d6d6">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idCorte">
+							<datasetParameterExpression><![CDATA[$P{idCorte}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="ed2c750b-eb41-42bb-83ff-ab6f759560dc">
+						<jr:detailCell style="table 6_TD" height="20">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="cc01047b-5006-41f0-8265-bf6d948f8942"/>
+								<textElement verticalAlignment="Top">
+									<font size="8" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[  $F{totalc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 7" style="table 7" x="486" y="233" width="69" height="12" uuid="0bf9a47c-9d87-42d2-988c-c5154ff9192d"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="SubEfectivo" uuid="1483789a-8946-4b0b-8986-0cac1a13c26d">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idCorte">
+							<datasetParameterExpression><![CDATA[$P{idCorte}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="384001a5-0d69-4599-957c-d9382b7c36ef">
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="052b9547-d0f8-4208-91d2-15c7f9dc52eb"/>
+								<textElement verticalAlignment="Top">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[  $F{totale}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 8" style="table 8" x="486" y="167" width="69" height="12" isPrintWhenDetailOverflows="true" uuid="835ed71c-7b06-4932-bab0-1afdb43670dc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="SubTarjeta" uuid="6ae23911-7be0-4a45-b461-30bfec4c4075">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idCorte">
+							<datasetParameterExpression><![CDATA[$P{idCorte}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="97833dab-4d3e-47ca-83d2-d65b33c48fad">
+						<jr:detailCell style="table 8_TD" height="14" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="14" isPrintWhenDetailOverflows="true" uuid="5749aff7-2a85-4e92-922b-fab2da63f705"/>
+								<textElement verticalAlignment="Top">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[  $F{totalt}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement key="table 9" style="table 9" x="486" y="211" width="69" height="12" uuid="4d5a85f6-8417-414a-b1f8-6731d3bc5d15"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="SubOtras" uuid="3171d79b-3d36-4f3c-b96d-6267e7fe907f">
+						<datasetParameter name="ur">
+							<datasetParameterExpression><![CDATA[$P{ur}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="periodo">
+							<datasetParameterExpression><![CDATA[$P{periodo}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="idCorte">
+							<datasetParameterExpression><![CDATA[$P{idCorte}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="3caa3e5f-52a2-4f7a-94d2-9aa2d7d773bc">
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement positionType="Float" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true" uuid="73633214-2054-4f19-b01f-f7f59e7338fe"/>
+								<textElement verticalAlignment="Top">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[  $F{totalo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
