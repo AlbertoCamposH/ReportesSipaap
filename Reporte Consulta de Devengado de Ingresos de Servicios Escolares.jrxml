@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte Consulta de Devengado de Ingresos de Servicios Escolares" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95679341-3f4d-4c17-b110-dd9a7d629923">
 	<property name="ireport.zoom" value="0.75"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="44"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -26,6 +26,29 @@
 			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
 		</box>
 	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#000080">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
 	<subDataset name="ds_dt" uuid="dc0d3995-cfee-4c32-9e23-d408ca183a31">
 		<parameter name="ur" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -37,23 +60,22 @@
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select d.folio_asociado, d.fecha_registro, d.referencia, d.factura,
-d.fecha_factura, d.caja_recaudacion, concat_ws('',e.nombre,' ',e.primer_apellido,' ',e.segundo_apellido) as Beneficiario,
-d.matricula, d.nombre_alumno, d.carrera
-from operation.devengado_ingreso d
-inner join entity.beneficiario e on e.id_beneficiario=d.beneficiario
-where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{devengado}]]>
+			<![CDATA[select d.clasificado_rubro_ingreso, f.id_cat as Fondo_Contable, r.id_cat as Centro_Registro,
+d.clave_presupuestal_ingreso, d.cantidad, d.importe, d.descuento, d.impuesto_valor_agregado,
+d.total
+from operation.devengado_ingreso_detalle d
+inner join catalog.catalogos f on f.id_cat=d.id_fondo_contable
+inner join catalog.catalogos r on r.id_cat=d.id_centro_registro]]>
 		</queryString>
-		<field name="folio_asociado" class="java.lang.String"/>
-		<field name="fecha_registro" class="java.sql.Timestamp"/>
-		<field name="referencia" class="java.lang.String"/>
-		<field name="factura" class="java.lang.String"/>
-		<field name="fecha_factura" class="java.sql.Timestamp"/>
-		<field name="caja_recaudacion" class="java.lang.Long"/>
-		<field name="beneficiario" class="java.lang.String"/>
-		<field name="matricula" class="java.lang.Long"/>
-		<field name="nombre_alumno" class="java.lang.Long"/>
-		<field name="carrera" class="java.lang.Long"/>
+		<field name="clasificado_rubro_ingreso" class="java.lang.Long"/>
+		<field name="fondo_contable" class="java.lang.String"/>
+		<field name="centro_registro" class="java.lang.String"/>
+		<field name="clave_presupuestal_ingreso" class="java.lang.String"/>
+		<field name="cantidad" class="java.math.BigDecimal"/>
+		<field name="importe" class="java.math.BigDecimal"/>
+		<field name="descuento" class="java.math.BigDecimal"/>
+		<field name="impuesto_valor_agregado" class="java.math.BigDecimal"/>
+		<field name="total" class="java.math.BigDecimal"/>
 	</subDataset>
 	<parameter name="ur" class="java.lang.Long">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -69,12 +91,12 @@ where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{dev
 	</parameter>
 	<queryString>
 		<![CDATA[select d.folio_asociado, d.fecha_registro, d.referencia, d.factura,
-d.fecha_factura, d.caja_recaudacion, concat_ws('',e.nombre,' ',e.primer_apellido,' ',e.segundo_apellido) as Beneficiario, d.matricula, d.nombre_alumno, d.carrera,
+d.fecha_factura, d.caja_recaudacion, concat_ws('',e.nombre,' ',e.primer_apellido,' ',e.segundo_apellido) as Beneficiario,
+d.matricula, d.nombre_alumno, d.carrera,
 d.grado, d.grupo
 from operation.devengado_ingreso d
 inner join entity.beneficiario e on e.id_beneficiario=d.beneficiario
-where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{devengado}
-]]>
+where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{devengado}]]>
 	</queryString>
 	<field name="folio_asociado" class="java.lang.String"/>
 	<field name="fecha_registro" class="java.sql.Timestamp"/>
@@ -403,158 +425,143 @@ where d.ur=$P{ur} AND d.periodo=$P{periodo} AND d.folio_devengado_ingreso=$P{dev
 				<text><![CDATA[Cargo2]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement key="table" style="table" positionType="Float" x="0" y="311" width="802" height="22" uuid="f5b13718-14ae-4059-b050-42e3930aabe9"/>
+				<reportElement key="table 1" style="table 1" positionType="Float" x="2" y="311" width="800" height="22" uuid="4ff1a65d-0288-4e84-b668-f0580e2abc87"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="ds_dt" uuid="cf706806-92da-4268-bf83-ec02f15b7a76">
+					<datasetRun subDataset="ds_dt" uuid="40e83bab-a75b-473d-b0e6-979ff3e48333">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="75" uuid="16a4c9a0-e8d5-4a85-ad1e-a1197d886b45">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="dc3b3719-9b8f-4b5f-b086-52fc886d2b52">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="75" height="30" uuid="5116c18b-ed94-42a0-86f8-127fdcfc14c0"/>
-								<text><![CDATA[folio_asociado]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="11ab7438-b2c5-448a-b585-2c2dd52dea5d"/>
+								<text><![CDATA[clasificado_rubro_ingreso]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="75" height="20" uuid="00d82859-915f-4219-ab1e-06a7ea2f4812"/>
-								<textFieldExpression><![CDATA[$F{folio_asociado}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="1d7f41c1-d7a9-43a3-87cb-128201dfd07f"/>
+								<textFieldExpression><![CDATA[$F{clasificado_rubro_ingreso}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="75" uuid="4eee0d73-9f1c-47eb-be4b-9ad2c3ca2d7e">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="1fac5ba6-2ee7-427e-93bb-b1277515b9b7">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="75" height="30" uuid="2e9ef5d6-9c23-4de5-9c9a-bd64969e7fb4"/>
-								<text><![CDATA[fecha_registro]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e32757e5-8af9-418a-bb28-f3b7cd619b8f"/>
+								<text><![CDATA[fondo_contable]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="75" height="20" uuid="2c7f4bb7-b3c9-432f-8739-358e7f477d6a"/>
-								<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="38bfa43b-24d8-4bda-9805-5f21e31130e2"/>
+								<textFieldExpression><![CDATA[$F{fondo_contable}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="02e8615d-72b5-4c1f-a7b6-c53356fe720d">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="af4c5d44-939b-46d0-8fa1-f4d794d939bc">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="7b1b6992-fe86-45bc-be34-52a74f1e1258"/>
-								<text><![CDATA[referencia]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="56e6cec0-a007-41fe-bf09-d03437d0603a"/>
+								<text><![CDATA[centro_registro]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="cf7bb4e3-0ecc-46a4-bd69-4efbc6641b1e"/>
-								<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="114ceea1-2fd9-446e-af17-d633f3e2b2b9"/>
+								<textFieldExpression><![CDATA[$F{centro_registro}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="707249b5-e91f-40e1-9846-6d48ef82aca2">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="d9d89778-480d-4b31-a2e9-51dc7875c73e">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="d7dd7d4a-0e28-4e8e-b644-3e028f943b1d"/>
-								<text><![CDATA[factura]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="2b98ef04-4234-4a53-b2a4-3633aa03c4a9"/>
+								<text><![CDATA[clave_presupuestal_ingreso]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="153349de-5514-4037-a54f-a9595475792e"/>
-								<textFieldExpression><![CDATA[$F{factura}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="4a0089a8-33ff-47a7-a61d-fd4eb1dfd5b0"/>
+								<textFieldExpression><![CDATA[$F{clave_presupuestal_ingreso}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="34099329-8d91-4086-8551-b57cc364bddd">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="4076e866-0edb-4208-9358-8f31cb7fc18c">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="98f166fb-8750-4840-82d7-5c2c43cab9ad"/>
-								<text><![CDATA[fecha_factura]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d85e1529-8906-40e8-bd9b-9ab31d723ba2"/>
+								<text><![CDATA[cantidad]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="07822880-f7d4-496a-a809-a6a86ed44cd6"/>
-								<textFieldExpression><![CDATA[$F{fecha_factura}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a7c2b094-50c0-4f13-b327-6a8a896ceb01"/>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="99a169a3-8e43-4fca-8dfb-16d632771155">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="03ebead6-f1fe-4ddd-8488-1d0c22b71297">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="5125c0b9-6f59-4850-829b-79a076c75ca0"/>
-								<text><![CDATA[caja_recaudacion]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="244a61c3-eaee-4f19-b00c-655a4618df0e"/>
+								<text><![CDATA[importe]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d176eb8c-41b4-4fad-9e2c-cea57e431963"/>
-								<textFieldExpression><![CDATA[$F{caja_recaudacion}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="84bc861c-02ae-4f16-afa4-6848041636aa"/>
+								<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="ebbbdcb7-2f7f-450b-aa7e-a5981de54db3">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="374820a6-5fde-428a-a79b-a7cb4b7459f1">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="49292070-52c5-4a6d-a46a-3cb28b22d1f1"/>
-								<text><![CDATA[beneficiario]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7d6db4b0-59bd-4158-8cfe-316b0213511a"/>
+								<text><![CDATA[descuento]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="af0cfa2b-baa1-47c3-945b-3194631e1171"/>
-								<textFieldExpression><![CDATA[$F{beneficiario}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c9178efd-f16e-4367-a70c-d5742fb119ff"/>
+								<textFieldExpression><![CDATA[$F{descuento}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="56" uuid="e1eab611-1ae8-4f6f-8a47-fa20df9d6ff8">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="d8289f80-49cd-49f4-9c6a-54661d13be5f">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="56" height="30" uuid="b645287d-f2f0-441c-bdc1-d282a931f58e"/>
-								<text><![CDATA[matricula]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="64e37791-c131-42b8-93f1-294da28ff86a"/>
+								<text><![CDATA[impuesto_valor_agregado]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="56" height="20" uuid="cd75dbc5-00b6-439e-a57d-fbef180693df"/>
-								<textFieldExpression><![CDATA[$F{matricula}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="7fbe963c-25da-4085-8a0a-d2d01fc7adbe"/>
+								<textFieldExpression><![CDATA[$F{impuesto_valor_agregado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="64" uuid="23226c6e-6a56-4a89-a228-ad8d4f50ce08">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+					<jr:column width="90" uuid="caba74e9-c44f-4b2d-ae94-6df8133b99b8">
+						<jr:tableHeader style="table 1_TH" height="30"/>
+						<jr:columnHeader style="table 1_CH" height="30">
 							<staticText>
-								<reportElement x="0" y="0" width="64" height="30" uuid="e4b7d169-8e8a-49f9-9237-30beb07f784c"/>
-								<text><![CDATA[nombre_alumno]]></text>
+								<reportElement x="0" y="0" width="90" height="30" uuid="db2bb5d6-aa93-408e-a9c5-26a923b8cd27"/>
+								<text><![CDATA[total]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="64" height="20" uuid="f1b56190-9030-4236-a576-842df2d67f48"/>
-								<textFieldExpression><![CDATA[$F{nombre_alumno}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="81" uuid="3a3abf09-9fc0-4f30-8def-b870ac7988f1">
-						<jr:tableHeader style="table_TH" height="6" rowSpan="1"/>
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="81" height="30" uuid="3de2e1bd-189e-4c5a-86dd-164d4490a845"/>
-								<text><![CDATA[carrera]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="81" height="20" uuid="1bee1139-2e80-4069-a48d-2f8eda2ea201"/>
-								<textFieldExpression><![CDATA[$F{carrera}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c5bbfac2-dd7e-4884-a812-2b43f7bfafeb"/>
+								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
