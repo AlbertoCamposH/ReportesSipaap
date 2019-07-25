@@ -1,0 +1,2531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_Movimientos_Auxiliares_AR" language="groovy" pageWidth="842" pageHeight="1080" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d001e639-ac1c-4fdf-821c-1d8765b7693e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="487"/>
+	<parameter name="usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="1" y="1" width="801" height="78" uuid="6aedc9da-18bb-47ee-b25c-7ede3275edfd"/>
+			</rectangle>
+			<image>
+				<reportElement positionType="Float" x="655" y="17" width="102" height="43" uuid="9f84ce8c-0f6f-4be4-a21f-e9ad73dd8aff"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="59" width="460" height="16" uuid="261679c1-d664-4174-9204-a3be8f392f31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AL 31 DE MARZO DE 2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="5" width="460" height="16" uuid="a7cdc203-a43e-47c6-89a3-91b117f4cfd9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="41" width="460" height="16" uuid="f0a8dc2a-d88b-4fb6-bab2-7dcaad89c449"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE MOVIMIENTOS AUXILIARES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="807" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="176" y="-56" width="460" height="16" uuid="87c2c72a-2ff2-48b4-abda-526c7021f1da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCLIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="21" width="100" height="11" uuid="6561a7a1-f061-4e26-b9c7-df443c826c26"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="32" width="100" height="11" uuid="9dd5b423-94a5-4f55-98ef-842892845250"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="54" width="100" height="11" uuid="339c1c77-0927-4922-a31a-531c536757f4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11120]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="43" width="100" height="11" uuid="950e7e5b-3486-4f64-8972-15dcc9e589a5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[111]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="76" width="100" height="11" uuid="254e1049-c178-492b-b390-603c54f3ab53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11120.01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="65" width="100" height="11" uuid="df20a7f1-cb7a-4b26-8c48-edf8823adc96"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11120]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="87" width="100" height="11" uuid="de6d3495-337b-4061-ba89-16971c1df524"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11120.01.0002]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="54" width="100" height="11" uuid="3337ceb8-fab0-46d7-94c6-179a32aa1811"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Bancos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="76" width="100" height="11" uuid="55c86260-269e-4940-97e7-5928a75de2db"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BANORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="43" width="114" height="11" uuid="209398b4-47fb-40e1-8ade-68008f1face0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Efectivo y equivalentes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="32" width="100" height="11" uuid="e1c13a4f-9239-46e2-b971-acd0dae27654"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Activo Circulante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="65" width="100" height="11" uuid="b1a862f2-5148-480b-bfb2-a97f9b870543"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Bancos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="21" width="100" height="11" uuid="71106ec6-ec67-48d7-becc-3b475bdcc7df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Activo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="119" y="87" width="209" height="11" uuid="8954be07-3ea8-482e-8522-315892ffae41"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REC. SPOTS CTA 0550507389 BANORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="111" width="42" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="234aaf98-ff81-44ea-a46b-1fd680ae22c9"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="42" y="111" width="47" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="10be924c-1b35-4fbb-a11c-ddffccc2dcce"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="89" y="111" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="f7645625-bdf4-452b-a6ac-2d8600429bde"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="137" y="111" width="39" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="dec63ce3-4b5d-43f6-bd4b-076b110e90d9"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bloque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="176" y="111" width="206" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="9ffe9f59-bf7f-4759-b9c0-5c408508c65d"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto de la póliza ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="592" y="111" width="44" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="be253134-0c1c-48ab-ae56-b8939aa7d614"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUEP/DURI origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="430" y="111" width="41" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="87ed1c26-88d9-499e-82ae-7ffdc1346422"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondo Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="471" y="111" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="e1fee585-add6-45a3-be50-5375a7d9fb9a"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fuente de Financiamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="382" y="111" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="a6c8b664-55e7-4e82-9b17-27dda503eec7"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto de Bloque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="531" y="111" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="6830ef5f-0924-4715-9287-752eb60acbca"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen de póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="742" y="111" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="29f99f0c-582f-4a6d-8db7-3d4ce0ba757d"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="681" y="111" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="612b3c81-ab4e-45a2-a523-b7fb44e6906f"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="636" y="111" width="45" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="43b62b95-6831-4b3b-b711-99f366621b1a"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Momento Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="127" width="47" height="11" uuid="9ad62581-ef75-47fa-81f1-36a11d524c63"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="127" width="48" height="11" uuid="28150c54-351a-4d9c-8d33-9f09b0cc68bf"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[02/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="127" width="39" height="11" uuid="d82c572c-ea99-4084-a3e5-f08c790c82ae"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="127" width="206" height="11" uuid="6e49c963-89a5-4a39-b0a7-29a689481d07"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PAGO FACTURA 9363 INSTITUTO DE SEGURIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="127" width="61" height="11" uuid="3a4c64bd-f129-411a-90cc-7674538a363d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="127" width="61" height="11" uuid="0879bc14-c9ad-4234-b08a-8ec0e34915cc"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$8,464,960.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="95" width="148" height="16" uuid="fca06bc1-f8d8-487c-9993-6b54192e55e4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO  INICIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="95" width="61" height="16" uuid="c55a8b55-82b3-4164-a74e-217d52d97a1f"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$ 585,283.67]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="119" y="10" width="133" height="11" forecolor="#FFFFFF" backcolor="#004987" uuid="103e4c5d-24e4-4969-a063-0d8ae958bdb9"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Descripción Cuenta Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="2" y="10" width="100" height="11" forecolor="#FFFFFF" backcolor="#004987" uuid="9a011d73-5cf5-4989-9568-349ff04c538f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cuenta Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="193" width="42" height="11" uuid="89d9bd81-1dfb-4275-a52d-35f341ded565"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000009]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="259" width="42" height="11" uuid="17d4b226-0486-4c69-b6d0-d4dd59f77512"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000020]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="512" width="42" height="11" uuid="fa811dc6-db0c-4d10-a6ac-30bc1648752b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000170]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="127" width="42" height="11" uuid="a3161281-2af3-4370-9eeb-04daa9dcec35"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="237" width="42" height="11" uuid="5af53d5b-3055-4431-9061-d79ea8e612e7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="413" width="42" height="11" uuid="2be34fb5-4844-4a4d-8c72-8fc8fb5c0920"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000149]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="160" width="42" height="11" uuid="847914b3-8695-4749-847d-ff4d8ed855fc"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000006]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="402" width="42" height="11" uuid="63b880d8-4633-4f4e-9dc1-34e8f57000a4"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000165]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="479" width="42" height="11" uuid="556da47b-fa6f-4dee-a6cb-c5b076b243ef"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000151]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="281" width="42" height="11" uuid="c41d5921-0a1d-49fa-8a0b-ebd321f11b61"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000061]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="446" width="42" height="11" uuid="0ad4b5f4-060a-48a2-884f-eeaddfa771d6"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000150]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="270" width="42" height="11" uuid="363a0443-b688-44ca-9102-a2b1b9b492ec"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000060]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="292" width="42" height="11" uuid="ca9561c2-04a2-4487-bad2-b4c88b34b830"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000123]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="358" width="42" height="11" uuid="08504e76-4d53-4ff8-b2f7-ad99699bc6c8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000148]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="171" width="42" height="11" uuid="7269e2a7-7bd6-49be-bf0a-62165355150e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000007]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="215" width="42" height="11" uuid="e253f308-54bf-4f4b-aa21-99a6f29faafe"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000014]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="325" width="42" height="11" uuid="5e137a43-7ec7-47d3-8d4a-0f465c3aab49"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000163]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="248" width="42" height="11" uuid="1705c1f6-4196-4f31-af52-de0fba7980e3"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="204" width="42" height="11" uuid="058635b4-3f77-4361-ba12-b32b61bc2985"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000010]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="149" width="42" height="11" uuid="ebeb6de5-1937-4ff2-aedb-55041dae3f69"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000005]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="336" width="42" height="11" uuid="7e0eaceb-1d53-4aa4-a271-77b113ff0b13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000179]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="182" width="42" height="11" uuid="7716e80e-8347-4d84-9128-04f06851ab89"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000008]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="523" width="42" height="11" uuid="2869a511-4b19-4c70-b400-f2fd92436e25"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000164]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="149" width="47" height="11" uuid="b6659412-446f-4306-840a-807559814396"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="292" width="47" height="11" uuid="df826a81-c8e2-45f7-8aa4-2448e466e421"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="160" width="47" height="11" uuid="9702f386-17ad-4cba-a347-c06b297cfc5b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="182" width="47" height="11" uuid="a0f96702-5a03-48e4-a481-05c26c618cb4"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="171" width="47" height="11" uuid="f27d6772-8faa-4639-9a27-c20e1f3e56e5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="248" width="47" height="11" uuid="606337b7-7113-4e5f-aefd-fece73babb11"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="204" width="47" height="11" uuid="c5cc4883-322e-41d5-a4c5-42b60a5e7fc4"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="237" width="47" height="11" uuid="fb0abef8-f0e2-4c23-9852-4d4bf4eb7945"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="193" width="47" height="11" uuid="4eb4c7a4-bc66-4dbe-b7f6-f6ccc26f36b5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="325" width="47" height="11" uuid="9ea9a38a-637e-45a3-99a4-b20cbfdd66ec"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="270" width="47" height="11" uuid="7f90a413-1af1-4d33-9852-6f8494ac452c"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="512" width="47" height="11" uuid="24272eec-4144-4df2-8f3c-96d5d0a8d6cf"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="281" width="47" height="11" uuid="b88f7da7-f273-485a-a6f7-47bc884990aa"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="336" width="47" height="11" uuid="db2df1b8-ad52-4a63-9ea2-4fdd7948b3e8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="402" width="47" height="11" uuid="4cee43c0-eb2a-459a-b481-98b467990a78"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="259" width="47" height="11" uuid="8d85f2b1-5df1-4f7c-a711-ce26ecee7eff"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="479" width="47" height="11" uuid="5d87d0c0-54f7-42c8-b805-5c35b103daa8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="446" width="47" height="11" uuid="a4bc0416-dd9b-4266-be79-da74efb815fe"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="413" width="47" height="11" uuid="7630f5b9-89a7-4248-8142-1fdae2beb17e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="215" width="47" height="11" uuid="dc455d98-e535-439e-b1e5-93c0d488db35"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="358" width="47" height="11" uuid="d4be13bd-bdd6-4da1-9fc2-7afa277c66a5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="523" width="47" height="11" uuid="7771748a-3526-41ce-81b8-5ac02a6fd780"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="149" width="48" height="11" uuid="336bda3d-4937-476e-834c-a9577c177bca"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[09/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="149" width="39" height="11" uuid="5ffbbe7c-2364-4601-9be8-f5a5e2614629"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="149" width="206" height="11" uuid="b3a0f38e-dabc-4bec-97bd-e2538b704824"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="160" width="48" height="11" uuid="29c8041f-12de-4649-883d-bb08081c76a9"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[09/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="160" width="206" height="11" uuid="f2539fb0-18b6-4f11-abeb-65242793434e"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="160" width="39" height="11" uuid="21484b6b-4591-47de-b2f2-b739bd2c1621"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="171" width="48" height="11" uuid="5231d53b-ef0a-42f1-9361-82fd323392be"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="171" width="206" height="11" uuid="14ea3e14-b736-4ddf-99cc-2a8b0bf12eb4"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="171" width="39" height="11" uuid="12648031-c20c-4620-9db6-a33b83ec9871"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="182" width="48" height="11" uuid="68c9bae6-8c06-4f23-849d-cc9b8669538f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="182" width="206" height="11" uuid="69e12de6-45b7-413a-bb43-2da93eeedb9a"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 8]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="182" width="39" height="11" uuid="b231508c-a72a-4c52-9fd3-5f4ef2f53393"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="193" width="206" height="11" uuid="6535a438-2979-4fa2-982a-94f6c8c43fe7"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="215" width="206" height="11" uuid="e3dd221b-6d50-416f-a424-ba8bf91ad752"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PAGO FACTURA 9504 LOTERIA NACIONAL PARA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="204" width="48" height="11" uuid="6be54182-0f8e-4648-82f3-9d30eb32633e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="204" width="206" height="11" uuid="1626be9f-26f2-4284-bb55-f0521913645a"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="215" width="48" height="11" uuid="a34a8221-04c7-46b5-b269-20b4894c1152"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="193" width="39" height="11" uuid="5d67b32f-49ce-48f1-93b6-e6f77b8de4fb"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="215" width="39" height="11" uuid="974793c7-d571-4101-8a66-42bc9edc9e01"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="204" width="39" height="11" uuid="e0c784c6-9032-4a64-aac1-947cb9690f09"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="193" width="48" height="11" uuid="d19cfd99-adc1-4dfd-a434-654b946350b1"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="237" width="206" height="11" uuid="1fc621df-a3b0-490f-81e4-3b453ce8fee3"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 14]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="292" width="206" height="11" uuid="b2eccd84-0498-46a4-852f-c103cada23a4"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[P.E. 123 RUIZ BARAJAS EDUARDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="270" width="48" height="11" uuid="1455f583-8631-491a-a996-cbdb5e2b6f7f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[26/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="281" width="39" height="11" uuid="ef91a193-d7c5-4861-a4c8-f9d444f7429f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="270" width="206" height="11" uuid="e8facfb4-2b5c-468b-a0df-2a464841d2d4"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 25]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="292" width="48" height="11" uuid="93843b7e-6ee3-4ded-85a6-4867e9e80950"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[17/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="259" width="206" height="11" uuid="d7f30726-925e-413d-9f9d-5a24e0676510"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 16]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="248" width="48" height="11" uuid="5d2794d3-c496-4f1f-8d67-a51a44ed4e88"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[13/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="248" width="206" height="11" uuid="ffca8201-7c7a-46ed-9402-15f10c4ce4d8"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="259" width="48" height="11" uuid="f7eaeb19-bb83-47b8-b643-9df3c4cf8f92"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[13/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="237" width="39" height="11" uuid="6190726f-d214-4d15-8303-5eaa11da3be9"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="259" width="39" height="11" uuid="2bb448c0-9f05-4260-95af-35f5b967d413"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="248" width="39" height="11" uuid="142ee252-9986-4692-9c0b-15cd59bc4077"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="237" width="48" height="11" uuid="7e1eeb7f-9e6b-4ec6-9cda-671be20fbe47"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[13/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="281" width="206" height="11" uuid="9f423d62-175e-443b-82f5-c7c6b30552cc"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 27]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="281" width="48" height="11" uuid="3ff43071-bb12-48c0-b831-452b4e9c9098"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[27/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="270" width="39" height="11" uuid="3e2975f3-d93e-43b4-8ccb-d2e34ce99573"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="292" width="39" height="11" uuid="8375498b-5395-4bb9-a2bb-99b309ae19bf"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="336" width="39" height="11" uuid="37b7506f-6a81-4c7e-b2ad-a542793e80e9"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="336" width="206" height="11" uuid="83ef0fed-015c-41e8-99ec-7a4372a6cffa"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Docto. 73 COMISION ORDEN DE PAGO SPIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="325" width="39" height="11" uuid="7c67d711-d415-487b-92e5-248abe267b9f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="325" width="206" height="11" uuid="a5306b21-4088-41eb-9976-1f25e5661445"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 34]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="336" width="48" height="11" uuid="5beba6a0-2b2c-425c-acf5-656eca748992"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[24/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="325" width="48" height="11" uuid="e230f61d-2298-4238-a613-4ce76ba5d8ec"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[24/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="358" width="39" height="11" uuid="1b53003b-6239-41c1-8fcd-3fa33fcad092"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="358" width="206" height="11" uuid="359d1d34-0a67-404a-afcb-3bef1b3071fa"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[P.E. 148 BEKER 5.0, S.A.P.I DE C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="358" width="48" height="11" uuid="a7382772-1147-4e2c-b829-8498fdea1490"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[24/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="413" width="39" height="11" uuid="15b0cd56-bce0-459b-9d75-1bbdfff9843d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="413" width="206" height="11" uuid="32518d55-14ca-486c-b92f-f095c23dd193"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[INTEGRA METAS ESTRATEGICAS, S.A. DE C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="402" width="48" height="11" uuid="429d5f4a-fb15-45e8-81df-73c46cf39fc1"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[27/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="413" width="48" height="11" uuid="762e21fe-fd1b-4001-af89-9e4560ec972d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[27/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="402" width="206" height="11" uuid="493dcde3-09d7-41a7-8248-8d3914cf3474"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 36]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="402" width="39" height="11" uuid="e3b3f3b9-ae28-4652-80b9-3cee90242d0a"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="446" width="206" height="11" uuid="ecaa9d91-23ab-479d-847d-6dbec3ddd5c8"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ESCENARI FILMS, S. DE R.L. DE C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="446" width="48" height="11" uuid="4a6abdce-5746-4fc2-9628-eb611fd4a49f"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[27/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="446" width="39" height="11" uuid="f6f3bb2f-d817-4896-8c3e-a519ae4c6508"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="479" width="206" height="11" uuid="4e9e2154-ae50-4d43-946d-8e0287b0824d"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RUFFO FILMS, S. DE R.L. DE C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="479" width="48" height="11" uuid="70419cc6-49aa-4ebb-8b75-9ebfb6d38c34"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[27/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="479" width="39" height="11" uuid="531fa908-e2a4-446c-bd8e-43be784601d0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="512" width="206" height="11" uuid="3de2b80d-1551-4767-b928-c6d4769d5fb4"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 38]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="512" width="48" height="11" uuid="f9de184b-bf28-4d6e-b370-624eb52b43ca"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[28/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="512" width="39" height="11" uuid="916bf8a6-e2ca-41cc-a8c7-84a984dfbb35"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="523" width="206" height="11" uuid="9a66e526-081f-49e6-975f-738a4c9b30fc"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FOCUS MEDIA RESEARCH & ENTERTAINMENT,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="523" width="48" height="11" uuid="a5bc14f9-fe01-4108-9afb-71b75ba637a5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[28/02/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="523" width="39" height="11" uuid="2f8efa4e-0c61-47af-a851-eac8e0ec4dc7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="138" width="206" height="11" uuid="5d3541bb-0c94-42ea-95af-760cb5845ac8"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Y SERVICIOS SOCIALES PAGO FACT. 9363]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="226" width="206" height="11" uuid="5383f84e-dccf-4611-9c6a-ed30cd7b5003"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LA ASISTENCIA PUBLICA PAGO FACT. 9504]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="303" width="206" height="11" uuid="4ecfd8fd-2cca-4b0d-88a5-a2ec2e6c239b"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ISSSTE-CAMPAﾑA-PRESTACIONES-INSUMOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="314" width="206" height="11" uuid="793bf3ea-1a32-4879-b5f4-ff76f4f5fe2d"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REALIZACION DE VIDEO CLIP, PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="347" width="206" height="11" uuid="06f4162b-acd5-4ffe-9590-a30385512219"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FACTURA NO. 73]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="369" width="206" height="11" uuid="3dc75d34-8ce3-4610-befc-c64b8a165883"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LOTENAL-CAMPAﾑA CLASICA-SERVICIO DE CREAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="380" width="206" height="11" uuid="a7b0a090-96fc-4ae1-bcb0-0589956a93aa"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REALIZACION DE 3 SPOTS PARA TV DE 60,30]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="391" width="206" height="11" uuid="07e4a148-4c87-43fb-b06a-4b24c1a9a04a"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="424" width="206" height="11" uuid="f18bde12-085a-46c8-b1ef-cbe027f719f6"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LOTENAL-CAMPAﾑA PARA LA REALIZ DE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="435" width="206" height="11" uuid="9153c470-107a-492d-86ca-14a20ad45121"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SPOT PARA TV, PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="457" width="206" height="11" uuid="9d4597db-0146-4221-a7f5-4a0b6f3d347f"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LOTENAL-CAMPAﾑA PARA LA REALIZ DE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="468" width="206" height="11" uuid="daebce4a-181b-45ff-86a4-69eca908b6e6"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SPOT DE TV, PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="490" width="206" height="11" uuid="ab809869-152b-47ba-964e-13b3ed871d5c"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LOTENAL-CAMPAﾑA PARA LA REALIZ DE 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="501" width="206" height="11" uuid="2a818f35-7300-4d9d-b27b-30ddb017a471"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SPOT DE TV, PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="534" width="206" height="11" uuid="bb2bf905-1941-4b73-a7b3-872e8893e03b"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[S.A. DE C.V. ISSSTE-CAMPAﾑA-TU TIENES 21]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="545" width="206" height="11" uuid="1ef3f2ff-22ce-43b9-8903-47f16f3e8658"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VIDEO CLIP DE 3 MINUTOS, PASIVO 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="259" width="61" height="11" uuid="ff7398dd-8d29-4063-a8d2-2e0d672cddc5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="149" width="61" height="11" uuid="a37875c1-2f4f-4790-b304-1b49909ad499"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="160" width="61" height="11" uuid="4f30ca2f-4e63-415b-9933-49042318adfd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="171" width="61" height="11" uuid="d8944161-e505-4cc4-b2ce-828edadc8b65"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="182" width="61" height="11" uuid="78883906-aa0e-483f-a7d9-abfe6f819df0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="215" width="61" height="11" uuid="b662d7a6-0b9d-44c9-8c3f-138af9a5d69b"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="270" width="61" height="11" uuid="46b3e0ef-adbe-4939-beb0-9f103c73ddc7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="237" width="61" height="11" uuid="fd6ca7d4-d644-4d01-9e36-810811486a23"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="193" width="61" height="11" uuid="d87f1b41-f417-4008-87a3-537543bf13c5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="248" width="61" height="11" uuid="bbc741d1-a5bc-40a9-b507-e8401efabc91"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="204" width="61" height="11" uuid="f389dc4b-ab2f-42fa-9c3f-f682f8f1ec4a"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="281" width="61" height="11" uuid="0fd3d524-985a-4af0-84ea-f2f1eba4b859"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="292" width="61" height="11" uuid="7a675d1a-8e2b-4b0a-8ba2-dfcba2bca865"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="358" width="61" height="11" uuid="05e3bd0d-6e5c-4d41-a542-88b159999a72"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="325" width="61" height="11" uuid="3119792b-1a80-4894-9f72-f8284466700d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="402" width="61" height="11" uuid="e288cf49-ad97-43ae-8efc-478c4c87761d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="413" width="61" height="11" uuid="0cc1fb31-c233-44e6-905c-466c2d1b3d13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="479" width="61" height="11" uuid="dc702458-074e-4177-b744-1634c7910880"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="512" width="61" height="11" uuid="f01d83a6-8525-4751-a6da-32f15b207259"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="446" width="61" height="11" uuid="f209a3e8-afa1-4c37-9239-48d1ce10d462"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="149" width="61" height="11" uuid="ff91c6b1-76db-40f2-b7c0-21a6496c1e70"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$1,712,921.91]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="160" width="61" height="11" uuid="8b2e7ecb-4b19-45c5-b6c1-71f3d95b7005"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $7,343,118.93
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="171" width="61" height="11" uuid="7e038cc7-fc4a-4b85-adc1-bfc7b5f5aa11"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $7,749,999.98
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="215" width="61" height="11" uuid="3393f3a7-f236-4a28-b121-a2f47c6ec336"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $5,796,774.46
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="248" width="61" height="11" uuid="ca5ca26b-d8c7-4afb-a3ff-ae664a607500"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $789,913.60
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="237" width="61" height="11" uuid="bd7c8725-0437-426f-b4ee-1e85d5cb2771"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $3,381,402.90
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="281" width="61" height="11" uuid="c08782ab-e990-47e5-9d93-b6a47499a3ac"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $150,000.00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="402" width="61" height="11" uuid="5b54801c-fe56-422b-92ec-a8106748587c"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $2,500,000.21
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="512" width="61" height="11" uuid="d2d1d221-ef60-4cb5-9a5f-a7338c87514b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $3,000,001.67
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="325" width="61" height="11" uuid="dc3f85d5-410a-4546-901c-2cb02df65ab7"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $2,600,001.73
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="182" width="60" height="11" uuid="16cfbdde-ed0c-49c7-938d-b644630f3b1c"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $7,749,998.07
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="193" width="60" height="11" uuid="be267f9a-b998-4dff-ab49-e76dc40e62f0"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $9,049,998.44]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="204" width="60" height="11" uuid="99567e78-3a1d-43ad-81c6-5902a91cc390"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $5,789,999.64
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="259" width="60" height="11" uuid="c468c3f3-d8ca-4ab4-b02a-42771a631c8a"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $12,499,999.20
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="270" width="60" height="11" uuid="80c07709-966b-4ff7-8ba5-334cdc3076d7"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $150,000.00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="292" width="60" height="11" uuid="2ba31763-11cc-4e44-8446-ef583d30d46e"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $345,000.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="336" width="60" height="11" uuid="b1ba7696-9d4f-46ae-b123-ca5fb6e62249"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $10.32]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="358" width="60" height="11" uuid="d9ebfc83-c115-482c-99bf-927e346bb7d4"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $2,592,169.64
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="413" width="60" height="11" uuid="e56081a4-6e75-448d-8b0c-59e7117136b7"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $341,040.00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="446" width="60" height="11" uuid="df832179-7ad6-4343-8ea1-94e6fa6b3b66"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $490,825.00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="479" width="60" height="11" uuid="576c3c62-e420-49b8-8217-752aa213c20a"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $582,800.24
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="523" width="60" height="11" uuid="2859714b-bd0b-4a65-86cb-561a6bedf34c"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $3,401,100.00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="556" width="63" height="11" uuid="c3305651-1a09-40dd-abab-9df1a578aba8"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="567" width="63" height="11" uuid="1d68134a-9938-4e74-9ce7-552bf31db44b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO FINAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="556" width="61" height="11" uuid="d685d958-4826-484d-baf7-b8e3495834bf"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $8,100,003.61
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="567" width="61" height="11" uuid="f5ddaf21-e850-4e3f-b265-588136e0ea95"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $1,081,438.51
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="743" y="556" width="60" height="11" uuid="8621c79d-ecf5-44a2-b862-5f4c79626758"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $7,752,945.20
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="471" y="614" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="a43073a8-6c07-48c8-99c8-9c9934ae5dcf"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fuente de Financiamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="742" y="614" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="61ad4695-fd1f-47d0-b339-f3cb923d1a22"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="592" y="614" width="44" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="42f01fe6-80c2-46c0-b5c9-9144ac094997"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUEP/DURI origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="176" y="614" width="206" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="9a12943f-ef12-44df-bd74-55e4dd22793e"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto de la póliza ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="614" width="42" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="f2027999-1421-4218-b9c7-0af83efd2b37"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="382" y="614" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="febd77c3-14c1-4e8b-8ed7-30b1a5bb47ad"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="137" y="614" width="39" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="d25edf88-a090-4e1f-b606-de487b41ea9c"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bloque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="681" y="614" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="ee7fda04-bb0a-41ee-8a12-36717cedba0e"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="89" y="614" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="49820b10-755d-4bc1-a73b-f240e811aeed"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="430" y="614" width="41" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="1635c663-376f-4112-b84c-d1bca87dbc32"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondo Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="531" y="614" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="d46ab832-b4b2-4e2c-b721-190249d6b0da"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen de póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="636" y="614" width="45" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="2a5c1be4-8c83-4020-89dd-98dc01fc1607"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="42" y="614" width="47" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="43eb2b47-7bde-4b7f-9626-15e268d55ecd"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="603" width="152" height="11" uuid="8c8b5948-f4e4-4695-b9d6-f19bd95a8afd"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CUENTA CONTABLE : 11120.01.0006]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="603" width="206" height="11" uuid="2536a90f-5935-4814-a860-772ed7295c1f"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REC. NOMINA CTA 0550507398 BANORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="603" width="61" height="11" uuid="69c08bd5-1dc2-4930-b208-28f6204ff5a8"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$ 585,283.67]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="603" width="148" height="11" uuid="3eb57e82-15bb-47fe-be9f-36d5cdb60551"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO  INICIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="630" width="63" height="11" uuid="3d4015b5-ecb7-49e2-8a39-eca5a6694d25"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="641" width="61" height="11" uuid="ebea6dea-5f88-40ae-a89f-d08ddc9c3aa9"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $12,366.15
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="630" width="60" height="11" uuid="ad193b8d-561b-45e5-8328-1f661b0c7143"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $-
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="630" width="61" height="11" uuid="d70c08ba-b3ac-4ddb-9264-c3dfc3d94cca"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $-
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="641" width="63" height="11" uuid="eb1b04ad-6e0e-4aaa-a908-d213db72301f"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO FINAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="681" y="676" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="e0157b37-6896-4bd1-b687-f2dd72167018"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="531" y="676" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="32444e3b-7adf-4598-a2df-d8a79ae4d196"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen de póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="471" y="676" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="1ecf1b48-bbd3-4f0d-9fb9-8c4feaa8cb73"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fuente de Financiamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="382" y="676" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="7f9f2897-e36e-4c4f-a20d-dd01435a6175"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="714" width="61" height="11" uuid="0d719132-6d42-470e-9c50-ca4377a550fa"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $263,277.22
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="430" y="676" width="41" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="06e68c5d-5b79-46da-ad2f-364d730dcb4f"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondo Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="742" y="676" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="48197897-2cff-44eb-a8f6-83a4a9b3661a"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="592" y="676" width="44" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="241d93c8-e958-4237-b343-4eb064b17269"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUEP/DURI origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="665" width="206" height="11" uuid="c3c8f01e-387f-4cb1-a530-9309fed0db44"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REC. PROPIOS DLLS 0504499610 BANORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="703" width="61" height="11" uuid="da64621d-feb6-43a6-8e3b-9622de28d6c4"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $347.72
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="703" width="63" height="11" uuid="9be9a773-cdc4-42bb-b663-c12c6cb39879"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="703" width="60" height="11" uuid="4bd4cab6-f179-4b78-9771-2064dd7e7463"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $-
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="137" y="676" width="39" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="0ed505d9-5cda-4d20-866b-236af8b5962e"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bloque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="176" y="676" width="206" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="bba2f2a6-7777-4bbf-96e7-3c44279c536b"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto de la póliza ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="676" width="42" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="60333778-bc89-4226-b89a-a91e235dc381"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="42" y="676" width="47" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="2506dc4e-bd07-4396-a9e1-79f55d474cf3"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="665" width="61" height="11" uuid="da0b46ab-0956-4f82-ad3a-09efa2c7e222"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[$ 585,283.67]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="665" width="148" height="11" uuid="b47eeecf-928b-4794-be5a-59dab8151303"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO  INICIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="89" y="676" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="4b3d7d6c-c6c0-4608-b080-a81b25e101f6"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="714" width="63" height="11" uuid="d6d59b1d-0b89-4147-9f32-ae70a101fa7a"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO FINAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="665" width="152" height="11" uuid="176bb14e-4e37-4f38-9b21-042195877f74"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CUENTA CONTABLE : 11120.01.0007]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="636" y="676" width="45" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="9aea0625-53b2-448d-8206-e59c8f5883e7"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="692" width="39" height="11" uuid="20388686-91a3-4a73-851c-376957f031dd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="42" y="692" width="47" height="11" uuid="dc440a60-242a-4db0-97d4-66cc81bc19c5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="692" width="48" height="11" uuid="780a28ee-26f6-4b1e-9b42-1e88b366fce8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[30/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="692" width="42" height="11" uuid="28fa0a45-88b8-41a0-927d-d697f7b89aa0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000091]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="692" width="206" height="11" uuid="1eda2ce6-a7b7-41e2-ac3d-b4ccfff33d8c"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[AJUSTE DE CTA DE DOL. BANORTE ENERO 2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="692" width="61" height="11" uuid="990fdb9e-07ba-4fba-8f64-f687f7fe90f8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="692" width="61" height="11" uuid="1e610c32-3bda-44ee-ab99-772827c16995"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $347.72
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="89" y="752" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="a44e94b4-d69e-4969-b275-0fdd8623f861"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="137" y="752" width="39" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="b6fef013-e231-454e-a8b5-9eb750e968dd"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bloque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="47" y="752" width="42" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="0610c2f5-d235-4330-9f69-06af413629aa"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="752" width="47" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="1c120440-9b6c-4cbf-93a3-18ac60575ba9"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="741" width="206" height="11" uuid="4735a06b-adcb-47a1-bf16-647fd192e91c"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[REC. SPOTS 2014 CTA. 0232979200 BANORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="768" width="60" height="11" uuid="88daf8d8-b7d3-4a6f-b3b3-4c99d9fa303a"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $8,878.36
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="768" width="47" height="11" uuid="87ccd82d-e364-466b-bc19-77b6f59a1ced"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DIARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="531" y="768" width="61" height="11" uuid="e7f81505-a033-45da-b165-0e4f0497951c"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="471" y="752" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="939ab3b0-ece3-4cfa-9c12-53ab93648ae0"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fuente de Financiamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="681" y="741" width="61" height="11" uuid="d748e2bd-ea61-43ff-83e7-ab95114ae352"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $8,878.30
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="531" y="752" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="3685a36c-b879-408f-89cb-d442abc388da"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen de póliza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="137" y="768" width="39" height="11" uuid="c964a1f8-63e6-45e9-ac37-5d61a5ab5ff0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="592" y="752" width="44" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="15690ddd-c590-468e-8a1f-8729a970fed0"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUEP/DURI origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="533" y="741" width="148" height="11" uuid="0ca9da12-a259-4218-bf7d-0b1472962ca9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO  INICIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="48" y="768" width="42" height="11" uuid="3148ae20-66f6-4020-a858-1a73f9ab6acd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[000011]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="176" y="768" width="206" height="11" uuid="6cf1d367-125a-4012-aff4-387c04c67ea0"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONTABILIZACION DE LA TRANSFERENCIA 11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="24" y="741" width="152" height="11" uuid="b113dfcb-e3b5-45a6-9a63-15cf86e28351"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CUENTA CONTABLE : 11120.01.0009]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="636" y="752" width="45" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="c2fce078-5e60-4a80-a627-a3ba5f049415"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="382" y="752" width="48" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="80018961-c8fd-4bca-a8c7-2a0798281a13"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="681" y="752" width="61" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="e16d2ad8-bfd3-40a9-86b4-fac10b672fef"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="176" y="752" width="206" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="4b9db231-03e3-4610-adc5-fbdac449fa5e"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepto de la póliza ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="742" y="752" width="60" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="bd32ca4e-1345-455b-af02-a336078e1121"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="89" y="768" width="48" height="11" uuid="015cafdd-55ce-490a-9a25-4f471bce6065"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11/01/2019]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="430" y="752" width="41" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="759ec975-095b-4ffa-a70e-809b15aa04ed"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fondo Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="779" width="63" height="11" uuid="9f27b31a-7de0-4a29-b1b3-406ecfaaec61"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[MOVIMIENTOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="779" width="61" height="11" uuid="81b15260-e4b6-4a49-8dc4-78695a06bc22"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $-
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="742" y="779" width="60" height="11" uuid="fde4f02d-8ecc-4120-8889-19ab9a288f15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $8,878.36
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="592" y="790" width="63" height="11" uuid="6878a4ee-362c-4584-b460-90d4199796f4"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SALDO FINAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="680" y="790" width="61" height="11" uuid="1d537ca0-8f82-42d9-a1ad-2ec680dff561"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ $-
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="76" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="627" y="34" width="100" height="11" forecolor="#666666" uuid="5f85e657-0909-42f2-bceb-cdf61dfd7850"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="511" y="23" width="112" height="11" forecolor="#666666" uuid="5fed1e2a-ef36-4cd7-b43d-c8c67ab85e86"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="519" y="34" width="109" height="11" forecolor="#666666" uuid="cf6dfeab-d8f9-436a-b1e0-17811008fe7b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="722" y="23" width="69" height="11" forecolor="#666666" uuid="67053165-2b46-42ec-aa3e-39aa0557a9dc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="623" y="23" width="100" height="11" forecolor="#666666" uuid="ab2125e6-268f-4a49-bac1-0b2aae9c70f4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

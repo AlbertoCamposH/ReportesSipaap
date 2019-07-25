@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_OficioCta_P_Anual_ok_AR" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="43ed3c43-d511-42f4-8e55-c1a1523e86ab">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<parameter name="usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="1" y="33" width="349" height="15" uuid="9d57b391-dbfa-43af-9b66-ba1e7a10fc70"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECRETARIO DE FINANZAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="18" width="349" height="15" uuid="f3e9497e-cc9b-41b0-a075-808d8c306ec3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL DESTINATARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="48" width="349" height="15" uuid="f285deae-38f6-44d1-b379-ef2b42b8902b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GOBIERNO DEL ESTADO DE AGUASCALIENTES]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="419" y="18" width="102" height="43" uuid="d83c9aa9-6d49-4b75-8b87-d025778b50a1"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="63" width="349" height="15" uuid="78f5450f-17ff-4b17-81fd-e0586a46e2a0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P R E S E  N T E]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="386" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="1" y="83" width="553" height="38" uuid="28efebb8-5921-4fb0-912c-443e66ece6ad"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUENTA PÚBLICA 2020
+UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="360" y="17" width="41" height="11" uuid="18056b31-a184-49f4-a7c4-884af9fd869c"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asunto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="376" y="29" width="25" height="11" uuid="270f3457-5052-4331-91fe-c6957c68fd86"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="402" y="29" width="151" height="11" uuid="4f2fefe9-3381-4e79-9a21-9a5393fbb4b0"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIPAAP/ INF ANUAL-021-2020]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="402" y="17" width="151" height="11" uuid="0f14a70e-a490-4f81-9b4f-a53fd79457d2"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuenta Pública Anual 2020]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="121" width="553" height="63" uuid="0589a24c-1728-4f19-8fe6-9a5d975c90d9"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[En cumplimiento al Título IV de la Ley General de Contabilidad Gubernamental se emite la Cuenta Pública Anual correspondiente al ejercicio  2020, misma que fue preparada conforme a los criterios generales que rigen la Contabilidad Gubernamental establecidas por la propia Ley y sus disposiciones anexas y que tomaron como base de preparación la información presupuestaria, programática y contable.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="111" y="291" width="333" height="48" uuid="49536079-2c49-4572-9e9d-f9efd7ee87a4"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LIC. MIGUEL CHAVEZ
+RECTOR DE LA UNIVERSIDAD TECNOLÓGICA DE AGUASCALIENTES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="111" y="339" width="333" height="17" uuid="8da918f8-3280-46c4-b24c-84924e2b9e42"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aguascalientes, Aguascalientes 15 de febrero de 2020
+]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="111" y="288" width="333" height="1" uuid="56c1e4cd-3166-4060-86a5-f03d193c630f"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="389" y="28" width="100" height="11" forecolor="#666666" uuid="b7e28fa0-12cb-45b7-9bd7-0b54969a6d29"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="273" y="17" width="112" height="11" forecolor="#666666" uuid="e2b24e21-d874-4041-babb-a3cb5a07c23f"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="281" y="28" width="109" height="11" forecolor="#666666" uuid="328d7dc5-cdc3-4fdb-9ec9-d0ba57e0d8f9"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="484" y="17" width="69" height="11" forecolor="#666666" uuid="cc8edb64-c70c-4b3e-b5d5-8373bb383bfc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="385" y="17" width="100" height="11" forecolor="#666666" uuid="2ba45868-2648-4d21-9281-ea094600bb88"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

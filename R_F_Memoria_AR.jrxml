@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R_F_Memoria_AR" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a84be919-ad9d-48df-958d-5a4f41481818">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="usuario" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="105" y="60" width="349" height="15" uuid="fbeab462-78b1-47c6-99af-cb219d270e1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTAS A LOS ESTADOS FINANCIEROS/NOTAS DE MEMORIA]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="3" y="15" width="102" height="43" uuid="9c5ebc32-af68-4b53-acf0-21d88aeedf93"/>
+				<imageExpression><![CDATA["http://54.212.248.221:8090/v1.0/admin/projects/SIPAAP/images/bf21694b-b7f6-4f35-b850-8f46728e1859"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="45" width="349" height="15" uuid="6d2f2aaa-fce3-4274-adc7-766e8810a5b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AL 31 DE MARZO DE 2018]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="30" width="349" height="15" uuid="230fd4dc-7a0c-4066-9d9e-0f9b833b3356"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORMACIÓN MENSUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="15" width="349" height="15" uuid="60840205-1268-4f82-9d8d-bd55d0209236"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD TECNOLÓGICA DE AGUASCLIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="105" y="0" width="349" height="15" uuid="b3cb0509-8ecc-432b-94b7-1a91314cdfc6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA INTEGRAL DE PROCESOS ARTICULADOS DE LA ADMINISTRACIÓN PÚBLICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="741" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="1" y="9" width="261" height="11" uuid="ccc3acaa-8526-4652-befe-728b8e379cab"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuentas de Orden Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="358" y="27" width="96" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="412cace1-2efb-42e1-813d-b44bd1befb07"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Inicial ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="454" y="27" width="101" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="b4266912-eb68-44c9-8130-44225661addb"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Final]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="27" width="358" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="7ca2d69d-51d8-4638-a848-8c9835f88a68"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="43" width="261" height="11" uuid="ce93b8ee-c26f-415f-a291-308b726a1c8f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="54" width="261" height="11" uuid="f011dac1-8f8b-4755-9e6c-c501b8308197"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Valores en Custodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="76" width="261" height="11" uuid="cec43e09-b961-4fc7-ae54-455aaf42b435"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Instrumentos de Crédito Prestados a Formadores de Mercado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="65" width="261" height="11" uuid="1d642df4-9a31-48fa-9bec-b89577bea466"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Custodia de Valores]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="109" width="261" height="11" uuid="ff9adab5-6d6c-4b7d-8cad-ec01ed730321"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Garantía de Créditos Recibidos de los Formadores de Mercado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="98" width="287" height="11" uuid="08e10e06-bfcc-47f9-a319-e050d175512f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Instrumentos de Crédito Recibidos en Garantía de los Formadores de Mercado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="87" width="287" height="11" uuid="57b57718-aaf0-4d65-85ac-13cbcd7bbcd7"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Préstamo de Instrumentos de Crédito a Formadores de Mercado y su Garantía]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="120" width="261" height="11" uuid="eed74f5a-ac30-47ba-bb3c-21cea6151d8b"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMISION DE OBLIGACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="175" width="330" height="11" uuid="35da7fc7-66fc-403f-b685-d0c0f7700650"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Suscripción de Contratos de Préstamos y Otras Obligaciones de la Deuda Pública Externa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="142" width="306" height="11" uuid="00ec2258-9e81-4b00-921a-3cde275da420"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autorización para la Emisión de Bonos, Títulos y Valores de la Deuda Pública Externa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="131" width="306" height="11" uuid="5ddfb4f3-3cb7-4982-98a0-83a0bad25d32"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autorización para la Emisión de Bonos, Títulos y Valores de la Deuda Pública Interna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="197" width="261" height="11" uuid="d8d768a4-8e87-4897-9bc3-656e4a579eef"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AVALES Y GARANTIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="164" width="320" height="11" uuid="8144ecd9-2961-4eaf-99c5-0486d465ad12"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Suscripción de Contratos de Préstamos y Otras Obligaciones de la Deuda Pública Interna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="153" width="261" height="11" uuid="45ddc598-82ef-4310-bed5-e22fd89eaba3"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Emisiones Autorizadas de la Deuda Pública Interna y Externa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="186" width="330" height="11" uuid="8f5ca8c2-67a3-46d3-b722-b4064f94a164"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contratos de Préstamos y Otras Obligaciones de la Deuda Pública Interna y Externa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="296" width="261" height="11" uuid="22b8bc74-9828-42fb-8de8-537e094eaa3d"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Resolución de Demandas en Proceso Judicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="208" width="261" height="11" uuid="9daa3560-79ad-432d-a913-487ffda54a7b"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Avales Autorizados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="285" width="261" height="11" uuid="9d56ea15-f2c6-4d7d-becd-68e80b898921"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Demandas Judicial en Proceso de Resolución]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="241" width="261" height="11" uuid="d62aa00c-3909-4218-bf21-7becc48c1a59"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fianzas y Garantías Recibidas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="230" width="261" height="11" uuid="f8af7220-bad4-4985-b7a7-621926922a13"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fianzas y Garantías Recibidas por Deudas a Cobrar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="340" width="261" height="11" uuid="93dacde0-200e-4f0d-bec7-a21d5a156d13"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIENES EN CONCESIONADOS O EN COMODATO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="307" width="357" height="11" uuid="14536ded-913f-4588-9ea8-d6ee9f058eb5"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVERSION MEDIANTE PROYECTOS PARA PRESTACION DE SERVICIOS (PPS) Y SIMILARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="351" width="261" height="11" uuid="d0e2d8fb-33c1-4aa7-a4ba-decd493416d8"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bienes Bajo Contrato en Concesión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="252" width="273" height="11" uuid="27e5f67e-5bfb-45c3-b98b-7f25c040cc2f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fianzas Otorgadas para Respaldar Obligaciones no Fiscales del Gobierno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="219" width="261" height="11" uuid="d844dc24-6137-4a98-a082-b3acbc505a4c"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Avales Firmados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="274" width="261" height="11" uuid="87983b34-02df-4ed8-8aef-9f2a972963ba"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUICIOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="318" width="330" height="11" uuid="c638f2e4-2dd7-4d54-998f-49ee6df63a77"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contratos para Inversión Mediante Proyectos para Prestación de Servicios (PPS) y Similares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="329" width="357" height="11" uuid="4ea7fbdb-5237-44f2-8e99-fc8bf4d113db"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Inversión Pública Contratada Mediante Proyectos para Prestación de Servicios (PPS) y Similares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="263" width="273" height="11" uuid="3103afb9-a114-4a36-89ab-688f3f97baf9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fianzas Otorgadas del Gobierno para Respaldar Obligaciones no Fiscales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="362" width="261" height="11" uuid="bca04b5a-5acf-4c64-bf50-31f42ab62612"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contrato de Concesión por Bienes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="384" width="261" height="11" uuid="518e2ec7-f1df-4474-a4ee-6d15585bf1d1"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contrato de Comodato por Bienes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="373" width="261" height="11" uuid="c3e0bf25-d0f6-4f67-a7da-f42509f58b93"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bienes Bajo Contrato en Comodato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="395" width="261" height="11" uuid="b5754f0e-8164-496e-b08c-678a1c841a73"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUENTAS POR COBRAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="417" width="261" height="11" uuid="611cd614-9a27-4f54-968f-c7d0b2acf409"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bienes arqueológicos, artísticos e históricos en custodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="439" width="261" height="11" uuid="29675422-f4e8-4e3e-9cae-b0ad7976799f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Custodia de bienes arqueológicos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="450" width="261" height="11" uuid="def24372-dc45-4e7e-b764-4fcc63ab0ee4"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bienes artísticos en custodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="406" width="261" height="11" uuid="2184d7f0-ac7d-407c-8e9f-7bf1e1daf486"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cuentas por cobrar alumnos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="428" width="261" height="11" uuid="04027dc7-dc3e-47a7-b045-b5336f1b6593"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bienes arqueológicos en custodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="472" width="261" height="11" uuid="7266bd2b-2aef-4b1b-bd78-d3c7d1f1fbdd"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bienes históricos en custodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="461" width="261" height="11" uuid="0a362460-4257-4ddb-9cef-b9f6f9f281b0"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Custodia de bienes artísticos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="545" width="261" height="11" uuid="ef7cccdb-b3f3-4a7c-9af9-0f26d7e3c41f"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LEY DE INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="516" width="261" height="11" uuid="00517c3c-8cae-4666-8522-35a27a0e5676"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuentas de Orden Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="556" width="261" height="11" uuid="7ffb8426-2013-460a-9b83-7ac659279c3a"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ley de Ingresos Estimada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="483" width="261" height="11" uuid="b624e9a7-6c53-42b7-833b-bd3a3f9cf10d"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Custodia de bienes históricos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="454" y="529" width="101" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="8c9d32af-6842-480a-a6aa-b9bbe18c1de7"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Abonos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="358" y="529" width="96" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="59fd0498-20ac-4e27-b534-31021cd8afd8"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="529" width="358" height="16" forecolor="#FFFFFF" backcolor="#004987" uuid="560055a4-24b5-4a2d-94ac-e0a7bee48485"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="578" width="261" height="11" uuid="522e0f79-f0aa-4bc7-bdad-62695e0dbaa9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Modificaciones a la Ley de Ingresos Estimada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="567" width="261" height="11" uuid="83c6229a-fd6e-4555-9470-4987f1ab4c40"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ley de Ingresos por Ejecutar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="622" width="261" height="11" uuid="8e0b86ac-0c70-4817-95a5-55281a9aea52"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos Aprobado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="611" width="261" height="11" uuid="17931a09-66d9-4623-91bc-c409afb63fd9"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESUPUESTO DE EGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="600" width="261" height="11" uuid="c6c8c7e7-0570-40fa-a991-37cdb550c0cd"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ley de Ingresos Recaudada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="589" width="261" height="11" uuid="8e813bee-d7f8-4e0b-9206-f45853a8f074"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Ley de Ingresos Devengada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="644" width="261" height="11" uuid="454008f3-e9c6-4a95-a3aa-0ba3a078adff"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Modificaciones al Presupuesto de Egresos Aprobado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="633" width="261" height="11" uuid="e4e7cb03-c250-4310-ae78-3fca1f532b36"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos por Ejercer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="666" width="261" height="11" uuid="27614a1e-66b0-4967-b635-0227bac8548d"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos Devengado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="655" width="261" height="11" uuid="2c2aaf10-2107-41f6-9f5e-e8d97f005baa"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos Comprometido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="688" width="261" height="11" uuid="7e1acd0f-3320-49be-baa6-a155cda506c5"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos Pagado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="1" y="677" width="261" height="11" uuid="5e2d95ec-67cd-452b-97eb-528149b6d27c"/>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Presupuesto de Egresos Ejercido]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="378" y="27" width="100" height="11" forecolor="#666666" uuid="ba2854c2-5d72-4f4a-a9ca-138bbdd9d04b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="262" y="16" width="112" height="11" forecolor="#666666" uuid="991adb05-a95c-405c-b2c0-ba2033266b8b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de impresión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="270" y="27" width="109" height="11" forecolor="#666666" uuid="d9e9f059-329d-492c-be0a-0a9b8605b6dc"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="K:mm a, z" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="473" y="16" width="69" height="11" forecolor="#666666" uuid="bfad0301-2d23-42b5-9cda-164f721c1b98"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement positionType="Float" x="374" y="16" width="100" height="11" forecolor="#666666" uuid="e4694483-c487-4c47-82cb-6ed51e58378a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
